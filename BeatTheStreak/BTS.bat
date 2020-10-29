@@ -1,0 +1,3 @@
+"C:\Program Files\SASHome\SASFoundation\9.4\sas.exe" -SYSIN "C:\Users\peberr\OneDrive - SAS\BeatTheStreak\ImportGlogs.sas" -LOG "C:\Users\peberr\OneDrive - SAS\BeatTheStreak\ImportGlogs.log" -PRINT "C:\Users\peberr\OneDrive - SAS\BeatTheStreak\ImportGlogs.lst"
+sleep 30;
+"C:\Program Files\SASHome\SASFoundation\9.4\sas.exe" -SYSIN "C:\Users\peberr\OneDrive - SAS\BeatTheStreak\BTSprep.sas" -LOG "C:\Users\peberr\OneDrive - SAS\BeatTheStreak\BTSprep.log" -PRINT "C:\Users\peberr\OneDrive - SAS\BeatTheStreak\BTSprep.lst"

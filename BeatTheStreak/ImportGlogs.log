@@ -1,0 +1,731 @@
+1                                         The SAS System          09:35 Friday, September 27, 2019
+
+NOTE: Copyright (c) 2016 by SAS Institute Inc., Cary, NC, USA. 
+NOTE: SAS (r) Proprietary Software 9.4 (TS1M6) 
+      Licensed to Microsoft Windows for x64 All Compatible Non-Plann, Site 70068130.
+NOTE: This session is executing on the X64_10PRO  platform.
+
+
+
+NOTE: Analytical products:
+      
+      SAS/STAT 15.1
+      SAS/ETS 15.1
+      SAS/OR 15.1
+      SAS/QC 15.1
+
+NOTE: Additional host information:
+
+ X64_10PRO WIN 10.0.16299  Workstation
+
+NOTE: SAS initialization used:
+      real time           0.22 seconds
+      cpu time            0.15 seconds
+      
+1          /* Location of the necessary json files */
+2          %let path = C:\Users\peberr\OneDrive - SAS\BeatTheStreak;
+3          libname bts "&path.";
+NOTE: Libref BTS was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: C:\Users\peberr\OneDrive - SAS\BeatTheStreak
+4          
+5          
+6          /**************************************************************************************
+6        ! ******/
+7          /**************************************************************************************
+7        ! ******/
+8          /********************************   GAME LOGS
+8        ! *********************************************/
+9          /**************************************************************************************
+9        ! ******/
+10         /**************************************************************************************
+10       ! ****/
+11         
+12         /* Response of Fangraphs API */
+13         filename GLogs temp;
+14         
+15         /* GLogs.json parser*/
+16         filename map "&path.\map.json";
+17         
+18         /* POST Request to Fangraphs */
+19         proc http
+20         	out = GLogs
+21         	url = "https://www.fangraphs.com/api/leaders/splits/splits-leaders"
+22         	in =
+22       ! '{"strPlayerId":"all","strSplitArr":[],"strGroup":"game","strPosition":"B","strType":1,
+2                                         The SAS System          09:35 Friday, September 27, 2019
+
+22       ! "strStartDate":"2019-03-01","strEndDate":"2019-11-01","strSplitTeams":false,"dctFilters
+22       ! ":[],"strStatType":"player","strAutoPt":"true","arrPlayerId":[],"strSplitArrPitch":[]}'
+22       ! ;
+23         	headers
+24         		"Accept"="application/json, text/plain, */*"
+25         		"Content-Type"="application/json;charset=UTF-8";
+26         run;
+
+NOTE: PROCEDURE HTTP used (Total process time):
+      real time           24.88 seconds
+      cpu time            0.40 seconds
+      
+NOTE: 200 OK
+
+27         
+28         
+29         libname Fgraphs json fileref=GLogs map=map automap=reuse;
+NOTE: JSON data is only read once.  To read the JSON again, reassign the JSON LIBNAME.
+NOTE: Libref FGRAPHS was successfully assigned as follows: 
+      Engine:        JSON 
+      Physical Name: C:\Users\peberr\AppData\Local\Temp\SAS Temporary 
+      Files\_TD15912_d10d825_\#LN00006
+30         
+31         
+32         data bts.glogs_2019 (drop = ordinal_root ordinal_v Date_Char);
+33         	set Fgraphs.v;
+34         	Date = input(Date_Char, yymmdd10.);
+35         	format Date yymmdd10.;
+36         run;
+
+NOTE: There were 50824 observations read from the data set FGRAPHS.V.
+NOTE: The data set BTS.GLOGS_2019 has 50824 observations and 24 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.19 seconds
+      cpu time            0.18 seconds
+      
+
+37         
+38         filename GLogs clear;
+NOTE: Fileref GLOGS has been deassigned.
+39         filename map clear;
+NOTE: Fileref MAP has been deassigned.
+40         libname Fgraphs clear;
+NOTE: Libref FGRAPHS has been deassigned.
+41         
+42         
+43         
+44         /**************************************************************************************
+44       ! ******/
+45         /**************************************************************************************
+45       ! ******/
+46         /*****************************   PROBABLE STARTER STATS
+46       ! ************************************/
+3                                         The SAS System          09:35 Friday, September 27, 2019
+
+47         /**************************************************************************************
+47       ! ******/
+48         /**************************************************************************************
+48       ! ******/
+49         /* Response of Fangraphs API */
+50         filename spGLogs temp;
+51         
+52         /* GLogs.json parser*/
+53         filename map3 "&path.\map3.json";
+54         
+55         /* POST Request to Fangraphs */
+56         proc http
+57         	out = spGLogs
+58         	url = "https://www.fangraphs.com/api/leaders/splits/splits-leaders"
+59         	in =
+59       ! '{"strPlayerId":"all","strSplitArr":[42],"strGroup":"game","strPosition":"P","strType":
+59       ! "1","strStartDate":"2019-03-01","strEndDate":"2019-11-01","strSplitTeams":false,"dctFil
+59       ! ters":[{"stat":"IP","comp":"gt","low":"0","high":-99,"pending":false}],"strStatType":"p
+59       ! layer","strAutoPt":"false","arrPlayerId":[],"strSplitArrPitch":[]}';
+NOTE: The quoted string currently being processed has become more than 262 characters long.  You 
+      might have unbalanced quotation marks.
+60         	headers
+61         		"Accept"="application/json, text/plain, */*"
+62         		"Content-Type"="application/json;charset=UTF-8";
+63         run;
+
+NOTE: PROCEDURE HTTP used (Total process time):
+      real time           3.14 seconds
+      cpu time            0.01 seconds
+      
+NOTE: 200 OK
+
+64         
+65         
+66         libname Fgraphs json fileref=spGLogs map=map3 automap=reuse;
+NOTE: JSON data is only read once.  To read the JSON again, reassign the JSON LIBNAME.
+NOTE: Libref FGRAPHS was successfully assigned as follows: 
+      Engine:        JSON 
+      Physical Name: C:\Users\peberr\AppData\Local\Temp\SAS Temporary 
+      Files\_TD15912_d10d825_\#LN00080
+67         
+68         
+69         data bts.sp_glogs_2019 (drop = ordinal_root ordinal_v Date_Char);
+70         	set Fgraphs.v;
+71         	format Date yymmdd10. IP 4.1;
+72         	Date = input(Date_Char, yymmdd10.);
+73         	if mod(IP, 1) =  0.2 then IP = IP - 0.2 + 2 / 3;
+74         	if mod(IP, 1) = 0.1 then IP = IP - 0.1 + 1 / 3;
+75         run;
+
+NOTE: There were 4768 observations read from the data set FGRAPHS.V.
+NOTE: The data set BTS.SP_GLOGS_2019 has 4768 observations and 21 variables.
+NOTE: DATA statement used (Total process time):
+4                                         The SAS System          09:35 Friday, September 27, 2019
+
+      real time           0.03 seconds
+      cpu time            0.00 seconds
+      
+
+76         
+77         /* Today's Probable Starters */
+78         /* https://blogs.sas.com/content/sasdummy/2017/12/04/scrape-web-page-data/ */
+79         filename starters temp;
+80         %let today = %sysfunc(today(), yymmdd10.);
+81         proc http
+82          method="GET"
+83          url="https://www.fangraphs.com/livescoreboard.aspx?date=&today."
+84          out=starters;
+85         run;
+
+NOTE: PROCEDURE HTTP used (Total process time):
+      real time           0.13 seconds
+      cpu time            0.00 seconds
+      
+NOTE: 200 OK
+
+86         
+87         data bts.SP_Today (keep= playerID Name);
+88         	length Starter $ 40;
+89         	infile starters length=len lrecl=32767;
+90         	input line $varying32767. len;
+91         	line = strip(line);
+92          	if find(line, "SP: ");
+93          	line = transtrn(line, 'SP:', '*');
+94          	do i = 2 to (count(line, '*')+1);
+95          		playerID = scan(scan(line, i, '*'), 3, '=&');
+NOTE: Variable "playerID" was given a default length of 32767 as the result of a function call.  
+      If you do not like this, please use a LENGTH statement to declare "playerID".
+96          		Name = scan(scan(line, i, '*'), 3, '<>');
+NOTE: Variable "Name" was given a default length of 32767 as the result of a function call.  If 
+      you do not like this, please use a LENGTH statement to declare "Name".
+97          		output;
+98          	end;
+99         run;
+
+NOTE: Variable Starter is uninitialized.
+NOTE: The infile STARTERS is:
+      Filename=C:\Users\peberr\AppData\Local\Temp\SAS Temporary Files\_TD15912_d10d825_\#LN00083,
+      RECFM=V,LRECL=32767,File Size (bytes)=133319,
+      Last Modified=27Sep2019:09:35:48,
+      Create Time=27Sep2019:09:35:48
+
+NOTE: 1304 records were read from the infile STARTERS.
+      The minimum record length was 0.
+      The maximum record length was 17193.
+NOTE: The data set BTS.SP_TODAY has 32 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.06 seconds
+5                                         The SAS System          09:35 Friday, September 27, 2019
+
+      cpu time            0.03 seconds
+      
+
+100        
+101        filename spGLogs clear;
+NOTE: Fileref SPGLOGS has been deassigned.
+102        filename map3 clear;
+NOTE: Fileref MAP3 has been deassigned.
+103        libname Fgraphs clear;
+NOTE: Libref FGRAPHS has been deassigned.
+104        filename starters clear;
+NOTE: Fileref STARTERS has been deassigned.
+105        
+106        
+107        
+108        
+109        /**************************************************************************************
+109      ! ******/
+110        /**************************************************************************************
+110      ! ******/
+111        /********************************   SUMMARY STATS
+111      ! ******************************************/
+112        /**************************************************************************************
+112      ! ******/
+113        /**************************************************************************************
+113      ! ******/
+114        /* Versus Left-Handed Pitchers */
+115        /* Response of Fangraphs API */
+116        filename vsLHP temp;
+117        
+118        /* GLogs.json parser*/
+119        filename splitMap "&path.\splitMap.json";
+120        
+121        /* POST Request to Fangraphs */
+122        proc http
+123        	out = vsLHP
+124        	url = "https://www.fangraphs.com/api/leaders/splits/splits-leaders"
+125        	in =
+125      ! '{"strPlayerId":"all","strSplitArr":[1],"strGroup":"season","strPosition":"B","strType"
+125      ! :"1","strStartDate":"2019-03-01","strEndDate":"2019-11-01","strSplitTeams":false,"dctFi
+125      ! lters":[],"strStatType":"player","strAutoPt":"false","arrPlayerId":[],"strSplitArrPitch
+125      ! ":[]}';
+NOTE: The quoted string currently being processed has become more than 262 characters long.  You 
+      might have unbalanced quotation marks.
+126        	headers
+127        		"Accept"="application/json, text/plain, */*"
+128        		"Content-Type"="application/json;charset=UTF-8";
+129        run;
+
+NOTE: PROCEDURE HTTP used (Total process time):
+      real time           0.29 seconds
+      cpu time            0.00 seconds
+      
+6                                         The SAS System          09:35 Friday, September 27, 2019
+
+NOTE: 200 OK
+
+130        
+131        
+132        libname Fgraphs json fileref=vsLHP map=splitMap automap=reuse;
+NOTE: JSON data is only read once.  To read the JSON again, reassign the JSON LIBNAME.
+NOTE: Libref FGRAPHS was successfully assigned as follows: 
+      Engine:        JSON 
+      Physical Name: C:\Users\peberr\AppData\Local\Temp\SAS Temporary 
+      Files\_TD15912_d10d825_\#LN00084
+133        
+134        
+135        data bts.vsLHP (keep = playerId Name AVG);
+136        	set Fgraphs.v;
+137        run;
+
+NOTE: There were 831 observations read from the data set FGRAPHS.V.
+NOTE: The data set BTS.VSLHP has 831 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+138        
+139        filename vsLHP clear;
+NOTE: Fileref VSLHP has been deassigned.
+140        filename splitMap clear;
+NOTE: Fileref SPLITMAP has been deassigned.
+141        libname Fgraphs clear;
+NOTE: Libref FGRAPHS has been deassigned.
+142        
+143        /* Versus Right-Handed Pitchers */
+144        /* Response of Fangraphs API */
+145        filename vsRHP temp;
+146        
+147        /* GLogs.json parser*/
+148        filename splitMap "&path.\splitMap.json";
+149        
+150        /* POST Request to Fangraphs */
+151        proc http
+152        	out = vsRHP
+153        	url = "https://www.fangraphs.com/api/leaders/splits/splits-leaders"
+154        	in =
+154      ! '{"strPlayerId":"all","strSplitArr":[2],"strGroup":"season","strPosition":"B","strType"
+154      ! :"1","strStartDate":"2019-03-01","strEndDate":"2019-11-01","strSplitTeams":false,"dctFi
+154      ! lters":[],"strStatType":"player","strAutoPt":"false","arrPlayerId":[],"strSplitArrPitch
+154      ! ":[]}';
+NOTE: The quoted string currently being processed has become more than 262 characters long.  You 
+      might have unbalanced quotation marks.
+155        	headers
+156        		"Accept"="application/json, text/plain, */*"
+157        		"Content-Type"="application/json;charset=UTF-8";
+158        run;
+7                                         The SAS System          09:35 Friday, September 27, 2019
+
+
+NOTE: PROCEDURE HTTP used (Total process time):
+      real time           0.30 seconds
+      cpu time            0.01 seconds
+      
+NOTE: 200 OK
+
+159        
+160        
+161        libname Fgraphs json fileref=vsRHP map=splitMap automap=reuse;
+NOTE: JSON data is only read once.  To read the JSON again, reassign the JSON LIBNAME.
+NOTE: Libref FGRAPHS was successfully assigned as follows: 
+      Engine:        JSON 
+      Physical Name: C:\Users\peberr\AppData\Local\Temp\SAS Temporary 
+      Files\_TD15912_d10d825_\#LN00087
+162        
+163        
+164        data bts.vsRHP (keep = playerId Name AVG);
+165        	set Fgraphs.v;
+166        run;
+
+NOTE: There were 948 observations read from the data set FGRAPHS.V.
+NOTE: The data set BTS.VSRHP has 948 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.00 seconds
+      
+
+167        
+168        filename vsRHP clear;
+NOTE: Fileref VSRHP has been deassigned.
+169        filename splitMap clear;
+NOTE: Fileref SPLITMAP has been deassigned.
+170        libname Fgraphs clear;
+NOTE: Libref FGRAPHS has been deassigned.
+171        
+172        /* At Home */
+173        /* Response of Fangraphs API */
+174        filename AtHome temp;
+175        
+176        /* GLogs.json parser*/
+177        filename map "&path.\map.json";
+178        
+179        /* POST Request to Fangraphs */
+180        proc http
+181        	out = AtHome
+182        	url = "https://www.fangraphs.com/api/leaders/splits/splits-leaders"
+183        	in =
+183      ! '{"strPlayerId":"all","strSplitArr":[7],"strGroup":"game","strPosition":"B","strType":1
+183      ! ,"strStartDate":"2019-03-01","strEndDate":"2019-11-01","strSplitTeams":false,"dctFilter
+183      ! s":[],"strStatType":"player","strAutoPt":"true","arrPlayerId":[],"strSplitArrPitch":[]}
+183      ! ';
+184        	headers
+8                                         The SAS System          09:35 Friday, September 27, 2019
+
+185        		"Accept"="application/json, text/plain, */*"
+186        		"Content-Type"="application/json;charset=UTF-8";
+187        run;
+
+NOTE: PROCEDURE HTTP used (Total process time):
+      real time           13.22 seconds
+      cpu time            0.11 seconds
+      
+NOTE: 200 OK
+
+188        
+189        
+190        libname Fgraphs json fileref=AtHome map=map automap=reuse;
+NOTE: JSON data is only read once.  To read the JSON again, reassign the JSON LIBNAME.
+NOTE: Libref FGRAPHS was successfully assigned as follows: 
+      Engine:        JSON 
+      Physical Name: C:\Users\peberr\AppData\Local\Temp\SAS Temporary 
+      Files\_TD15912_d10d825_\#LN00090
+191        
+192        
+193        data bts.atHome_2019 (drop = ordinal_root ordinal_v Date_Char);
+194        	set Fgraphs.v;
+195        	Date = input(Date_Char, yymmdd10.);
+196        	format Date yymmdd10.;
+197        run;
+
+NOTE: There were 25454 observations read from the data set FGRAPHS.V.
+NOTE: The data set BTS.ATHOME_2019 has 25454 observations and 24 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.09 seconds
+      cpu time            0.09 seconds
+      
+
+198        
+199        filename AtHome clear;
+NOTE: Fileref ATHOME has been deassigned.
+200        filename map clear;
+NOTE: Fileref MAP has been deassigned.
+201        libname Fgraphs clear;
+NOTE: Libref FGRAPHS has been deassigned.
+202        
+203        /* On the Road */
+204        /* Response of Fangraphs API */
+205        filename OnRoad temp;
+206        
+207        /* GLogs.json parser*/
+208        filename map "&path.\map.json";
+209        
+210        /* POST Request to Fangraphs */
+211        proc http
+212        	out = OnRoad
+213        	url = "https://www.fangraphs.com/api/leaders/splits/splits-leaders"
+214        	in =
+9                                         The SAS System          09:35 Friday, September 27, 2019
+
+214      ! '{"strPlayerId":"all","strSplitArr":[8],"strGroup":"game","strPosition":"B","strType":1
+214      ! ,"strStartDate":"2019-03-01","strEndDate":"2019-11-01","strSplitTeams":false,"dctFilter
+214      ! s":[],"strStatType":"player","strAutoPt":"true","arrPlayerId":[],"strSplitArrPitch":[]}
+214      ! ';
+215        	headers
+216        		"Accept"="application/json, text/plain, */*"
+217        		"Content-Type"="application/json;charset=UTF-8";
+218        run;
+
+NOTE: PROCEDURE HTTP used (Total process time):
+      real time           12.07 seconds
+      cpu time            0.20 seconds
+      
+NOTE: 200 OK
+
+219        
+220        
+221        libname Fgraphs json fileref=OnRoad map=map automap=reuse;
+NOTE: JSON data is only read once.  To read the JSON again, reassign the JSON LIBNAME.
+NOTE: Libref FGRAPHS was successfully assigned as follows: 
+      Engine:        JSON 
+      Physical Name: C:\Users\peberr\AppData\Local\Temp\SAS Temporary 
+      Files\_TD15912_d10d825_\#LN00093
+222        
+223        
+224        data bts.onRoad_2019 (drop = ordinal_root ordinal_v Date_Char);
+225        	set Fgraphs.v;
+226        	Date = input(Date_Char, yymmdd10.);
+227        	format Date yymmdd10.;
+228        run;
+
+NOTE: There were 25370 observations read from the data set FGRAPHS.V.
+NOTE: The data set BTS.ONROAD_2019 has 25370 observations and 24 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.09 seconds
+      cpu time            0.07 seconds
+      
+
+229        
+230        filename OnRoad clear;
+NOTE: Fileref ONROAD has been deassigned.
+231        filename map clear;
+NOTE: Fileref MAP has been deassigned.
+232        libname Fgraphs clear;
+NOTE: Libref FGRAPHS has been deassigned.
+233        
+234        
+235        
+236        /**************************************************************************************
+236      ! ******/
+237        /**************************************************************************************
+237      ! ******/
+238        /********************************   BULLPEN STATS
+10                                        The SAS System          09:35 Friday, September 27, 2019
+
+238      ! ******************************************/
+239        /**************************************************************************************
+239      ! ******/
+240        /**************************************************************************************
+240      ! ******/
+241        
+242        /* Response of Fangraphs API */
+243        filename Bpen temp;
+244        
+245        /* GLogs.json parser*/
+246        filename map2 "&path.\map2.json";
+247        
+248        /* POST Request to Fangraphs */
+249        proc http
+250        	out = Bpen
+251        	url = "https://www.fangraphs.com/api/leaders/splits/splits-leaders"
+252        	in =
+252      ! '{"strPlayerId":"all","strSplitArr":[43],"strGroup":"season","strPosition":"P","strType
+252      ! ":1,"strStartDate":"2019-03-01","strEndDate":"2019-11-01","strSplitTeams":false,"dctFil
+252      ! ters":[],"strStatType":"team","strAutoPt":"false","arrPlayerId":[],"strSplitArrPitch":[
+252      ! ]}';
+NOTE: The quoted string currently being processed has become more than 262 characters long.  You 
+      might have unbalanced quotation marks.
+253        	headers
+254        		"Accept"="application/json, text/plain, */*"
+255        		"Content-Type"="application/json;charset=UTF-8";
+256        run;
+
+NOTE: PROCEDURE HTTP used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.00 seconds
+      
+NOTE: 200 OK
+
+257        
+258        
+259        libname Fgraphs json fileref=Bpen map=map2 automap=reuse;
+NOTE: JSON data is only read once.  To read the JSON again, reassign the JSON LIBNAME.
+NOTE: Libref FGRAPHS was successfully assigned as follows: 
+      Engine:        JSON 
+      Physical Name: C:\Users\peberr\AppData\Local\Temp\SAS Temporary 
+      Files\_TD15912_d10d825_\#LN00096
+260        
+261        
+262        data bts.Bpen_2019 (drop = ordinal_root ordinal_v);
+263        	set Fgraphs.v;
+264        	format IP 5.1;
+265        	if mod(IP, 1) =  0.2 then IP = IP - 0.2 + 2 / 3;
+266        	if mod(IP, 1) = 0.1 then IP = IP - 0.1 + 1 / 3;
+267        run;
+
+NOTE: There were 30 observations read from the data set FGRAPHS.V.
+NOTE: The data set BTS.BPEN_2019 has 30 observations and 19 variables.
+11                                        The SAS System          09:35 Friday, September 27, 2019
+
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+268        
+269        filename Bpen clear;
+NOTE: Fileref BPEN has been deassigned.
+270        filename map2 clear;
+NOTE: Fileref MAP2 has been deassigned.
+271        libname Fgraphs clear;
+NOTE: Libref FGRAPHS has been deassigned.
+272        
+273        
+274        
+275        /**************************************************************************************
+275      ! ******/
+276        /**************************************************************************************
+276      ! ******/
+277        /********************************   TODAY'S GAMES
+277      ! ******************************************/
+278        /**************************************************************************************
+278      ! ******/
+279        /**************************************************************************************
+279      ! ******/
+280        %let today = %sysfunc(today(),yymmdd10.);
+281        filename Games temp;
+282        filename map4 "&path.\map4.json";
+283        
+284        proc http
+285        	out = Games
+286        	url = "https://statsapi.mlb.com/api/v1/schedule?sportId=1&date=&today.";
+WARNING: Apparent symbolic reference DATE not resolved.
+WARNING: Apparent symbolic reference DATE not resolved.
+287        run;
+
+NOTE: PROCEDURE HTTP used (Total process time):
+      real time           0.13 seconds
+      cpu time            0.00 seconds
+      
+NOTE: 200 OK
+
+288        
+289        
+290        libname Fgraphs json fileref=Games map=map4 automap=reuse;
+NOTE: JSON data is only read once.  To read the JSON again, reassign the JSON LIBNAME.
+NOTE: Libref FGRAPHS was successfully assigned as follows: 
+      Engine:        JSON 
+      Physical Name: C:\Users\peberr\AppData\Local\Temp\SAS Temporary 
+      Files\_TD15912_d10d825_\#LN00099
+291        /*
+292        proc format;
+293        	value	$shortname 	'New York Yankees'		=	'NYY'
+12                                        The SAS System          09:35 Friday, September 27, 2019
+
+294        						'Boston Red Sox'		=	'BOS'
+295        						'Toronto Blue Jays'		=	'TOR'
+296        						'Tampa Bay Rays'		=	'TBR'
+297        						'Baltimore Orioles'		=	'BAL'
+298        						'Cleveland Indians' 	=	'CLE'
+299        						'Detroit Tigers'		=	'DET'
+300        						'Chicago White Sox'		=	'CHW'
+301        						'Kansas City Royals'	=	'KCR'
+302        						'Minnesota Twins'		=	'MIN'
+303        						'Houston Astros'		=	'HOU'
+304        						'Oakland Athletics'		=	'OAK'
+305        						'Los Angeles Angels'	=	'LAA'
+306        						'Texas Rangers'			=	'TEX'
+307        						'Seattle Mariners'		=	'SEA'
+308        						'Atlanta Braves'		=	'ATL'
+309        						'Washington Nationals'	=	'WAS'
+310        						'Philadelphia Phillies'	=	'PHI'
+311        						'New York Mets'			=	'NYM'
+312        						'Miami Marlins'			=	'MIA'
+313        						'St. Louis Cardinals'	=	'STL'
+314        						'Milwaukee Brewers'		=	'MIL'
+315        						'Chicago Cubs'			=	'CHC'
+316        						'Pittsburgh Pirates'	=	'PIT'
+317        						'Cincinnati Reds'		=	'CIN'
+318        						'Los Angeles Dodgers'	=	'LAD'
+319        						'San Francisco Giants'	=	'SFG'
+320        						'Arizona Diamondbacks'	=	'ARI'
+321        						'Colorado Rockies'		=	'COL'
+322        						'San Diego Padres'		=	'SDP'
+323        ;
+324        run;
+325        */
+326        proc sql;
+327        create table bts.AwayTeams as
+328        	select x.Abbreviation as Team, a.ordinal_team
+329        	from bts.team_names as x, fgraphs.away_team as a
+330        	where x.Team = a.name;
+NOTE: Table BTS.AWAYTEAMS created, with 16 rows and 2 columns.
+
+331        
+332        create table bts.HomeTeams as
+333        	select x.Abbreviation as Team, h.ordinal_team
+334        	from bts.team_names as x, fgraphs.home_team as h
+335        	where x.Team = h.name;
+NOTE: Table BTS.HOMETEAMS created, with 16 rows and 2 columns.
+
+336        
+337        create table bts.matchups as
+338        	select 'Away' as HomeAway,
+339        		   a.Team as Team,
+340        		   h.Team as Opponent
+341        	from bts.AwayTeams as a inner join bts.HomeTeams as h on a.ordinal_team =
+341      ! h.ordinal_team
+13                                        The SAS System          09:35 Friday, September 27, 2019
+
+342        	outer union corr
+343        	select 'Home' as HomeAway,
+344        		   h.Team as Team,
+345        		   a.Team as Opponent
+346        	from bts.AwayTeams as a inner join bts.HomeTeams as h on a.ordinal_team =
+346      ! h.ordinal_team;
+NOTE: Table BTS.MATCHUPS created, with 32 rows and 3 columns.
+
+347        quit;
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.03 seconds
+      
+
+348        
+349        filename Games clear;
+NOTE: Fileref GAMES has been deassigned.
+350        filename map4 clear;
+NOTE: Fileref MAP4 has been deassigned.
+351        libname Fgraphs clear;
+NOTE: Libref FGRAPHS has been deassigned.
+352        
+353        proc sort data = bts.glogs_2019 out = current_team_b(keep=Name playerID Team date);
+354        	by playerId descending date;
+355        run;
+
+NOTE: There were 50824 observations read from the data set BTS.GLOGS_2019.
+NOTE: The data set WORK.CURRENT_TEAM_B has 50824 observations and 4 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.03 seconds
+      
+
+356        
+357        proc sort data = bts.sp_glogs_2019 out = current_team_p(keep=Name playerID Team date);
+358        	by playerId descending date ;
+359        run;
+
+NOTE: There were 4768 observations read from the data set BTS.SP_GLOGS_2019.
+NOTE: The data set WORK.CURRENT_TEAM_P has 4768 observations and 4 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+360        
+361        data bts.current_team;
+362        	set current_team_p current_team_b;
+363        	by playerId;
+364        	if first.playerId;
+365        run;
+
+WARNING: Multiple lengths were specified for the variable Name by input data set(s). This can 
+14                                        The SAS System          09:35 Friday, September 27, 2019
+
+         cause truncation of data.
+NOTE: There were 4768 observations read from the data set WORK.CURRENT_TEAM_P.
+NOTE: There were 50824 observations read from the data set WORK.CURRENT_TEAM_B.
+NOTE: The data set BTS.CURRENT_TEAM has 1098 observations and 4 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+NOTE: SAS Institute Inc., SAS Campus Drive, Cary, NC USA 27513-2414
+NOTE: The SAS System used:
+      real time           58.05 seconds
+      cpu time            4.21 seconds
+      

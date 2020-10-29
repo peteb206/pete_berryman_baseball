@@ -1,0 +1,522 @@
+{
+  "DATASETS": [
+    {
+      "DSNAME": "root",
+      "TABLEPATH": "/root",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_root",
+          "TYPE": "ORDINAL",
+          "PATH": "/root"
+        },
+        {
+          "NAME": "copyright",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/copyright",
+          "CURRENT_LENGTH": 164
+        },
+        {
+          "NAME": "totalItems",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/totalItems"
+        },
+        {
+          "NAME": "totalEvents",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/totalEvents"
+        },
+        {
+          "NAME": "totalGames",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/totalGames"
+        },
+        {
+          "NAME": "totalGamesInProgress",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/totalGamesInProgress"
+        }
+      ]
+    },
+    {
+      "DSNAME": "dates",
+      "TABLEPATH": "/root/dates",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_root",
+          "TYPE": "ORDINAL",
+          "PATH": "/root"
+        },
+        {
+          "NAME": "ordinal_dates",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dates"
+        },
+        {
+          "NAME": "date",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dates/date",
+          "CURRENT_LENGTH": 10
+        },
+        {
+          "NAME": "totalItems",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/dates/totalItems"
+        },
+        {
+          "NAME": "totalEvents",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/dates/totalEvents"
+        },
+        {
+          "NAME": "totalGames",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/dates/totalGames"
+        },
+        {
+          "NAME": "totalGamesInProgress",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/dates/totalGamesInProgress"
+        }
+      ]
+    },
+    {
+      "DSNAME": "dates_games",
+      "TABLEPATH": "/root/dates/games",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_dates",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dates"
+        },
+        {
+          "NAME": "ordinal_games",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dates/games"
+        },
+        {
+          "NAME": "gamePk",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/dates/games/gamePk"
+        },
+        {
+          "NAME": "link",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dates/games/link",
+          "CURRENT_LENGTH": 29
+        },
+        {
+          "NAME": "gameType",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dates/games/gameType",
+          "CURRENT_LENGTH": 1
+        },
+        {
+          "NAME": "season",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dates/games/season",
+          "CURRENT_LENGTH": 4
+        },
+        {
+          "NAME": "gameDate",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dates/games/gameDate",
+          "CURRENT_LENGTH": 20
+        },
+        {
+          "NAME": "gameNumber",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/dates/games/gameNumber"
+        },
+        {
+          "NAME": "publicFacing",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/dates/games/publicFacing"
+        },
+        {
+          "NAME": "doubleHeader",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dates/games/doubleHeader",
+          "CURRENT_LENGTH": 1
+        },
+        {
+          "NAME": "gamedayType",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dates/games/gamedayType",
+          "CURRENT_LENGTH": 1
+        },
+        {
+          "NAME": "tiebreaker",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dates/games/tiebreaker",
+          "CURRENT_LENGTH": 1
+        },
+        {
+          "NAME": "calendarEventID",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dates/games/calendarEventID",
+          "CURRENT_LENGTH": 20
+        },
+        {
+          "NAME": "seasonDisplay",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dates/games/seasonDisplay",
+          "CURRENT_LENGTH": 4
+        },
+        {
+          "NAME": "dayNight",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dates/games/dayNight",
+          "CURRENT_LENGTH": 5
+        },
+        {
+          "NAME": "scheduledInnings",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/dates/games/scheduledInnings"
+        },
+        {
+          "NAME": "gamesInSeries",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/dates/games/gamesInSeries"
+        },
+        {
+          "NAME": "seriesGameNumber",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/dates/games/seriesGameNumber"
+        },
+        {
+          "NAME": "seriesDescription",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dates/games/seriesDescription",
+          "CURRENT_LENGTH": 14
+        },
+        {
+          "NAME": "recordSource",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dates/games/recordSource",
+          "CURRENT_LENGTH": 1
+        },
+        {
+          "NAME": "ifNecessary",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dates/games/ifNecessary",
+          "CURRENT_LENGTH": 1
+        },
+        {
+          "NAME": "ifNecessaryDescription",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dates/games/ifNecessaryDescription",
+          "CURRENT_LENGTH": 11
+        }
+      ]
+    },
+    {
+      "DSNAME": "games_status",
+      "TABLEPATH": "/root/dates/games/status",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_games",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dates/games"
+        },
+        {
+          "NAME": "ordinal_status",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dates/games/status"
+        },
+        {
+          "NAME": "abstractGameState",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dates/games/status/abstractGameState",
+          "CURRENT_LENGTH": 7
+        },
+        {
+          "NAME": "codedGameState",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dates/games/status/codedGameState",
+          "CURRENT_LENGTH": 1
+        },
+        {
+          "NAME": "detailedState",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dates/games/status/detailedState",
+          "CURRENT_LENGTH": 9
+        },
+        {
+          "NAME": "statusCode",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dates/games/status/statusCode",
+          "CURRENT_LENGTH": 1
+        },
+        {
+          "NAME": "abstractGameCode",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dates/games/status/abstractGameCode",
+          "CURRENT_LENGTH": 1
+        }
+      ]
+    },
+    {
+      "DSNAME": "away_leagueRecord",
+      "TABLEPATH": "/root/dates/games/teams/away/leagueRecord",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_away",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dates/games/teams/away"
+        },
+        {
+          "NAME": "ordinal_leagueRecord",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dates/games/teams/away/leagueRecord"
+        },
+        {
+          "NAME": "wins",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/dates/games/teams/away/leagueRecord/wins"
+        },
+        {
+          "NAME": "losses",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/dates/games/teams/away/leagueRecord/losses"
+        },
+        {
+          "NAME": "pct",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dates/games/teams/away/leagueRecord/pct",
+          "CURRENT_LENGTH": 4
+        }
+      ]
+    },
+    {
+      "DSNAME": "teams_away",
+      "TABLEPATH": "/root/dates/games/teams/away",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_teams",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dates/games/teams"
+        },
+        {
+          "NAME": "ordinal_away",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dates/games/teams/away"
+        },
+        {
+          "NAME": "score",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/dates/games/teams/away/score"
+        },
+        {
+          "NAME": "splitSquad",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/dates/games/teams/away/splitSquad"
+        },
+        {
+          "NAME": "seriesNumber",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/dates/games/teams/away/seriesNumber"
+        }
+      ]
+    },
+    {
+      "DSNAME": "away_team",
+      "TABLEPATH": "/root/dates/games/teams/away/team",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_away",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dates/games/teams/away"
+        },
+        {
+          "NAME": "ordinal_team",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dates/games/teams/away/team"
+        },
+        {
+          "NAME": "id",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/dates/games/teams/away/team/id"
+        },
+        {
+          "NAME": "name",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dates/games/teams/away/team/name",
+          "CURRENT_LENGTH": 21
+        },
+        {
+          "NAME": "link",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dates/games/teams/away/team/link",
+          "CURRENT_LENGTH": 17
+        }
+      ]
+    },
+    {
+      "DSNAME": "home_leagueRecord",
+      "TABLEPATH": "/root/dates/games/teams/home/leagueRecord",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_home",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dates/games/teams/home"
+        },
+        {
+          "NAME": "ordinal_leagueRecord",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dates/games/teams/home/leagueRecord"
+        },
+        {
+          "NAME": "wins",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/dates/games/teams/home/leagueRecord/wins"
+        },
+        {
+          "NAME": "losses",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/dates/games/teams/home/leagueRecord/losses"
+        },
+        {
+          "NAME": "pct",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dates/games/teams/home/leagueRecord/pct",
+          "CURRENT_LENGTH": 4
+        }
+      ]
+    },
+    {
+      "DSNAME": "teams_home",
+      "TABLEPATH": "/root/dates/games/teams/home",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_teams",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dates/games/teams"
+        },
+        {
+          "NAME": "ordinal_home",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dates/games/teams/home"
+        },
+        {
+          "NAME": "score",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/dates/games/teams/home/score"
+        },
+        {
+          "NAME": "splitSquad",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/dates/games/teams/home/splitSquad"
+        },
+        {
+          "NAME": "seriesNumber",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/dates/games/teams/home/seriesNumber"
+        }
+      ]
+    },
+    {
+      "DSNAME": "home_team",
+      "TABLEPATH": "/root/dates/games/teams/home/team",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_home",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dates/games/teams/home"
+        },
+        {
+          "NAME": "ordinal_team",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dates/games/teams/home/team"
+        },
+        {
+          "NAME": "id",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/dates/games/teams/home/team/id"
+        },
+        {
+          "NAME": "name",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dates/games/teams/home/team/name",
+          "CURRENT_LENGTH": 20
+        },
+        {
+          "NAME": "link",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dates/games/teams/home/team/link",
+          "CURRENT_LENGTH": 17
+        }
+      ]
+    },
+    {
+      "DSNAME": "games_venue",
+      "TABLEPATH": "/root/dates/games/venue",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_games",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dates/games"
+        },
+        {
+          "NAME": "ordinal_venue",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dates/games/venue"
+        },
+        {
+          "NAME": "id",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/dates/games/venue/id"
+        },
+        {
+          "NAME": "name",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dates/games/venue/name",
+          "CURRENT_LENGTH": 16
+        },
+        {
+          "NAME": "link",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dates/games/venue/link",
+          "CURRENT_LENGTH": 19
+        }
+      ]
+    },
+    {
+      "DSNAME": "games_content",
+      "TABLEPATH": "/root/dates/games/content",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_games",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dates/games"
+        },
+        {
+          "NAME": "ordinal_content",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dates/games/content"
+        },
+        {
+          "NAME": "link",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dates/games/content/link",
+          "CURRENT_LENGTH": 27
+        }
+      ]
+    },
+    {
+      "DSNAME": "dates_events",
+      "TABLEPATH": "/root/dates",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_dates",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dates"
+        },
+        {
+          "NAME": "ordinal_events",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dates/events"
+        }
+      ]
+    }
+  ]
+}

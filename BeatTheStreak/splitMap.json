@@ -1,0 +1,650 @@
+{
+  "DATASETS": [
+    {
+      "DSNAME": "k",
+      "TABLEPATH": "/root/k",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_root",
+          "TYPE": "ORDINAL",
+          "PATH": "/root"
+        },
+        {
+          "NAME": "ordinal_k",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/k"
+        },
+        {
+          "NAME": "k1",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/k/k1",
+          "CURRENT_LENGTH": 6
+        },
+        {
+          "NAME": "k2",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/k/k2",
+          "CURRENT_LENGTH": 10
+        },
+        {
+          "NAME": "k3",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/k/k3",
+          "CURRENT_LENGTH": 11
+        },
+        {
+          "NAME": "k4",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/k/k4",
+          "CURRENT_LENGTH": 1
+        },
+        {
+          "NAME": "k5",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/k/k5",
+          "CURRENT_LENGTH": 2
+        },
+        {
+          "NAME": "k6",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/k/k6",
+          "CURRENT_LENGTH": 2
+        },
+        {
+          "NAME": "k7",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/k/k7",
+          "CURRENT_LENGTH": 1
+        },
+        {
+          "NAME": "k8",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/k/k8",
+          "CURRENT_LENGTH": 2
+        },
+        {
+          "NAME": "k9",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/k/k9",
+          "CURRENT_LENGTH": 2
+        },
+        {
+          "NAME": "k10",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/k/k10",
+          "CURRENT_LENGTH": 2
+        },
+        {
+          "NAME": "k11",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/k/k11",
+          "CURRENT_LENGTH": 2
+        },
+        {
+          "NAME": "k12",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/k/k12",
+          "CURRENT_LENGTH": 1
+        },
+        {
+          "NAME": "k13",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/k/k13",
+          "CURRENT_LENGTH": 3
+        },
+        {
+          "NAME": "k14",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/k/k14",
+          "CURRENT_LENGTH": 2
+        },
+        {
+          "NAME": "k15",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/k/k15",
+          "CURRENT_LENGTH": 3
+        },
+        {
+          "NAME": "k16",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/k/k16",
+          "CURRENT_LENGTH": 2
+        },
+        {
+          "NAME": "k17",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/k/k17",
+          "CURRENT_LENGTH": 3
+        },
+        {
+          "NAME": "k18",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/k/k18",
+          "CURRENT_LENGTH": 2
+        },
+        {
+          "NAME": "k19",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/k/k19",
+          "CURRENT_LENGTH": 2
+        },
+        {
+          "NAME": "k20",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/k/k20",
+          "CURRENT_LENGTH": 3
+        },
+        {
+          "NAME": "k21",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/k/k21",
+          "CURRENT_LENGTH": 2
+        },
+        {
+          "NAME": "k22",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/k/k22",
+          "CURRENT_LENGTH": 2
+        },
+        {
+          "NAME": "k23",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/k/k23",
+          "CURRENT_LENGTH": 3
+        },
+        {
+          "NAME": "k24",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/k/k24",
+          "CURRENT_LENGTH": 8
+        }
+      ]
+    },
+    {
+      "DSNAME": "v",
+      "TABLEPATH": "/root/v",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_root",
+          "TYPE": "ORDINAL",
+          "PATH": "/root"
+        },
+        {
+          "NAME": "ordinal_v",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/v"
+        },
+        {
+          "NAME": "Year",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/v/element1",
+          "CURRENT_LENGTH": 4
+        },
+        {
+          "NAME": "Name",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/v/element2",
+          "CURRENT_LENGTH": 21
+        },
+        {
+          "NAME": "Team",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/v/element3",
+          "CURRENT_LENGTH": 5
+        },
+        {
+          "NAME": "element4",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/v/element4",
+          "CURRENT_LENGTH": 2
+        },
+        {
+          "NAME": "element5",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/v/element5",
+          "CURRENT_LENGTH": 3
+        },
+        {
+          "NAME": "element6",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/v/element6",
+          "CURRENT_LENGTH": 3
+        },
+        {
+          "NAME": "element7",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/v/element7",
+          "CURRENT_LENGTH": 2
+        },
+        {
+          "NAME": "element8",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/v/element8",
+          "CURRENT_LENGTH": 2
+        },
+        {
+          "NAME": "element9",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/v/element9",
+          "CURRENT_LENGTH": 2
+        },
+        {
+          "NAME": "element10",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/v/element10",
+          "CURRENT_LENGTH": 1
+        },
+        {
+          "NAME": "element11",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/v/element11",
+          "CURRENT_LENGTH": 2
+        },
+        {
+          "NAME": "element12",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/v/element12",
+          "CURRENT_LENGTH": 2
+        },
+        {
+          "NAME": "element13",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/v/element13",
+          "CURRENT_LENGTH": 2
+        },
+        {
+          "NAME": "element14",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/v/element14",
+          "CURRENT_LENGTH": 2
+        },
+        {
+          "NAME": "element15",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/v/element15",
+          "CURRENT_LENGTH": 1
+        },
+        {
+          "NAME": "element16",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/v/element16",
+          "CURRENT_LENGTH": 2
+        },
+        {
+          "NAME": "element17",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/v/element17",
+          "CURRENT_LENGTH": 2
+        },
+        {
+          "NAME": "element18",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/v/element18",
+          "CURRENT_LENGTH": 1
+        },
+        {
+          "NAME": "element19",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/v/element19",
+          "CURRENT_LENGTH": 1
+        },
+        {
+          "NAME": "element20",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/v/element20",
+          "CURRENT_LENGTH": 1
+        },
+        {
+          "NAME": "element21",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/v/element21",
+          "CURRENT_LENGTH": 2
+        },
+        {
+          "NAME": "element22",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/v/element22",
+          "CURRENT_LENGTH": 1
+        },
+        {
+          "NAME": "AVG",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/v/element23",
+          "CURRENT_LENGTH": 11
+        },
+        {
+          "NAME": "playerId",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/v/element24",
+          "CURRENT_LENGTH": 5
+        }
+      ]
+    },
+    {
+      "DSNAME": "data",
+      "TABLEPATH": "/root/data",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_root",
+          "TYPE": "ORDINAL",
+          "PATH": "/root"
+        },
+        {
+          "NAME": "ordinal_data",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/data"
+        },
+        {
+          "NAME": "Season",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/data/Season"
+        },
+        {
+          "NAME": "playerName",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/data/playerName",
+          "CURRENT_LENGTH": 21
+        },
+        {
+          "NAME": "playerId",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/data/playerId"
+        },
+        {
+          "NAME": "TeamNameAbb",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/data/TeamNameAbb",
+          "CURRENT_LENGTH": 5
+        },
+        {
+          "NAME": "G",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/data/G"
+        },
+        {
+          "NAME": "PA",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/data/PA"
+        },
+        {
+          "NAME": "AB",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/data/AB"
+        },
+        {
+          "NAME": "H",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/data/H"
+        },
+        {
+          "NAME": "_B",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/data/1B"
+        },
+        {
+          "NAME": "_B2",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/data/2B"
+        },
+        {
+          "NAME": "_B3",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/data/3B"
+        },
+        {
+          "NAME": "HR",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/data/HR"
+        },
+        {
+          "NAME": "R",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/data/R"
+        },
+        {
+          "NAME": "RBI",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/data/RBI"
+        },
+        {
+          "NAME": "BB",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/data/BB"
+        },
+        {
+          "NAME": "IBB",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/data/IBB"
+        },
+        {
+          "NAME": "SO",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/data/SO"
+        },
+        {
+          "NAME": "HBP",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/data/HBP"
+        },
+        {
+          "NAME": "SF",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/data/SF"
+        },
+        {
+          "NAME": "SH",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/data/SH"
+        },
+        {
+          "NAME": "GDP",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/data/GDP"
+        },
+        {
+          "NAME": "SB",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/data/SB"
+        },
+        {
+          "NAME": "CS",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/data/CS"
+        },
+        {
+          "NAME": "AVG",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/data/AVG"
+        }
+      ]
+    },
+    {
+      "DSNAME": "header",
+      "TABLEPATH": "/root/header",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_root",
+          "TYPE": "ORDINAL",
+          "PATH": "/root"
+        },
+        {
+          "NAME": "ordinal_header",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/header"
+        },
+        {
+          "NAME": "header1",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/header/header1",
+          "CURRENT_LENGTH": 6
+        },
+        {
+          "NAME": "header2",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/header/header2",
+          "CURRENT_LENGTH": 10
+        },
+        {
+          "NAME": "header3",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/header/header3",
+          "CURRENT_LENGTH": 8
+        },
+        {
+          "NAME": "header4",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/header/header4",
+          "CURRENT_LENGTH": 11
+        },
+        {
+          "NAME": "header5",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/header/header5",
+          "CURRENT_LENGTH": 1
+        },
+        {
+          "NAME": "header6",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/header/header6",
+          "CURRENT_LENGTH": 2
+        },
+        {
+          "NAME": "header7",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/header/header7",
+          "CURRENT_LENGTH": 2
+        },
+        {
+          "NAME": "header8",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/header/header8",
+          "CURRENT_LENGTH": 1
+        },
+        {
+          "NAME": "header9",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/header/header9",
+          "CURRENT_LENGTH": 2
+        },
+        {
+          "NAME": "header10",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/header/header10",
+          "CURRENT_LENGTH": 2
+        },
+        {
+          "NAME": "header11",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/header/header11",
+          "CURRENT_LENGTH": 2
+        },
+        {
+          "NAME": "header12",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/header/header12",
+          "CURRENT_LENGTH": 2
+        },
+        {
+          "NAME": "header13",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/header/header13",
+          "CURRENT_LENGTH": 1
+        },
+        {
+          "NAME": "header14",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/header/header14",
+          "CURRENT_LENGTH": 3
+        },
+        {
+          "NAME": "header15",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/header/header15",
+          "CURRENT_LENGTH": 2
+        },
+        {
+          "NAME": "header16",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/header/header16",
+          "CURRENT_LENGTH": 3
+        },
+        {
+          "NAME": "header17",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/header/header17",
+          "CURRENT_LENGTH": 2
+        },
+        {
+          "NAME": "header18",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/header/header18",
+          "CURRENT_LENGTH": 3
+        },
+        {
+          "NAME": "header19",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/header/header19",
+          "CURRENT_LENGTH": 2
+        },
+        {
+          "NAME": "header20",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/header/header20",
+          "CURRENT_LENGTH": 2
+        },
+        {
+          "NAME": "header21",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/header/header21",
+          "CURRENT_LENGTH": 3
+        },
+        {
+          "NAME": "header22",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/header/header22",
+          "CURRENT_LENGTH": 2
+        },
+        {
+          "NAME": "header23",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/header/header23",
+          "CURRENT_LENGTH": 2
+        },
+        {
+          "NAME": "header24",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/header/header24",
+          "CURRENT_LENGTH": 3
+        }
+      ]
+    },
+    {
+      "DSNAME": "root",
+      "TABLEPATH": "/root",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_root",
+          "TYPE": "ORDINAL",
+          "PATH": "/root"
+        },
+        {
+          "NAME": "pt",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/pt"
+        },
+        {
+          "NAME": "auto",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/auto",
+          "CURRENT_LENGTH": 5
+        },
+        {
+          "NAME": "dev",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dev",
+          "CURRENT_LENGTH": 3
+        }
+      ]
+    }
+  ]
+}

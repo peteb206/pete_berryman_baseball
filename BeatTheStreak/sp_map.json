@@ -1,0 +1,278 @@
+{
+  "DATASETS": [
+    {
+      "DSNAME": "dailyTeams_gameDate",
+      "TABLEPATH": "/root/dailyTeams/gameDate",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_dailyTeams",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dailyTeams"
+        },
+        {
+          "NAME": "ordinal_gameDate",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dailyTeams/gameDate"
+        },
+        {
+          "NAME": "dateTime",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dailyTeams/gameDate/dateTime",
+          "CURRENT_LENGTH": 16
+        },
+        {
+          "NAME": "id",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dailyTeams/gameDate/id",
+          "CURRENT_LENGTH": 10
+        }
+      ]
+    },
+    {
+      "DSNAME": "gameDate_team",
+      "TABLEPATH": "/root/dailyTeams/gameDate/team",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_gameDate",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dailyTeams/gameDate"
+        },
+        {
+          "NAME": "ordinal_team",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dailyTeams/gameDate/team"
+        },
+        {
+          "NAME": "code",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dailyTeams/gameDate/team/code",
+          "CURRENT_LENGTH": 3
+        },
+        {
+          "NAME": "nameFull",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dailyTeams/gameDate/team/nameFull",
+          "CURRENT_LENGTH": 20
+        },
+        {
+          "NAME": "displayName",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dailyTeams/gameDate/team/displayName",
+          "CURRENT_LENGTH": 30
+        },
+        {
+          "NAME": "name",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dailyTeams/gameDate/team/name",
+          "CURRENT_LENGTH": 13
+        },
+        {
+          "NAME": "lock",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dailyTeams/gameDate/team/lock",
+          "CURRENT_LENGTH": 5
+        },
+        {
+          "NAME": "isHome",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dailyTeams/gameDate/team/isHome",
+          "CURRENT_LENGTH": 1
+        },
+        {
+          "NAME": "id",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dailyTeams/gameDate/team/id",
+          "CURRENT_LENGTH": 3
+        },
+        {
+          "NAME": "abbrev",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dailyTeams/gameDate/team/abbrev",
+          "CURRENT_LENGTH": 3
+        },
+        {
+          "NAME": "wloc",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dailyTeams/gameDate/team/wloc",
+          "CURRENT_LENGTH": 8
+        },
+        {
+          "NAME": "isDH",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dailyTeams/gameDate/team/isDH",
+          "CURRENT_LENGTH": 1
+        }
+      ]
+    },
+    {
+      "DSNAME": "team_pitcher",
+      "TABLEPATH": "/root/dailyTeams/gameDate/team/pitcher",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_team",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dailyTeams/gameDate/team"
+        },
+        {
+          "NAME": "ordinal_pitcher",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dailyTeams/gameDate/team/pitcher"
+        },
+        {
+          "NAME": "gameId",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dailyTeams/gameDate/team/pitcher/gameId",
+          "CURRENT_LENGTH": 26
+        },
+        {
+          "NAME": "wins",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dailyTeams/gameDate/team/pitcher/wins",
+          "CURRENT_LENGTH": 2
+        },
+        {
+          "NAME": "sv",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dailyTeams/gameDate/team/pitcher/sv",
+          "CURRENT_LENGTH": 1
+        },
+        {
+          "NAME": "game_time_utc",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dailyTeams/gameDate/team/pitcher/game_time_utc",
+          "CURRENT_LENGTH": 25
+        },
+        {
+          "NAME": "oppAvg",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dailyTeams/gameDate/team/pitcher/oppAvg",
+          "CURRENT_LENGTH": 5
+        },
+        {
+          "NAME": "losses",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dailyTeams/gameDate/team/pitcher/losses",
+          "CURRENT_LENGTH": 2
+        },
+        {
+          "NAME": "nameShort",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dailyTeams/gameDate/team/pitcher/nameShort",
+          "CURRENT_LENGTH": 13
+        },
+        {
+          "NAME": "lock_time_utc",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dailyTeams/gameDate/team/pitcher/lock_time_utc",
+          "CURRENT_LENGTH": 25
+        },
+        {
+          "NAME": "throwingHand",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dailyTeams/gameDate/team/pitcher/throwingHand",
+          "CURRENT_LENGTH": 1
+        },
+        {
+          "NAME": "hits",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/dailyTeams/gameDate/team/pitcher/hits",
+          "CURRENT_LENGTH": 3
+        },
+        {
+          "NAME": "game_time_et",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dailyTeams/gameDate/team/pitcher/game_time_et",
+          "CURRENT_LENGTH": 19
+        },
+        {
+          "NAME": "era",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dailyTeams/gameDate/team/pitcher/era",
+          "CURRENT_LENGTH": 4
+        },
+        {
+          "NAME": "lock_time_et",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dailyTeams/gameDate/team/pitcher/lock_time_et",
+          "CURRENT_LENGTH": 19
+        },
+        {
+          "NAME": "innings",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/dailyTeams/gameDate/team/pitcher/innings",
+          "CURRENT_LENGTH": 5
+        },
+        {
+          "NAME": "pitcher",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dailyTeams/gameDate/team/pitcher/name",
+          "CURRENT_LENGTH": 100
+        },
+        {
+          "NAME": "id",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dailyTeams/gameDate/team/pitcher/id",
+          "CURRENT_LENGTH": 6
+        },
+        {
+          "NAME": "gameNbr",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dailyTeams/gameDate/team/pitcher/gameNbr",
+          "CURRENT_LENGTH": 1
+        },
+        {
+          "NAME": "locked",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dailyTeams/gameDate/team/pitcher/locked",
+          "CURRENT_LENGTH": 5
+        }
+      ]
+    },
+    {
+      "DSNAME": "team_opp",
+      "TABLEPATH": "/root/dailyTeams/gameDate/team/opp",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_team",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dailyTeams/gameDate/team"
+        },
+        {
+          "NAME": "ordinal_opp",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dailyTeams/gameDate/team/opp"
+        },
+        {
+          "NAME": "opp_code",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dailyTeams/gameDate/team/opp/code",
+          "CURRENT_LENGTH": 3
+        },
+        {
+          "NAME": "opp_displayName",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dailyTeams/gameDate/team/opp/displayName",
+          "CURRENT_LENGTH": 9
+        },
+        {
+          "NAME": "opp_name",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dailyTeams/gameDate/team/opp/name",
+          "CURRENT_LENGTH": 13
+        },
+        {
+          "NAME": "opp_id",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dailyTeams/gameDate/team/opp/id",
+          "CURRENT_LENGTH": 3
+        },
+        {
+          "NAME": "opp_abbrev",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dailyTeams/gameDate/team/opp/abbrev",
+          "CURRENT_LENGTH": 3
+        }
+      ]
+    }
+  ]
+}

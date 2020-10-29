@@ -1,0 +1,362 @@
+1                                         The SAS System          09:36 Friday, September 27, 2019
+
+NOTE: Copyright (c) 2016 by SAS Institute Inc., Cary, NC, USA. 
+NOTE: SAS (r) Proprietary Software 9.4 (TS1M6) 
+      Licensed to Microsoft Windows for x64 All Compatible Non-Plann, Site 70068130.
+NOTE: This session is executing on the X64_10PRO  platform.
+
+
+
+NOTE: Analytical products:
+      
+      SAS/STAT 15.1
+      SAS/ETS 15.1
+      SAS/OR 15.1
+      SAS/QC 15.1
+
+NOTE: Additional host information:
+
+ X64_10PRO WIN 10.0.16299  Workstation
+
+NOTE: SAS initialization used:
+      real time           0.18 seconds
+      cpu time            0.10 seconds
+      
+1          %let path = C:\Users\peberr\OneDrive - SAS\BeatTheStreak;
+2          libname bts "&path.";
+NOTE: Libref BTS was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: C:\Users\peberr\OneDrive - SAS\BeatTheStreak
+3          %let recent = 10 /* last __ days */;
+4          
+5          
+6          /**************************************************************************************
+6        ! ******/
+7          /**************************************************************************************
+7        ! ******/
+8          /*************************        2019 SEASON
+8        ! ****************************************/
+9          /**************************************************************************************
+9        ! ******/
+10         /**************************************************************************************
+10       ! ******/
+11         proc sql number;
+12         create view summary_all as
+13         	select distinct(Name),
+14         		playerID,
+15         		sum(H) as Hits,
+16         		sum(AB) / sum(G) as ABperG format=4.2,
+17         		sum(H) / sum(G) as HperG format=4.2,
+18         		sum(H > 0) as games_with_hit 'HG',
+19         		sum(G) as games 'G',
+20         		std(H) as std format=4.2,
+21         		calculated games_with_hit / calculated games as games_hit_pct 'PCT'
+21       ! format=percent6.2,
+22         		sum(H) / sum(AB) as AVG format=5.3
+2                                         The SAS System          09:36 Friday, September 27, 2019
+
+23         	from bts.glogs_2019
+24         	group by playerID;
+NOTE: SQL view WORK.SUMMARY_ALL has been defined.
+25         quit;
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+26         	
+27         
+28         
+29         /**************************************************************************************
+29       ! ******/
+30         /**************************************************************************************
+30       ! ******/
+31         /*************************        2019 Splits
+31       ! ****************************************/
+32         /**************************************************************************************
+32       ! ******/
+33         /**************************************************************************************
+33       ! ******/
+34         proc sql;
+35         create table splits as
+36         	select distinct all.Name,
+37         	all.playerId,
+38         	rhp.AVG as AVG_vs_RHP format=5.3,
+39         	lhp.AVG as AVG_vs_LHP format=5.3,
+40         	sum(home.H) / sum(home.AB) as AVG_home format=5.3,
+41         	sum(home.H > 0) / sum(home.G) as PCT_home format=percent6.2,
+42         	sum(home.H) / sum(home.G) as HperG_home format=4.2,
+43         	sum(road.H) / sum(road.AB) as AVG_road format=5.3,
+44         	sum(road.H > 0) / sum(road.G) as PCT_road format=percent6.2,
+45         	sum(road.H) / sum(road.G) as HperG_road format=4.2
+46         	from summary_all as all
+47         		left join bts.vsRHP as rhp on all.playerId = rhp.playerId
+48         		left join bts.vsLHP as lhp on all.playerId = lhp.playerId
+49         		left join bts.athome_2019 as home on all.playerId = home.playerId
+50         		left join bts.onroad_2019 as road on all.playerId = road.playerId
+51         	group by all.playerId;
+NOTE: The query requires remerging summary statistics back with the original data.
+NOTE: Table WORK.SPLITS created, with 985 rows and 10 columns.
+
+52         run;
+NOTE: PROC SQL statements are executed immediately; The RUN statement has no effect.
+53         	
+54         
+55         
+56         /**************************************************************************************
+56       ! ******/
+57         /**************************************************************************************
+57       ! ******/
+58         /*************************        HOT HITTERS
+3                                         The SAS System          09:36 Friday, September 27, 2019
+
+58       ! ****************************************/
+59         /**************************************************************************************
+59       ! ******/
+60         /**************************************************************************************
+60       ! ******/
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.83 seconds
+      cpu time            1.23 seconds
+      
+
+61         proc sql number;
+62         create view summary_&recent. as
+63         	select distinct Name,
+64         		playerID,
+65         		Team,
+66         		sum(H) as Hits,
+67         		sum(H > 0) as games_with_hit 'HG',
+68         		sum(G) as games 'G',
+69         		(calculated Hits) / (calculated games) as HitsPerGame 'H/G' format=4.2,
+70         		std(H) as std format=4.2,
+71         		calculated games_with_hit / calculated games as games_hit_pct 'PCT'
+71       ! format=percent6.2,
+72         		sum(H) / sum(AB) as AVG format=5.3
+73         	from bts.glogs_2019
+74         	where Date >= (today()-&recent.)
+75         	group by playerID
+76         	having HitsPerGame >= 1
+77         	order by games_hit_pct desc, Hits desc;
+NOTE: SQL view WORK.SUMMARY_10 has been defined.
+78         quit;
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+79         
+80         	
+81         
+82         
+83         /**************************************************************************************
+83       ! ******/
+84         /**************************************************************************************
+84       ! ******/
+85         /**************************         STARTERS
+85       ! *****************************************/
+86         /**************************************************************************************
+86       ! ******/
+87         /**************************************************************************************
+87       ! ******/
+88         proc sql number;
+89         create table starters_stats as
+90         	select distinct(year.playerID),
+91         		   year.Name,
+4                                         The SAS System          09:36 Friday, September 27, 2019
+
+92         		   team.Team,
+93         		   count(*) as GS,
+94         		   sum(IP) as IP format=5.1,
+95         		   (calculated IP / calculated GS) as IPperStart 'IP/GS' format=5.2,
+96         		   sum(H) as H,
+97         		   sum(H) / sum(IP) as HIP format=5.2,
+98         		   sum(ER) / sum(IP) * 9 as ERA format=6.2
+99         	from bts.sp_glogs_2019 as year
+100        		 right join bts.sp_today as today on year.playerID = today.playerID
+101        		 left join bts.current_team as team on year.playerID = team.playerID
+102        	group by year.playerID
+103        	order by HIP desc;
+NOTE: The query requires remerging summary statistics back with the original data.
+NOTE: Table WORK.STARTERS_STATS created, with 32 rows and 9 columns.
+
+104        quit;
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+
+105        
+106        
+107        
+108        /**************************************************************************************
+108      ! ******/
+109        /**************************************************************************************
+109      ! ******/
+110        /**************************         BULLPENS
+110      ! *****************************************/
+111        /**************************************************************************************
+111      ! ******/
+112        /**************************************************************************************
+112      ! ******/
+113        proc sql number;
+114        create view Bpen_rank as
+115        	select Team,
+116        		   IP,
+117        		   (H/IP) as HIP format=5.2
+118        	from bts.bpen_2019
+119        	order by HIP desc;
+NOTE: SQL view WORK.BPEN_RANK has been defined.
+120        quit;
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+121        
+122        
+123        
+124        ods html body = "C:\Users\peberr\Desktop\BTS.html";
+NOTE: Writing HTML Body file: C:\Users\peberr\Desktop\BTS.html
+5                                         The SAS System          09:36 Friday, September 27, 2019
+
+125        /**************************************************************************************
+125      ! ******/
+126        /**************************************************************************************
+126      ! ******/
+127        /**************************         FULL DATA
+127      ! ****************************************/
+128        /**************************************************************************************
+128      ! ******/
+129        /**************************************************************************************
+129      ! ******/
+130        %let today = %sysfunc(today(), weekdate35.);
+131        %let time = %sysfunc(time(), timeampm11.);
+132        title "Hitter Data: &today.";
+133        title2 "Season and Last &recent. days";
+134        title3 "with Opponent Pitching Stats";
+135        footnote "Updated &today. at &time.";
+136        proc sql number;
+137        	select all.Name,
+138        		   team.Team,
+139        		   m.HomeAway 'Home/Away',
+140        		   m.Opponent,
+141        		   sp.Name as SP 'Opposing Starter',
+142        		   sp.HIP as spHIP,
+143        		   ((sp.HIP * sp.IPperStart) + ((9 - sp.IPperStart) * bp.HIP)) as xHA format=5.2,
+144        		   all.ABperG 'xAB',
+145           		   case m.HomeAway when "Home" then splits.HperG_home
+146           				   		   when "Away" then splits.HperG_road end as HperG_home_away '.' format=1.,
+147           		   mean(all.HperG, two.HitsperGame, calculated HperG_home_away) as xH format=5.2,
+148        		   all.Hits 'H',
+149        		   all.games_hit_pct 'PCT',
+150        		   two.games_hit_pct "PCT&recent.",
+151        		   all.AVG 'AVG',
+152        		   two.AVG "AVG&recent.",
+153        		   case m.HomeAway when "Home" then splits.AVG_home
+154        		   				   when "Away" then splits.AVG_road end as AVG_home_away format=5.3,
+155        		   splits.AVG_vs_RHP,
+156        		   splits.AVG_vs_LHP
+157        	from summary_all as all
+158        		inner join summary_&recent. as two on all.playerID = two.playerID
+159        		left join bts.current_team as team on all.playerID = team.playerID
+160        		inner join bts.matchups as m on team.Team = matchups.Team
+161        		left join starters_stats as sp on m.Opponent = sp.Team
+162        		left join bpen_rank as bp on m.Opponent = bp.Team
+163        		left join splits as spl on all.playerId = spl.playerId
+164        	having all.games >= 10 and (all.games_hit_pct >= 0.7 or all.AVG > 0.3) and
+164      ! AVG_home_away > 0.250 and two.AVG > 0.250
+165        	order by all.games_hit_pct desc, two.AVG desc;
+NOTE: A CASE expression has no ELSE clause. Cases not accounted for by the WHEN clauses will 
+      result in a missing value for the CASE expression.
+NOTE: A CASE expression has no ELSE clause. Cases not accounted for by the WHEN clauses will 
+      result in a missing value for the CASE expression.
+NOTE: The query requires remerging summary statistics back with the original data.
+166        quit;
+6                                         The SAS System          09:36 Friday, September 27, 2019
+
+NOTE: The PROCEDURE SQL printed pages 1-4.
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.17 seconds
+      cpu time            0.18 seconds
+      
+
+167        title;
+168        title2;
+169        title3;
+170        footnote;
+171        
+172        title 'Starting Pitchers';
+173        proc print data=starters_stats;
+174        run;
+
+NOTE: There were 32 observations read from the data set WORK.STARTERS_STATS.
+NOTE: The PROCEDURE PRINT printed page 5.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.00 seconds
+      
+
+175        title;
+176        
+177        title 'Bullpens';
+178        proc print data=bpen_rank;
+179        run;
+
+NOTE: There were 30 observations read from the data set BTS.BPEN_2019.
+NOTE: There were 30 observations read from the data set WORK.BPEN_RANK.
+NOTE: The PROCEDURE PRINT printed page 6.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.01 seconds
+      
+
+180        title;
+181        
+182        title 'Team Summary';
+183        	select team,
+            ______
+            180
+ERROR 180-322: Statement is not valid or it is used out of proper order.
+184        		   sum(H > 0) / sum(G) as PCT format=percent6.2
+185        	from bts.glogs_2019
+186        	group by team
+187        	order by PCT desc;
+
+188        title 'League Summary by Date';
+189        proc sql;
+NOTE: PROC SQL set option NOEXEC and will continue to check the syntax of statements.
+190        	select date,
+191        		   sum(H > 0) / sum(G) as PCT format=percent6.2
+7                                         The SAS System          09:36 Friday, September 27, 2019
+
+192        	from bts.glogs_2019
+193           where date >= (today()-&recent.)
+194        	group by date;
+NOTE: Statement not executed due to NOEXEC option.
+195        title 'League Summary - 2019';
+196        	select sum(H > 0) / sum(G) as PCT format=percent6.2
+197        	from bts.glogs_2019;
+NOTE: Statement not executed due to NOEXEC option.
+198        run;
+NOTE: PROC SQL statements are executed immediately; The RUN statement has no effect.
+199        title;
+200        
+201        ods html close;
+202        libname bts clear;
+NOTE: Libref BTS has been deassigned.
+NOTE: The SAS System stopped processing this step because of errors.
+NOTE: Due to ERROR(s) above, SAS set option OBS=0, enabling syntax check mode. 
+      This prevents execution of subsequent data modification statements.
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+ERROR: Errors printed on page 6.
+
+NOTE: SAS Institute Inc., SAS Campus Drive, Cary, NC USA 27513-2414
+NOTE: The SAS System used:
+      real time           1.66 seconds
+      cpu time            1.70 seconds
+      
