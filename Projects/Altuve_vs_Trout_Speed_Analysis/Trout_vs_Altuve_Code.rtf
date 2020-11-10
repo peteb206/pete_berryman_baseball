@@ -1,0 +1,76 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf600
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww12140\viewh16280\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b\fs24 \cf0 Note: This code was written when I was first familiarizing myself with R, so I apologize for its inefficiency in places.\
+\
+\
+Code for Mike Trout dataset
+\b0 \
+\
+> library(dplyr)\
+> library(magrittr)\
+\
+> trout_new = filter(trout, x > 0) %>%\
++ group_by(sv_pitch_id) %>%\
++ select(sv_pitch_id,time_offset,x,y) %>%\
++ mutate(xchange = x - lag(x), ychange = y - lag(y), movement = ((xchange)^2 + (ychange)^2)^0.5, time_change = time_offset - lag(time_offset), speed_feet_per_second = movement / time_change)\
+\
+> trout_speed <- trout_new %>%\
++ select(sv_pitch_id, speed_feet_per_second)\
+\
+> trout_speed_max <- trout_speed %>%\
++ summarise(max_speed = max(speed_feet_per_second, na.rm = TRUE))\
+\
+> trout_speed_avg <- trout_speed %>%\
++ summarise(avg_speed = mean(speed_feet_per_second, na.rm = TRUE))\
+\
+\
+
+\b Code for Jos\'e9 Altuve dataset\
+\
+
+\b0 > library(dplyr)\
+> library(magrittr)\
+\
+> altuve_new = filter(altuve, x > 0) %>%\
++ group_by(sv_pitch_id) %>%\
++ select(sv_pitch_id, time_offset, x, y) %>%\
++ mutate(xchange = x - lag(x), ychange = y - lag(y), movement = ((xchange)^2 + (ychange)^2)^0.5, time_change = time_offset - lag(time_offset), speed_feet_per_second = movement / time_change)\
+\
+> altuve_speed <- altuve_new %>%\
++ select(sv_pitch_id, speed_feet_per_second)\
+\
+> altuve_speed_max <- altuve_speed %>%\
++ summarise(max_speed = max(speed_feet_per_second, na.rm = TRUE))\
+\
+> altuve_speed_avg <- altuve_speed %>%\
++ summarise(avg_speed = mean(speed_feet_per_second, na.rm = TRUE))\
+\
+\
+\
+
+\b Code for Box and Whisker Plots\
+\
+
+\b0 > altuve_speed_avg %>%\
++ select(avg_speed) %>%\
++  boxplot(altuve_speed_avg$avg_speed, main = 'Altuve Average Speed Plot')\
+\
+> boxplot(altuve_speed_max[2:715,]$max_speed, main = 'Altuve Maximum Speed Plot')\
+\
+> boxplot(trout_speed_avg$avg_speed, main = 'Trout Average Speed Plot')\
+\
+> boxplot(trout_speed_max[2:715,]$max_speed, main = 'Trout Maximum Speed Plot')\
+\
+> mean(altuve_speed_max[2:715,]$max_speed)\
+[1] 24.13497\
+> mean(altuve_speed_avg[2:715,]$avg_speed)\
+[1] 14.03317\
+> mean(trout_speed_max_new$max_speed)\
+[1] 24.7692\
+> mean(trout_speed_avg_new$avg_speed)\
+[1] 14.05773}
