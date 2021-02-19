@@ -1,7 +1,7 @@
 title,division,conference,state,location,link,roster_link
 Abilene Christian University,D1,Southland,TX,"Abilene, TX",http://www.acusports.com/index.aspx?path=baseball,http://www.acusports.com/sports/baseball/roster
 Alabama A&M University,D1,Southwestern,AL,"Huntsville, AL",http://www.aamusports.com/index.aspx?path=baseball,http://www.aamusports.com/sports/baseball/roster
-Alabama State University,D1,Southwestern,AL,"Montgomery, AL",http://bamastatesports.com/index.aspx?path=baseball,http://bamastatesports.com/sports/baseball/roster
+Alabama State University,D1,Southwestern,AL,"Montgomery, AL",http://bamastatesports.com/index.aspx?path=baseball,https://bamastatesports.com/roster.aspx?path=baseball
 Alcorn State University,D1,Southwestern,MS,"Lorman, MS",http://www.alcornsports.com/index.aspx?path=baseball,http://www.alcornsports.com/sports/baseball/roster
 Appalachian State University,D1,Sun Belt,NC,"Boone, NC",https://appstatesports.com/index.aspx?path=baseball,https://appstatesports.com/sports/baseball/roster
 Arizona State University,D1,Pac-12,AZ,"Tempe, AZ",https://thesundevils.com/sports/baseball,https://thesundevils.com/sports/baseball/roster
@@ -35,7 +35,7 @@ Central Connecticut State University,D1,Northeast,CT,"New Britain, CT",http://ww
 Central Michigan University,D1,Mid-American,MI,"Mount Pleasant, MI",http://www.cmuchippewas.com/sports/m-basebl/cmu-m-basebl-body.html,https://cmuchippewas.com/sports/baseball/roster
 Charleston Southern University,D1,Big South,SC,"Charleston, SC",http://www.csusports.com/sports/bsb/index,https://goccusports.com/sports/baseball/roster
 Clemson University,D1,ACC,SC,"Clemson, SC",http://www.clemsontigers.com/SportSelect.dbml?DB_OEM_ID=28500&SPID=103712&SPSID=657829&DB_OEM_ID=28500,http://www.clemsontigers.com/sports/baseball/roster
-Coastal Carolina University,D1,Sun Belt,SC,"Conway, SC",http://www.goccusports.com/sports/m-basebl/coas-m-basebl-body.html,http://www.goccusports.com/sports/m-basebl/roster
+Coastal Carolina University,D1,Sun Belt,SC,"Conway, SC",http://www.goccusports.com/sports/m-basebl/coas-m-basebl-body.html,https://goccusports.com/sports/baseball/roster
 College of Charleston,D1,Colonial,SC,"Charleston, SC",https://www.cofcsports.com/index.aspx?path=baseball,https://www.cofcsports.com/sports/baseball/roster
 College of William & Mary,D1,Colonial,VA,"Williamsburg, VA",https://tribeathletics.com/index.aspx?path=baseball,https://tribeathletics.com/sports/baseball/roster
 College of the Holy Cross,D1,Patriot League,MA,"Worcester, MA",https://goholycross.com/SportSelect.dbml?DB_OEM_ID=33100&SPID=157225&SPSID=917382&KEY=,https://goholycross.com/sports/baseball/roster
@@ -418,7 +418,7 @@ Malone University,D2,Great Midwest Athletic Conference,OH,"Canton, OH",https://m
 Mansfield University of Pennsylvania,D2,Pennsylvania State Athletic Conference,PA,"Mansfield, PA",https://gomounties.com/index.aspx?path=baseball,https://gomounties.com/sports/baseball/roster
 Mars Hill University,D2,South Atlantic Conference,NC,"Mars Hill, NC",https://www.marshilllions.com/sports/bsb/index,https://www.marshilllions.com/sports/bsb/2020-21/roster
 Maryville University,D2,Great Lakes Valley Conference,MO,"St. Louis, MO",https://maryvillesaints.com/index.aspx?path=baseball,https://maryvillesaints.com/sports/baseball/roster
-McKendree University,D2,Great Lakes Valley Conference,IL,"Lebanon, IL",https://mckbearcats.com/index.aspx?path=baseball,https://mckbearcats.com/roster.aspx?path=baseball&
+McKendree University,D2,Great Lakes Valley Conference,IL,"Lebanon, IL",https://mckbearcats.com/index.aspx?path=baseball,https://mckbearcats.com/roster.aspx?path=baseball
 Mercy College,D2,East Coast Conference,NY,"Dobbs Ferry, NY",https://mercyathletics.com/index.aspx?path=baseball,https://mercyathletics.com/sports/baseball/roster
 Mercyhurst University,D2,Pennsylvania State Athletic Conference,PA,"Erie, PA",https://hurstathletics.com/index.aspx?path=baseball,https://hurstathletics.com/sports/baseball/roster
 Metropolitan State University of Denver,D2,Rocky Mountain Athletic Conference,CO,"Denver, CO",https://roadrunnersathletics.com/index.aspx?path=baseball,https://roadrunnersathletics.com/sports/baseball/roster
@@ -557,7 +557,7 @@ Wilmington University,D2,Central Atlantic Collegiate Conference,DE,"New Castle, 
 Wingate University,D2,South Atlantic Conference,NC,"Wingate, NC",https://wingatebulldogs.com/sports/baseball,https://wingatebulldogs.com/sports/baseball/roster
 Winona State University,D2,Northern Sun Intercollegiate Conference,MN,"Winona, MN",https://winonastatewarriors.com/sports/baseball,https://winonastatewarriors.com/sports/baseball/roster
 Young Harris College,D2,Peach Belt Conference,GA,"Young Harris, GA",https://yhcathletics.com/sports/baseball,https://yhcathletics.com/sports/baseball/roster
-Adrian College,D3,Michigan Intercollegiate Athletic Association,MI,"Adrian, MI",https://adrianbulldogs.com/sports/m-basebl/index,https://adrianbulldogs.com/sports/m-basebl/roster
+Adrian College,D3,Michigan Intercollegiate Athletic Association,MI,"Adrian, MI",https://adrianbulldogs.com/sports/m-basebl/index,https://adrianbulldogs.com/sports/m-basebl/2020-21/roster
 Albertus Magnus College,D3,Great Northeast Athletic Conference,CT,"New Haven, CT",https://www.albertusfalcons.com/sports/bsb/index,https://www.albertusfalcons.com/sports/bsb/2020-21/roster
 Albion College,D3,Michigan Intercollegiate Athletic Association,MI,"Albion, MI",https://www.gobrits.com/sports/bsb/index,https://www.gobrits.com/sports/bsb/2020-21/roster
 Albright College,D3,Middle Atlantic Conference,PA,"Reading, PA",https://albrightathletics.com/index.aspx?path=baseball,https://albrightathletics.com/sports/baseball/roster
@@ -565,8 +565,8 @@ Alfred State College,D3,Allegheny Mountain Collegiate Conference,NY,"Alfred, NY"
 Allegheny College,D3,North Coast Athletic Conference,PA,"Meadville, PA",https://alleghenygators.com/index.aspx?path=baseball,https://alleghenygators.com/sports/baseball/roster
 Alma College,D3,Michigan Intercollegiate Athletic Association,MI,"Alma, MI",http://almascots.com/sports/bsb/index,http://almascots.com/sports/bsb/2020-21/roster
 Alvernia University,D3,Middle Atlantic Conference,PA,"Reading, PA",https://auwolves.com/index.aspx?path=baseball,https://auwolves.com/sports/baseball/roster
-Amherst College,D3,New England Small College Athletic Conference,MA,"Amherst, MA",http://athletics.amherst.edu/sports/bsb/index,http://athletics.amherst.edu/sports/bsb/2020-21/roster
-Anderson University,D3,Heartland Collegiate Athletic Conference,IN,"Anderson, IN",https://athletics.anderson.edu/index.aspx?path=baseball,https://athletics.anderson.edu/sports/baseball/roster
+Amherst College,D3,New England Small College Athletic Conference,MA,"Amherst, MA",http://athletics.amherst.edu/sports/bsb/index,https://athletics.amherst.edu/sports/baseball/roster
+Anderson University,D3,Heartland Collegiate Athletic Conference,IN,"Anderson, IN",https://athletics.anderson.edu/index.aspx?path=baseball,https://athletics.anderson.edu/sports/bsb/2020-21/roster
 Anna Maria College,D3,Great Northeast Athletic Conference,MA,"Paxton, MA",https://www.goamcats.com/sports/bsb/index,https://www.goamcats.com/sports/bsb/2020-21/roster
 Arcadia University,D3,Middle Atlantic Conference,PA,"Glenside, PA",https://arcadiaknights.com/index.aspx?path=baseball,https://arcadiaknights.com/sports/baseball/roster
 Augsburg College,D3,Minnesota Intercollegiate Athletic Conference,MN,"Minneapolis, MN",https://athletics.augsburg.edu/index.aspx?path=baseball,https://athletics.augsburg.edu/sports/baseball/roster
@@ -574,40 +574,40 @@ Augustana College (Illinois),D3,College Conference of Illinois & Wisconsin,IL,"R
 Aurora University,D3,Northern Athletics Collegiate Conference,IL,"Aurora, IL",https://athletics.aurora.edu/index.aspx?path=baseball,https://athletics.aurora.edu/sports/baseball/roster
 Austin College,D3,Southern Collegiate Athletic Conference,TX,"Sherman, TX",https://austin.prestosports.com/sports/bsb/index,https://austin.prestosports.com/sports/bsb/2020-21/roster
 Averett University,D3,USA South Athletic Conference,VA,"Danville, VA",https://averettcougars.com/schedule.aspx?path=baseball,https://averettcougars.com/sports/baseball/roster
-Babson College,D3,New England Women's and Men's Athletic Conference,MA,"Wellesley, MA",http://www.babsonathletics.com/sports/m-basebl/index,http://www.babsonathletics.com/sports/m-basebl/roster
+Babson College,D3,New England Women's and Men's Athletic Conference,MA,"Wellesley, MA",http://www.babsonathletics.com/sports/m-basebl/index,https://www.babsonathletics.com/sports/m-basebl/2020-21/roster
 Baldwin Wallace University,D3,Ohio Athletic Conference,OH,"Berea, OH",https://www.bwyellowjackets.com/sports/bsb/index,https://www.bwyellowjackets.com/sports/bsb/2020-21/roster
 Bard College,D3,Liberty League,NY,"Annandale-On-Hudson, NY",https://bardathletics.com/sports/baseball,https://bardathletics.com/sports/baseball/roster
 Baruch College,D3,City University of New York Athletic Conference,NY,"New York, NY",https://athletics.baruch.cuny.edu/index.aspx?path=baseballhttps://athletics.baruch.cuny.edu/index.aspx?path=baseball,https://athletics.baruch.cuny.edu/sports/baseball/roster
-Bates College,D3,New England Small College Athletic Conference,ME,"Lewiston, ME",https://www.gobatesbobcats.com/sports/bsb/index,https://www.gobatesbobcats.com/sports/bsb/2020-21/roster
+Bates College,D3,New England Small College Athletic Conference,ME,"Lewiston, ME",https://www.gobatesbobcats.com/sports/bsb/index,https://gobatesbobcats.com/sports/baseball/roster
 Becker College,D3,New England Collegiate Conference,MA,"Worcester, MA",https://becker.prestosports.com/sports/bsb/index,https://becker.prestosports.com/sports/bsb/2020-21/roster
-Belhaven University,D3,American Southwest Conference,MS,"Jackson, MS",https://blazers.belhaven.edu/index.aspx?path=baseball,https://blazers.belhaven.edu/sports/baseball/roster
+Belhaven University,D3,American Southwest Conference,MS,"Jackson, MS",https://blazers.belhaven.edu/index.aspx?path=baseball,https://blazers.belhaven.edu/index.aspx?path=baseball
 Beloit College,D3,Midwest Conference,WI,"Beloit, WI",https://beloitcollegeathletics.com/index.aspx?path=baseball,https://beloitcollegeathletics.com/sports/baseball/roster
 Benedictine University,D3,Northern Athletics Collegiate Conference,IL,"Lisle, IL",https://benueagles.com/index.aspx?path=baseball,https://benueagles.com/sports/baseball/roster
 Berea College,D3,USA South Athletic Conference,KY,"Berea, KY",https://bereaathletics.prestosports.com/sports/bsb/index,https://bereaathletics.prestosports.com/sports/bsb/2020-21/roster
-Berry College,D3,Southern Athletic Association,GA,"Mt. Berry, GA",https://www.berryvikings.com/sports/bsb/index,https://www.berryvikings.com/sports/bsb/2020-21/roster
+Berry College,D3,Southern Athletic Association,GA,"Mt. Berry, GA",https://www.berryvikings.com/sports/bsb/index,https://www.berryvikings.com/sports/baseball/roster
 Bethany College (West Virginia),D3,Presidents' Athletic Conference,WV,"Bethany, WV",http://www.bethanyswedes.com/sport/0/3,http://www.bethanyswedes.com/roster/0/3
 Bethany Lutheran College,D3,Upper Midwest Athletic Conference,MN,"Mankato, MN",https://blcvikings.com/index.aspx?path=baseball,https://blcvikings.com/sports/baseball/roster
 Bethel University (Minnesota),D3,Minnesota Intercollegiate Athletic Conference,MN,"St. Paul, MN",https://athletics.bethel.edu/index.aspx?path=baseball,https://athletics.bethel.edu/sports/baseball/roster
-Birmingham-Southern College,D3,Southern Athletic Association,AL,"Birmingham, AL",http://www.bscsports.net/sports/bsb/index,http://www.bscsports.net/sports/bsb/2020-21/roster
+Birmingham-Southern College,D3,Southern Athletic Association,AL,"Birmingham, AL",http://www.bscsports.net/sports/bsb/index,https://bscsports.net/sports/baseball/roster
 Blackburn College,D3,St. Louis Intercollegiate Athletic Conference,IL,"Carlinville, IL",https://www.blackburnbeavers.com/sports/bsb/index,https://www.blackburnbeavers.com/sports/bsb/2020-21/roster
 Bluffton University,D3,Heartland Collegiate Athletic Conference,OH,"Bluffton, OH",http://blufftonbeavers.com/sports/bsb/index,http://blufftonbeavers.com/sports/bsb/2020-21/roster
-Bowdoin College,D3,New England Small College Athletic Conference,ME,"Brunswick, ME",https://athletics.bowdoin.edu/sports/bsb/index,https://athletics.bowdoin.edu/sports/bsb/2020-21/roster
+Bowdoin College,D3,New England Small College Athletic Conference,ME,"Brunswick, ME",https://athletics.bowdoin.edu/sports/bsb/index,https://athletics.bowdoin.edu/sports/baseball/roster
 Brandeis University,D3,University Athletic Association,MA,"Waltham, MA",https://www.brandeisjudges.com/sports/bsb/index,https://www.brandeisjudges.com/sports/bsb/2020-21/roster
 Brevard College,D3,USA South Athletic Conference,NC,"Brevard, NC",https://bctornados.com/sports/bsb/index,https://bctornados.com/sports/bsb/2020-21/roster
 Bridgewater College (Virginia),D3,Old Dominion Athletic Conference,VA,"Bridgewater, VA",https://www.bridgewatereagles.com/sports/bsb/index,https://www.bridgewatereagles.com/sports/bsb/2020-21/roster
 Bridgewater State University,D3,Massachusetts State Collegiate Athletic Conference,MA,"Bridgewater, MA",http://www.bsubears.com/sports/bsb/index,http://www.bsubears.com/sports/bsb/2020-21/roster
 Buena Vista University,D3,American Rivers Conference,IA,"Storm Lake, IA",https://bvuathletics.com/index.aspx?path=baseball,https://bvuathletics.com/sports/baseball/roster
 Cabrini University,D3,Atlantic East Conference,PA,"Radnor, PA",https://cabriniathletics.com/index.aspx?path=baseball,https://cabriniathletics.com/sports/baseball/roster
-Cairn University,D3,Colonial States Athletic Conference,PA,"Langhorne, PA",https://www.cairnhighlanders.com/index.aspx?path=baseball,https://www.cairnhighlanders.com/sports/baseball/roster
+Cairn University,D3,Colonial States Athletic Conference,PA,"Langhorne, PA",https://www.cairnhighlanders.com/index.aspx?path=baseball,https://www.cairnhighlanders.com/roster.aspx?path=baseball
 California Institute of Technology,D3,Southern California Intercollegiate Athletic Conference,CA,"Pasadena, CA",https://www.gocaltech.com/sports/bsb/index,https://www.gocaltech.com/sports/bsb/2020-21/roster
 California Lutheran University,D3,Southern California Intercollegiate Athletic Conference,CA,"Thousand Oaks, CA",http://www.clusports.com/sports/bsb/index,http://www.clusports.com/sports/bsb/2020-21/roster
 Calvin College,D3,Michigan Intercollegiate Athletic Association,MI,"Grand Rapids, MI",https://calvinknights.com/sports/bsb/index,https://calvinknights.com/sports/bsb/2020-21/roster
-Capital University,D3,Ohio Athletic Conference,OH,"Bexley, OH",http://athletics.capital.edu/sports/bsb/index,http://athletics.capital.edu/sports/bsb/2020-21/roster
+Capital University,D3,Ohio Athletic Conference,OH,"Bexley, OH",http://athletics.capital.edu/sports/bsb/index,https://athletics.capital.edu/sports/baseball/roster
 Carleton College,D3,Minnesota Intercollegiate Athletic Conference,MN,"Northfield, MN",https://athletics.carleton.edu/index.aspx?path=baseball,https://athletics.carleton.edu/sports/baseball/roster
 Carroll University,D3,College Conference of Illinois & Wisconsin,WI,"Waukesha, WI",https://gopios.com/index.aspx?path=baseball,https://gopios.com/sports/baseball/roster
 Carthage College,D3,College Conference of Illinois & Wisconsin,WI,"Kenosha, WI",https://athletics.carthage.edu/index.aspx?path=baseball,https://athletics.carthage.edu/sports/baseball/roster
 Case Western Reserve University,D3,University Athletic Association,OH,"Cleveland, OH",https://athletics.case.edu/sports/bsb/index,https://athletics.case.edu/sports/bsb/2020-21/roster
-Castleton University,D3,Little East Conference,VT,"Castleton, VT",http://www.castletonsports.com/sports/bsb/index,http://www.castletonsports.com/sports/bsb/2020-21/roster
+Castleton University,D3,Little East Conference,VT,"Castleton, VT",http://www.castletonsports.com/sports/bsb/index,https://castletonsports.com/sports/baseball/roster
 Catholic University,D3,Landmark Conference,DC,"Washington, DC",http://www.catholicathletics.com/sports/bsb/index,http://www.catholicathletics.com/sports/bsb/2020-21/roster
 Cazenovia College,D3,North Eastern Athletic Conference,NY,"Cazenovia, NY",https://cazenoviawildcats.com/index.aspx?path=baseball,https://cazenoviawildcats.com/sports/baseball/roster
 Centenary College,D3,Southern Collegiate Athletic Conference,LA,"Shreveport, LA",https://www.gocentenary.com/sports/bsb/index,https://www.gocentenary.com/sports/bsb/2020-21/roster
@@ -622,11 +622,11 @@ Clark University,D3,New England Women's and Men's Athletic Conference,MA,"Worces
 Clarks Summit University,D3,Colonial States Athletic Conference,PA,"Summit, PA",https://gocsudefenders.com/index.aspx?path=baseball,https://gocsudefenders.com/sports/baseball/roster
 Clarkson University,D3,Liberty League,NY,"Potsdam, NY",https://clarksonathletics.com/index.aspx?path=bb,https://clarksonathletics.com/sports/baseball/roster
 Coe College,D3,American Rivers Conference,IA,"Cedar Rapids, IA",https://kohawkathletics.com/index.aspx?path=baseball,https://kohawkathletics.com/sports/baseball/roster
-Colby College,D3,New England Small College Athletic Conference,ME,"Waterville, ME",https://www.gocolbymules.com/sports/bsb/index,https://www.gocolbymules.com/sports/bsb/2020-21/roster
+Colby College,D3,New England Small College Athletic Conference,ME,"Waterville, ME",https://www.gocolbymules.com/sports/bsb/index,https://colbyathletics.com/sports/baseball/roster/2020-21
 Colby-Sawyer College,D3,Great Northeast Athletic Conference,NH,"London, NH",https://www.colby-sawyerathletics.com/index.aspx?path=baseball,https://www.colby-sawyerathletics.com/sports/baseball/roster
 College at Brockport,D3,State University of New York Athletic Conference,NY,"Brockport, NY",https://gobrockport.com/index.aspx?path=baseball,https://gobrockport.com/sports/baseball/roster
 College of Mount St. Vincent,D3,Skyline Conference,NY,"The Bronx, NY",https://cmsvathletics.com/index.aspx?path=baseball,https://cmsvathletics.com/sports/baseball/roster
-College of Saint Elizabeth,D3,Colonial States Athletic Conference,NJ,"Morristown, NJ",https://cseathletics.com/sports/baseball,https://cseathletics.com/sports/baseball/roster
+College of Saint Elizabeth,D3,Colonial States Athletic Conference,NJ,"Morristown, NJ",https://cseathletics.com/sports/baseball,https://seueagles.com/sports/baseball/roster
 College of Staten Island,D3,City University of New York Athletic Conference,NY,"Staten Island, NY",https://csidolphins.com/index.aspx?path=baseball,https://csidolphins.com/sports/baseball/roster
 "Concordia College, Moorhead",D3,Minnesota Intercollegiate Athletic Conference,MN,"Moorhead, MN",https://concordiamn.prestosports.com/sports/bsb/index,https://concordiamn.prestosports.com/sports/bsb/2020-21/roster
 Concordia University Chicago,D3,Northern Athletics Collegiate Conference,IL,"River Forest, IL",https://www.cucougars.com/index.aspx?path=baseball,https://www.cucougars.com/sports/baseball/roster
@@ -641,13 +641,13 @@ DeSales University,D3,Middle Atlantic Conference,PA,"Center Valley, PA",https://
 Dean College,D3,Great Northeast Athletic Conference,MA,"Franklin, MA",http://deanbulldogs.com/sports/bsb/index,http://deanbulldogs.com/sports/bsb/2020-21/roster
 Defiance College,D3,Heartland Collegiate Athletic Conference,OH,"Defiance, OH",https://www.defianceathletics.com/sports/bsb/index,https://www.defianceathletics.com/sports/bsb/2020-21/roster
 Delaware Valley University,D3,Middle Atlantic Conference,PA,"Doylestown, PA",https://athletics.delval.edu/index.aspx?path=baseball,https://athletics.delval.edu/sports/baseball/roster
-Denison University,D3,North Coast Athletic Conference,OH,"Granville, OH",https://www.denisonbigred.com/sports/bsb/index,https://www.denisonbigred.com/sports/bsb/2020-21/roster
+Denison University,D3,North Coast Athletic Conference,OH,"Granville, OH",https://www.denisonbigred.com/sports/bsb/index,https://denisonbigred.com/sports/baseball/roster/2021
 Dickinson College,D3,Centennial Conference,PA,"Carlisle, PA",https://www.dickinsonathletics.com/sports/bsb/index,https://www.dickinsonathletics.com/sports/bsb/2020-21/roster
 Dominican University,D3,Northern Athletics Collegiate Conference,IL,"River Forest, IL",https://dustars.com/index.aspx?path=baseball,https://dustars.com/sports/baseball/roster
 Drew University,D3,Landmark Conference,NJ,"Madison, NJ",https://www.drewrangers.com/index.aspx?path=baseball,https://www.drewrangers.com/sports/baseball/roster
-Earlham College,D3,Heartland Collegiate Athletic Conference,IN,"Richmond, IN",https://www.goearlham.com/sports/bsb/index,https://www.goearlham.com/sports/bsb/2020-21/roster
+Earlham College,D3,Heartland Collegiate Athletic Conference,IN,"Richmond, IN",https://www.goearlham.com/sports/bsb/index,https://goearlham.com/sports/baseball/roster
 East Texas Baptist University,D3,American Southwest Conference,TX,"Marshall, TX",https://goetbutigers.com/index.aspx?path=baseball,https://goetbutigers.com/sports/baseball/roster
-Eastern Connecticut State University,D3,Little East Conference,CT,"Willimantic, CT",https://www.gowarriorathletics.com/sports/bsb/index,https://www.gowarriorathletics.com/sports/bsb/2020-21/roster
+Eastern Connecticut State University,D3,Little East Conference,CT,"Willimantic, CT",https://www.gowarriorathletics.com/sports/bsb/index,https://gowarriorathletics.com/sports/baseball/roster
 Eastern Mennonite University,D3,Old Dominion Athletic Conference,VA,"Harrisonburg, VA",https://www.emuroyals.com/sports/bsb/index,https://www.emuroyals.com/sports/bsb/2020-21/roster
 Eastern Nazarene College,D3,New England Collegiate Conference,MA,"Quincy, MA",http://athletics.enc.edu/sports/bsb/index,http://athletics.enc.edu/sports/bsb/2020-21/roster
 Eastern University,D3,Middle Atlantic Conference,PA,"St. Davids, PA",https://goeasterneagles.com/index.aspx?path=baseball,https://goeasterneagles.com/sports/baseball/roster
@@ -668,7 +668,7 @@ Finlandia University,D3,Capital Athletic Conference Inc.,MI,"Hancock, MI",https:
 Fitchburg State University,D3,Massachusetts State Collegiate Athletic Conference,MA,"Fitchburg, MA",https://www.fitchburgfalcons.com/sports/bsb/index,https://www.fitchburgfalcons.com/sports/bsb/2020-21/roster
 Fontbonne University,D3,St. Louis Intercollegiate Athletic Conference,MO,"St. Louis, MO",https://www.fontbonnegriffins.com/sports/bsb/index,https://www.fontbonnegriffins.com/sports/bsb/2020-21/roster
 Framingham State University,D3,Massachusetts State Collegiate Athletic Conference,MA,"Framingham, MA",https://www.fsurams.com/sports/bsb/index,https://www.fsurams.com/sports/bsb/2020-21/roster
-Franklin & Marshall College,D3,Centennial Conference,PA,"Lancaster, PA",https://www.godiplomats.com/sports/m-basebl/index,https://www.godiplomats.com/sports/m-basebl/roster
+Franklin & Marshall College,D3,Centennial Conference,PA,"Lancaster, PA",https://www.godiplomats.com/sports/m-basebl/index,https://www.godiplomats.com/sports/m-basebl/2020-21/roster
 Franklin College,D3,Heartland Collegiate Athletic Conference,IN,"Franklin, IN",http://franklingrizzlies.com/sports/bsb/index,http://franklingrizzlies.com/sports/bsb/2020-21/roster
 Gallaudet University,D3,North Eastern Athletic Conference,DC,"Washington, DC",https://www.gallaudetathletics.com/sports/bsb/index,https://www.gallaudetathletics.com/sports/bsb/2020-21/roster
 Geneva College,D3,Presidents' Athletic Conference,PA,"Beaver Falls, PA",https://athletics.geneva.edu/index.aspx?path=baseball,https://athletics.geneva.edu/sports/baseball/roster
@@ -682,17 +682,17 @@ Grove City College,D3,Presidents' Athletic Conference,PA,"Grove City, PA",https:
 Guilford College,D3,Old Dominion Athletic Conference,NC,"Greensboro, PA",https://www.guilfordquakers.com/sports/bsb/index,https://www.guilfordquakers.com/sports/bsb/2020-21/roster
 Gustavus Adolphus College,D3,Minnesota Intercollegiate Athletic Conference,MN,"St. Peter, MN",https://gustavus.edu/athletics/bb/,https://gustavus.edu/athletics/bb/roster
 Gwynedd Mercy University,D3,Atlantic East Conference,PA,"Gwynedd Valley, PA",https://gwyneddathletics.com/index.aspx?path=baseball,https://gwyneddathletics.com/sports/baseball/roster
-Hamilton College,D3,New England Small College Athletic Conference,NY,"Clinton, NY",https://athletics.hamilton.edu/sports/bsb/index,https://athletics.hamilton.edu/sports/bsb/2020-21/roster
+Hamilton College,D3,New England Small College Athletic Conference,NY,"Clinton, NY",https://athletics.hamilton.edu/sports/bsb/index,https://athletics.hamilton.edu/sports/baseball/roster
 Hamline University,D3,Minnesota Intercollegiate Athletic Conference,MN,"St. Paul, MN",https://hamlineathletics.com/index.aspx?path=baseball,https://hamlineathletics.com/sports/baseball/roster
-Hampden-Sydney College,D3,Old Dominion Athletic Conference,VA,"Hampden-Sydney, VA",https://www.hscathletics.com/sports/bsb/index,https://www.hscathletics.com/sports/bsb/2020-21/roster
-Hanover College,D3,Heartland Collegiate Athletic Conference,IN,"Hanover, IN",https://hanover.prestosports.com/sports/bsb/index,https://hanover.prestosports.com/sports/bsb/2020-21/roster
-Hardin-Simmons University,D3,American Southwest Conference,TX,"Abilene, TX",https://www.hsuathletics.com/sports/m-basebl/index,https://www.hsuathletics.com/sports/m-basebl/roster
+Hampden-Sydney College,D3,Old Dominion Athletic Conference,VA,"Hampden-Sydney, VA",https://www.hscathletics.com/sports/bsb/index,https://hscathletics.com/sports/baseball/roster
+Hanover College,D3,Heartland Collegiate Athletic Conference,IN,"Hanover, IN",https://hanover.prestosports.com/sports/bsb/index,https://athletics.hanover.edu/sports/baseball/roster
+Hardin-Simmons University,D3,American Southwest Conference,TX,"Abilene, TX",https://www.hsuathletics.com/sports/m-basebl/index,https://www.hsuathletics.com/sports/m-basebl/2020-21/roster
 Haverford College,D3,Centennial Conference,PA,"Haverford, PA",https://www.haverfordathletics.com/sports/bsb/index,https://www.haverfordathletics.com/sports/bsb/2020-21/roster
 Heidelberg University,D3,Ohio Athletic Conference,OH,"Tiffin, OH",http://bergathletics.com/index.aspx?path=baseball,http://bergathletics.com/sports/baseball/roster
 Hendrix College,D3,Southern Athletic Association,AR,"Conway, AR",https://hendrixwarriors.com/index.aspx?path=baseball,https://hendrixwarriors.com/sports/baseball/roster
 Hilbert College,D3,Allegheny Mountain Collegiate Conference,NY,"Hamburg, NY",https://hilberthawks.com/index.aspx?path=baseball,https://hilberthawks.com/sports/baseball/roster
 Hiram College,D3,North Coast Athletic Conference,OH,"Hiram, OH",https://www.hiramterriers.com/sports/bsb/index,https://www.hiramterriers.com/sports/bsb/2020-21/roster
-Hood College,D3,Middle Atlantic Conference,MD,"Frederick, MD",https://www.hoodathletics.com/sports/bsb/index,https://www.hoodathletics.com/sports/bsb/2020-21/roster
+Hood College,D3,Middle Atlantic Conference,MD,"Frederick, MD",https://www.hoodathletics.com/sports/bsb/index,https://hoodathletics.com/sports/baseball/roster
 Hope College,D3,Michigan Intercollegiate Athletic Association,MI,"Holland, MI",https://athletics.hope.edu/sports/bsb/index,https://athletics.hope.edu/sports/bsb/2020-21/roster
 Houghton College,D3,Empire 8 Athletic Conference,NY,"Houghton, NY",https://athletics.houghton.edu/index.aspx?path=mbase,https://athletics.houghton.edu/sports/baseball/roster
 Howard Payne University,D3,American Southwest Conference,TX,"Brownwood, TX",https://hpusports.com/index.aspx?path=baseball,https://hpusports.com/sports/baseball/roster
@@ -711,7 +711,7 @@ Johnson & Wales University,D3,Great Northeast Athletic Conference,RI,"Providence
 Juniata College,D3,Landmark Conference,PA,"Huntingdon, PA",http://www.juniatasports.net/sports/bsb/index,http://www.juniatasports.net/sports/bsb/2020-21/roster
 Kalamazoo College,D3,Michigan Intercollegiate Athletic Association,MI,"Kalamazoo, MI",https://hornets.kzoo.edu/sports/bsb/index,https://hornets.kzoo.edu/sports/bsb/2020-21/roster
 Kean University,D3,New Jersey Athletic Conference,NJ,"Union, NJ",https://keanathletics.com/index.aspx?path=baseball,https://keanathletics.com/sports/baseball/roster
-Keene State College,D3,Little East Conference,NH,"Keene, NH",http://www.keeneowls.com/sports/bsb/index,http://www.keeneowls.com/sports/bsb/2020-21/roster
+Keene State College,D3,Little East Conference,NH,"Keene, NH",http://www.keeneowls.com/sports/bsb/index,https://keeneowls.com/sports/baseball/roster
 Kenyon College,D3,North Coast Athletic Conference,OH,"Gambier, OH",https://athletics.kenyon.edu/index.aspx?path=baseball,https://athletics.kenyon.edu/sports/baseball/roster
 Keuka College,D3,North Eastern Athletic Conference,NY,"Keuka Park, NY",http://www.keukaathletics.com/sports/bsb/index,http://www.keukaathletics.com/sports/bsb/2020-21/roster
 Keystone College,D3,Colonial States Athletic Conference,PA,"La Plume, PA",https://www.gokcgiants.com/,https://www.gokcgiants.com/sports/baseball/roster
@@ -720,9 +720,9 @@ Knox College,D3,Midwest Conference,IL,"Galesburg, IL",https://prairiefire.knox.e
 La Roche University,D3,Allegheny Mountain Collegiate Conference,PA,"Pittsburgh, PA",https://www.larochesports.com/sports/bsb/index,https://www.larochesports.com/sports/bsb/2020-21/roster
 LaGrange College,D3,USA South Athletic Conference,GA,"LaGrange, GA",https://www.lagrangepanthers.com/sports/bsb/index,https://www.lagrangepanthers.com/sports/bsb/2020-21/roster
 Lakeland University,D3,Northern Athletics Collegiate Conference,WI,"Plymouth, WI",https://lakelandmuskies.com/index.aspx?path=baseball,https://lakelandmuskies.com/sports/baseball/roster
-Lancaster Bible College,D3,North Eastern Athletic Conference,PA,"Lancaster, PA",https://lbcchargers.com/index.aspx?path=baseball,https://lbcchargers.com/sports/baseball/roster
+Lancaster Bible College,D3,North Eastern Athletic Conference,PA,"Lancaster, PA",https://lbcchargers.com/index.aspx?path=baseball,https://lbcchargers.com/roster.aspx?path=baseball
 Lasell University,D3,Great Northeast Athletic Conference,MA,"Newton, MA",https://laserpride.lasell.edu/sports/bsb/index,https://laserpride.lasell.edu/sports/bsb/2020-21/roster
-Lawrence University,D3,Midwest Conference,WI,"Appleton, WI",http://vikings.lawrence.edu/sports/bsb/index,http://vikings.lawrence.edu/sports/bsb/2020-21/roster
+Lawrence University,D3,Midwest Conference,WI,"Appleton, WI",http://vikings.lawrence.edu/sports/bsb/index,https://vikings.lawrence.edu/sports/baseball/roster
 LeTourneau University,D3,American Southwest Conference,TX,"Longview, TX",https://letuathletics.com/index.aspx?path=baseball,https://letuathletics.com/sports/baseball/roster
 Lebanon Valley College,D3,Middle Atlantic Conference,PA,"Annville, PA",https://godutchmen.com/index.aspx?path=baseball,https://godutchmen.com/sports/baseball/roster
 Lehman College,D3,City University of New York Athletic Conference,NY,"The Bronx, NY",https://lehmanathletics.com/index.aspx?path=baseball,https://lehmanathletics.com/sports/baseball/roster
@@ -744,14 +744,14 @@ Marymount University,D3,Atlantic East Conference,VA,"Arlington, VA",https://www.
 Maryville College,D3,USA South Athletic Conference,TN,"Maryville, TN",https://www.mcscots.com/sports/bsb/index,https://www.mcscots.com/sports/bsb/2020-21/roster
 Marywood University,D3,Atlantic East Conference,PA,"Scranton, PA",https://marywoodpacers.com/index.aspx?path=baseball,https://marywoodpacers.com/sports/baseball/roster
 Massachusetts College of Liberal Arts,D3,Massachusetts State Collegiate Athletic Conference,MA,"North Adams, MA",http://athletics.mcla.edu/sports/bsb/index,http://athletics.mcla.edu/sports/bsb/2020-21/roster
-Massachusetts Institute of Technology,D3,New England Women's and Men's Athletic Conference,MA,"Cambridge, MA",https://www.mitathletics.com/sports/m-basebl/index,https://www.mitathletics.com/sports/m-basebl/roster
+Massachusetts Institute of Technology,D3,New England Women's and Men's Athletic Conference,MA,"Cambridge, MA",https://www.mitathletics.com/sports/m-basebl/index,https://www.mitathletics.com/sports/m-basebl/2020-21/roster
 Massachusetts Maritime Academy,D3,Massachusetts State Collegiate Athletic Conference,MA,"Buzzards Bay, MA",https://www.mmabucs.com/sports/bsb/index,https://www.mmabucs.com/sports/bsb/2020-21/roster
 McDaniel College,D3,Centennial Conference,MD,"Westminster, MD",https://www.mcdanielathletics.com/sports/bsb/index,https://www.mcdanielathletics.com/sports/bsb/2020-21/roster
 McMurry University,D3,American Southwest Conference,TX,"Abilene, TX",https://mcmurrysports.com/index.aspx?path=baseball,https://mcmurrysports.com/sports/baseball/roster
 Medaille College,D3,Allegheny Mountain Collegiate Conference,NY,"Buffalo, NY",https://medaillesports.com/index.aspx?path=baseball,https://medaillesports.com/sports/baseball/roster
 Messiah College,D3,Middle Atlantic Conference,PA,"Mechanicsburg, PA",https://gomessiah.com/index.aspx?path=baseball,https://gomessiah.com/sports/baseball/roster
 Methodist University,D3,USA South Athletic Conference,NC,"Fayetteville, NC",https://mumonarchs.com/index.aspx?path=baseball,https://mumonarchs.com/sports/baseball/roster
-Middlebury College,D3,New England Small College Athletic Conference,VT,"Mddlebury, VT",https://athletics.middlebury.edu/sports/bsb/index,https://athletics.middlebury.edu/sports/bsb/2020-21/roster
+Middlebury College,D3,New England Small College Athletic Conference,VT,"Mddlebury, VT",https://athletics.middlebury.edu/sports/bsb/index,https://athletics.middlebury.edu/sports/baseball/roster
 Millikin University,D3,College Conference of Illinois & Wisconsin,IL,"Decatur, IL",https://athletics.millikin.edu/index.aspx?path=baseball,https://athletics.millikin.edu/sports/baseball/roster
 Millsaps College,D3,Southern Athletic Association,MS,"Jackson, MS",https://gomajors.com/index.aspx?path=baseball,https://gomajors.com/sports/baseball/roster
 Milwaukee School of Engineering,D3,Northern Athletics Collegiate Conference,WI,"Milwaukee, WI",http://www.go-raiders.com/sports/bsb/index,http://www.go-raiders.com/sports/bsb/2020-21/roster
@@ -797,14 +797,14 @@ Pfeiffer University,D3,USA South Athletic Conference,NC,"Misenheimer, NC",https:
 Piedmont College,D3,USA South Athletic Conference,GA,"Demorest, GA",https://piedmontlions.com/index.aspx?path=baseball,https://piedmontlions.com/sports/baseball/roster
 Pine Manor College,D3,Capital Athletic Conference Inc.,MA,"Chestnut Hill, MA",https://pmcathletics.com/sports/bsb/index,https://pmcathletics.com/sports/bsb/2020-21/roster
 Plattsburgh State University of New York,D3,State University of New York Athletic Conference,NY,"Plattsburgh, NY",https://gocardinalsports.com/index.aspx?path=baseball,https://gocardinalsports.com/sports/baseball/roster
-Plymouth State University,D3,Little East Conference,NH,"Plymouth, NH",http://athletics.plymouth.edu/sports/bsb/index,http://athletics.plymouth.edu/sports/bsb/2020-21/roster
+Plymouth State University,D3,Little East Conference,NH,"Plymouth, NH",http://athletics.plymouth.edu/sports/bsb/index,https://athletics.plymouth.edu/sports/baseball/roster
 Pomona-Pitzer Colleges,D3,Southern California Intercollegiate Athletic Conference,CA,"Claremont, CA",https://www.sagehens.com/sports/bsb/index,https://www.sagehens.com/sports/bsb/2020-21/roster
 Principia College,D3,St. Louis Intercollegiate Athletic Conference,IL,"Elsah, IL",https://principiaathletics.com/index.aspx?path=baseball,https://principiaathletics.com/sports/baseball/roster
 "Purchase College, State University of New York",D3,Skyline Conference,NY,"Purchase, NY",https://www.purchasecollegeathletics.com/index.aspx?path=baseball,https://www.purchasecollegeathletics.com/sports/baseball/roster
 Ramapo College,D3,New Jersey Athletic Conference,NJ,"Mahwah, NJ",https://ramapoathletics.com/index.aspx?path=baseball,https://ramapoathletics.com/sports/baseball/roster
 Randolph-Macon College,D3,Old Dominion Athletic Conference,VA,"Ashland, VA",https://www.rmcathletics.com/sports/bsb/index,https://www.rmcathletics.com/sports/bsb/2020-21/roster
 Rensselaer Polytechnic Institute,D3,Liberty League,NY,"Troy, NY",https://rpiathletics.com/index.aspx?path=baseball,https://rpiathletics.com/sports/baseball/roster
-Rhode Island College,D3,Little East Conference,RI,"Providence, RI",https://goanchormen.com/sports/bsb/index,https://goanchormen.com/sports/bsb/2020-21/roster
+Rhode Island College,D3,Little East Conference,RI,"Providence, RI",https://goanchormen.com/sports/bsb/index,https://goanchormen.com/sports/baseball/roster
 Rhodes College,D3,Southern Athletic Association,TN,"Memphis, TN",https://rhodeslynx.com/index.aspx?path=baseball,https://rhodeslynx.com/sports/baseball/roster
 Ripon College,D3,Midwest Conference,WI,"Ripon, WI",https://riponredhawks.com/index.aspx?path=baseball,https://riponredhawks.com/sports/baseball/roster
 Rivier University,D3,Great Northeast Athletic Conference,NH,"Nashua, NH",https://www.rivierathletics.com/sports/bsb/index,https://www.rivierathletics.com/sports/bsb/2020-21/roster
@@ -828,7 +828,7 @@ Shenandoah University,D3,Old Dominion Athletic Conference,VA,"Winchester, VA",ht
 Simpson College,D3,American Rivers Conference,IA,"Indianola, IA",http://www.simpsonathletics.com/sports/bsb/index,http://www.simpsonathletics.com/sports/bsb/2020-21/roster
 Skidmore College,D3,Liberty League,NY,"Saratoga Springs, NY",https://skidmoreathletics.com/index.aspx?path=baseball,https://skidmoreathletics.com/sports/baseball/roster
 Southern Virginia University,D3,Capital Athletic Conference Inc.,VA,"Buena Vista, VA",http://athletics.svu.edu/sports/bsb/index,http://athletics.svu.edu/sports/bsb/2020-21/roster
-Southwestern University,D3,Southern Collegiate Athletic Conference,TX,"Georgetown, TX",https://www.southwesternpirates.com/sports/m-basebl/index,https://www.southwesternpirates.com/sports/m-basebl/roster
+Southwestern University,D3,Southern Collegiate Athletic Conference,TX,"Georgetown, TX",https://www.southwesternpirates.com/sports/m-basebl/index,https://www.southwesternpirates.com/sports/m-basebl/2020-21/roster
 Spalding University,D3,St. Louis Intercollegiate Athletic Conference,KY,"Louisville, KY",https://spaldingathletics.com/index.aspx?path=baseball,https://spaldingathletics.com/sports/baseball/roster
 Springfield College,D3,New England Women's and Men's Athletic Conference,MA,"Springfield, MA",https://springfieldcollegepride.com/sports/bsb/index,https://springfieldcollegepride.com/sports/bsb/2020-21/roster
 St. John Fisher College,D3,Empire 8 Athletic Conference,NY,"Rochester, NY",https://athletics.sjfc.edu/index.aspx?path=baseball,https://athletics.sjfc.edu/sports/baseball/roster
@@ -836,8 +836,8 @@ St. John's University,D3,Minnesota Intercollegiate Athletic Conference,MN,"Colle
 "St. Joseph's College, Brooklyn",D3,Skyline Conference,NY,"Brooklyn, NY",http://www.sjcbears.com/sports/bsb/index,http://www.sjcbears.com/sports/bsb/2020-21/roster
 "St. Joseph's College, Long Island",D3,Skyline Conference,NY,"Patchogue, NY",https://www.sjcgoldeneagles.com/sports/bsb/index,https://www.sjcgoldeneagles.com/sports/bsb/2020-21/roster
 St. Lawrence University,D3,Liberty League,NY,"Canton, NY",https://saintsathletics.com/index.aspx?path=baseball,https://saintsathletics.com/sports/baseball/roster
-St. Mary's College of Maryland,D3,Capital Athletic Conference Inc.,MD,"St. Marys City, MD",https://www.smcmathletics.com/sports/bsb/index,https://www.smcmathletics.com/sports/bsb/2020-21/roster
-St. Norbert College,D3,Northern Athletics Collegiate Conference,WI,"De Pere, WI",https://www.snc.edu/athletics/baseball/,https://www.snc.edu/athletics/baseball/roster
+St. Mary's College of Maryland,D3,Capital Athletic Conference Inc.,MD,"St. Marys City, MD",https://www.smcmathletics.com/sports/bsb/index,https://smcmathletics.com/sports/baseball/roster
+St. Norbert College,D3,Northern Athletics Collegiate Conference,WI,"De Pere, WI",https://www.snc.edu/athletics/baseball/,https://athletics.snc.edu/sports/baseball/roster
 St. Olaf College,D3,Minnesota Intercollegiate Athletic Conference,MN,"Northfield, MN",https://athletics.stolaf.edu/index.aspx?path=baseball,https://athletics.stolaf.edu/sports/baseball/roster
 State University College at Old Westbury,D3,Skyline Conference,NY,"Old Westbury, NY",https://www.oldwestburypanthers.com/index.aspx?path=baseball,https://www.oldwestburypanthers.com/sports/baseball/roster
 State University of New York Maritime College,D3,Skyline Conference,NY,"The Bronx, NY",https://maritimeathletics.com/sports/baseball,https://maritimeathletics.com/sports/baseball/roster
@@ -862,14 +862,14 @@ The College of St. Scholastica,D3,Minnesota Intercollegiate Athletic Conference,
 The College of Wooster,D3,North Coast Athletic Conference,OH,"Wooster, OH",https://www.woosterathletics.com/sports/bsb/index,https://www.woosterathletics.com/sports/bsb/2020-21/roster
 The State University of New York at Fredonia,D3,State University of New York Athletic Conference,NY,"Fredonia, NY",https://fredoniabluedevils.com/index.aspx?path=baseball,https://fredoniabluedevils.com/sports/baseball/roster
 Thiel College,D3,Presidents' Athletic Conference,PA,"Greenville, PA",https://thielathletics.com/index.aspx?path=baseball,https://thielathletics.com/sports/baseball/roster
-Thomas College,D3,North Atlantic Conference,ME,"Waterville, ME",http://athletics.thomas.edu/sports/bsb/index,http://athletics.thomas.edu/sports/bsb/2020-21/roster
-Transylvania University,D3,Heartland Collegiate Athletic Conference,KY,"Lexington, KY",https://www.transysports.com/sports/bsb/index,https://www.transysports.com/sports/bsb/2020-21/roster
+Thomas College,D3,North Atlantic Conference,ME,"Waterville, ME",http://athletics.thomas.edu/sports/bsb/index,https://athletics.thomas.edu/sports/baseball/roster
+Transylvania University,D3,Heartland Collegiate Athletic Conference,KY,"Lexington, KY",https://www.transysports.com/sports/bsb/index,https://www.transysports.com/sports/baseball/roster
 Trine University,D3,Michigan Intercollegiate Athletic Association,IN,"Angola, IN",https://www.trinethunder.com/sports/bsb/index,https://www.trinethunder.com/sports/bsb/2020-21/roster
-Trinity College,D3,New England Small College Athletic Conference,CT,"Hartford, CT",https://www.bantamsports.com/sports/bsb/index,https://www.bantamsports.com/sports/bsb/2020-21/roster
+Trinity College,D3,New England Small College Athletic Conference,CT,"Hartford, CT",https://www.bantamsports.com/sports/bsb/index,https://bantamsports.com/sports/baseball/roster
 Trinity University,D3,Southern Collegiate Athletic Conference,TX,"San Antonio, TX",https://www.trinitytigers.com/sports/bsb/index,https://www.trinitytigers.com/sports/bsb/2020-21/roster
 Tufts University,D3,New England Small College Athletic Conference,MA,"Medford, MA",https://www.gotuftsjumbos.com/sports/bsb/index,https://www.gotuftsjumbos.com/sports/bsb/2020-21/roster
 U.S. Coast Guard Academy,D3,New England Women's and Men's Athletic Conference,CT,"New London, CT",http://www.uscgasports.com/sports/bsb/index,http://www.uscgasports.com/sports/bsb/2020-21/roster
-U.S. Merchant Marine Academy,D3,Skyline Conference,NY,"Kings Point, NY",https://www.kpmariners.com/sports/bsb/index,https://www.kpmariners.com/sports/bsb/2020-21/roster
+U.S. Merchant Marine Academy,D3,Skyline Conference,NY,"Kings Point, NY",https://www.kpmariners.com/sports/bsb/index,http://usmmasports.com/sports/baseball/roster?path=baseball
 Union College,D3,Liberty League,NY,"Schenectady, NY",https://unionathletics.com/index.aspx?path=baseball,https://unionathletics.com/sports/baseball/roster
 University of Chicago,D3,Midwest Conference,IL,"Chicago, IL",https://athletics.uchicago.edu/sports/bsb/index,https://athletics.uchicago.edu/sports/bsb/2020-21/roster
 University of Dallas,D3,Southern Collegiate Athletic Conference,TX,"Irving, TX",https://www.udallasathletics.com/sports/bsb/index,https://www.udallasathletics.com/sports/bsb/2020-21/roster
@@ -880,19 +880,19 @@ University of Maine at Presque Isle,D3,North Atlantic Conference,ME,"Presque Isl
 "University of Maine, Farmington",D3,North Atlantic Conference,ME,"Farmington, ME",https://athletics.umf.maine.edu/sports/bsb/index,https://athletics.umf.maine.edu/sports/bsb/2020-21/roster
 University of Mary Hardin-Baylor,D3,American Southwest Conference,TX,"Belton, TX",https://cruathletics.com/roster.aspx?path=baseball,https://cruathletics.com/sports/baseball/roster
 University of Mary Washington,D3,Capital Athletic Conference Inc.,VA,"Fredericksburg, VA",https://umweagles.com/sports/bsb/index,https://umweagles.com/sports/bsb/2020-21/roster
-University of Massachusetts Boston,D3,Little East Conference,MA,"Boston, MA",https://www.beaconsathletics.com/sports/m-basebl/index,https://www.beaconsathletics.com/sports/m-basebl/roster
-"University of Massachusetts, Dartmouth",D3,Little East Conference,MA,"Dartmouth, MA",https://www.corsairathletics.com/sports/m-basebl/index,https://www.corsairathletics.com/sports/m-basebl/roster
+University of Massachusetts Boston,D3,Little East Conference,MA,"Boston, MA",https://www.beaconsathletics.com/sports/m-basebl/index,https://www.beaconsathletics.com/sports/baseball/roster
+"University of Massachusetts, Dartmouth",D3,Little East Conference,MA,"Dartmouth, MA",https://www.corsairathletics.com/sports/m-basebl/index,https://corsairathletics.com/sports/baseball/roster
 "University of Minnesota, Morris",D3,Upper Midwest Athletic Conference,MN,"Morris, MN",https://morriscougars.com/index.aspx?path=baseball,https://morriscougars.com/sports/baseball/roster
 University of Mount Union,D3,Ohio Athletic Conference,OH,"Alliance, OH",http://athletics.mountunion.edu/sports/bsb/index,http://athletics.mountunion.edu/sports/bsb/2020-21/roster
-University of Northwestern-St. Paul,D3,Upper Midwest Athletic Conference,MN,"Roseville, MN",https://unweagles.com/index.aspx?path=baseball,https://unweagles.com/sports/baseball/roster
+University of Northwestern-St. Paul,D3,Upper Midwest Athletic Conference,MN,"Roseville, MN",https://unweagles.com/index.aspx?path=baseball,https://unweagles.com/roster.aspx?path=baseball
 "University of Pittsburgh, Bradford",D3,Allegheny Mountain Collegiate Conference,PA,"Bradford, PA",http://athletics.pittbradford.org/sports/bsb/index,http://athletics.pittbradford.org/sports/bsb/2020-21/roster
 "University of Pittsburgh, Greensburg",D3,Allegheny Mountain Collegiate Conference,PA,"Greensburg, PA",https://pittgreensburgathletics.com/index.aspx?path=baseball,https://pittgreensburgathletics.com/sports/baseball/roster
 University of Puget Sound,D3,Northwest Conference,WA,"Tacoma, WA",https://www.loggerathletics.com/sports/bsb/index,https://www.loggerathletics.com/sports/bsb/2020-21/roster
 University of Redlands,D3,Southern California Intercollegiate Athletic Conference,CA,"Redlands, CA",https://www.goredlands.com/sports/bsb/index,https://www.goredlands.com/sports/bsb/2020-21/roster
 University of Rochester,D3,Liberty League,NY,"Rochester, NY",https://uofrathletics.com/index.aspx?path=baseball,https://uofrathletics.com/sports/baseball/roster
 University of Scranton,D3,Landmark Conference,PA,"Scranton, PA",https://athletics.scranton.edu/sports/bsb/index,https://athletics.scranton.edu/sports/bsb/2020-21/roster
-University of Southern Maine,D3,Little East Conference,ME,"Gorham, ME",https://www.southernmainehuskies.com/sports/bsb/index,https://www.southernmainehuskies.com/sports/bsb/2020-21/roster
-"University of St. Thomas, Minnesota",D3,Minnesota Intercollegiate Athletic Conference,MN,"St. Paul, MN",https://www.tommiesports.com/sports/bsb/index,https://www.tommiesports.com/sports/bsb/2020-21/roster
+University of Southern Maine,D3,Little East Conference,ME,"Gorham, ME",https://www.southernmainehuskies.com/sports/bsb/index,https://southernmainehuskies.com/sports/baseball-stats/roster
+"University of St. Thomas, Minnesota",D3,Minnesota Intercollegiate Athletic Conference,MN,"St. Paul, MN",https://www.tommiesports.com/sports/bsb/index,https://www.tommiesports.com/sports/baseball/roster
 "University of St. Thomas, Texas",D3,Southern Collegiate Athletic Conference,TX,"Houston, TX",http://www.ustcelts.com/sport/0/13.php,https://www.ustcelts.com/sports/bsb/2020-21/roster
 University of Texas at Dallas,D3,American Southwest Conference,TX,"Richardson, TX",https://utdcomets.com/index.aspx?path=baseball,https://utdcomets.com/sports/baseball/roster
 University of Valley Forge,D3,Colonial States Athletic Conference,PA,"Phoenixville, PA",https://uvfpatriots.com/index.aspx?path=baseball,https://uvfpatriots.com/sports/baseball/roster
@@ -907,11 +907,11 @@ University of the Ozarks,D3,American Southwest Conference,AR,"Clarksville, AR",h
 Ursinus College,D3,Centennial Conference,PA,"Collegeville, PA",https://www.ursinusathletics.com/sports/bsb/index,https://www.ursinusathletics.com/sports/bsb/2020-21/roster
 Utica College,D3,Empire 8 Athletic Conference,NY,"Utica, NY",https://ucpioneers.com/index.aspx,https://ucpioneers.com/sports/baseball/roster
 Vassar College,D3,Liberty League,NY,"Poughkeepsie, NY",https://www.vassarathletics.com/index.aspx?path=baseball,https://www.vassarathletics.com/sports/baseball/roster
-Virginia Wesleyan University,D3,Old Dominion Athletic Conference,VA,"Virginia Beach, VA",https://www.vwuathletics.com/sports/bsb/index,https://www.vwuathletics.com/sports/bsb/2020-21/roster
+Virginia Wesleyan University,D3,Old Dominion Athletic Conference,VA,"Virginia Beach, VA",https://www.vwuathletics.com/sports/bsb/index,https://vwuathletics.com/sports/baseball/roster
 Wabash College,D3,North Coast Athletic Conference,IN,"Crawfordsville, IN",https://sports.wabash.edu/sports/baseball,https://sports.wabash.edu/sports/baseball/roster
 Wartburg College,D3,American Rivers Conference,IA,"Waverly, IA",https://go-knights.net/index.aspx?path=baseball,https://go-knights.net/sports/baseball/roster
 Washington & Jefferson College,D3,Presidents' Athletic Conference,PA,"Washington, PA",https://gopresidents.com/index.aspx?path=baseball,https://gopresidents.com/sports/baseball/roster
-Washington & Lee University,D3,Old Dominion Athletic Conference,VA,"Lexington, VA",https://www.generalssports.com/sports/bsb/index,https://www.generalssports.com/sports/bsb/2020-21/roster
+Washington & Lee University,D3,Old Dominion Athletic Conference,VA,"Lexington, VA",https://www.generalssports.com/sports/bsb/index,https://generalssports.com/sports/baseball/roster
 Washington College,D3,Centennial Conference,MD,"Chestertown, MD",https://www.washingtoncollegesports.com/sports/bsb/index,https://www.washingtoncollegesports.com/sports/bsb/2020-21/roster
 Washington University in St. Louis,D3,University Athletic Association,MO,"St. Louis, MD",https://www.washubears.com/sports/bsb/index,https://www.washubears.com/sports/bsb/2020-21/roster
 Waynesburg University,D3,Presidents' Athletic Conference,PA,"Waynesburg, PA",https://waynesburgsports.com/index.aspx?path=baseball,https://waynesburgsports.com/sports/baseball/roster
@@ -919,12 +919,12 @@ Webster University,D3,St. Louis Intercollegiate Athletic Conference,MO,"Webster 
 Wells College,D3,North Eastern Athletic Conference,NY,"Aurora, NY",https://www.wells-express.com/sports/bsb/index,https://www.wells-express.com/sports/bsb/2020-21/roster
 Wentworth Institute of Technology,D3,Commonwealth Coast Conference,MA,"Boston, MA",https://www.wentworthathletics.com/sports/bsb/index,https://www.wentworthathletics.com/sports/bsb/2020-21/roster
 Wesley College,D3,Atlantic East Conference,DE,"Dover, DE",https://gowesleyathletics.com/sports/bsb/index,https://gowesleyathletics.com/sports/bsb/2020-21/roster
-Wesleyan University,D3,New England Small College Athletic Conference,CT,"Middletown, CT",https://athletics.wesleyan.edu/sports/bsb/index,https://athletics.wesleyan.edu/sports/bsb/2020-21/roster
-Western Connecticut State University,D3,Little East Conference,CT,"Danbury, CT",https://westconnathletics.com/sports/bsb/index,https://westconnathletics.com/sports/bsb/2020-21/roster
+Wesleyan University,D3,New England Small College Athletic Conference,CT,"Middletown, CT",https://athletics.wesleyan.edu/sports/bsb/index,https://athletics.wesleyan.edu/sports/baseball/roster
+Western Connecticut State University,D3,Little East Conference,CT,"Danbury, CT",https://westconnathletics.com/sports/bsb/index,https://westconnathletics.com/sports/baseball/roster
 Western New England University,D3,Commonwealth Coast Conference,MA,"Springfield, MA",http://www.wnegoldenbears.com/sports/bsb/index,http://www.wnegoldenbears.com/sports/bsb/2020-21/roster
 Westfield State University,D3,Massachusetts State Collegiate Athletic Conference,MA,"Westfield, MA",https://www.westfieldstateowls.com/sports/bsb/index,https://www.westfieldstateowls.com/sports/bsb/2020-21/roster
 "Westminster College, Missouri",D3,St. Louis Intercollegiate Athletic Conference,MO,"Fulton, MO",http://wcbluejays.com/sports/bsb/index,http://wcbluejays.com/sports/bsb/2020-21/roster
-"Westminster College, Pennsylvania",D3,Presidents' Athletic Conference,PA,"Wilmington, PA",https://athletics.westminster.edu/index.aspx?path=baseball,https://athletics.westminster.edu/sports/baseball/roster
+"Westminster College, Pennsylvania",D3,Presidents' Athletic Conference,PA,"Wilmington, PA",https://athletics.westminster.edu/index.aspx?path=baseball,https://athletics.westminster.edu/roster.aspx?path=baseball
 Wheaton College,D3,College Conference of Illinois & Wisconsin,IL,"Wheaton, IL",https://athletics.wheaton.edu/index.aspx?path=baseball,https://athletics.wheaton.edu/sports/baseball/roster
 Wheaton College,D3,New England Women's and Men's Athletic Conference,MA,"Norton, MA",https://athletics.wheatoncollege.edu/sports/bsb/index,https://athletics.wheatoncollege.edu/sports/bsb/2020-21/roster
 Whitman College,D3,Northwest Conference,WA,"Walla Walla, WA",https://athletics.whitman.edu/index.aspx?path=baseball,https://athletics.whitman.edu/sports/baseball/roster
@@ -933,9 +933,9 @@ Whitworth University,D3,Northwest Conference,WA,"Spokane, WA",https://www.whitwo
 Widener University,D3,Middle Atlantic Conference,PA,"Chester, PA",https://widenerpride.com/index.aspx?path=baseball,https://widenerpride.com/sports/baseball/roster
 Wilkes University,D3,Middle Atlantic Conference,PA,"Wilkes-Barre, PA",https://gowilkesu.com/index.aspx?path=baseball,https://gowilkesu.com/sports/baseball/roster
 Willamette University,D3,Northwest Conference,OR,"Salem, OR",https://www.wubearcats.com/sports/bsb/index,https://www.wubearcats.com/sports/bsb/2020-21/roster
-William Paterson University,D3,New Jersey Athletic Conference,NJ,"Wayne, NJ",https://www.wpupioneers.com/index.aspx?path=baseball,https://www.wpupioneers.com/sports/baseball/roster
+William Paterson University,D3,New Jersey Athletic Conference,NJ,"Wayne, NJ",https://www.wpupioneers.com/index.aspx?path=baseball,https://www.wpupioneers.com/roster.aspx?path=baseball
 William Peace University,D3,USA South Athletic Conference,NC,"Raleigh, NC",https://gopeacepacers.com/index.aspx?path=baseball,https://gopeacepacers.com/sports/baseball/roster
-Williams College,D3,New England Small College Athletic Conference,MA,"Williamstown, MA",https://ephsports.williams.edu/sports/bsb/index,https://ephsports.williams.edu/sports/bsb/2020-21/roster
+Williams College,D3,New England Small College Athletic Conference,MA,"Williamstown, MA",https://ephsports.williams.edu/sports/bsb/index,https://ephsports.williams.edu/sports/baseball/roster
 Wilmington College,D3,Ohio Athletic Conference,OH,"Wilmington, OH",http://www.wilmingtonquakers.com/sports/bsb/index,http://www.wilmingtonquakers.com/sports/bsb/2020-21/roster
 Wilson College,D3,Colonial States Athletic Conference,PA,"Chambersburg, PA",https://wilsonphoenix.com/index.aspx?path=baseball,https://wilsonphoenix.com/sports/baseball/roster
 Wisconsin Lutheran College,D3,Northern Athletics Collegiate Conference,WI,"Milwaukee, WI",https://www.wlcsports.com/sports/bsb/index,https://www.wlcsports.com/sports/bsb/2020-21/roster
