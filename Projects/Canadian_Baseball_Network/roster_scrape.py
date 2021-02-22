@@ -14,7 +14,7 @@ def get_team_websites():
     instance = 'wixcode-pub.b1c45a24c1814ed732fc488a1b3ad90c65889da3.eyJpbnN0YW5jZUlkIjoiZjFiMGI3NjUtMzM1OC00Mjc1LThkODItY2NmZWJiNTAyMGIwIiwiaHRtbFNpdGVJZCI6IjFkNmQxYzg5LTRlNTAtNGNiMy1hM2M3LTJkNzFmYjg0MDU5NCIsInVpZCI6bnVsbCwicGVybWlzc2lvbnMiOm51bGwsImlzVGVtcGxhdGUiOmZhbHNlLCJzaWduRGF0ZSI6MTYxMzY1OTY1MzE2NiwiYWlkIjoiMjVhOTNlMTAtM2NiYS00Y2IzLWExYTItZmRiMjEwY2U2OWE4IiwiYXBwRGVmSWQiOiJDbG91ZFNpdGVFeHRlbnNpb24iLCJpc0FkbWluIjpmYWxzZSwibWV0YVNpdGVJZCI6IjA3NzA4OGEwLWU2ODAtNDg4Ni1hMWY4LThmMjYxMGZjMDQwZiIsImNhY2hlIjpudWxsLCJleHBpcmF0aW9uRGF0ZSI6bnVsbCwicHJlbWl1bUFzc2V0cyI6IlNob3dXaXhXaGlsZUxvYWRpbmcsQWRzRnJlZSxIYXNEb21haW4sSGFzRUNvbW1lcmNlIiwidGVuYW50IjpudWxsLCJzaXRlT3duZXJJZCI6IjczODNhZGJlLTE3OGUtNDhhNS1hYTFiLTYyN2JmMTA1MWJmYiIsImluc3RhbmNlVHlwZSI6InB1YiIsInNpdGVNZW1iZXJJZCI6bnVsbH0='
     viewMode = 'site'
     params = {'gridAppId': gridAppId, 'instance': instance, 'viewMode': viewMode}
-    
+
     # initalize dataframe
     schools_df = pd.DataFrame(columns=['title', 'division', 'conference', 'state', 'location', 'link'])
     schools_df
@@ -94,7 +94,7 @@ def get_roster_pages(schools_df, csv_export = False):
     schools_df['roster_link'] = np.where(schools_df['title'] == 'University of St. Thomas, Texas', 'https://www.ustcelts.com/sports/bsb/2020-21/roster',schools_df['roster_link'])
     schools_df['roster_link'] = np.where(schools_df['title'] == 'Utica College', 'https://ucpioneers.com/sports/baseball/roster', schools_df['roster_link'])
 
-    missing_roster_link_df = schools_df[schools_df['roster_link'] == '']
+    # missing_roster_link_df = schools_df[schools_df['roster_link'] == '']
     # display(missing_roster_link_df.style.set_properties(subset=['link'], **{'width-min': '500px'}))
 
     # Export to CSV
@@ -133,11 +133,11 @@ def filter_canadians(df):
     if hometown_column != '':
         df['__hometown_column'] = hometown_column
         searchfor = ['canada', 'ontario', 'quebec', 'nova scotia', 'new brunswick', 'manitoba', 'british columbia', 'prince edward island', 'saskatchewan', 'alberta', 'newfoundland']
-        return df[df[hometown_column].str.contains('|'.join(searchfor), case=False)]
+        return df[df[hometown_column].str.contains('|'.join(searchfor), case=False, na=False)]
     return pd.DataFrame()
 
 
-def iterate_over_schools(schools_df, debug = True):
+def iterate_over_schools(schools_df, outer=True, debug=True):
     # Start timer
     start_time = time.time()
 
@@ -153,7 +153,7 @@ def iterate_over_schools(schools_df, debug = True):
     success_count = 0
     empty_roster_count = 0
     fail_count = 0
-    errors_dict = dict()
+    fail_index_list = list()
 
     # Set header for requests
     header = {
@@ -168,6 +168,7 @@ def iterate_over_schools(schools_df, debug = True):
     # Iterate
     for index, school in schools_df.iterrows():
         print_row = '| {} | {} | {} | {} | {} |'.format(str(index).ljust(index_col_length-2), school['title'].ljust(title_col_length-2), '-'*(players_col_length-2), '-'*(canadians_col_length-2), school['roster_link'].ljust(roster_link_col_length-2))
+        error_message = ''
         try:
             df = read_roster(school, header)
             canadians_df = filter_canadians(df)
@@ -181,8 +182,12 @@ def iterate_over_schools(schools_df, debug = True):
             else:
                 # Roster exists but with no players
                 empty_roster_count += 1
-        except Exception, e:
-            errors_dict[school['title'], e]
+        except Exception as e:
+            error_message = str(e)
+        if error_message != '':
+            if outer == False:
+                print_row = '| {} | {} | {} | {} | {}'.format(str(index).ljust(index_col_length-2), school['title'].ljust(title_col_length-2), '-'*(players_col_length-2), '-'*(canadians_col_length-2), school['roster_link'] + ': {}'.format(error_message))
+            fail_index_list.append(index)
             fail_count += 1
         if debug == True:
             print(print_row)
@@ -190,8 +195,13 @@ def iterate_over_schools(schools_df, debug = True):
 
     # Print results
     print('\n{} successes... {} empty rosters... {} failures\n'.format(str(success_count), str(empty_roster_count), str(fail_count)))
-    print('\n--- Total time: {} minutes ---'.format(str(round((time.time() - start_time) / 60, 1))))
-    return roster_df_list, canadians_df_list, errors_dict
+    if outer == True:
+        print('\nRetrying the {} failures...'.format(str(fail_count)))
+        # print('fail_index_list: ' + ', '.join([str(i) for i in fail_index_list]))
+        # See which failures are legit and which are flukes
+        iterate_over_schools(schools_df[schools_df.index.isin(fail_index_list)], outer = False, debug = debug)
+        print('\n--- Total time: {} minutes ---'.format(str(round((time.time() - start_time) / 60, 1))))
+    return roster_df_list, canadians_df_list
 
 
 def print_cols(roster_df_list):
