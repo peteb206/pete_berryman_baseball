@@ -119,22 +119,27 @@ def read_roster(school, header):
     response_has_table = len(html) > 0
     if response_has_table == True:
         df = read_roster_norm(html)
-    df['__school'] = school['title']
-    df['__division'] = school['division']
+        df['__school'] = school['title']
+        df['__division'] = school['division']
+    else:
+        return str(response_text)
     return df
 
 
-def filter_canadians(df):
-    hometown_column = ''
-    for column in df.columns:
-        if column.lower().startswith('hom'):
-            hometown_column = column
-            break
-    if hometown_column != '':
-        df['__hometown_column'] = hometown_column
-        searchfor = ['canada', 'ontario', 'quebec', 'nova scotia', 'new brunswick', 'manitoba', 'british columbia', 'prince edward island', 'saskatchewan', 'alberta', 'newfoundland']
-        return df[df[hometown_column].str.contains('|'.join(searchfor), case=False, na=False)]
-    return pd.DataFrame()
+def filter_canadians(df, canada_strings):
+    out_list = list()
+    roster_dict_list = df.to_dict(orient='records')
+    index = 0
+    while index < len(roster_dict_list):
+        player = roster_dict_list[index]
+        for attr in player:
+            value = str(player[attr])
+            if any(canada_string.lower() in value.lower() for canada_string in canada_strings):
+                player['__hometown'] = value
+                out_list.append(player)
+                break
+        index += 1
+    return out_list
 
 
 def iterate_over_schools(schools_df, outer=True, debug=True):
@@ -154,6 +159,7 @@ def iterate_over_schools(schools_df, outer=True, debug=True):
     empty_roster_count = 0
     fail_count = 0
     fail_index_list = list()
+    canada_strings = ['canada', ', ontario', 'quebec', 'nova scotia', 'new brunswick', 'manitoba', 'british columbia', 'prince edward island', 'saskatchewan', 'alberta', 'newfoundland', ', b.c.', ', ont', ', alta.', ', man.', ', sask.']
 
     # Set header for requests
     header = {
@@ -163,7 +169,7 @@ def iterate_over_schools(schools_df, outer=True, debug=True):
 
     # Initialize roster_df_list and canadians_df_list
     roster_df_list = list()
-    canadians_df_list = list()
+    canadians_dict_list = list()
 
     # Iterate
     for index, school in schools_df.iterrows():
@@ -171,11 +177,18 @@ def iterate_over_schools(schools_df, outer=True, debug=True):
         error_message = ''
         try:
             df = read_roster(school, header)
-            canadians_df = filter_canadians(df)
-            # Add team's roster to list 
-            roster_df_list.append(df)
-            canadians_df_list.append(canadians_df)
-            print_row = print_row.replace('-'*(canadians_col_length-2), str(len(canadians_df.index)).center(canadians_col_length-2))
+            canadian_count = '0'
+            if type(df) == type(pd.DataFrame()): # Table(s) exist in HTML
+                # Add team's roster to list 
+                roster_df_list.append(df)
+                canadians_dicts = filter_canadians(df, canada_strings) # Get a list of table rows that seem to have a Canadian player
+                canadian_count = str(len(canadians_dicts))
+            elif type(df) == type(''): # No table(s) exist in HTML... search all text for certain strings
+                if any(canada_string.lower() in df.lower() for canada_string in canada_strings):
+                    canadian_count = '*****' # String of interest found
+            if canadian_count != '0':
+                canadians_dict_list.extend(canadians_dicts)
+            print_row = print_row.replace('-'*(canadians_col_length-2), canadian_count.center(canadians_col_length-2))
             print_row = print_row.replace('-'*(players_col_length-2), str(len(df.index)).center(players_col_length-2))
             if len(df.index) > 0:
                 success_count += 1
@@ -185,8 +198,7 @@ def iterate_over_schools(schools_df, outer=True, debug=True):
         except Exception as e:
             error_message = str(e)
         if error_message != '':
-            if outer == False:
-                print_row = '| {} | {} | {} | {} | {}'.format(str(index).ljust(index_col_length-2), school['title'].ljust(title_col_length-2), '-'*(players_col_length-2), '-'*(canadians_col_length-2), school['roster_link'] + ': {}'.format(error_message))
+            print_row = '| {} | {} | {} | {} | {}'.format(str(index).ljust(index_col_length-2), school['title'].ljust(title_col_length-2), '-'*(players_col_length-2), '-'*(canadians_col_length-2), school['roster_link'] + ': {}'.format(error_message))
             fail_index_list.append(index)
             fail_count += 1
         if debug == True:
@@ -194,19 +206,76 @@ def iterate_over_schools(schools_df, outer=True, debug=True):
     print(border_row)
 
     # Print results
-    print('\n{} successes... {} empty rosters... {} failures\n'.format(str(success_count), str(empty_roster_count), str(fail_count)))
+    print('\n{} successes... {} empty rosters... {} failures...\n'.format(str(success_count), str(empty_roster_count), str(fail_count)))
     if outer == True:
-        print('\nRetrying the {} failures...'.format(str(fail_count)))
+        # print('\nRetrying the {} failures...'.format(str(fail_count)))
         # print('fail_index_list: ' + ', '.join([str(i) for i in fail_index_list]))
         # See which failures are legit and which are flukes
-        iterate_over_schools(schools_df[schools_df.index.isin(fail_index_list)], outer = False, debug = debug)
+        # iterate_over_schools(schools_df[schools_df.index.isin(fail_index_list)], outer = False, debug = debug)
         print('\n--- Total time: {} minutes ---'.format(str(round((time.time() - start_time) / 60, 1))))
-    return roster_df_list, canadians_df_list
+    return roster_df_list, canadians_dict_list
 
 
 def print_cols(roster_df_list):
     players_df = pd.concat(roster_df_list, ignore_index=True)
-    all_columns = list(players_df.columns.values)
+    all_columns = [str(i) for i in list(players_df.columns.values)]
     all_columns.sort()
     for col in all_columns:
         print(col)
+
+
+def format_df(dict_list, schools_df):
+    new_dict_list = list()
+    for dictionary in dict_list:
+        new_dict = dict()
+        cols = ['name', 'position', 'b', 't', 'class', 'school', 'division', 'state', 'hometown', 'obj']
+        for col in cols:
+            new_dict['__' + col] = ''
+        new_dict['_first_name'] = ''
+        new_dict['_last_name'] = ''
+        for key, value in dictionary.items():
+            key_str = str(key).lower()
+            value_str = str(value)
+
+            # Set __class column
+            if key_str.startswith('cl') | key_str.startswith('y') | key_str.startswith('e') | ('year' in key_str):
+                new_dict['__class'] = value_str
+
+            # Set __name columns
+            elif ('first' in key_str) & ('last' not in key_str):
+                new_dict['_first_name'] = value_str
+            elif (key_str == 'last') | (('last' in key_str) & ('nam' in key_str)):
+                new_dict['_last_name'] = value_str
+            elif ('name' in key_str) | (key_str == 'player'):
+                new_dict['__name'] = value_str
+
+            # Set __position column
+            elif key_str.startswith('po'):
+                new_dict['__position'] = value_str.upper()
+
+            # Set __b and __t column
+            elif (key_str.startswith('b')) & (not key_str.startswith('bi')):
+                new_dict['__b'] = value_str[0].upper()
+                if 'T' in key:
+                    new_dict['__t'] = value_str[-1].upper()
+            elif (key_str == 't') | (key_str.startswith('throw')) | (key_str.startswith('t/')):
+                new_dict['__t'] = value_str[0].upper()
+                if 'B' in key:
+                    new_dict['__b'] = value_str[-1].upper()
+
+            # Inlcude __ keys
+            elif key_str.startswith('__'):
+                new_dict[key_str] = value_str
+
+            # Set __obj column if no useful keys
+            elif (key_str == '0') | (key_str == 'Unnamed: 0'):
+                new_dict['__obj'] = ' --- '.join(dictionary.values())
+        # Combine fist and last name if necessary
+        if (new_dict['__name'] == '') & (new_dict['_first_name'] != '') & (new_dict['_last_name'] != ''):
+            new_dict['__name'] = new_dict['_first_name'] + ' ' + new_dict['_last_name']
+        new_dict_list.append(new_dict)
+    canadians_df = pd.merge(pd.DataFrame(new_dict_list), schools_df, how='left', left_on=['__division','__school'], right_on=['division','title'])
+    canadians_df.rename(columns={'state':'__state'}, inplace=True)
+    canadians_df = canadians_df.loc[:, canadians_df.columns.str.startswith('__')]
+    canadians_df.columns = canadians_df.columns.str.lstrip('__')
+    return canadians_df[cols]
