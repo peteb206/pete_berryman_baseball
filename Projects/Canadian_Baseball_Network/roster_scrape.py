@@ -5,6 +5,45 @@ import re
 import json
 import numpy as np
 import time
+import logging
+import datetime
+
+
+# Set up logging
+logging.basicConfig(level=logging.INFO, format='%(message)s')
+global logger
+logger = logging.getLogger()
+logger.addHandler(logging.FileHandler('scraper.log', 'w'))
+
+
+def main(debug):
+    # Last run:
+    logger.info('Last run: ' + str(datetime.datetime.now().strftime("%B %d, %Y at %I:%M %p")))
+
+    # Get Team Websites
+    # Only applies for NCAA Divsion 1, NCAA Divsion 2, NCAA Division 3 and NAIA
+    # Re-run this if needed, but most roster links should now be in the CSV files
+    # schools_df = get_team_websites()
+    # schools_df
+
+    # Get Roster Pages
+    # Only applies for NCAA Divsion 1, NCAA Divsion 2, NCAA Division 3 and NAIA
+    # Re-run this if needed, but most roster links should now be in the CSV files
+    # schools_df = get_roster_pages(schools_df)
+    # schools_df
+
+    # Check Roster Sites
+    schools_df = pd.read_csv('roster_pages.csv')
+    df_lists = iterate_over_schools(schools_df, debug = debug)
+    roster_df_list = df_lists[0]
+    canadians_dict_list = df_lists[1]
+
+    # Periodically check all of the table columns found in the html to see if we are overlooking anything
+    # print_cols(roster_df_list)
+
+    # Format dictionaries to dataframe
+    canadians_df = format_df(canadians_dict_list, schools_df)
+    canadians_df.to_csv('canadians.csv', index=False)
 
 
 def get_team_websites():
@@ -85,14 +124,14 @@ def get_roster_pages(schools_df, csv_export = False):
 
     schools_df['roster_link_flg'] = schools_df['roster_link'] != ''
     value_counts = schools_df['roster_link_flg'].value_counts()
-    print('{} schools have a known roster URL, and {} schools have yet to be determined.'.format(value_counts[True], value_counts[False]))
+    logger.info('{} schools have a known roster URL, and {} schools have yet to be determined.'.format(value_counts[True], value_counts[False]))
 
     # Case 10: Manual Edits --- try to make this more computationally efficient eventually
     schools_df['roster_link'] = np.where(schools_df['title'] == 'Liberty University', 'https://www.liberty.edu/flames/index.cfm?PID=36959&teamID=1', schools_df['roster_link'])
     schools_df['roster_link'] = np.where(schools_df['title'] == 'Keystone College', 'https://www.gokcgiants.com/sports/baseball/roster', schools_df['roster_link'])
     schools_df['roster_link'] = np.where(schools_df['title'] == 'University of Dubuque', 'https://udspartans.com/sports/baseball/roster', schools_df['roster_link'])
     schools_df['roster_link'] = np.where(schools_df['title'] == 'University of St. Thomas, Texas', 'https://www.ustcelts.com/sports/bsb/2020-21/roster',schools_df['roster_link'])
-    schools_df['roster_link'] = np.where(schools_df['title'] == 'Utica College', 'https://ucpioneers.com/sports/baseball/roster', schools_df['roster_link'])
+    schools_df['roster_link'] = np.where(schools_df['title'] == 'Utica College', 'https://ucpioneecom/sports/baseball/roster', schools_df['roster_link'])
 
     # missing_roster_link_df = schools_df[schools_df['roster_link'] == '']
     # display(missing_roster_link_df.style.set_properties(subset=['link'], **{'width-min': '500px'}))
@@ -148,12 +187,12 @@ def iterate_over_schools(schools_df, outer=True, debug=True):
 
     # Print helpful info
     index_col_length, title_col_length, players_col_length, canadians_col_length, roster_link_col_length = 6, 52, 9, 11, 80
-    print('\nReading the rosters of {} schools...\nThis will take approximately {} minutes...\n'.format(str(len(schools_df.index)), str(int(round(len(schools_df.index) / 50, 0)))))
+    logger.info('\nReading the rosters of {} schools...\nThis will take approximately {} minutes...\n'.format(str(len(schools_df.index)), str(int(round(len(schools_df.index) / 50, 0)))))
     border_row = '|{}|{}|{}|{}|{}|'.format('-'*index_col_length, '-'*title_col_length, '-'*players_col_length, '-'*canadians_col_length, '-'*roster_link_col_length)
     header_row = '|{}|{}|{}|{}|{}|'.format('#'.center(index_col_length), 'school'.center(title_col_length), 'players'.center(players_col_length), 'canadians'.center(canadians_col_length), 'roster_link'.center(roster_link_col_length))
-    print(border_row)
-    print(header_row)
-    print(border_row)
+    logger.info(border_row)
+    logger.info(header_row)
+    logger.info(border_row)
 
     success_count = 0
     empty_roster_count = 0
@@ -173,7 +212,7 @@ def iterate_over_schools(schools_df, outer=True, debug=True):
 
     # Iterate
     for index, school in schools_df.iterrows():
-        print_row = '| {} | {} | {} | {} | {} |'.format(str(index).ljust(index_col_length-2), school['title'].ljust(title_col_length-2), '-'*(players_col_length-2), '-'*(canadians_col_length-2), school['roster_link'].ljust(roster_link_col_length-2))
+        print_row = '| {} | {} | {} | {} | {} |'.format(str(index).ljust(index_col_length-2), school['title'].ljust(title_col_length-2), '-'*(players_col_length-2), '-'*(canadians_col_length-2), str(school['roster_link']).ljust(roster_link_col_length-2))
         error_message = ''
         try:
             df = read_roster(school, header)
@@ -198,21 +237,21 @@ def iterate_over_schools(schools_df, outer=True, debug=True):
         except Exception as e:
             error_message = str(e)
         if error_message != '':
-            print_row = '| {} | {} | {} | {} | {}'.format(str(index).ljust(index_col_length-2), school['title'].ljust(title_col_length-2), '-'*(players_col_length-2), '-'*(canadians_col_length-2), school['roster_link'] + ': {}'.format(error_message))
+            print_row = '| {} | {} | {} | {} | {}'.format(str(index).ljust(index_col_length-2), school['title'].ljust(title_col_length-2), '-'*(players_col_length-2), '-'*(canadians_col_length-2), str(school['roster_link']) + ': {}'.format(error_message))
             fail_index_list.append(index)
             fail_count += 1
         if debug == True:
-            print(print_row)
-    print(border_row)
+            logger.info(print_row)
+    logger.info(border_row)
 
     # Print results
-    print('\n{} successes... {} empty rosters... {} failures...\n'.format(str(success_count), str(empty_roster_count), str(fail_count)))
+    logger.info('\n{} successes... {} empty rosters... {} failures...\n'.format(str(success_count), str(empty_roster_count), str(fail_count)))
     if outer == True:
-        # print('\nRetrying the {} failures...'.format(str(fail_count)))
-        # print('fail_index_list: ' + ', '.join([str(i) for i in fail_index_list]))
+        # logger.info('\nRetrying the {} failures...'.format(str(fail_count)))
+        # logger.info('fail_index_list: ' + ', '.join([str(i) for i in fail_index_list]))
         # See which failures are legit and which are flukes
         # iterate_over_schools(schools_df[schools_df.index.isin(fail_index_list)], outer = False, debug = debug)
-        print('\n--- Total time: {} minutes ---'.format(str(round((time.time() - start_time) / 60, 1))))
+        logger.info('\n--- Total time: {} minutes ---'.format(str(round((time.time() - start_time) / 60, 1))))
     return roster_df_list, canadians_dict_list
 
 
@@ -221,7 +260,7 @@ def print_cols(roster_df_list):
     all_columns = [str(i) for i in list(players_df.columns.values)]
     all_columns.sort()
     for col in all_columns:
-        print(col)
+        logger.info(col)
 
 
 def format_df(dict_list, schools_df):
@@ -279,3 +318,8 @@ def format_df(dict_list, schools_df):
     canadians_df = canadians_df.loc[:, canadians_df.columns.str.startswith('__')]
     canadians_df.columns = canadians_df.columns.str.lstrip('__')
     return canadians_df[cols]
+
+
+# Run main function
+if __name__ == "__main__":
+    main(False)
