@@ -10,15 +10,16 @@ import datetime
 
 
 # Set up logging
-logging.basicConfig(level=logging.INFO, format='%(message)s')
+logging.basicConfig(level=logging.INFO, format='%(levelname)s - %(message)s')
+logging.getLogger('numexpr').setLevel(logging.WARNING)
 global logger
 logger = logging.getLogger()
 logger.addHandler(logging.FileHandler('scraper.log', 'w'))
 
 
-def main(debug):
+def main():
     # Last run:
-    logger.info('Last run: ' + str(datetime.datetime.now().strftime("%B %d, %Y at %I:%M %p")))
+    logger.info('\nLast run: ' + str(datetime.datetime.now().strftime("%B %d, %Y at %I:%M %p")))
 
     # Get Team Websites
     # Only applies for NCAA Divsion 1, NCAA Divsion 2, NCAA Division 3 and NAIA
@@ -34,8 +35,8 @@ def main(debug):
 
     # Check Roster Sites
     schools_df = pd.read_csv('roster_pages.csv')
-    df_lists = iterate_over_schools(schools_df, debug = debug)
-    roster_df_list = df_lists[0]
+    df_lists = iterate_over_schools(schools_df)
+    # roster_df_list = df_lists[0]
     canadians_dict_list = df_lists[1]
 
     # Periodically check all of the table columns found in the html to see if we are overlooking anything
@@ -154,9 +155,8 @@ def read_roster_norm(html):
 def read_roster(school, header):
     df = pd.DataFrame()
     response_text = requests.get(school['roster_link'], headers=header).text
-    html = pd.read_html(response_text)
-    response_has_table = len(html) > 0
-    if response_has_table == True:
+    if len(BeautifulSoup(response_text)('table')) > 0:
+        html = pd.read_html(response_text)
         df = read_roster_norm(html)
         df['__school'] = school['title']
         df['__division'] = school['division']
@@ -167,10 +167,10 @@ def read_roster(school, header):
 
 def filter_canadians(df, canada_strings):
     out_list = list()
-    roster_dict_list = df.to_dict(orient='records')
+    roster_dict = df.to_dict(orient='records')
     index = 0
-    while index < len(roster_dict_list):
-        player = roster_dict_list[index]
+    while index < len(roster_dict):
+        player = roster_dict[index]
         for attr in player:
             value = str(player[attr])
             if any(canada_string.lower() in value.lower() for canada_string in canada_strings):
@@ -181,7 +181,7 @@ def filter_canadians(df, canada_strings):
     return out_list
 
 
-def iterate_over_schools(schools_df, outer=True, debug=True):
+def iterate_over_schools(schools_df, outer=True):
     # Start timer
     start_time = time.time()
 
@@ -224,15 +224,17 @@ def iterate_over_schools(schools_df, outer=True, debug=True):
                 canadian_count = str(len(canadians_dicts))
             elif type(df) == type(''): # No table(s) exist in HTML... search all text for certain strings
                 if any(canada_string.lower() in df.lower() for canada_string in canada_strings):
-                    canadian_count = '*****' # String of interest found
-            if canadian_count != '0':
+                    canadian_count = '*****' # String of interest found in HTML text
+            if (canadian_count != '0') & (canadian_count != '*****'):
                 canadians_dict_list.extend(canadians_dicts)
             print_row = print_row.replace('-'*(canadians_col_length-2), canadian_count.center(canadians_col_length-2))
             print_row = print_row.replace('-'*(players_col_length-2), str(len(df.index)).center(players_col_length-2))
             if len(df.index) > 0:
+                logger.debug(print_row)
                 success_count += 1
             else:
                 # Roster exists but with no players
+                logger.info(print_row)
                 empty_roster_count += 1
         except Exception as e:
             error_message = str(e)
@@ -240,17 +242,16 @@ def iterate_over_schools(schools_df, outer=True, debug=True):
             print_row = '| {} | {} | {} | {} | {}'.format(str(index).ljust(index_col_length-2), school['title'].ljust(title_col_length-2), '-'*(players_col_length-2), '-'*(canadians_col_length-2), str(school['roster_link']) + ': {}'.format(error_message))
             fail_index_list.append(index)
             fail_count += 1
-        if debug == True:
             logger.info(print_row)
     logger.info(border_row)
 
     # Print results
-    logger.info('\n{} successes... {} empty rosters... {} failures...\n'.format(str(success_count), str(empty_roster_count), str(fail_count)))
+    logger.info('\n{} successes... {} empty rosters... {} failures...'.format(str(success_count), str(empty_roster_count), str(fail_count)))
     if outer == True:
         # logger.info('\nRetrying the {} failures...'.format(str(fail_count)))
         # logger.info('fail_index_list: ' + ', '.join([str(i) for i in fail_index_list]))
         # See which failures are legit and which are flukes
-        # iterate_over_schools(schools_df[schools_df.index.isin(fail_index_list)], outer = False, debug = debug)
+        # iterate_over_schools(schools_df[schools_df.index.isin(fail_index_list)], outer = False)
         logger.info('\n--- Total time: {} minutes ---'.format(str(round((time.time() - start_time) / 60, 1))))
     return roster_df_list, canadians_dict_list
 
@@ -322,4 +323,4 @@ def format_df(dict_list, schools_df):
 
 # Run main function
 if __name__ == "__main__":
-    main(False)
+    main()
