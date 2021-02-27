@@ -33,8 +33,11 @@ def main():
     # schools_df = get_roster_pages(schools_df)
     # schools_df
 
-    # Check Roster Sites
+    # Get roster sites
     schools_df = pd.read_csv('roster_pages.csv')
+    # Ask for input
+    schools_df = get_input(schools_df)
+    # Iterate over schools
     df_lists = iterate_over_schools(schools_df)
     # roster_df_list = df_lists[0]
     canadians_dict_list = df_lists[1]
@@ -155,7 +158,8 @@ def read_roster_norm(html):
 def read_roster(school, header):
     df = pd.DataFrame()
     response_text = requests.get(school['roster_link'], headers=header).text
-    if len(BeautifulSoup(response_text)('table')) > 0:
+    soup = BeautifulSoup(response_text, 'lxml')
+    if len(soup('table')) > 0:
         html = pd.read_html(response_text)
         df = read_roster_norm(html)
         df['__school'] = school['title']
@@ -179,6 +183,35 @@ def filter_canadians(df, canada_strings):
                 break
         index += 1
     return out_list
+
+
+def get_input(schools_df):
+    run_all_rows = ''
+    while run_all_rows not in ['y', 'n']:
+        run_all_rows = input("Run script for all schools? Answer y/n... ")
+        if run_all_rows not in ['y', 'n']:
+            logger.error('Value must be "y" or "n"')
+    if run_all_rows == 'n':
+        run_first_last_rows = ''
+        while run_first_last_rows not in ['first', 'last']:
+            run_first_last_rows = input("Run first X schools or last X schools? Answer first/last... ")
+            if run_first_last_rows not in ['first', 'last']:
+                logger.error('Value must be "first" or "last"')
+        number_of_rows = 0
+        max_length = len(schools_df.index)
+        while (number_of_rows < 1) | (number_of_rows > max_length):
+            number_of_rows = input("How many schools? ")
+            if number_of_rows.isdigit() == False:
+                logger.error('Value must be a positive integer less than or equal to ' + str(max_length))
+            else:
+                number_of_rows = int(number_of_rows)
+            if number_of_rows > max_length:
+                logger.error('Value must be a positive integer less than or equal to ' + str(max_length))
+        if run_first_last_rows == 'first':
+            schools_df = schools_df.head(number_of_rows)
+        elif run_first_last_rows == 'last':
+            schools_df = schools_df.tail(number_of_rows)
+    return schools_df
 
 
 def iterate_over_schools(schools_df, outer=True):
@@ -225,6 +258,7 @@ def iterate_over_schools(schools_df, outer=True):
             elif type(df) == type(''): # No table(s) exist in HTML... search all text for certain strings
                 if any(canada_string.lower() in df.lower() for canada_string in canada_strings):
                     canadian_count = '*****' # String of interest found in HTML text
+                df = pd.DataFrame()
             if (canadian_count != '0') & (canadian_count != '*****'):
                 canadians_dict_list.extend(canadians_dicts)
             print_row = print_row.replace('-'*(canadians_col_length-2), canadian_count.center(canadians_col_length-2))
