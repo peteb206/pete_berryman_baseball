@@ -55,6 +55,7 @@ def main():
     # print_cols(roster_df_list)
 
     # Format dictionaries to dataframe
+    # pd.DataFrame(canadians_dict_list).to_csv('canadians_raw.csv', index=False)
     canadians_df = format_df(canadians_dict_list, schools_df)
     canadians_df.to_csv('canadians.csv', index=False)
     generate_html(canadians_df, 'canadians.html', last_run)
@@ -320,7 +321,7 @@ def print_cols(roster_df_list):
 
 
 def format_player_name(string):
-    return string.split(',')[::-1][0] # Format as "First Last"
+    return ' '.join(string.split(',')[::-1]).strip() # Format as "First Last"
 
 
 def format_player_class(string):
@@ -355,6 +356,8 @@ def format_df(dict_list, schools_df):
             key_str = str(key).lower()
             value_str = str(value)
             value_str = value_str.split(':')[-1].strip()
+            if len(value_str) == 0:
+                break
 
             # Set __class column
             if key_str.startswith('cl') | key_str.startswith('y') | key_str.startswith('e') | ('year' in key_str):
@@ -373,7 +376,7 @@ def format_df(dict_list, schools_df):
                 new_dict['__position'] = value_str.upper()
 
             # Set __b and __t column
-            elif (key_str.startswith('b')) & (not key_str.startswith('bi') & (len(value_str) > 0)):
+            elif (key_str.startswith('b')) & (not key_str.startswith('bi')):
                 new_dict['__b'] = value_str[0].upper()
                 if 'T' in key:
                     new_dict['__t'] = value_str[-1].upper()
@@ -425,7 +428,7 @@ def generate_html(df, file_name, last_run):
     '''
 
     with open(file_name, 'w') as f:
-        f.write(html_string.format(last_run = last_run, number_of_players = str(len(df.index)), table = df.to_html(na_rep = '', classes='mystyle')))
+        f.write(html_string.format(last_run = last_run, number_of_players = str(len(df.index)), table = df.to_html(na_rep = '', index = False, classes='mystyle')))
 
 
 # Run main function
