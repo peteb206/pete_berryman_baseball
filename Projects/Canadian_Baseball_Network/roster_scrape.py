@@ -8,6 +8,7 @@ import time
 import logging
 import datetime
 import psutil
+import csv
 
 
 # Set up logging
@@ -58,7 +59,7 @@ def main():
     # pd.DataFrame(canadians_dict_list).to_csv('canadians_raw.csv', index=False)
     canadians_df = format_df(canadians_dict_list, schools_df)
     canadians_df.to_csv('canadians.csv', index=False)
-    generate_html(canadians_df, 'canadians.html', last_run)
+    generate_html(canadians_df[['name','position','class','school','division','state','hometown']], 'canadians.html', last_run)
     logger.info('')
     logger.info('{} Canadian players found...'.format(str(len(canadians_df.index))))
 
@@ -170,7 +171,12 @@ def read_roster_norm(html):
 
 def read_roster(school, header):
     df = pd.DataFrame()
-    response = requests.get(school['roster_link'], headers=header, timeout=10)
+    response = ''
+    try:
+        response = requests.get(school['roster_link'], headers=header, timeout=10) # Try once
+    except Exception as e:
+        time.sleep(1)
+        response = requests.get(school['roster_link'], headers=header, timeout=10) # Try one more time
     response_text = response.text
     soup = BeautifulSoup(response_text, 'lxml')
     if len(soup('table')) > 0:
@@ -178,6 +184,7 @@ def read_roster(school, header):
         df = read_roster_norm(html)
         df['__school'] = school['title']
         df['__division'] = school['division']
+        df['__state'] = school['state']
     else:
         return str(response_text)
     return df
@@ -326,12 +333,34 @@ def format_player_name(string):
 
 def format_player_class(string):
     # Output Freshman, Sophomore, Junior or Senior
-    return ''
+    grad_year_map = {"'21": "Senior", "'22": "Junior", "'23": "Sophomore", "'24": "Freshman"}
+    if string in grad_year_map.keys():
+        return grad_year_map[string]
+
+    if ('j' in string.lower()) | ('3' in string):
+        return 'Junior'
+    elif ('so' in string.lower()) | (string.lower() == 's') | ('2' in string):
+        return 'Sophomore'
+    elif ('f' in string.lower()) | ('1' in string) | ('hs' in string.lower()):
+        return 'Freshman'
+    elif ('sr' in string.lower()) | ('gr' in string.lower()) | ('4' in string) | ('5' in string):
+        return 'Senior'
+    return string
 
 
 def format_player_position(string):
     # Ouput position(s) in acronym form separated by a forward slash
     return ''
+
+
+def format_player_division(string):
+    level = 'Division ' + string[-1]
+    if string.upper() == 'NAIA':
+        return string.upper()
+    elif 'JUCO' in string.upper():
+        return 'Junior Colleges and Community Colleges: ' + level
+    else:
+        return 'NCAA: ' + level
 
 
 def format_player_hometown(string):
@@ -356,52 +385,52 @@ def format_df(dict_list, schools_df):
             key_str = str(key).lower()
             value_str = str(value)
             value_str = value_str.split(':')[-1].strip()
-            if len(value_str) == 0:
-                break
+            if (len(value_str) != 0) & (value_str.lower() != 'nan'):
+                # Set __class column
+                if (new_dict['__class'] == '') & (key_str.startswith('cl') | key_str.startswith('y') | key_str.startswith('e') | key_str.startswith('ci.') | ('year' in key_str)):
+                    new_dict['__class'] = format_player_class(value_str)
 
-            # Set __class column
-            if key_str.startswith('cl') | key_str.startswith('y') | key_str.startswith('e') | ('year' in key_str):
-                new_dict['__class'] = value_str
+                # Set __name columns
+                elif ('first' in key_str) & ('last' not in key_str):
+                    new_dict['_first_name'] = value_str
+                elif (key_str == 'last') | (('last' in key_str) & ('nam' in key_str)):
+                    new_dict['_last_name'] = value_str
+                elif ('name' in key_str) | (key_str == 'player'):
+                    new_dict['__name'] = format_player_name(value_str) # Format as "First Last"
 
-            # Set __name columns
-            elif ('first' in key_str) & ('last' not in key_str):
-                new_dict['_first_name'] = value_str
-            elif (key_str == 'last') | (('last' in key_str) & ('nam' in key_str)):
-                new_dict['_last_name'] = value_str
-            elif ('name' in key_str) | (key_str == 'player'):
-                new_dict['__name'] = format_player_name(value_str) # Format as "First Last"
+                # Set __position column
+                elif key_str.startswith('po'):
+                    new_dict['__position'] = value_str.upper()
 
-            # Set __position column
-            elif key_str.startswith('po'):
-                new_dict['__position'] = value_str.upper()
+                # Set __b and __t column
+                elif (key_str.startswith('b')) & (not key_str.startswith('bi')):
+                    new_dict['__b'] = value_str[0].upper()
+                    if 'T' in key:
+                        new_dict['__t'] = value_str[-1].upper()
+                elif (key_str == 't') | (key_str.startswith('throw')) | (key_str.startswith('t/')):
+                    new_dict['__t'] = value_str[0].upper()
+                    if 'B' in key:
+                        new_dict['__b'] = value_str[-1].upper()
 
-            # Set __b and __t column
-            elif (key_str.startswith('b')) & (not key_str.startswith('bi')):
-                new_dict['__b'] = value_str[0].upper()
-                if 'T' in key:
-                    new_dict['__t'] = value_str[-1].upper()
-            elif (key_str == 't') | (key_str.startswith('throw')) | (key_str.startswith('t/')):
-                new_dict['__t'] = value_str[0].upper()
-                if 'B' in key:
-                    new_dict['__b'] = value_str[-1].upper()
+                # Inlcude __ keys
+                elif key_str.startswith('__'):
+                    if key == '__division':
+                        new_dict[key_str] = format_player_division(value_str)
+                    elif key == '__hometown':
+                        new_dict[key_str] = format_player_hometown(value_str)
+                    else:
+                        new_dict[key_str] = value_str
 
-            # Inlcude __ keys
-            elif key_str.startswith('__'):
-                if key == '__hometown':
-                    new_dict[key_str] = format_player_hometown(value_str)
-                else:
-                    new_dict[key_str] = value_str
-
-            # Set __obj column if no useful keys
-            elif (key_str == '0') | (key_str == 'Unnamed: 0'):
-                new_dict['__obj'] = ' --- '.join(dictionary.values())
+                # Set __obj column if no useful keys
+                elif (key_str == '0') | (key_str == 'Unnamed: 0'):
+                    new_dict['__obj'] = ' --- '.join(dictionary.values())
         # Combine fist and last name if necessary
         if (new_dict['__name'] == '') & (new_dict['_first_name'] != '') & (new_dict['_last_name'] != ''):
             new_dict['__name'] = new_dict['_first_name'] + ' ' + new_dict['_last_name']
-        if new_dict['__name'] != '':
+        if new_dict['__school'] != '':
             new_dict_list.append(new_dict)
-    canadians_df = pd.merge(pd.DataFrame(new_dict_list), schools_df, how='left', left_on=['__division','__school'], right_on=['division','title'])
-    canadians_df.rename(columns={'state':'__state'}, inplace=True)
+    
+    canadians_df = pd.DataFrame(new_dict_list)
     canadians_df = canadians_df.loc[:, canadians_df.columns.str.startswith('__')]
     canadians_df.columns = canadians_df.columns.str.lstrip('__')
     return canadians_df[cols]
@@ -429,6 +458,11 @@ def generate_html(df, file_name, last_run):
 
     with open(file_name, 'w') as f:
         f.write(html_string.format(last_run = last_run, number_of_players = str(len(df.index)), table = df.to_html(na_rep = '', index = False, classes='mystyle')))
+
+
+def csv_to_dict_list(csv_file):
+    with open(csv_file) as f:
+        return [{k: v for k, v in row.items()} for row in csv.DictReader(f, skipinitialspace=True)]
 
 
 # Run main function
