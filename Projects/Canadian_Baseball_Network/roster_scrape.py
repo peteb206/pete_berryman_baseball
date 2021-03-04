@@ -7,6 +7,7 @@ import numpy as np
 import time
 import logging
 import datetime
+import psutil
 
 
 # Set up logging
@@ -17,9 +18,11 @@ logger = logging.getLogger()
 logger.addHandler(logging.FileHandler('scraper.log', 'w'))
 
 
+def check_cpu_and_memory():
+    logger.debug('CPU percent: {}% --- Memory % Used: {}%'.format(str(psutil.cpu_percent()), str(psutil.virtual_memory()[2])))
+
+
 def main():
-    # Last run:
-    logger.info('\nLast run: ' + str(datetime.datetime.now().strftime("%B %d, %Y at %I:%M %p")))
 
     # Get Team Websites
     # Only applies for NCAA Divsion 1, NCAA Divsion 2, NCAA Division 3 and NAIA
@@ -37,6 +40,12 @@ def main():
     schools_df = pd.read_csv('roster_pages.csv')
     # Ask for input
     schools_df = get_input(schools_df)
+
+    # Last run:
+    last_run = 'Last run: ' + str(datetime.datetime.now().strftime("%B %d, %Y at %I:%M %p"))
+    logger.info('')
+    logger.info(last_run)
+
     # Iterate over schools
     df_lists = iterate_over_schools(schools_df)
     # roster_df_list = df_lists[0]
@@ -48,6 +57,9 @@ def main():
     # Format dictionaries to dataframe
     canadians_df = format_df(canadians_dict_list, schools_df)
     canadians_df.to_csv('canadians.csv', index=False)
+    generate_html(canadians_df, 'canadians.html', last_run)
+    logger.info('')
+    logger.info('{} Canadian players found...'.format(str(len(canadians_df.index))))
 
 
 def get_team_websites():
@@ -157,7 +169,8 @@ def read_roster_norm(html):
 
 def read_roster(school, header):
     df = pd.DataFrame()
-    response_text = requests.get(school['roster_link'], headers=header).text
+    response = requests.get(school['roster_link'], headers=header, timeout=10)
+    response_text = response.text
     soup = BeautifulSoup(response_text, 'lxml')
     if len(soup('table')) > 0:
         html = pd.read_html(response_text)
@@ -188,19 +201,19 @@ def filter_canadians(df, canada_strings):
 def get_input(schools_df):
     run_all_rows = ''
     while run_all_rows not in ['y', 'n']:
-        run_all_rows = input("Run script for all schools? Answer y/n... ")
+        run_all_rows = input("\nRun script for all schools? Answer y/n... ")
         if run_all_rows not in ['y', 'n']:
             logger.error('Value must be "y" or "n"')
     if run_all_rows == 'n':
         run_first_last_rows = ''
         while run_first_last_rows not in ['first', 'last']:
-            run_first_last_rows = input("Run first X schools or last X schools? Answer first/last... ")
+            run_first_last_rows = input("\nRun first X schools or last X schools? Answer first/last... ")
             if run_first_last_rows not in ['first', 'last']:
                 logger.error('Value must be "first" or "last"')
         number_of_rows = 0
         max_length = len(schools_df.index)
         while (number_of_rows < 1) | (number_of_rows > max_length):
-            number_of_rows = input("How many schools? ")
+            number_of_rows = input("\nHow many schools? ")
             if number_of_rows.isdigit() == False:
                 logger.error('Value must be a positive integer less than or equal to ' + str(max_length))
             else:
@@ -214,13 +227,15 @@ def get_input(schools_df):
     return schools_df
 
 
-def iterate_over_schools(schools_df, outer=True):
+def iterate_over_schools(schools_df):
     # Start timer
     start_time = time.time()
 
     # Print helpful info
     index_col_length, title_col_length, players_col_length, canadians_col_length, roster_link_col_length = 6, 52, 9, 11, 80
-    logger.info('\nReading the rosters of {} schools...\nThis will take approximately {} minutes...\n'.format(str(len(schools_df.index)), str(int(round(len(schools_df.index) / 50, 0)))))
+    logger.info('')
+    logger.info('Reading the rosters of {} schools... This will take approximately {} minutes...'.format(str(len(schools_df.index)), str(int(round(len(schools_df.index) / 50, 0)))))
+    logger.info('')
     border_row = '|{}|{}|{}|{}|{}|'.format('-'*index_col_length, '-'*title_col_length, '-'*players_col_length, '-'*canadians_col_length, '-'*roster_link_col_length)
     header_row = '|{}|{}|{}|{}|{}|'.format('#'.center(index_col_length), 'school'.center(title_col_length), 'players'.center(players_col_length), 'canadians'.center(canadians_col_length), 'roster_link'.center(roster_link_col_length))
     logger.info(border_row)
@@ -231,7 +246,8 @@ def iterate_over_schools(schools_df, outer=True):
     empty_roster_count = 0
     fail_count = 0
     fail_index_list = list()
-    canada_strings = ['canada', ', ontario', 'quebec', 'nova scotia', 'new brunswick', 'manitoba', 'british columbia', 'prince edward island', 'saskatchewan', 'alberta', 'newfoundland', ', b.c.', ', ont', ', alta.', ', man.', ', sask.']
+    schools_to_check_manually = list()
+    canada_strings = ['canada', ', ontario', 'quebec', 'nova scotia', 'new brunswick', 'manitoba', 'british columbia', 'prince edward island', 'saskatchewan', 'alberta', 'newfoundland', ', b.c.', ', ont', ', alta.', ', man.', ', sask.', 'q.c.', 'qc', ', bc']
 
     # Set header for requests
     header = {
@@ -258,6 +274,7 @@ def iterate_over_schools(schools_df, outer=True):
             elif type(df) == type(''): # No table(s) exist in HTML... search all text for certain strings
                 if any(canada_string.lower() in df.lower() for canada_string in canada_strings):
                     canadian_count = '*****' # String of interest found in HTML text
+                    schools_to_check_manually.append('{}: {}'.format(school['title'], school['roster_link']))
                 df = pd.DataFrame()
             if (canadian_count != '0') & (canadian_count != '*****'):
                 canadians_dict_list.extend(canadians_dicts)
@@ -277,16 +294,20 @@ def iterate_over_schools(schools_df, outer=True):
             fail_index_list.append(index)
             fail_count += 1
             logger.info(print_row)
+        # check_cpu_and_memory()
+        time.sleep(0.05)
     logger.info(border_row)
 
     # Print results
-    logger.info('\n{} successes... {} empty rosters... {} failures...'.format(str(success_count), str(empty_roster_count), str(fail_count)))
-    if outer == True:
-        # logger.info('\nRetrying the {} failures...'.format(str(fail_count)))
-        # logger.info('fail_index_list: ' + ', '.join([str(i) for i in fail_index_list]))
-        # See which failures are legit and which are flukes
-        # iterate_over_schools(schools_df[schools_df.index.isin(fail_index_list)], outer = False)
-        logger.info('\n--- Total time: {} minutes ---'.format(str(round((time.time() - start_time) / 60, 1))))
+    logger.info('')
+    logger.info('{} successes... {} empty rosters... {} failures...'.format(str(success_count), str(empty_roster_count), str(fail_count)))
+    if len(schools_to_check_manually) > 0:
+        logger.info('')
+        logger.info('Check these schools manually - could not process roster but may contain Canadians...')
+        for school_and_link in schools_to_check_manually:
+            logger.info('--- {}'.format(school_and_link))
+    logger.info('')
+    logger.info('--- Total time: {} minutes ---'.format(str(round((time.time() - start_time) / 60, 1))))
     return roster_df_list, canadians_dict_list
 
 
@@ -298,18 +319,42 @@ def print_cols(roster_df_list):
         logger.info(col)
 
 
+def format_player_name(string):
+    return string.split(',')[::-1][0] # Format as "First Last"
+
+
+def format_player_class(string):
+    # Output Freshman, Sophomore, Junior or Senior
+    return ''
+
+
+def format_player_position(string):
+    # Ouput position(s) in acronym form separated by a forward slash
+    return ''
+
+
+def format_player_hometown(string):
+    # Remove attached High School name if, necessary
+    # To Do: remove references to anything other than city and province
+    return string.split('/')[0].strip()
+
+
 def format_df(dict_list, schools_df):
     new_dict_list = list()
     for dictionary in dict_list:
         new_dict = dict()
+
         cols = ['name', 'position', 'b', 't', 'class', 'school', 'division', 'state', 'hometown', 'obj']
         for col in cols:
-            new_dict['__' + col] = ''
+            if col != 'state':
+                new_dict['__' + col] = ''
         new_dict['_first_name'] = ''
         new_dict['_last_name'] = ''
+
         for key, value in dictionary.items():
             key_str = str(key).lower()
             value_str = str(value)
+            value_str = value_str.split(':')[-1].strip()
 
             # Set __class column
             if key_str.startswith('cl') | key_str.startswith('y') | key_str.startswith('e') | ('year' in key_str):
@@ -321,14 +366,14 @@ def format_df(dict_list, schools_df):
             elif (key_str == 'last') | (('last' in key_str) & ('nam' in key_str)):
                 new_dict['_last_name'] = value_str
             elif ('name' in key_str) | (key_str == 'player'):
-                new_dict['__name'] = value_str
+                new_dict['__name'] = format_player_name(value_str) # Format as "First Last"
 
             # Set __position column
             elif key_str.startswith('po'):
                 new_dict['__position'] = value_str.upper()
 
             # Set __b and __t column
-            elif (key_str.startswith('b')) & (not key_str.startswith('bi')):
+            elif (key_str.startswith('b')) & (not key_str.startswith('bi') & (len(value_str) > 0)):
                 new_dict['__b'] = value_str[0].upper()
                 if 'T' in key:
                     new_dict['__t'] = value_str[-1].upper()
@@ -339,7 +384,10 @@ def format_df(dict_list, schools_df):
 
             # Inlcude __ keys
             elif key_str.startswith('__'):
-                new_dict[key_str] = value_str
+                if key == '__hometown':
+                    new_dict[key_str] = format_player_hometown(value_str)
+                else:
+                    new_dict[key_str] = value_str
 
             # Set __obj column if no useful keys
             elif (key_str == '0') | (key_str == 'Unnamed: 0'):
@@ -347,12 +395,37 @@ def format_df(dict_list, schools_df):
         # Combine fist and last name if necessary
         if (new_dict['__name'] == '') & (new_dict['_first_name'] != '') & (new_dict['_last_name'] != ''):
             new_dict['__name'] = new_dict['_first_name'] + ' ' + new_dict['_last_name']
-        new_dict_list.append(new_dict)
+        if new_dict['__name'] != '':
+            new_dict_list.append(new_dict)
     canadians_df = pd.merge(pd.DataFrame(new_dict_list), schools_df, how='left', left_on=['__division','__school'], right_on=['division','title'])
     canadians_df.rename(columns={'state':'__state'}, inplace=True)
     canadians_df = canadians_df.loc[:, canadians_df.columns.str.startswith('__')]
     canadians_df.columns = canadians_df.columns.str.lstrip('__')
     return canadians_df[cols]
+
+
+def generate_html(df, file_name, last_run):
+    pd.set_option('colheader_justify', 'center')
+
+    html_string = '''
+    <html>
+       <head>
+          <title>2021 Canadians in College</title>
+       </head>
+       <header>
+          <h1>2021 Canadians in College</h1>
+          <h2>{number_of_players} Canadian players found</h2>
+          <h5>{last_run}</h5>
+       </header>
+       <link rel="stylesheet" type="text/css" href="df_style.css"/>
+       <body>
+          {table}
+       </body>
+    </html>.
+    '''
+
+    with open(file_name, 'w') as f:
+        f.write(html_string.format(last_run = last_run, number_of_players = str(len(df.index)), table = df.to_html(na_rep = '', classes='mystyle')))
 
 
 # Run main function
