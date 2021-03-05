@@ -256,7 +256,7 @@ def iterate_over_schools(schools_df):
     fail_count = 0
     fail_index_list = list()
     schools_to_check_manually = list()
-    canada_strings = ['canada', ', ontario', 'quebec', 'nova scotia', 'new brunswick', 'manitoba', 'british columbia', 'prince edward island', 'saskatchewan', 'alberta', 'newfoundland', ', b.c.', ', on', ', alta.', ', mb', ', man.', ', sask.', 'q.c.', 'qc', ', bc']
+    canada_strings = ['canada', ', ontario', 'quebec', 'nova scotia', 'new brunswick', 'manitoba', 'british columbia', 'prince edward island', 'saskatchewan', 'alberta', 'newfoundland', ', b.c.', ', on', ',on', '(ont)', ', alta.', ', ab', 'a.b.' ', mb', ', man.', ', sask', ', sk', 's.k.', 'q.c.', 'qc', ', qu', ', bc', ', nb', 'n.b.', ', ns', 'n.s.', ', can']
 
     # Set header for requests
     header = {
@@ -351,7 +351,12 @@ def format_player_class(string):
 
 def format_player_position(string):
     # Ouput position(s) in acronym form separated by a forward slash
-    return ''
+    substitutions = {' ': '', 'PITCHER': 'P', 'RIGHT': 'R', 'LEFT': 'L', 'HANDED': 'H', '-H': 'H',
+                     'CATCHER': 'C', 'UTILITY': 'UTL', 'FIRSTBASE': '1B', 'SECONDBASE': '2B', 'THIRDBASE': '3B',
+                     'SHORTSTOP': 'SS', 'INFIELD': 'IF', 'OUTFIELD': 'OF', 'ER': '', 'MAN': ''}
+    for from_string, to_string in substitutions.items():
+        string = string.replace(from_string, to_string)
+    return string
 
 
 def format_player_division(string):
@@ -367,7 +372,7 @@ def format_player_division(string):
 def format_player_hometown(string):
     # Remove attached High School name if, necessary
     # To Do: remove references to anything other than city and province
-    return string.split('/')[0].strip()
+    return string
 
 
 def format_df(dict_list, schools_df):
@@ -401,7 +406,7 @@ def format_df(dict_list, schools_df):
 
                 # Set __position column
                 elif key_str.startswith('po'):
-                    new_dict['__position'] = value_str.upper()
+                    new_dict['__position'] = format_player_position(value_str.upper())
 
                 # Set __b and __t column
                 elif (key_str.startswith('b')) & (not key_str.startswith('bi')):
@@ -428,7 +433,7 @@ def format_df(dict_list, schools_df):
         # Combine fist and last name if necessary
         if (new_dict['__name'] == '') & (new_dict['_first_name'] != '') & (new_dict['_last_name'] != ''):
             new_dict['__name'] = new_dict['_first_name'] + ' ' + new_dict['_last_name']
-        if (new_dict['__school'] != '') & (new_dict['__name'] != new_dict['__hometown']):
+        if (new_dict['__name'] != '') & (new_dict['__school'] != new_dict['__hometown']) & (new_dict['__name'] != new_dict['__hometown']):
             new_dict_list.append(new_dict)
     
     canadians_df = pd.DataFrame(new_dict_list)
@@ -460,6 +465,7 @@ def generate_html(df, file_name, last_run):
                      'Junior Colleges and Community Colleges: Division 3']:
         temp_df = df[df['division'] == division].drop(['division'], axis=1).sort_values(by=['school', 'name'])
         html_string += '''
+        <p></p>
         <h2>{division}</h2>
         <h4>{number_of_players} players</h4>
         {table}

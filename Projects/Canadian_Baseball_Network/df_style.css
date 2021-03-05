@@ -1,6 +1,6 @@
 /* includes alternating gray and white with on-hover color */
 
-h1, h2, h3, h4, h5, p, table {
+.mystyle h1, h2, h3, h4, h5, p, table {
   text-align: center;
 }
 
@@ -15,6 +15,10 @@ h1, h2, h3, h4, h5, p, table {
 
 .mystyle td, th {
     padding: 5px;
+}
+
+.mystyle td {
+  text-align: left;
 }
 
 .mystyle tr:nth-child(even) {
