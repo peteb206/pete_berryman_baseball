@@ -58,6 +58,7 @@ def main():
     # Format dictionaries to dataframe
     # pd.DataFrame(canadians_dict_list).to_csv('canadians_raw.csv', index=False)
     canadians_df = format_df(canadians_dict_list, schools_df)
+    canadians_df = pd.concat([canadians_df, pd.read_csv('canadians_manual.csv')], ignore_index=True) # Add players who could not be scraped
     canadians_df.to_csv('canadians.csv', index=False)
     generate_html(canadians_df[['name','position','class','school','division','state','hometown']], 'canadians.html', last_run)
     logger.info('')
@@ -255,7 +256,7 @@ def iterate_over_schools(schools_df):
     fail_count = 0
     fail_index_list = list()
     schools_to_check_manually = list()
-    canada_strings = ['canada', ', ontario', 'quebec', 'nova scotia', 'new brunswick', 'manitoba', 'british columbia', 'prince edward island', 'saskatchewan', 'alberta', 'newfoundland', ', b.c.', ', ont', ', alta.', ', man.', ', sask.', 'q.c.', 'qc', ', bc']
+    canada_strings = ['canada', ', ontario', 'quebec', 'nova scotia', 'new brunswick', 'manitoba', 'british columbia', 'prince edward island', 'saskatchewan', 'alberta', 'newfoundland', ', b.c.', ', on', ', alta.', ', mb', ', man.', ', sask.', 'q.c.', 'qc', ', bc']
 
     # Set header for requests
     header = {
@@ -427,7 +428,7 @@ def format_df(dict_list, schools_df):
         # Combine fist and last name if necessary
         if (new_dict['__name'] == '') & (new_dict['_first_name'] != '') & (new_dict['_last_name'] != ''):
             new_dict['__name'] = new_dict['_first_name'] + ' ' + new_dict['_last_name']
-        if new_dict['__school'] != '':
+        if (new_dict['__school'] != '') & (new_dict['__name'] != new_dict['__hometown']):
             new_dict_list.append(new_dict)
     
     canadians_df = pd.DataFrame(new_dict_list)
@@ -446,18 +447,31 @@ def generate_html(df, file_name, last_run):
        </head>
        <header>
           <h1>2021 Canadians in College</h1>
-          <h2>{number_of_players} Canadian players found</h2>
+          <h2>{number_of_players} Canadian players</h2>
           <h5>{last_run}</h5>
        </header>
        <link rel="stylesheet" type="text/css" href="df_style.css"/>
        <body>
-          {table}
+    '''.format(number_of_players = str(len(df.index)), last_run = last_run)
+    
+    for division in ['NCAA: Division 1', 'NCAA: Division 2', 'NCAA: Division 3', 'NAIA',
+                     'Junior Colleges and Community Colleges: Division 1',
+                     'Junior Colleges and Community Colleges: Division 2',
+                     'Junior Colleges and Community Colleges: Division 3']:
+        temp_df = df[df['division'] == division].drop(['division'], axis=1).sort_values(by=['school', 'name'])
+        html_string += '''
+        <h2>{division}</h2>
+        <h4>{number_of_players} players</h4>
+        {table}
+        '''.format(division = division, number_of_players = str(len(temp_df.index)), table = temp_df.to_html(na_rep = '', index = False, classes='mystyle'))
+
+    html_string += '''
        </body>
     </html>.
     '''
 
     with open(file_name, 'w') as f:
-        f.write(html_string.format(last_run = last_run, number_of_players = str(len(df.index)), table = df.to_html(na_rep = '', index = False, classes='mystyle')))
+        f.write(html_string)
 
 
 def csv_to_dict_list(csv_file):
