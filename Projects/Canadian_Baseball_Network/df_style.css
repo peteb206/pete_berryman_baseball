@@ -1,7 +1,7 @@
 /* includes alternating gray and white with on-hover color */
 
-.mystyle h1, h2, h3, h4, h5, p, table {
-  text-align: center;
+div {
+    padding: 3%;
 }
 
 .mystyle {
@@ -13,12 +13,16 @@
     margin-right: auto;
 }
 
+.mystyle title, h1, h2, h3, h4, h5, p, table {
+    text-align: center;
+}
+
 .mystyle td, th {
     padding: 5px;
 }
 
 .mystyle td {
-  text-align: left;
+    text-align: left;
 }
 
 .mystyle tr:nth-child(even) {

@@ -43,7 +43,7 @@ def main():
     schools_df = get_input(schools_df)
 
     # Last run:
-    last_run = 'Last run: ' + str(datetime.datetime.now().strftime("%B %d, %Y at %I:%M %p"))
+    last_run = 'Last updated: ' + str(datetime.datetime.now().strftime("%B %d, %Y at %I:%M %p"))
     logger.info('')
     logger.info(last_run)
 
@@ -59,6 +59,8 @@ def main():
     # pd.DataFrame(canadians_dict_list).to_csv('canadians_raw.csv', index=False)
     canadians_df = format_df(canadians_dict_list, schools_df)
     canadians_df = pd.concat([canadians_df, pd.read_csv('canadians_manual.csv')], ignore_index=True) # Add players who could not be scraped
+    canadians_df['class'] = pd.Categorical(canadians_df['class'], ['Freshman','Sophomore', 'Junior', 'Senior', '']) # Create custom sort by class
+    canadians_df.sort_values(by=['class', 'school'], ignore_index=True, inplace=True)
     canadians_df.to_csv('canadians.csv', index=False)
     generate_html(canadians_df[['name','position','class','school','division','state','hometown']], 'canadians.html', last_run)
     logger.info('')
@@ -445,9 +447,26 @@ def format_df(dict_list, schools_df):
 def generate_html(df, file_name, last_run):
     pd.set_option('colheader_justify', 'center')
 
+    datatables_function = '''
+         $(document).ready(function () {
+            $('table.display').DataTable({
+               'lengthMenu': [[10, 25, 50, 100, -1], [10, 25, 50, 100, 'All']],
+               'pageLength': -1,
+               'columnDefs': [{'targets': [ 0 ], 'visible': false, 'searchable': false}]
+            })
+         });
+    '''
+
     html_string = '''
     <html>
        <head>
+          <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+          <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.css">
+          <link rel="stylesheet" type="text/css" href="df_style.css"/>
+          <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js"></script>
+          <script type="text/javascript">
+             {datatables_function}
+          </script>
           <title>2021 Canadians in College</title>
        </head>
        <header>
@@ -455,21 +474,23 @@ def generate_html(df, file_name, last_run):
           <h2>{number_of_players} Canadian players</h2>
           <h5>{last_run}</h5>
        </header>
-       <link rel="stylesheet" type="text/css" href="df_style.css"/>
        <body>
-    '''.format(number_of_players = str(len(df.index)), last_run = last_run)
+    '''.format(datatables_function = datatables_function, number_of_players = str(len(df.index)), last_run = last_run)
     
     for division in ['NCAA: Division 1', 'NCAA: Division 2', 'NCAA: Division 3', 'NAIA',
                      'Junior Colleges and Community Colleges: Division 1',
                      'Junior Colleges and Community Colleges: Division 2',
                      'Junior Colleges and Community Colleges: Division 3']:
-        temp_df = df[df['division'] == division].drop(['division'], axis=1).sort_values(by=['school', 'name'])
+        temp_df = df[df['division'] == division].drop(['division'], axis=1)
         html_string += '''
-        <p></p>
-        <h2>{division}</h2>
-        <h4>{number_of_players} players</h4>
-        {table}
-        '''.format(division = division, number_of_players = str(len(temp_df.index)), table = temp_df.to_html(na_rep = '', index = False, classes='mystyle'))
+        <div class="mystyle">
+           <h2>{division}</h2>
+           <h4>{number_of_players} players</h4>
+           {table}
+        </div>
+        '''.format(division = division,
+                   number_of_players = str(len(temp_df.index)),
+                   table = temp_df.to_html(na_rep = '', classes='display mystyle'))
 
     html_string += '''
        </body>
