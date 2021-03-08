@@ -48,6 +48,8 @@ def main():
     logger.info(last_run)
 
     # Iterate over schools
+    global city_strings, province_strings, country_strings, canada_strings, hometown_conversion_dict
+    city_strings, province_strings, country_strings, canada_strings, hometown_conversion_dict = set_canadian_search_criteria()
     df_lists = iterate_over_schools(schools_df)
     # roster_df_list = df_lists[0]
     canadians_dict_list = df_lists[1]
@@ -65,103 +67,6 @@ def main():
     generate_html(canadians_df[['name','position','class','school','division','state','hometown']], 'canadians.html', last_run)
     logger.info('')
     logger.info('{} Canadian players found...'.format(str(len(canadians_df.index))))
-
-
-def get_team_websites():
-    # set url and parameters
-    baseUrl = 'https://www.collegebaseballhub.com/_api/wix-code-public-dispatcher/siteview/wix/data-web.jsw/find.ajax'
-    gridAppId = '4544fd6a-5fe8-4482-a5fc-1fafab59ad5a'
-    instance = 'wixcode-pub.b1c45a24c1814ed732fc488a1b3ad90c65889da3.eyJpbnN0YW5jZUlkIjoiZjFiMGI3NjUtMzM1OC00Mjc1LThkODItY2NmZWJiNTAyMGIwIiwiaHRtbFNpdGVJZCI6IjFkNmQxYzg5LTRlNTAtNGNiMy1hM2M3LTJkNzFmYjg0MDU5NCIsInVpZCI6bnVsbCwicGVybWlzc2lvbnMiOm51bGwsImlzVGVtcGxhdGUiOmZhbHNlLCJzaWduRGF0ZSI6MTYxMzY1OTY1MzE2NiwiYWlkIjoiMjVhOTNlMTAtM2NiYS00Y2IzLWExYTItZmRiMjEwY2U2OWE4IiwiYXBwRGVmSWQiOiJDbG91ZFNpdGVFeHRlbnNpb24iLCJpc0FkbWluIjpmYWxzZSwibWV0YVNpdGVJZCI6IjA3NzA4OGEwLWU2ODAtNDg4Ni1hMWY4LThmMjYxMGZjMDQwZiIsImNhY2hlIjpudWxsLCJleHBpcmF0aW9uRGF0ZSI6bnVsbCwicHJlbWl1bUFzc2V0cyI6IlNob3dXaXhXaGlsZUxvYWRpbmcsQWRzRnJlZSxIYXNEb21haW4sSGFzRUNvbW1lcmNlIiwidGVuYW50IjpudWxsLCJzaXRlT3duZXJJZCI6IjczODNhZGJlLTE3OGUtNDhhNS1hYTFiLTYyN2JmMTA1MWJmYiIsImluc3RhbmNlVHlwZSI6InB1YiIsInNpdGVNZW1iZXJJZCI6bnVsbH0='
-    viewMode = 'site'
-    params = {'gridAppId': gridAppId, 'instance': instance, 'viewMode': viewMode}
-
-    # initalize dataframe
-    schools_df = pd.DataFrame(columns=['title', 'division', 'conference', 'state', 'location', 'link'])
-    schools_df
-
-    for division in ['D1', 'D2', 'D3', 'NAIA']:
-        # set request body
-        request_body = ["Division1",{"$and":[{"$and":[]},{"$and":[]},{"$and":[]},{"orderId":{"$gt":0}},{"division":{"$eq":"{}".format(division)}}]},[{"orderId":"asc"}],0,500]
-
-        # send post request
-        r = requests.post(url = baseUrl, params = params, json = request_body) 
-
-        # extracting response text
-        json_string = r.text
-
-        items = json.loads(json_string)['result']['items']
-        df = pd.DataFrame(items, columns=['title', 'division', 'conference', 'state', 'location', 'link'])
-
-        schools_df = schools_df.append(df, ignore_index=True)
-    schools_df.sort_values(by=['division', 'title'], ignore_index=True, inplace=True)
-    return schools_df
-
-
-def get_roster_pages(schools_df, csv_export = False):
-    # Case 1: http://www.______.com/index.aspx?path=...
-    schools_df['roster_link'] = np.where(schools_df['link'].str.contains('\/(?:index|roster|schedule)\.aspx\?path=(?:baseball|base|bball|bb|bs|bsb|mbase)', regex=True),
-                                     schools_df['link'].str.replace('\/(?:index|roster|schedule)\.aspx\?path=(?:baseball|base|bball|bb|bs|bsb|mbase).*', '/sports/baseball/roster', regex=True),
-                                     '')
-
-    # Case 2: https://www.______.com/sports/bsb/index
-    schools_df['roster_link'] = np.where((schools_df['link'].str.contains('(?:\/landing|\/sports\/bsb)\/index$', regex=True)) & (schools_df['roster_link'] == ''),
-                                         schools_df['link'].str.replace('(?:\/landing|\/sports\/bsb)\/index', '/sports/bsb/2020-21/roster', regex=True),
-                                         schools_df['roster_link'])
-
-    # Case 3: https://______.com/sports/baseball
-    schools_df['roster_link'] = np.where((schools_df['link'].str.contains('\/baseball\/*$', regex=True)) & (schools_df['roster_link'] == ''),
-                                         schools_df['link'].str.replace('\/baseball\/*', '/baseball/roster', regex=True),
-                                         schools_df['roster_link'])
-
-    # Case 4: https://______.com/sports/m-basebl
-    schools_df['roster_link'] = np.where((schools_df['link'].str.contains('\/sports*\/m-basebl\/*.*$', regex=True)) & (schools_df['roster_link'] == ''),
-                                         schools_df['link'].str.replace('\/m-basebl\/*.*', '/m-basebl/roster', regex=True),
-                                         schools_df['roster_link'])
-
-    # Case 5: https://______.com/sports/m-basebl/index
-    schools_df['roster_link'] = np.where((schools_df['link'].str.contains('\/sports\/m-basebl\/index$', regex=True)) & (schools_df['roster_link'] == ''),
-                                         schools_df['link'].str.replace('\/index', '/2020-21/roster', regex=True),
-                                         schools_df['roster_link'])
-
-    # Case 6: https://______.com/SportSelect.dbml...
-    schools_df['roster_link'] = np.where((schools_df['link'].str.contains('SportSelect\.dbml.*', regex=True)) & (schools_df['roster_link'] == ''),
-                                         schools_df['link'].str.replace('\/SportSelect\.dbml.*', '/sports/baseball/roster', regex=True),
-                                         schools_df['roster_link'])
-
-    # Case 7: https://______.com/sport/0/3
-    schools_df['roster_link'] = np.where((schools_df['link'].str.contains('\/sport\/0\/3$', regex=True)) & (schools_df['roster_link'] == ''),
-                                         schools_df['link'].str.replace('\/sport\/0\/3', '/roster/0/3', regex=True),
-                                         schools_df['roster_link'])
-
-    # Case 8: https://______.com/athletics/bb/
-    schools_df['roster_link'] = np.where((schools_df['link'].str.contains('\/athletics\/bb\/*$', regex=True)) & (schools_df['roster_link'] == ''),
-                                         schools_df['link'].str.replace('\/athletics\/bb\/*', '/athletics/bb/roster', regex=True),
-                                         schools_df['roster_link'])
-
-    # Case 9: http://______.com/sport.asp?sportID=1
-    schools_df['roster_link'] = np.where((schools_df['link'].str.contains('\/sport.asp', regex=True)) & (schools_df['roster_link'] == ''),
-                                         schools_df['link'].str.replace('\/sport.asp', '/roster.asp', regex=True),
-                                         schools_df['roster_link'])
-
-    schools_df['roster_link_flg'] = schools_df['roster_link'] != ''
-    value_counts = schools_df['roster_link_flg'].value_counts()
-    logger.info('{} schools have a known roster URL, and {} schools have yet to be determined.'.format(value_counts[True], value_counts[False]))
-
-    # Case 10: Manual Edits --- try to make this more computationally efficient eventually
-    schools_df['roster_link'] = np.where(schools_df['title'] == 'Liberty University', 'https://www.liberty.edu/flames/index.cfm?PID=36959&teamID=1', schools_df['roster_link'])
-    schools_df['roster_link'] = np.where(schools_df['title'] == 'Keystone College', 'https://www.gokcgiants.com/sports/baseball/roster', schools_df['roster_link'])
-    schools_df['roster_link'] = np.where(schools_df['title'] == 'University of Dubuque', 'https://udspartans.com/sports/baseball/roster', schools_df['roster_link'])
-    schools_df['roster_link'] = np.where(schools_df['title'] == 'University of St. Thomas, Texas', 'https://www.ustcelts.com/sports/bsb/2020-21/roster',schools_df['roster_link'])
-    schools_df['roster_link'] = np.where(schools_df['title'] == 'Utica College', 'https://ucpioneecom/sports/baseball/roster', schools_df['roster_link'])
-
-    # missing_roster_link_df = schools_df[schools_df['roster_link'] == '']
-    # display(missing_roster_link_df.style.set_properties(subset=['link'], **{'width-min': '500px'}))
-
-    # Export to CSV
-    if csv_export == True:
-        schools_df[schools_df['roster_link'] != ''].drop(columns=['roster_link_flg']).to_csv('roster_pages.csv', index=False)
-
-    return schools_df
 
 
 def read_roster_norm(html):
@@ -201,12 +106,41 @@ def filter_canadians(df, canada_strings):
         player = roster_dict[index]
         for attr in player:
             value = str(player[attr])
-            if any(canada_string.lower() in value.lower() for canada_string in canada_strings):
+            if (any(canada_string.lower() in value.lower() for canada_string in canada_strings)) | (attr.lower() == 'province'):
                 player['__hometown'] = value
                 out_list.append(player)
                 break
         index += 1
     return out_list
+
+
+def set_canadian_search_criteria():
+    city_strings = {
+        'Quebec': ['montreal', 'saint-hilaire']
+    }
+    province_strings = {
+        'Alberta': ['alberta', ', alta.', ', ab', 'a.b.'],
+        'British Columbia': ['british columbia', ', b.c.', ', bc'],
+        'Manitoba': ['manitoba', ', mb', ', man.'],
+        'New Brunswick': ['new brunswick', ', nb', 'n.b.'],
+        'Newfoundland': ['newfoundland'],
+        'Nova Scotia': ['nova scotia', ', ns', 'n.s.' ],
+        'Ontario': [', ontario', ', on', ',on', '(ont)'],
+        'Prince Edward Island': ['prince edward island'],
+        'Quebec': ['quebec', 'q.c.', ', qu'],
+        'Saskatchewan': ['saskatchewan', ', sask', ', sk', 's.k.']
+    }
+    country_strings = {
+        'Canada': ['canada', ', can']
+    }
+    canada_strings = list(sum(city_strings.values(), []))
+    canada_strings.extend(sum(province_strings.values(), []))
+    canada_strings.extend(sum(country_strings.values(), []))
+    hometown_conversion_dict = {'qc': 'Quebec'}
+    for province, strings in province_strings.items():
+         for string in strings:
+                hometown_conversion_dict[string] = province
+    return city_strings, province_strings, country_strings, canada_strings, hometown_conversion_dict
 
 
 def get_input(schools_df):
@@ -258,7 +192,6 @@ def iterate_over_schools(schools_df):
     fail_count = 0
     fail_index_list = list()
     schools_to_check_manually = list()
-    canada_strings = ['canada', ', ontario', 'quebec', 'nova scotia', 'new brunswick', 'manitoba', 'british columbia', 'prince edward island', 'saskatchewan', 'alberta', 'newfoundland', ', b.c.', ', on', ',on', '(ont)', ', alta.', ', ab', 'a.b.' ', mb', ', man.', ', sask', ', sk', 's.k.', 'q.c.', 'qc', ', qu', ', bc', ', nb', 'n.b.', ', ns', 'n.s.', ', can']
 
     # Set header for requests
     header = {
@@ -367,6 +300,12 @@ def format_player_division(string):
         return string.upper()
     elif 'JUCO' in string.upper():
         return 'Junior Colleges and Community Colleges: ' + level
+    elif string.upper() == 'CCCAA':
+        return 'California Community College Athletic Association'
+    elif string.upper() == 'NWAC':
+        return 'Northwest Athletic Conference'
+    elif string.upper() == 'USCAA':
+        return 'United States Collegiate Athletic Association'
     else:
         return 'NCAA: ' + level
 
@@ -432,6 +371,9 @@ def format_df(dict_list, schools_df):
                 # Set __obj column if no useful keys
                 elif (key_str == '0') | (key_str == 'Unnamed: 0'):
                     new_dict['__obj'] = ' --- '.join(dictionary.values())
+        # Specify RHP/LHP for pitcher
+        if ('P' in new_dict['__position']) & ('HP' not in new_dict['__position']) & (new_dict['__t'] != ''):
+            new_dict['__position'] = new_dict['__position'].replace('P', new_dict['__t'] + 'HP')
         # Combine fist and last name if necessary
         if (new_dict['__name'] == '') & (new_dict['_first_name'] != '') & (new_dict['_last_name'] != ''):
             new_dict['__name'] = new_dict['_first_name'] + ' ' + new_dict['_last_name']
@@ -458,6 +400,7 @@ def generate_html(df, file_name, last_run):
     '''
 
     html_string = '''
+    <!DOCTYPE HTML>
     <html>
        <head>
           <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -476,26 +419,34 @@ def generate_html(df, file_name, last_run):
        </header>
        <body>
     '''.format(datatables_function = datatables_function, number_of_players = str(len(df.index)), last_run = last_run)
-    
-    for division in ['NCAA: Division 1', 'NCAA: Division 2', 'NCAA: Division 3', 'NAIA',
-                     'Junior Colleges and Community Colleges: Division 1',
-                     'Junior Colleges and Community Colleges: Division 2',
-                     'Junior Colleges and Community Colleges: Division 3']:
+
+    iter = 0
+    for division in [
+        'NCAA: Division 1', 'NCAA: Division 2', 'NCAA: Division 3', 'NAIA',
+        'Junior Colleges and Community Colleges: Division 1',
+        'Junior Colleges and Community Colleges: Division 2',
+        'Junior Colleges and Community Colleges: Division 3',
+        'California Community College Athletic Association',
+        'Northwest Athletic Conference',
+        'United States Collegiate Athletic Association'
+    ]:
         temp_df = df[df['division'] == division].drop(['division'], axis=1)
         html_string += '''
         <div class="mystyle">
            <h2>{division}</h2>
-           <h4>{number_of_players} players</h4>
            {table}
         </div>
         '''.format(division = division,
                    number_of_players = str(len(temp_df.index)),
-                   table = temp_df.to_html(na_rep = '', classes='display mystyle'))
+                   table = temp_df.to_html(na_rep = '', classes='display mystyle" id="table{}'.format(str(iter))))
+        iter += 1
 
     html_string += '''
        </body>
     </html>.
     '''
+
+    html_string = html_string.replace('<td>', "<td contenteditable='true'>")
 
     with open(file_name, 'w') as f:
         f.write(html_string)

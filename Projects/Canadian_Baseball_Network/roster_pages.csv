@@ -1045,7 +1045,7 @@ Missouri Baptist University,NAIA,AMC,MO,Saint Louis,,https://mbuspartans.com/spo
 Missouri Valley College,NAIA,HAAC,MO,Marshall,,https://www.valleywillroll.com/roster/0/3.php
 Montreat College,NAIA,AAC,NC,Montreat,,http://www.montreatcavaliers.com/roster/43/1
 Morningside College,NAIA,GPAC,IA,Sioux City,,https://www.msidemustangs.com/sport/baseball/2020-21/roster
-Morris College,NAIA,A.I.I.,SC,Sumter,,?????
+Morris College,NAIA,A.I.I.,SC,Sumter,,<unknown>
 Mount Marty College,NAIA,GPAC,SD,Yankton,,https://www.mountmartyathletics.com/sport/baseball/2020-21/roster
 Mount Mercy University,NAIA,HAAC,IA,Cedar Rapids,,http://www.mountmercymustangs.com/roster/0/3.php
 Mount Vernon Nazarene University,NAIA,Crossroads,OH,Mount Vernon,,https://www.mvnucougars.com/roster/25/3
@@ -1071,7 +1071,7 @@ Providence Christian College,NAIA,Cal Pac,CA,Pasadena,,http://www.seabeggars.com
 Reinhardt University,NAIA,AAC,GA,Waleska,,https://reinhardteagles.com/sports/bsb/2020-21/roster
 Rochester University,NAIA,WHAC,MI,Rochester Hills,,http://www.rochesteruwarriors.com/roster/0/3
 Roosevelt University,NAIA,CCAC,IL,Chicago,,http://www.rooseveltlakers.com/roster/0/3.php
-Rust College,NAIA,GCAC,MS,Holly Springs,,?????
+Rust College,NAIA,GCAC,MS,Holly Springs,,<unknown>
 Saint Xavier University,NAIA,CCAC,IL,Chicago,,http://www.sxucougars.com/roster/54/3
 San Diego Christian College,NAIA,GSAC,CA,Santee,,https://www.sdcchawks.com/roster/26/3
 Shawnee State University,NAIA,Mid-South,OH,Portsmouth,,http://www.ssubears.com/roster/0/1.php
@@ -1234,7 +1234,7 @@ Otero,JUCO_D1,,CO,,,https://www.oterorattlers.com/sports/bsb/2020-21/roster
 Southeast,JUCO_D1,,NE,,,https://sccstorm.com/sports/bsb/2020-21/roster
 Trinidad State,JUCO_D1,,CO,,,https://www.tsjctrojans.com/sports/bsb/2020-21/roster
 Western Nebraska,JUCO_D1,,NE,,,https://wnccathletics.com/sports/bsb/2020-21/roster
-Florence-Darlington Tech,JUCO_D1,,SC,,,??????
+Florence-Darlington Tech,JUCO_D1,,SC,,,<unknown>
 Louisburg,JUCO_D1,,NC,,,https://www.lchurricanes.com/sports/bsb/2020-21/roster
 Spartanburg Methodist,JUCO_D1,,SC,,,https://www.gosmcpioneers.com/sports/bsb/2020-21/roster
 USC Lancaster,JUCO_D1,,SC,,,http://www.usclathletics.com/roster.asp?sportID=1
@@ -1301,7 +1301,7 @@ Wallace-Dothan,JUCO_D1,,AL,,,https://www.wallace.edu/athletics/baseball/roster/
 Wallace-Selma,JUCO_D1,,AL,,,http://www.wccs.edu/college-frontpage-home/athletics/mens-baseball/
 Baton Rouge,JUCO_D1,,LA,,,https://www.brccathletics.com/sports/bsb/2020-21/roster
 Delgado,JUCO_D1,,LA,,,https://delgadoathletics.com/sports/baseball/roster
-Nunez Community College,JUCO_D1,,LA,,,?????
+Nunez Community College,JUCO_D1,,LA,,,<unknown>
 Frontier,JUCO_D1,,IL,,,https://www.fccbobcats.com/sports/bsb/2020-21/roster
 John A. Logan,JUCO_D1,,IL,,,https://www.loganvols.com/sports/bsb/2020-21/roster
 Kaskaskia,JUCO_D1,,IL,,,https://www.kaskaskiaathletics.com/sports/bsb/2020-21/roster
@@ -1475,7 +1475,7 @@ Caldwell Tech,JUCO_D3,,NC,,,https://www.cccti.edu/GoCobras/Baseball.asp
 Rockingham,JUCO_D3,,NC,,,https://www.rockinghamcc.edu/student-services/athletics/rcc-baseball/baseball-roster-schedule/
 Surry,JUCO_D3,,NC,,,https://surry.prestosports.com/sports/bsb/2020-21/rosterprint
 Thomas Nelson Community College,JUCO_D3,,VA,,,https://tncc.edu/life/athletics
-Delta,JUCO_D3,,MI,,,https://www.deltacollegeathletics.com/sports/bsb/2020-21/roster
+Delta,JUCO_D3,,MI,,,https://www.deltapioneers.com/sports/bsb/2020-21/roster?view=list
 Lorain County,JUCO_D3,,OH,,,https://www.lorainccc.edu/athletics/roster/2021-baseball-team/
 Owens,JUCO_D3,,OH,,,https://www.owensexpress.com/sports/bsb/2020-21/roster
 Anoka-Ramsey,JUCO_D3,,MN,,,https://arccgoldenrams.com/sports/bsb/2020-21/roster
@@ -1531,3 +1531,152 @@ Massasoit,JUCO_D3,,MA,,,https://www.massasoitccwarriors.com/sports/bsb/2020-21/r
 Northern Essex,JUCO_D3,,MA,,,https://neccknights.com/sports/bsb/2020-21/roster
 Quinsigamond,JUCO_D3,,MA,,,https://www.qcc.edu/athletic-center/baseball
 Rhode Island,JUCO_D3,,RI,,,https://www.ccri.edu/athl/sports/spring_sports/baseball/roster.html
+Contra Costa College,CCCAA,,CA,,,<unknown>
+Laney College,CCCAA,,CA,,,https://www.laneyathletics.com/sports/baseball/roster
+Los Medanos College,CCCAA,,CA,,,https://www.losmedanos.edu/baseball/files/roster.aspx
+College of Marin,CCCAA,,CA,,,https://athletics.marin.edu/sports/bsb/2020-21/roster
+Mendocino College,CCCAA,,CA,,,https://www.mendocino.edu/athletics/baseball/roster
+Napa Valley College,CCCAA,,CA,,,https://nvcstorm.com/sports/bsb/2020-21/roster
+Solano College,CCCAA,,CA,,,https://solanoathletics.com/sports/bsb/2020-21/roster
+Yuba College,CCCAA,,CA,,,https://yc.yccd.edu/athletics/sports/baseball/player-roster/
+American River College,CCCAA,,CA,,,https://www.arcbeavers.com/sports/bsb/2020-21/roster
+Cosumnes River College,CCCAA,,CA,,,https://www.crchawks.com/sports/bsb/2020-21/roster
+Diablo Valley College,CCCAA,,CA,,,https://www.dvcvikings.com/sports/bsb/2020-21/roster
+Folsom Lake College,CCCAA,,CA,,,https://flcfalcons.com/sports/bsb/2020-21/roster
+Modesto Junior College,CCCAA,,CA,,,http://www.athletics.mjc.edu/sports/bsb/2020-21/roster
+Sacramento City College,CCCAA,,CA,,,https://www.sccpanthers.com/sports/bsb/2020-21/roster
+San Joaquin Delta College,CCCAA,,CA,,,https://www.deltacollegeathletics.com/sports/bsb/2020-21/roster
+Santa Rosa Junior College,CCCAA,,CA,,,http://srjcathletics.com/sports/bsb/2020-21/roster
+Sierra College,CCCAA,,CA,,,https://athletics.sierracollege.edu/sports/bsb/2020-21/roster
+Fresno City College,CCCAA,,CA,,,https://fresnocc.prestosports.com/sports/bsb/2020-21/roster
+Merced College,CCCAA,,CA,,,https://www.mccd.edu/athletics/mens/baseball/roster.html
+Porterville College,CCCAA,,CA,,,http://portervillepirates.com/sports/bsb/2020-21/roster
+Reedley College,CCCAA,,CA,,,https://www.rctigers.com/sports/bsb/2020-21/roster
+College of the Sequoias,CCCAA,,CA,,,http://cosgiants.com/sports/bsb/2020-21/roster
+Taft College,CCCAA,,CA,,,https://athletics.taftcollege.edu/sports/bsb/2020-21/roster
+West Hills College,CCCAA,,CA,,,http://www.westhillsfalcons.com/sports/bsb/2020-21/roster
+Canada College,CCCAA,,CA,,,https://canadacollege.edu/baseball/roster.php
+Chabot College,CCCAA,,CA,,,http://athletics.chabotcollege.edu/sports/bsb/2020-21/roster
+City College of San Francisco,CCCAA,,CA,,,https://ccsfathletics.com/sports/bsb/2020-21/roster
+College of San Mateo,CCCAA,,CA,,,https://collegeofsanmateo.edu/baseball/team/index.php
+Skyline College,CCCAA,,CA,,,https://www.skylinecollegeathletics.com/sports/bsb/2020-21/roster
+West Valley College,CCCAA,,CA,,,https://athletics.westvalley.edu/sports/bsb/2020-21/roster
+Cabrillo College,CCCAA,,CA,,,https://athletics.cabrillo.edu/sports/bsb/2020-21/roster
+De Anza College,CCCAA,,CA,,,https://www.deanza.edu/athletics/baseball/roster.html
+Gavilan College,CCCAA,,CA,,,https://www.gavilan.edu/sports/baseball/roster.php
+Hartnell College,CCCAA,,CA,,,https://hartnellpanthers.com/sports/bsb/2020-21/roster
+Mission College,CCCAA,,CA,,,https://missionsaints.com/sports/bsb/2020-21/roster
+Monterey Peninsula College,CCCAA,,CA,,,https://www.athletics.mpc.edu/teams/men-s-sports/baseball/team-roster
+Ohlone College,CCCAA,,CA,,,https://www.ohloneathletics.com/sports/bsb/2020-21/roster
+Butte College,CCCAA,,CA,,,http://www.butte.edu/departments/learning/athletics/baseball/roster.html
+Feather River College,CCCAA,,CA,,,https://athletics.frc.edu/sports/bsb/2020-21/roster
+Lassen College,CCCAA,,CA,,,http://www.lassenathletics.com/roster/0/3.php
+College of the Redwoods,CCCAA,,CA,,,https://www.redwoods.edu/sports/baseball#Roster
+Shasta College,CCCAA,,CA,,,https://www.shastacollegeathletics.com/sports/bsb/2020-21/roster
+College of the Siskiyous,CCCAA,,CA,,,https://coseagles.com/sports/bsb/2020-21/roster
+Antelope Valley College,CCCAA,,CA,,,http://gomarauders.avc.edu/sports/bsb/2020-21/roster
+Barstow College,CCCAA,,CA,,,https://www.barstowvikings.com/sports/bsb/2020-21/roster
+Cerro Coso Community College,CCCAA,,CA,,,https://www.cosocoyotes.com/sports/bsb/2020-21/roster
+College of the Desert,CCCAA,,CA,,,https://www.codathletics.com/sports/bsb/2020-21/roster
+Chaffey College,CCCAA,,CA,,,https://www.chaffeypanthers.com/sports/bsb/2020-21/roster
+Mt. San Jacinto,CCCAA,,CA,,,https://msjc.prestosports.com/sports/bsb/2020-21/roster
+San Bernardino Valley College,CCCAA,,CA,,,https://sbvcathletics.com/sports/bsb/2020-21/roster
+Victor Valley College,CCCAA,,CA,,,https://athletics.vvc.edu/sports/bsb/2020-21/roster
+Cypress College,CCCAA,,CA,,,https://cypresschargers.com/sports/bsb/2020-21/roster
+Fullerton College,CCCAA,,CA,,,https://www.fchornets.com/sports/bsb/2020-21/roster
+Golden West College,CCCAA,,CA,,,https://www.gwcathletics.com/sports/bsb/2020-21/roster
+Irvine Valley College,CCCAA,,CA,,,https://ivclasers.com/sports/bsb/2020-21/roster
+Orange Coast College,CCCAA,,CA,,,https://www.occpirateathletics.com/sports/bsb/2020-21/roster
+Riverside City College,CCCAA,,CA,,,https://www.rccathletics.com/sports/bsb/2020-21/roster
+Saddleback College,CCCAA,,CA,,,https://saddlebackcollegeathletics.com/sports/bsb/2020-21/roster
+Santa Ana College,CCCAA,,CA,,,https://www.sacdons.com/sports/bsb/2020-21/roster
+Grossmont College,CCCAA,,CA,,,https://www.grossmontgriffins.com/sports/bsb/2020-21/roster
+Imperial Valley College,CCCAA,,CA,,,http://athletics.imperial.edu/sports/bsb/2020-21/roster
+Palomar College,CCCAA,,CA,,,https://palomar.prestosports.com/sports/bsb/2020-21/roster
+San Diego City College,CCCAA,,CA,,,https://www.sdcityknights.com/sports/bsb/2020-21/roster
+San Diego Mesa College,CCCAA,,CA,,,https://www.gosdmesa.com/sports/bsb/2020-21/roster
+Southwestern College,CCCAA,,CA,,,https://www.southwesternjaguars.com/sports/bsb/2020-21/roster
+Cerritos College,CCCAA,,CA,,,https://www.cerritosfalcons.com/sports/bsb/2020-21/roster
+Compton College,CCCAA,,CA,,,https://www.comptontartars.com/sports/bsb/2020-21/roster
+East Los Angeles College,CCCAA,,CA,,,https://www.elacathletics.com/sports/bsb/2020-21/roster
+El Camino College,CCCAA,,CA,,,https://eccwarriors.com/sports/bsb/2020-21/roster
+LA Harbor College,CCCAA,,CA,,,https://www.lahcathletics.com/baseball-roster
+Long Beach City College,CCCAA,,CA,,,https://www.lbccvikings.com/sports/bsb/2020-21/roster
+Mt. San Antonio College,CCCAA,,CA,,,https://www.mtsacathletics.com/sports/bsb/2020-21/roster
+Pasadena City College,CCCAA,,CA,,,https://pcclancers.com/sports/bsb/2020-21/roster
+Rio Hondo College,CCCAA,,CA,,,https://athletics.riohondo.edu/sports/bsb/2020-21
+Allan Hancock College,CCCAA,,CA,,,https://athletics.hancockcollege.edu/sports/bsb/2020-21/roster
+Cuesta College,CCCAA,,CA,,,https://www.cuestaathletics.com/sports/bsb/2020-21/roster
+LA Pierce College,CCCAA,,CA,,,http://www.piercecollege.edu/departments/athletics/baseball/roster.asp
+Moorpark College,CCCAA,,CA,,,https://www.moorparkcollegeathletics.com/sports/bsb/2020-21/roster
+Oxnard College,CCCAA,,CA,,,https://www.occondors.com/sports/bsb/2020-21/roster
+Santa Barbara City College,CCCAA,,CA,,,https://www.sbccvaqueros.com/sports/bsb/2020-21/roster
+Ventura College,CCCAA,,CA,,,https://ventura.prestosports.com/sports/bsb/2020-21/roster
+Bakersfield College,CCCAA,,CA,,,http://www.gogades.com/sports/bsb/2020-21/roster
+College of the Canyons,CCCAA,,CA,,,https://cocathletics.com/sports/bsb/2020-21/roster
+Citrus College,CCCAA,,CA,,,https://www.citrusowls.com/sports/bsb/2020-21/roster
+Glendale College,CCCAA,,CA,,,https://www.gccathletics.com/sports/bsb/2020-21/roster
+Los Angeles Mission College,CCCAA,,CA,,,https://www.lamcathletics.com/sports/bsb/2020-21/roster
+Los Angeles Valley College,CCCAA,,CA,,,https://www.lavc.edu/athletics/baseball/roster.aspx
+West Los Angeles College,CCCAA,,CA,,,https://www.westlacollegeathletics.com/sports/bsb/2020-21/roster
+Bellevue,NWAC,,WA,,,https://www.bellevuecollege.edu/athletics/sports/baseball/roster/
+Douglas,NWAC,,BC,,,https://douglascollegeroyals.ca/sports/bsb/2020-21/roster
+Edmonds,NWAC,,WA,,,https://www.edmonds.edu/athletics/baseball/roster.html
+Everett,NWAC,,WA,,,https://athletics.everettcc.edu/sports/bsb/2020-21/roster
+Olympic,NWAC,,WA,,,https://www.olympicrangers.com/sports/bsb/2020-21/roster
+Shoreline,NWAC,,WA,,,https://www.shoreline.edu/athletics/baseball/default.aspx
+Skagit Valley,NWAC,,WA,,,https://athletics.skagit.edu/sports/baseball/roster
+Big Bend,NWAC,,WA,,,https://bigbend.prestosports.com/sports/bsb/2020-21/roster
+Blue Mountain,NWAC,,OR,,,https://bmcctimberwolves.com/sports/bsb/2020-21/roster
+Columbia Basin,NWAC,,WA,,,https://cbchawks.com/sports/baseball/roster
+Spokane,NWAC,,WA,,,https://scc.spokane.edu/Athletics/Sports/Baseball/Roster
+Treasure Valley,NWAC,,OR,,,https://www.gochuks.com/sports/bsb/2020-21/roster
+Walla Walla,NWAC,,WA,,,https://warriors.wwcc.edu/baseball/roster/
+Wenatchee,NWAC,,WA,,,https://www.gowvc.com/sports/bsb/2020-21/roster
+Yakima Valley,NWAC,,WA,,,http://www.goyaks.com/sports/baseball/roster
+Centralia,NWAC,,WA,,,https://www.centralia.edu/athletics/teams/baseball.aspx
+Grays Harbor,NWAC,,WA,,,https://ghcathletics.com/sports/baseball/roster
+Green River,NWAC,,WA,,,https://www.greenriver.edu/students/get-involved/athletics/mens-sports/mens-baseball/mens-baseball-team/
+Lower Columbia,NWAC,,WA,,,https://lccreddevils.com/sports/baseball/roster/2021?print=true
+Pierce,NWAC,,WA,,,https://pierceraiders.com/sports/baseball/roster
+Tacoma,NWAC,,WA,,,https://tacomatitans.com/sports/baseball/roster
+Chemeketa,NWAC,,OR,,,https://www.chemeketa.edu/athletics/baseball/
+Clackamas,NWAC,,OR,,,https://www.clackamas.edu/campus-life/athletics/sports/baseball/roster
+Clark,NWAC,,WA,,,https://clarkpenguins.com/sports/baseball/roster
+Lane,NWAC,,OR,,,https://lanetitans.com/sports/bsb/2020-21/roster
+Linn-Benton,NWAC,,OR,,,https://athletics.linnbenton.edu/sports/bsb/2020-21/roster
+Mt Hood,NWAC,,OR,,,https://www.mhcc.edu/Baseball-Roster/
+SW Oregon,NWAC,,OR,,,https://swoccathletics.com/sports/baseball/roster
+Umpqua,NWAC,,OR,,,https://www.uccriverhawks.com/sports/bsb/2020-21/roster
+Mississippi University for Women,USCAA,,MS,,,https://owlsathletics.com/sports/baseball/roster
+Cincinnati-Clermont,USCAA,,OH,,,https://ucclermont.edu/athletics/mensbaseball.html
+Mid-Atlantic Christian University,USCAA,,NC,,,https://gomacumustangs.com/sports/bsb/2020-21/roster
+University of Dallas,USCAA,,TX,,,https://www.udallasathletics.com/sports/bsb/2020-21/roster
+Bryant & Stratton (Albany),USCAA,,NY,,,https://albany.bscbobcats.com/sports/bsb/2020-21/roster
+Penn State Wilkes-Barre,USCAA,,PA,,,http://athletics.wb.psu.edu/sports/bsb/2020-21/roster
+Penn State Beaver,USCAA,,PA,,,https://psubeaver.prestosports.com/sports/bsb/2020-21/roster
+Vaughn College,USCAA,,PA,,,https://vaughnwarriors.com/sports/bsb/2020-21/roster
+Penn State Hazleton,USCAA,,PA,,,http://athletics.hn.psu.edu/sports/bsb/2020-21/roster
+Penn State Scranton,USCAA,,PA,,,https://www.psuscrantonathletics.com/sports/bsb/2020-21/roster
+Christendom College,USCAA,,VA,,,https://www.christendomathletics.com/sports/bsb/2020-21/roster
+Great Bay Community College,USCAA,,NH,,,https://www.gogreatbay.com/sports/bsb/2020-21/roster
+Penn State Dubois,USCAA,,PA,,,https://www.psuduboisathletics.com/sports/bsb/2020-21/roster
+Southern Maine Community College,USCAA,,ME,,,https://www.gosmccseawolves.com/sports/bsb/2020-21/roster
+Penn State Fayette,USCAA,,PA,,,https://www.psfathletics.com/sports/bsb/2020-21/roster
+Penn State Greater Allegheny,USCAA,,PA,,,https://www.athleticsga.com/sports/bsb/2020-21/roster
+Williamson College of the Trades,USCAA,,PA,,,http://www.williamsonathletics.com/roster/17/2
+Central Maine Community College,USCAA,,ME,,,https://www.cmmustangs.com/sports/bsb/2020-21/roster
+Penn State York,USCAA,,PA,,,https://pennstateyorksports.com/sports/bsb/2020-21/roster
+Wright State - Lake Campus,USCAA,,OH,,,https://www.wsulclakers.com/sports/bsb/2020-21/roster
+Bluefield State,USCAA,,WV,,,https://go-bstate.com/sports/bsb/2020-21/roster
+Central Penn,USCAA,,PA,,,https://www.centralpennknights.com/sports/bsb/2020-21/roster
+The Apprentice School,USCAA,,VA,,,https://www.gobuilders.com/sports/bsb/2020-21/roster
+Roosevelt University - Peoria,USCAA,,IL,,,http://www.rooseveltlakers.com/roster/0/22.php
+Penn State New Kensington,USCAA,,PA,,,https://www.psnkathletics.com/sports/bsb/2020-21/roster
+Penn State Brandywine,USCAA,,PA,,,https://www.psubrandywineathletics.com/sports/bsb/2020-21/roster
+Penn State Mont Alto,USCAA,,PA,,,https://www.psumontaltoathletics.com/sports/bsb/2020-21/roster
+NHTI,USCAA,,NH,,,https://www.nhti.edu/athletics/inside-athletics/mens-baseball/
+Manor,USCAA,,PA,,,https://manorbluejays.com/sports/bsb/2020-21/roster
+St. Thomas (Tex.),USCAA,,TX,,,https://ustcelts.com/sports/bsb/2020-21/roster
+Kent St. - Tuscarawas,USCAA,,OH,,,https://www.flyhighgoldeneagles.com/sports/bsb/2020-21/roster
+Penn State Schuylkill,USCAA,,PA,,,https://www.psuschuylkillathletics.com/sports/bsb/2020-21/roster

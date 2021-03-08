@@ -37,8 +37,9 @@ def get_canadian_players(year):
     return pd.DataFrame(player_dict_list)
 
 
-def compare(df_cbn, df_scrape, out_excel):
-    # Ex. cbn.compare(cbn.get_canadian_players(2021), pd.read_html('canadians.html')[0], 'diff.xlsx')
+def compare(df_cbn, df_scrape_list, out_excel):
+    # Ex. cbn.compare(cbn.get_canadian_players(2021), pd.read_html('canadians.html'), 'diff.xlsx')
+    df_scrape = pd.concat(df_scrape_list, ignore_index=True)
     df_cbn['name'] = df_cbn['name'].str.lower()
     df_scrape['name'] = df_scrape['name'].str.lower()
     df_combined = pd.merge(df_scrape, df_cbn, how='outer', on='name', suffixes=('_pete', '_cbn')).sort_values(by='name')
