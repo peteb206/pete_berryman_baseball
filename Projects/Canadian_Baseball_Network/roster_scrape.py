@@ -48,8 +48,8 @@ def main():
     logger.info(last_run)
 
     # Iterate over schools
-    global city_strings, province_strings, country_strings, canada_strings, hometown_conversion_dict
-    city_strings, province_strings, country_strings, canada_strings, hometown_conversion_dict = set_canadian_search_criteria()
+    global city_strings, province_strings, country_strings, canada_strings, hometown_conversion_dict, ignore_strings
+    city_strings, province_strings, country_strings, canada_strings, hometown_conversion_dict, ignore_strings = set_canadian_search_criteria()
     df_lists = iterate_over_schools(schools_df)
     # roster_df_list = df_lists[0]
     canadians_dict_list = df_lists[1]
@@ -104,12 +104,16 @@ def filter_canadians(df, canada_strings):
     index = 0
     while index < len(roster_dict):
         player = roster_dict[index]
-        for attr in player:
-            value = str(player[attr])
-            if (any(canada_string.lower() in value.lower() for canada_string in canada_strings)) | (attr.lower() == 'province'):
-                player['__hometown'] = value
-                out_list.append(player)
-                break
+        if 'Province' in player.keys(): # Applies to Canadian university
+            player['__hometown'] = player['Hometown/High School'] + ', ' + player['Province']
+            out_list.append(player)
+        else: # Iterate over roster columns
+            for attr in player:
+                value = str(player[attr]).strip()
+                if (any(canada_string.lower() in value.lower() for canada_string in canada_strings)) & (~any(ignore_string in value.lower() for ignore_string in ignore_strings)):
+                    player['__hometown'] = value
+                    out_list.append(player)
+                    break
         index += 1
     return out_list
 
@@ -123,7 +127,7 @@ def set_canadian_search_criteria():
         'British Columbia': ['british columbia', ', b.c.', ', bc'],
         'Manitoba': ['manitoba', ', mb', ', man.'],
         'New Brunswick': ['new brunswick', ', nb', 'n.b.'],
-        'Newfoundland': ['newfoundland'],
+        'Newfoundland': ['newfoundland', 'nfld'],
         'Nova Scotia': ['nova scotia', ', ns', 'n.s.' ],
         'Ontario': [', ontario', ', on', ',on', '(ont)'],
         'Prince Edward Island': ['prince edward island'],
@@ -140,7 +144,8 @@ def set_canadian_search_criteria():
     for province, strings in province_strings.items():
          for string in strings:
                 hometown_conversion_dict[string] = province
-    return city_strings, province_strings, country_strings, canada_strings, hometown_conversion_dict
+    ignore_strings =  ['canada college', 'west canada valley', 'la canada', 'australia', 'mexico', 'abac', 'newfoundland, pa', 'canada, minn']
+    return city_strings, province_strings, country_strings, canada_strings, hometown_conversion_dict, ignore_strings
 
 
 def get_input(schools_df):
