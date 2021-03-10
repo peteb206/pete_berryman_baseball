@@ -58,11 +58,10 @@ def main():
     # print_cols(roster_df_list)
 
     # Format dictionaries to dataframe
-    # pd.DataFrame(canadians_dict_list).to_csv('canadians_raw.csv', index=False)
     canadians_df = format_df(canadians_dict_list, schools_df)
     canadians_df = pd.concat([canadians_df, pd.read_csv('canadians_manual.csv')], ignore_index=True) # Add players who could not be scraped
     canadians_df['class'] = pd.Categorical(canadians_df['class'], ['Freshman','Sophomore', 'Junior', 'Senior', '']) # Create custom sort by class
-    canadians_df.sort_values(by=['class', 'school'], ignore_index=True, inplace=True)
+    canadians_df.sort_values(by=['class', 'school', 'name'], ignore_index=True, inplace=True)
     canadians_df.to_csv('canadians.csv', index=False)
     generate_html(canadians_df[['name','position','class','school','division','state','hometown']], 'canadians.html', last_run)
     logger.info('')
@@ -79,13 +78,18 @@ def read_roster_norm(html):
 
 def read_roster(school, header):
     df = pd.DataFrame()
-    response = ''
-    try:
-        response = requests.get(school['roster_link'], headers=header, timeout=10) # Try once
-    except Exception as e:
-        time.sleep(1)
-        response = requests.get(school['roster_link'], headers=header, timeout=10) # Try one more time
-    response_text = response.text
+    response_text = ''
+    try_num = 1
+    while (response_text == '') & (try_num <= 3): # 3 tries
+        try:
+            response = requests.get(school['roster_link'], headers=header, timeout=10)
+            response_text = response.text
+        except Exception as e:
+            if try_num == 1:
+                logger.info('')
+            logger.info('--- Failed attempt {} at {} ---'.format(str(try_num), school['roster_link']))
+            try_num += 1
+            time.sleep(0.5)
     soup = BeautifulSoup(response_text, 'lxml')
     if len(soup('table')) > 0:
         html = pd.read_html(response_text)
@@ -105,7 +109,7 @@ def filter_canadians(df, canada_strings):
     while index < len(roster_dict):
         player = roster_dict[index]
         if 'Province' in player.keys(): # Applies to Canadian university
-            player['__hometown'] = player['Hometown/High School'] + ', ' + player['Province']
+            player['__hometown'] = player['Hometown/High School'].split(':')[-1].split('/')[0].strip() + ', ' + player['Province'].split(':')[-1].strip()
             out_list.append(player)
         else: # Iterate over roster columns
             for attr in player:
@@ -130,7 +134,7 @@ def set_canadian_search_criteria():
         'Newfoundland': ['newfoundland', 'nfld'],
         'Nova Scotia': ['nova scotia', ', ns', 'n.s.' ],
         'Ontario': [', ontario', ', on', ',on', '(ont)'],
-        'Prince Edward Island': ['prince edward island'],
+        'Prince Edward Island': ['prince edward island', 'p.e.i.'],
         'Quebec': ['quebec', 'q.c.', ', qu'],
         'Saskatchewan': ['saskatchewan', ', sask', ', sk', 's.k.']
     }
@@ -140,40 +144,52 @@ def set_canadian_search_criteria():
     canada_strings = list(sum(city_strings.values(), []))
     canada_strings.extend(sum(province_strings.values(), []))
     canada_strings.extend(sum(country_strings.values(), []))
-    hometown_conversion_dict = {'qc': 'Quebec'}
+    hometown_conversion_dict = {
+        'ab': 'Alberta',
+        'bc': 'British Columbia',
+        'mb': 'Manitoba',
+        'nb': 'New Brunswick',
+        'ns': 'Nova Scotia',
+        'on': 'Ontario',
+        'ont': 'Ontario',
+        'ont.': 'Ontario',
+        'pei': 'Ontario',
+        'qc': 'Quebec',
+        'qu': 'Quebec',
+        'sk': 'Saskatchewan'
+    }
     for province, strings in province_strings.items():
          for string in strings:
-                hometown_conversion_dict[string] = province
-    ignore_strings =  ['canada college', 'west canada valley', 'la canada', 'australia', 'mexico', 'abac', 'newfoundland, pa', 'canada, minn']
+                hometown_conversion_dict[re.sub(r'[^a-zA-Z\.]+', '', string)] = province
+    ignore_strings =  ['canada college', 'west canada valley', 'la canada', 'australia', 'mexico', 'abac', 'newfoundland, pa', 'canada, minn', 'new brunswick, n']
     return city_strings, province_strings, country_strings, canada_strings, hometown_conversion_dict, ignore_strings
 
 
 def get_input(schools_df):
+    df_size = len(schools_df.index)
     run_all_rows = ''
     while run_all_rows not in ['y', 'n']:
         run_all_rows = input("\nRun script for all schools? Answer y/n... ")
         if run_all_rows not in ['y', 'n']:
             logger.error('Value must be "y" or "n"')
     if run_all_rows == 'n':
-        run_first_last_rows = ''
-        while run_first_last_rows not in ['first', 'last']:
-            run_first_last_rows = input("\nRun first X schools or last X schools? Answer first/last... ")
-            if run_first_last_rows not in ['first', 'last']:
-                logger.error('Value must be "first" or "last"')
-        number_of_rows = 0
-        max_length = len(schools_df.index)
-        while (number_of_rows < 1) | (number_of_rows > max_length):
-            number_of_rows = input("\nHow many schools? ")
-            if number_of_rows.isdigit() == False:
-                logger.error('Value must be a positive integer less than or equal to ' + str(max_length))
-            else:
-                number_of_rows = int(number_of_rows)
-            if number_of_rows > max_length:
-                logger.error('Value must be a positive integer less than or equal to ' + str(max_length))
-        if run_first_last_rows == 'first':
-            schools_df = schools_df.head(number_of_rows)
-        elif run_first_last_rows == 'last':
-            schools_df = schools_df.tail(number_of_rows)
+        start_row = '-1'
+        while (int(start_row) < 0) | (int(start_row) >= df_size):
+            start_row = input("\nStart with which row (>= 0 and <= {})... ".format(str(df_size - 1)))
+            if int(start_row) < 0: 
+                logger.error('Value must be greater than 0.')
+            elif int(start_row) >= df_size:
+                logger.error('Value must be less than or equal to {}.'.format(str(df_size - 1)))
+        end_row = '-1'
+        while (int(end_row) < 0) | (int(end_row) >= df_size) | (int(end_row) < int(start_row)):
+            end_row = input("\nEnd with which row (>= 0 and <= {})... ".format(str(df_size - 1)))
+            if int(end_row) < 0: 
+                logger.error('Value must be greater than 0.')
+            elif int(end_row) >= df_size:
+                logger.error('Value must be less than or equal to {}.'.format(str(df_size - 1)))
+            elif int(end_row) < int(start_row):
+                logger.error('End row ({}) cannot be less than start row ({})'.format(end_row, start_row))
+        schools_df = schools_df.loc[int(start_row):int(end_row)]
     return schools_df
 
 
@@ -291,9 +307,9 @@ def format_player_class(string):
 
 def format_player_position(string):
     # Ouput position(s) in acronym form separated by a forward slash
-    substitutions = {' ': '', 'PITCHER': 'P', 'RIGHT': 'R', 'LEFT': 'L', 'HANDED': 'H', '-H': 'H',
+    substitutions = {' ': '', 'PITCHER': 'P', 'RIGHT': 'R', 'LEFT': 'L', 'HANDED': 'H', '-H': 'H', 'THP': 'HP',
                      'CATCHER': 'C', 'UTILITY': 'UTL', 'FIRSTBASE': '1B', 'SECONDBASE': '2B', 'THIRDBASE': '3B',
-                     'SHORTSTOP': 'SS', 'INFIELD': 'IF', 'OUTFIELD': 'OF', 'ER': '', 'MAN': ''}
+                     'SHORTSTOP': 'SS', 'INFIELD': 'IF', 'OUTFIELD': 'OF', 'ER': '', 'MAN': '', ',R/R': ''}
     for from_string, to_string in substitutions.items():
         string = string.replace(from_string, to_string)
     return string
@@ -316,8 +332,28 @@ def format_player_division(string):
 
 
 def format_player_hometown(string):
-    # Remove attached High School name if, necessary
-    # To Do: remove references to anything other than city and province
+    string = re.sub(r'\s*\(*(?:Canada|Can.|CN|CAN)\)*\.*', '', string) # Remove references to Canada
+
+    parentheses_search = re.search('\(([^)]+)', string) # Search for text within parentheses
+    if parentheses_search != None:
+        if parentheses_search.group(1).count(',') == 1:
+            string = parentheses_search.group(1) # Text within parentheses is city/province
+        else:
+            string = string.split('(')[0].strip() # Text within parentheses is not helpful
+
+    comma_count = string.count(',')
+    no_school = string.split('/')[0].strip()
+    if comma_count > 0:
+        no_school_list = no_school.split(',')
+        city = no_school_list[0].strip()
+        province = no_school_list[1].strip()
+        if province.lower() in hometown_conversion_dict.keys():
+            province = hometown_conversion_dict[province.lower()] # Convert province abbreviations to full name
+        elif (province[:3].lower() == 'can') | (province == ''):
+            return city # No province provided... just return city
+        string = city + ', ' + province
+    else:
+        string = no_school
     return string
 
 
@@ -339,7 +375,8 @@ def format_df(dict_list, schools_df):
             value_str = value_str.split(':')[-1].strip()
             if (len(value_str) != 0) & (value_str.lower() != 'nan'):
                 # Set __class column
-                if (new_dict['__class'] == '') & (key_str.startswith('cl') | key_str.startswith('y') | key_str.startswith('e') | key_str.startswith('ci.') | ('year' in key_str)):
+                if (new_dict['__class'] == '') & (key_str.startswith('cl') | key_str.startswith('y') | key_str.startswith('e') |
+                                                  key_str.startswith('ci.') | ('year' in key_str) | (key_str in ['athletic', 'academic'])):
                     new_dict['__class'] = format_player_class(value_str)
 
                 # Set __name columns
@@ -414,8 +451,7 @@ def generate_html(df, file_name, last_run):
                     'lengthMenu': [[10, 25, 50, 100, -1], [10, 25, 50, 100, 'All']],
                     'pageLength': -1,
                     'order': [[2, 'asc'], [3, 'asc']],
-                    'dom': 'Bflrtip',
-                    'buttons': ['excel']
+                    'dom': 'Bflrtip'
                 }})
             }});
         </script>
@@ -456,7 +492,7 @@ def generate_html(df, file_name, last_run):
     '''
 
     # Make cells editable
-    html_string = html_string.replace('<td>', "<td contenteditable='true'>")
+    # html_string = html_string.replace('<td>', "<td contenteditable='true'>")
 
     # Custom sort order for class: Freshman, Sophomore, Junior, Senior
     for class_year, class_year_num in {'Freshman': '1', 'Sophomore': '2', 'Junior': '3', 'Senior': '4'}.items():
