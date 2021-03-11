@@ -9,6 +9,8 @@ import logging
 import datetime
 import psutil
 import csv
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
 
 
 # Set up logging
@@ -63,7 +65,9 @@ def main():
     canadians_df['class'] = pd.Categorical(canadians_df['class'], ['Freshman','Sophomore', 'Junior', 'Senior', '']) # Create custom sort by class
     canadians_df.sort_values(by=['class', 'school', 'name'], ignore_index=True, inplace=True)
     canadians_df.to_csv('canadians.csv', index=False)
-    generate_html(canadians_df[['name','position','class','school','division','state','hometown']], 'canadians.html', last_run)
+    canadians_df = canadians_df[['name','position','class','school','division','state','hometown']] # Keep only relevant columns
+    update_gsheet(canadians_df, last_run)
+    generate_html(canadians_df, 'canadians.html', last_run)
     logger.info('')
     logger.info('{} Canadian players found...'.format(str(len(canadians_df.index))))
 
@@ -160,7 +164,7 @@ def set_canadian_search_criteria():
     }
     for province, strings in province_strings.items():
          for string in strings:
-                hometown_conversion_dict[re.sub(r'[^a-zA-Z\.]+', '', string)] = province
+                hometown_conversion_dict[re.sub(r'[^a-zA-Z]+', '', string)] = province
     ignore_strings =  ['canada college', 'west canada valley', 'la canada', 'australia', 'mexico', 'abac', 'newfoundland, pa', 'canada, minn', 'new brunswick, n']
     return city_strings, province_strings, country_strings, canada_strings, hometown_conversion_dict, ignore_strings
 
@@ -298,7 +302,7 @@ def format_player_class(string):
         return 'Junior'
     elif ('so' in string.lower()) | (string.lower() == 's') | ('2' in string):
         return 'Sophomore'
-    elif ('f' in string.lower()) | ('1' in string) | ('hs' in string.lower()):
+    elif ('f' in string.lower()) | ('1' in string) | ('hs' in string.lower()) | (string.lower() == 'rs.'):
         return 'Freshman'
     elif ('sr' in string.lower()) | ('gr' in string.lower()) | ('4' in string) | ('5' in string):
         return 'Senior'
@@ -332,7 +336,7 @@ def format_player_division(string):
 
 
 def format_player_hometown(string):
-    string = re.sub(r'\s*\(*(?:Canada|Can.|CN|CAN)\)*\.*', '', string) # Remove references to Canada
+    string = re.sub(r'\s*\(*(?:Canada|Can.|CN|CAN|CA)\)*\.*', '', string) # Remove references to Canada
 
     parentheses_search = re.search('\(([^)]+)', string) # Search for text within parentheses
     if parentheses_search != None:
@@ -347,9 +351,12 @@ def format_player_hometown(string):
         no_school_list = no_school.split(',')
         city = no_school_list[0].strip()
         province = no_school_list[1].strip()
-        if province.lower() in hometown_conversion_dict.keys():
-            province = hometown_conversion_dict[province.lower()] # Convert province abbreviations to full name
+        province_stripped = re.sub(r'[^a-zA-Z]+', '', province.lower()) # Ex. ", Sask." --> "sask"
+        if province_stripped in hometown_conversion_dict.keys():
+            province = hometown_conversion_dict[province_stripped] # Convert province abbreviations to full name
         elif (province[:3].lower() == 'can') | (province == ''):
+            if city.strip().lower() in hometown_conversion_dict.keys():
+                city = hometown_conversion_dict[city.strip().lower()] # In case province accidentally labeled as city
             return city # No province provided... just return city
         string = city + ', ' + province
     else:
@@ -368,6 +375,7 @@ def format_df(dict_list, schools_df):
                 new_dict['__' + col] = ''
         new_dict['_first_name'] = ''
         new_dict['_last_name'] = ''
+        hometown_orig = ''
 
         for key, value in dictionary.items():
             key_str = str(key).lower()
@@ -406,12 +414,13 @@ def format_df(dict_list, schools_df):
                     if key == '__division':
                         new_dict[key_str] = format_player_division(value_str)
                     elif key == '__hometown':
+                        hometown_orig = value_str
                         new_dict[key_str] = format_player_hometown(value_str)
                     else:
                         new_dict[key_str] = value_str
 
                 # Set __obj column if no useful keys
-                elif (key_str == '0') | (key_str == 'Unnamed: 0'):
+                elif (key_str == '0') | (key_str == 'unnamed: 0'):
                     new_dict['__obj'] = ' --- '.join(dictionary.values())
         # Specify RHP/LHP for pitcher
         if ('P' in new_dict['__position']) & ('HP' not in new_dict['__position']) & (new_dict['__t'] != ''):
@@ -419,9 +428,9 @@ def format_df(dict_list, schools_df):
         # Combine fist and last name if necessary
         if (new_dict['__name'] == '') & (new_dict['_first_name'] != '') & (new_dict['_last_name'] != ''):
             new_dict['__name'] = new_dict['_first_name'] + ' ' + new_dict['_last_name']
-        if (new_dict['__name'] != '') & (new_dict['__school'] != new_dict['__hometown']) & (new_dict['__name'] != new_dict['__hometown']):
+        if (new_dict['__name'] != '') & (new_dict['__school'] != hometown_orig) & (new_dict['__name'] != hometown_orig):
             new_dict_list.append(new_dict)
-    
+
     canadians_df = pd.DataFrame(new_dict_list)
     canadians_df = canadians_df.loc[:, canadians_df.columns.str.startswith('__')]
     canadians_df.columns = canadians_df.columns.str.lstrip('__')
@@ -500,6 +509,116 @@ def generate_html(df, file_name, last_run):
 
     with open(file_name, 'w') as f:
         f.write(html_string)
+
+
+def update_gsheet(df, last_run):
+    # define the scope
+    scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
+
+    # add credentials to the account
+    creds = ServiceAccountCredentials.from_json_keyfile_name('Canadians in College Baseball-5bcb1c4ee8e9.json', scope)
+
+    # authorize the clientsheet 
+    client = gspread.authorize(creds)
+
+    # get the instance of the Spreadsheet
+    sheet = client.open('Canadians in College Baseball 2021')
+
+    # get the sheets of the Spreadsheet
+    summary_sheet = sheet.worksheet('Summary')
+    summary_sheet_id = summary_sheet._properties['sheetId']
+    players_sheet = sheet.worksheet('Players')
+    players_sheet_id = players_sheet._properties['sheetId']
+
+    # clear values in both sheets
+    clear_sheets(sheet, [summary_sheet_id, players_sheet_id])
+
+    # initialize summary sheet
+    last_run_split = last_run.split(': ')
+    last_run_split[0] = last_run_split[0] + ':'
+    summary_data = [last_run_split, ['', ''], ['Total:', '{} players'.format(str(len(df.index)))], ['', '']]
+
+    # Fill NaN values in dataframe with blank string
+    df.fillna('', inplace=True)
+
+    # Add title row
+    row = 1
+    player_data = [df.drop(['division'], axis=1).columns.values.tolist()]
+
+    division_header_rows = list()
+
+    # Loop through divisions
+    for division in [
+        'NCAA: Division 1', 'NCAA: Division 2', 'NCAA: Division 3', 'NAIA', 'Junior Colleges and Community Colleges: Division 1', 'Junior Colleges and Community Colleges: Division 2', 'Junior Colleges and Community Colleges: Division 3', 'California Community College Athletic Association', 'Northwest Athletic Conference', 'United States Collegiate Athletic Association']:
+
+        # Subset dataframe
+        df_split = df[df['division'] == division].drop(['division'], axis=1)
+
+        # Row/Division Header
+        division_header = [['', '', '', '', '', ''], [division, '', '', '', '', '']]
+        division_header_rows.append(row + 2)
+        player_data += division_header
+
+        # Compile data rows
+        summary_data.append([division, '{} players'.format(str(len(df_split.index)))])
+        player_data += df_split.values.tolist()
+
+        row = len(player_data)
+
+    # Add data to sheets
+    summary_sheet.insert_rows(summary_data, row=1)
+    players_sheet.insert_rows(player_data, row=1)
+
+    # Freeze header row
+    players_sheet.freeze(rows=1)
+
+    # Auto-resize columns and re-size sheets
+    sheet.batch_update({'requests': [{'autoResizeDimensions': {'dimensions': {'sheetId': players_sheet_id, 'dimension': 'COLUMNS', 'startIndex': 0, 'endIndex': 6}}}, {'autoResizeDimensions': {'dimensions': {'sheetId': summary_sheet_id, 'dimension': 'COLUMNS', 'startIndex': 0, 'endIndex': 2}}}]})
+    summary_sheet.resize(rows=len(summary_data) + 1)
+    players_sheet.resize(rows=len(player_data) + 1)
+
+    # Format division headers
+    format_division_headers(sheet, players_sheet, division_header_rows)
+
+
+def clear_sheets(spreadsheet, sheet_ids):
+    body = dict()
+    requests = list()
+    for sheet_id in sheet_ids:
+        request = dict()
+        update_cells_dict = dict()
+        range_dict = dict()
+        range_dict['sheetId'] = sheet_id
+        update_cells_dict['range'] = range_dict
+        update_cells_dict['fields'] = '*'
+        request['updateCells'] = update_cells_dict
+        requests.append(request)
+    body['requests'] = requests
+    spreadsheet.batch_update(body)
+
+
+def format_division_headers(spreadsheet, sheet, rows):
+    for row in rows:
+        # merge rows
+        sheet.merge_cells(name='A{0}:F{0}'.format(str(row)))
+
+        # change horizontal/vertical alignment, background color and font size
+        sheet.format('A{0}:F{0}'.format(str(row)), 
+            {
+                'backgroundColor': {
+                  'red': 0.8,
+                  'green': 0.8,
+                  'blue': 0.8
+                },
+                'horizontalAlignment': 'CENTER',
+                'verticalAlignment': 'MIDDLE',
+                'textFormat': {
+                  'fontSize': 20,
+                  'bold': True
+                }
+            }
+        )
+    sheet.format('A1:F1', {'textFormat': {'bold': True}})
 
 
 def csv_to_dict_list(csv_file):
