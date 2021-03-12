@@ -11,6 +11,9 @@ import psutil
 import csv
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
+import sys
+import ssl
+ssl._create_default_https_context = ssl._create_unverified_context
 
 
 # Set up logging
@@ -42,68 +45,76 @@ def main():
     # Get roster sites
     schools_df = pd.read_csv('roster_pages.csv')
     # Ask for input
-    schools_df = get_input(schools_df)
+    if len(sys.argv) == 1:
+        schools_df = get_input(schools_df)
 
     # Last run:
     last_run = 'Last updated: ' + str(datetime.datetime.now().strftime("%B %d, %Y at %I:%M %p"))
     logger.info('')
     logger.info(last_run)
 
-    # Iterate over schools
+    # Set criteria for "Canadian" player search
     global city_strings, province_strings, country_strings, canada_strings, hometown_conversion_dict, ignore_strings
     city_strings, province_strings, country_strings, canada_strings, hometown_conversion_dict, ignore_strings = set_canadian_search_criteria()
-    df_lists = iterate_over_schools(schools_df)
-    # roster_df_list = df_lists[0]
+
+    df_lists = iterate_over_schools(schools_df) # Iterate over schools
     canadians_dict_list = df_lists[1]
 
-    # Periodically check all of the table columns found in the html to see if we are overlooking anything
-    # print_cols(roster_df_list)
+    # print_cols(roster_df_list) # Periodically check all of the table columns found in the html to see if we are overlooking anything
 
-    # Format dictionaries to dataframe
-    canadians_df = format_df(canadians_dict_list, schools_df)
+    canadians_df = format_df(canadians_dict_list, schools_df) # Format dictionaries to dataframe
     canadians_df = pd.concat([canadians_df, pd.read_csv('canadians_manual.csv')], ignore_index=True) # Add players who could not be scraped
+
     canadians_df['class'] = pd.Categorical(canadians_df['class'], ['Freshman','Sophomore', 'Junior', 'Senior', '']) # Create custom sort by class
     canadians_df.sort_values(by=['class', 'school', 'name'], ignore_index=True, inplace=True)
-    canadians_df.to_csv('canadians.csv', index=False)
+
+    canadians_df.to_csv('canadians.csv', index=False) # Export to canadians.csv as a reference
     canadians_df = canadians_df[['name','position','class','school','division','state','hometown']] # Keep only relevant columns
-    update_gsheet(canadians_df, last_run)
-    generate_html(canadians_df, 'canadians.html', last_run)
+
+    update_gsheet(canadians_df, last_run) # Update Google Sheet
+
+    generate_html(canadians_df, 'canadians.html', last_run) # Generate HTML with DataTables
+
     logger.info('')
     logger.info('{} Canadian players found...'.format(str(len(canadians_df.index))))
 
 
-def read_roster_norm(html):
+def read_roster_norm(html, school):
     df = html[0]
-    for temp_df in html:
-        if len(temp_df.index) > len(df.index):
-            df = temp_df
+    if school['title'] != 'Arizona Christian University': # Has a real roster and a prospect roster... ensure real roster is chosen
+        for temp_df in html:
+            if len(temp_df.index) > len(df.index): # Assume largest table on page is actual roster
+                df = temp_df
+    df['__school'] = school['title']
+    df['__division'] = school['division']
+    df['__state'] = school['state']
     return df
 
 
 def read_roster(school, header):
-    df = pd.DataFrame()
-    response_text = ''
+    response = ''
     try_num = 1
-    while (response_text == '') & (try_num <= 3): # 3 tries
+    while try_num <= 3: # 3 tries
+        try:
+            return read_roster_norm(pd.read_html(school['roster_link']), school)
+        except Exception:
+            try_num = try_num # Do nothing
         try:
             response = requests.get(school['roster_link'], headers=header, timeout=10)
-            response_text = response.text
-        except Exception as e:
+            return read_roster_norm(pd.read_html(response.text), school)
+        except Exception as e2:
             if try_num == 1:
                 logger.info('')
-            logger.info('--- Failed attempt {} at {} ---'.format(str(try_num), school['roster_link']))
-            try_num += 1
-            time.sleep(0.5)
-    soup = BeautifulSoup(response_text, 'lxml')
-    if len(soup('table')) > 0:
-        html = pd.read_html(response_text)
-        df = read_roster_norm(html)
-        df['__school'] = school['title']
-        df['__division'] = school['division']
-        df['__state'] = school['state']
-    else:
-        return str(response_text)
-    return df
+            logger.info('--- e2: {} ---'.format(str(e2)))
+        if try_num == 3:
+            try:
+                return str(response.text)
+            except Exception as e3:
+                logger.info('--- e3: {} ---'.format(str(e3)))
+        logger.info('--- Failed attempt {} at {} ---'.format(str(try_num), school['roster_link']))
+        try_num += 1
+        time.sleep(0.5)
+    return ''
 
 
 def filter_canadians(df, canada_strings):
@@ -338,7 +349,7 @@ def format_player_division(string):
 def format_player_hometown(string):
     string = re.sub(r'\s*\(*(?:Canada|Can.|CN|CAN|CA)\)*\.*', '', string) # Remove references to Canada
 
-    parentheses_search = re.search('\(([^)]+)', string) # Search for text within parentheses
+    parentheses_search = re.search(r'\(([^)]+)', string) # Search for text within parentheses
     if parentheses_search != None:
         if parentheses_search.group(1).count(',') == 1:
             string = parentheses_search.group(1) # Text within parentheses is city/province
@@ -618,7 +629,7 @@ def format_division_headers(spreadsheet, sheet, rows):
                 }
             }
         )
-    sheet.format('A1:F1', {'textFormat': {'bold': True}})
+    sheet.format('A1:F1', {'horizontalAlignment': 'CENTER', 'textFormat': {'bold': True}})
 
 
 def csv_to_dict_list(csv_file):
