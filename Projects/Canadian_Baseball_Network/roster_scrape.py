@@ -440,6 +440,7 @@ def format_df(dict_list, schools_df):
         if (new_dict['__name'] == '') & (new_dict['_first_name'] != '') & (new_dict['_last_name'] != ''):
             new_dict['__name'] = new_dict['_first_name'] + ' ' + new_dict['_last_name']
         if (new_dict['__name'] != '') & (new_dict['__school'] != hometown_orig) & (new_dict['__name'] != hometown_orig):
+            new_dict['__name'] = re.sub(r'\s+', ' ', new_dict['__name']) # Remove unnecessary spaces in names
             new_dict_list.append(new_dict)
 
     canadians_df = pd.DataFrame(new_dict_list)
@@ -614,7 +615,8 @@ def format_division_headers(spreadsheet, sheet, rows):
         sheet.merge_cells(name='A{0}:F{0}'.format(str(row)))
 
         # change horizontal/vertical alignment, background color and font size
-        sheet.format('A{0}:F{0}'.format(str(row)), 
+        sheet.format(
+            'A{0}:F{0}'.format(str(row)), 
             {
                 'backgroundColor': {
                   'red': 0.8,
@@ -629,7 +631,16 @@ def format_division_headers(spreadsheet, sheet, rows):
                 }
             }
         )
-    sheet.format('A1:F1', {'horizontalAlignment': 'CENTER', 'textFormat': {'bold': True}})
+    # make header row bold text
+    sheet.format(
+        'A1:F1',
+        {
+            'horizontalAlignment': 'CENTER',
+            'textFormat': {
+                'bold': True
+            }
+        }
+    )
 
 
 def csv_to_dict_list(csv_file):
