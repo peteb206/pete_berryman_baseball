@@ -584,8 +584,9 @@ def update_gsheet(df, last_run):
     # Freeze header row
     players_sheet.freeze(rows=1)
 
-    # Auto-resize columns and re-size sheets
-    sheet.batch_update({'requests': [{'autoResizeDimensions': {'dimensions': {'sheetId': players_sheet_id, 'dimension': 'COLUMNS', 'startIndex': 0, 'endIndex': 6}}}, {'autoResizeDimensions': {'dimensions': {'sheetId': summary_sheet_id, 'dimension': 'COLUMNS', 'startIndex': 0, 'endIndex': 2}}}]})
+    # Resize columns and re-size sheets
+    resize_columns(sheet, [summary_sheet_id, players_sheet_id])
+    
     summary_sheet.resize(rows=len(summary_data) + 1)
     players_sheet.resize(rows=len(player_data) + 1)
 
@@ -605,6 +606,43 @@ def clear_sheets(spreadsheet, sheet_ids):
         update_cells_dict['fields'] = '*'
         request['updateCells'] = update_cells_dict
         requests.append(request)
+    body['requests'] = requests
+    spreadsheet.batch_update(body)
+
+
+def resize_columns(spreadsheet, sheet_ids):
+    body = dict()
+    requests = list()
+    sheet_num = 1
+    for sheet_id in sheet_ids:
+        request = dict()
+        auto_resize_dimensions = dict()
+        dimensions = dict()
+        dimensions['sheetId'] = sheet_id
+        dimensions['dimension'] = 'COLUMNS'
+        dimensions['startIndex'] = 0 if sheet_num == 1 else 1
+        dimensions['endIndex'] = 2 if sheet_num == 1 else 6
+        auto_resize_dimensions['dimensions'] = dimensions
+        request['autoResizeDimensions'] = auto_resize_dimensions
+        if sheet_num == 1:
+            requests.append(request)
+        else:
+            requests.append(request)
+            request2 = dict()
+            update_dimension_properties = dict()
+            range_dict = dict()
+            range_dict['sheetId'] = sheet_id
+            range_dict['dimension'] = 'COLUMNS'
+            range_dict['startIndex'] = 0
+            range_dict['endIndex'] = 1
+            properties_dict = dict()
+            properties_dict['pixelSize'] = 200
+            update_dimension_properties['range'] = range_dict
+            update_dimension_properties['properties'] = properties_dict
+            update_dimension_properties['fields'] = 'pixelSize'
+            request2['updateDimensionProperties'] = update_dimension_properties
+            requests.append(request2)
+        sheet_num += 1
     body['requests'] = requests
     spreadsheet.batch_update(body)
 
