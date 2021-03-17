@@ -2,7 +2,7 @@
 # $ conda create --name <env> --file <this file>
 # platform: linux-64
 requests==2.25.1
-bs4==4.9.3
+beautifulsoup4==4.9.3
 pandas==1.2.1
 re==2.2.1
 json==2.0.9
