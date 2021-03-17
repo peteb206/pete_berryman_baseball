@@ -543,6 +543,10 @@ def update_gsheet(df, last_run):
         'auth_provider_x509_cert_url': os.environ.get('SHEET_AUTH_PROVIDER_X509_CERT_URL'),
         'client_x509_cert_url': os.environ.get('SHEET_CLIENT_X509_CERT_URL')
     }
+    logger.info('')
+    for key, item in variables_keys.items():
+        logger.info('length of {}: {}'.format(key, str(len(item))))
+    logger.info('')
     creds = ServiceAccountCredentials.from_json_keyfile_dict(variables_keys, scope)
 
     # authorize the clientsheet 
@@ -607,6 +611,8 @@ def update_gsheet(df, last_run):
 
     # Format division headers
     format_division_headers(sheet, players_sheet, division_header_rows)
+
+    logger.info('Google sheet updated with {} players...'.format(str(len(df.index))))
 
 
 def clear_sheets(spreadsheet, sheet_ids):
