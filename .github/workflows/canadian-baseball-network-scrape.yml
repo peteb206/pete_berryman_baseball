@@ -29,7 +29,9 @@ jobs:
                SHEET_TOKEN_URI: ${{ secrets.SHEET_TOKEN_URI }}
                SHEET_AUTH_PROVIDER_X509_CERT_URL: ${{ secrets.SHEET_AUTH_PROVIDER_X509_CERT_URL }}
                SHEET_CLIENT_X509_CERT_URL:  ${{ secrets.SHEET_CLIENT_X509_CERT_URL }}
-            run: python Projects/Canadian_Baseball_Network/roster_scrape.py y
+            run: |
+               cd Projects/Canadian_Baseball_Network
+               python roster_scrape.py y
          -  name: commit files
             run: |
                git config --local user.email "action@github.com"
