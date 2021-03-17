@@ -531,7 +531,7 @@ def update_gsheet(df, last_run):
     scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
 
     # add credentials to the account
-    keyfile_dict = json.loads(os.environ.get('KEYFILE'))
+    keyfile_dict = json.loads(os.environ.get('KEYFILE').replace('\\n', '\n'))
     logger.info('keyfile_dict type:')
     logger.info(type(keyfile_dict))
     logger.info('keyfile_dict:')
