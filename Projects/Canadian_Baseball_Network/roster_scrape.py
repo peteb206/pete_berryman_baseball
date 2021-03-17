@@ -12,6 +12,7 @@ import csv
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import sys
+import os
 import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
 
@@ -530,7 +531,19 @@ def update_gsheet(df, last_run):
     scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
 
     # add credentials to the account
-    creds = ServiceAccountCredentials.from_json_keyfile_name('Canadians in College Baseball-5bcb1c4ee8e9.json', scope)
+    variables_keys = {
+        'type': os.environ.get('SHEET_TYPE'),
+        'project_id': os.environ.get('SHEET_PROJECT_ID'),
+        'private_key_id': os.environ.get('SHEET_PRIVATE_KEY_ID'),
+        'private_key': os.environ.get('SHEET_PRIVATE_KEY'),
+        'client_email': os.environ.get('SHEET_CLIENT_EMAIL'),
+        'client_id': os.environ.get('SHEET_CLIENT_ID'),
+        'auth_uri': os.environ.get('SHEET_AUTH_URI'),
+        'token_uri': os.environ.get('SHEET_TOKEN_URI'),
+        'auth_provider_x509_cert_url': os.environ.get('SHEET_AUTH_PROVIDER_X509_CERT_URL'),
+        'client_x509_cert_url': os.environ.get('SHEET_CLIENT_X509_CERT_URL')
+    }
+    creds = ServiceAccountCredentials.from_json_keyfile_dict(variables_keys, scope)
 
     # authorize the clientsheet 
     client = gspread.authorize(creds)
