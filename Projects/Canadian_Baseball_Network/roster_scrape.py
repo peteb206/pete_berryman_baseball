@@ -66,7 +66,7 @@ def main():
     canadians_df = pd.concat([canadians_df, pd.read_csv('canadians_manual.csv')], ignore_index=True) # Add players who could not be scraped
 
     canadians_df['class'] = pd.Categorical(canadians_df['class'], ['Freshman','Sophomore', 'Junior', 'Senior', '']) # Create custom sort by class
-    canadians_df.sort_values(by=['class', 'school', 'name'], ignore_index=True, inplace=True)
+    canadians_df.sort_values(by=['class', 'name', 'school'], ignore_index=True, inplace=True)
 
     canadians_df.to_csv('canadians.csv', index=False) # Export to canadians.csv as a reference
     canadians_df = canadians_df[['name','position','class','school','division','state','hometown']] # Keep only relevant columns
@@ -439,6 +439,8 @@ def format_df(dict_list, schools_df):
         # Combine fist and last name if necessary
         if (new_dict['__name'] == '') & (new_dict['_first_name'] != '') & (new_dict['_last_name'] != ''):
             new_dict['__name'] = new_dict['_first_name'] + ' ' + new_dict['_last_name']
+        elif ('Name' in dictionary.keys()) & ('Name.1' in dictionary.keys()):
+            new_dict['__name'] = dictionary['Name'] + ' ' + dictionary['Name.1']
         if (new_dict['__name'] != '') & (new_dict['__school'] != hometown_orig) & (new_dict['__name'] != hometown_orig):
             new_dict['__name'] = re.sub(r'\s+', ' ', new_dict['__name']) # Remove unnecessary spaces in names
             new_dict_list.append(new_dict)
@@ -471,7 +473,7 @@ def generate_html(df, file_name, last_run):
                 $('table.display').DataTable({{
                     'lengthMenu': [[10, 25, 50, 100, -1], [10, 25, 50, 100, 'All']],
                     'pageLength': -1,
-                    'order': [[2, 'asc'], [3, 'asc']],
+                    'order': [[2, 'asc'], [0, 'asc'], [3, 'asc']],
                     'dom': 'Bflrtip'
                 }})
             }});
