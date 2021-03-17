@@ -531,7 +531,12 @@ def update_gsheet(df, last_run):
     scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
 
     # add credentials to the account
-    creds = ServiceAccountCredentials.from_json_keyfile_dict(json.loads(os.environ.get('KEYFILE')), scope)
+    keyfile_dict = json.loads(os.environ.get('KEYFILE'))
+    logger.info('keyfile_dict type:')
+    logger.info(type(keyfile_dict))
+    logger.info('keyfile_dict:')
+    logger.info(keyfile_dict)
+    creds = ServiceAccountCredentials.from_json_keyfile_dict(keyfile_dict, scope)
 
     # authorize the clientsheet 
     client = gspread.authorize(creds)
