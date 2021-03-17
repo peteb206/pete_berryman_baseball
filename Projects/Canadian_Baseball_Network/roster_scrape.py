@@ -71,7 +71,7 @@ def main():
     canadians_df.to_csv('canadians.csv', index=False) # Export to canadians.csv as a reference
     canadians_df = canadians_df[['name','position','class','school','division','state','hometown']] # Keep only relevant columns
 
-    update_gsheet(canadians_df, last_run) # Update Google Sheet
+    #update_gsheet(canadians_df, last_run) # Update Google Sheet
 
     generate_html(canadians_df, 'canadians.html', last_run) # Generate HTML with DataTables
 
