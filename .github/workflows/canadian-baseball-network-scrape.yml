@@ -1,5 +1,6 @@
 name: canadian-baseball-network-scrape
 on:
+   workflow_dispatch:
    schedule:
       - cron: '0 5 * * *' # runs at 5:00 UTC everyday
 jobs:
