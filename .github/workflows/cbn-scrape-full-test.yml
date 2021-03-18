@@ -1,0 +1,23 @@
+name: cbn-scrape-full-test
+on: workflow_dispatch
+jobs:
+   build:
+      runs-on: ubuntu-latest
+      steps:
+         -  name: checkout repo content
+            uses: actions/checkout@v2 # checkout the repository content to github runner
+         -  name: setup python
+            uses: actions/setup-python@v2
+            with:
+               python-version: '3.7.9' # install the python version needed
+         -  name: install python packages
+            run: |
+               python -m pip install --upgrade pip
+               pip install -r requirements.txt
+         -  name: execute py script # run roster_scrape.py to get the latest data
+            env:
+               KEYFILE: ${{ secrets.KEYFILE }}
+               SHEET_NAME: Test - Canadians in College Baseball 2021
+            run: |
+               cd Projects/Canadian_Baseball_Network
+               python roster_scrape.py y
