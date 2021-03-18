@@ -1,3 +1,5 @@
+[![cbn-scrape-full](https://github.com/peteb206/pete_berryman_baseball/actions/workflows/cbn-scrape-full.yml/badge.svg?branch=main)](https://github.com/peteb206/pete_berryman_baseball/actions/workflows/cbn-scrape-full.yml)
+
 # pete_berryman_baseball
 Pete Berryman's portfolio for sabermetric research
 
