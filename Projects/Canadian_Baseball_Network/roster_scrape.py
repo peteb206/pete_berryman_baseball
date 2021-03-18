@@ -46,33 +46,42 @@ def main():
     # Get roster sites
     schools_df = pd.read_csv('roster_pages.csv')
     # Ask for input
+    full_run = True
     if len(sys.argv) == 1:
         schools_df = get_input(schools_df)
+    elif sys.argv[1] == 'n': # Determine if running full web scraper or just updating google sheet
+        full_run = False
 
     # Last run:
     last_run = 'Last updated: ' + str(datetime.datetime.now().strftime("%B %d, %Y at %I:%M %p"))
     logger.info('')
     logger.info(last_run)
 
-    # Set criteria for "Canadian" player search
-    global city_strings, province_strings, country_strings, canada_strings, hometown_conversion_dict, ignore_strings
-    city_strings, province_strings, country_strings, canada_strings, hometown_conversion_dict, ignore_strings = set_canadian_search_criteria()
+    canadians_df = pd.read_csv('canadians.csv') # Initialize canadians_df
+    sheet_name = 'Test - Canadians in College Baseball 2021'
+    if full_run == True: # Run full web scraper
+        # Set criteria for "Canadian" player search
+        global city_strings, province_strings, country_strings, canada_strings, hometown_conversion_dict, ignore_strings
+        city_strings, province_strings, country_strings, canada_strings, hometown_conversion_dict, ignore_strings = set_canadian_search_criteria()
 
-    df_lists = iterate_over_schools(schools_df) # Iterate over schools
-    canadians_dict_list = df_lists[1]
+        df_lists = iterate_over_schools(schools_df) # Iterate over schools
+        canadians_dict_list = df_lists[1]
 
-    # print_cols(roster_df_list) # Periodically check all of the table columns found in the html to see if we are overlooking anything
+        # print_cols(roster_df_list) # Periodically check all of the table columns found in the html to see if we are overlooking anything
 
-    canadians_df = format_df(canadians_dict_list, schools_df) # Format dictionaries to dataframe
-    canadians_df = pd.concat([canadians_df, pd.read_csv('canadians_manual.csv')], ignore_index=True) # Add players who could not be scraped
+        canadians_df = format_df(canadians_dict_list, schools_df) # Format dictionaries to dataframe
+        canadians_df = pd.concat([canadians_df, pd.read_csv('canadians_manual.csv')], ignore_index=True) # Add players who could not be scraped
 
-    canadians_df['class'] = pd.Categorical(canadians_df['class'], ['Freshman','Sophomore', 'Junior', 'Senior', '']) # Create custom sort by class
-    canadians_df.sort_values(by=['class', 'name', 'school'], ignore_index=True, inplace=True)
+        canadians_df['class'] = pd.Categorical(canadians_df['class'], ['Freshman','Sophomore', 'Junior', 'Senior', '']) # Create custom sort by class
+        canadians_df.sort_values(by=['class', 'name', 'school'], ignore_index=True, inplace=True)
 
-    canadians_df.to_csv('canadians.csv', index=False) # Export to canadians.csv as a reference
+        canadians_df.to_csv('canadians.csv', index=False) # Export to canadians.csv as a reference
+
+        sheet_name = 'Canadians in College Baseball 2021'
+
     canadians_df = canadians_df[['name','position','class','school','division','state','hometown']] # Keep only relevant columns
 
-    update_gsheet(canadians_df, last_run) # Update Google Sheet
+    update_gsheet(canadians_df, last_run, sheet_name) # Update Google Sheet
 
     generate_html(canadians_df, 'canadians.html', last_run) # Generate HTML with DataTables
 
@@ -526,7 +535,7 @@ def generate_html(df, file_name, last_run):
         f.write(html_string)
 
 
-def update_gsheet(df, last_run):
+def update_gsheet(df, last_run, sheet_name):
     # define the scope
     scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
 
@@ -542,7 +551,7 @@ def update_gsheet(df, last_run):
     client = gspread.authorize(creds)
 
     # get the instance of the Spreadsheet
-    sheet = client.open('Canadians in College Baseball 2021')
+    sheet = client.open(sheet_name)
 
     # get the sheets of the Spreadsheet
     summary_sheet = sheet.worksheet('Summary')
