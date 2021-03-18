@@ -14,6 +14,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 import sys
 import os
 import ssl
+import pytz
 ssl._create_default_https_context = ssl._create_unverified_context
 
 
@@ -53,7 +54,7 @@ def main():
         full_run = False
 
     # Last run:
-    last_run = 'Last updated: ' + str(datetime.datetime.now().strftime("%B %d, %Y at %I:%M %p"))
+    last_run = 'Last updated: {} UTC'.format(datetime.datetime.now(pytz.utc).strftime("%B %d, %Y at %I:%M %p"))
     logger.info('')
     logger.info(last_run)
 
@@ -538,10 +539,6 @@ def update_gsheet(df, last_run):
 
     # add credentials to the account
     keyfile_dict = json.loads(os.environ.get('KEYFILE'))
-    logger.info('keyfile_dict type:')
-    logger.info(type(keyfile_dict))
-    logger.info('keyfile_dict:')
-    logger.info(keyfile_dict)
     creds = ServiceAccountCredentials.from_json_keyfile_dict(keyfile_dict, scope)
 
     # authorize the clientsheet 
