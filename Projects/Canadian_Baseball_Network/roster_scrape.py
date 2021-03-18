@@ -58,7 +58,6 @@ def main():
     logger.info(last_run)
 
     canadians_df = pd.read_csv('canadians.csv') # Initialize canadians_df
-    sheet_name = 'Test - Canadians in College Baseball 2021'
     if full_run == True: # Run full web scraper
         # Set criteria for "Canadian" player search
         global city_strings, province_strings, country_strings, canada_strings, hometown_conversion_dict, ignore_strings
@@ -77,11 +76,9 @@ def main():
 
         canadians_df.to_csv('canadians.csv', index=False) # Export to canadians.csv as a reference
 
-        sheet_name = 'Canadians in College Baseball 2021'
-
     canadians_df = canadians_df[['name','position','class','school','division','state','hometown']] # Keep only relevant columns
 
-    update_gsheet(canadians_df, last_run, sheet_name) # Update Google Sheet
+    update_gsheet(canadians_df, last_run) # Update Google Sheet
 
     generate_html(canadians_df, 'canadians.html', last_run) # Generate HTML with DataTables
 
@@ -535,12 +532,17 @@ def generate_html(df, file_name, last_run):
         f.write(html_string)
 
 
-def update_gsheet(df, last_run, sheet_name):
+def update_gsheet(df, last_run):
     # define the scope
     scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
 
     # add credentials to the account
-    keyfile_dict = json.loads(os.environ.get('KEYFILE').replace('\\n', '\n'))
+    keyfile_json = json.dumps(os.environ.get('KEYFILE'))
+    logger.info('keyfile_json type:')
+    logger.info(type(keyfile_json))
+    logger.info('keyfile_json:')
+    logger.info(keyfile_json)
+    keyfile_dict = json.loads(keyfile_json)
     logger.info('keyfile_dict type:')
     logger.info(type(keyfile_dict))
     logger.info('keyfile_dict:')
@@ -551,7 +553,7 @@ def update_gsheet(df, last_run, sheet_name):
     client = gspread.authorize(creds)
 
     # get the instance of the Spreadsheet
-    sheet = client.open(sheet_name)
+    sheet = client.open(os.environ.get('SHEET_NAME'))
 
     # get the sheets of the Spreadsheet
     summary_sheet = sheet.worksheet('Summary')

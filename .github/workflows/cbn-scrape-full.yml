@@ -1,4 +1,4 @@
-name: canadian-baseball-network-scrape-full
+name: cbn-scrape-full
 on:
    schedule:
       - cron: '0 5 * * 1' # runs at 5:00 UTC on Mondays
@@ -19,6 +19,7 @@ jobs:
          -  name: execute py script # run roster_scrape.py to get the latest data
             env:
                KEYFILE: ${{ secrets.KEYFILE }}
+               SHEET_NAME: Canadians in College Baseball 2021
             run: |
                cd Projects/Canadian_Baseball_Network
                python roster_scrape.py y
