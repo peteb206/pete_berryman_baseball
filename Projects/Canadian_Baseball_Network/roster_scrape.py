@@ -570,14 +570,14 @@ def update_gsheet(df, last_run):
 
     division_header_rows = list()
     class_header_rows = list()
+    blank_row = [['', '', '', '', '']]
 
     # Loop through divisions
     for division in [
         'NCAA: Division 1', 'NCAA: Division 2', 'NCAA: Division 3', 'NAIA', 'Junior Colleges and Community Colleges: Division 1', 'Junior Colleges and Community Colleges: Division 2', 'Junior Colleges and Community Colleges: Division 3', 'California Community College Athletic Association', 'Northwest Athletic Conference', 'United States Collegiate Athletic Association']:
 
         # Row/Division Header
-        division_header = [['', '', '', '', '', ''], [division, '', '', '', '', '']]
-        player_data += division_header
+        player_data += [[division, '', '', '', '']]
         division_header_rows.append(len(player_data))
 
         # Subset dataframe
@@ -586,14 +586,18 @@ def update_gsheet(df, last_run):
             df_split_class = pd.DataFrame()
             if class_year == 'Freshman':
                 df_split_class = df_split_div[(df_split_div['class'] == class_year) | (df_split_div['class'] == '')].drop(['class'], axis=1)
+                class_year = 'Freshmen'
             else:
                 df_split_class = df_split_div[df_split_div['class'] == class_year].drop(['class'], axis=1)
+                player_data += blank_row
+                class_year += 's'
             if len(df_split_class.index) > 0:
-                player_data += [[class_year, '', '', '', '', '']]
+                player_data += [[class_year, '', '', '', '']]
                 class_header_rows.append(len(player_data))
                 player_data += df_split_class.values.tolist()
 
         # Compile data rows
+        player_data += blank_row
         summary_data.append([division, '{} players'.format(str(len(df_split_div.index)))])
 
     # Add data to sheets
@@ -607,7 +611,7 @@ def update_gsheet(df, last_run):
     resize_columns(sheet, [summary_sheet_id, players_sheet_id])
     
     summary_sheet.resize(rows=len(summary_data) + 1)
-    players_sheet.resize(rows=len(player_data) + 1)
+    players_sheet.resize(rows=len(player_data))
 
     # Format division/class headers
     format_headers(sheet, players_sheet_id, division_header_rows, True)
