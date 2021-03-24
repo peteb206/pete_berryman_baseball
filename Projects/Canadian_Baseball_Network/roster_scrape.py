@@ -589,7 +589,8 @@ def update_gsheet(df, last_run):
                 class_year = 'Freshmen'
             else:
                 df_split_class = df_split_div[df_split_div['class'] == class_year].drop(['class'], axis=1)
-                player_data += blank_row
+                if len(df_split_class.index) > 0:
+                    player_data += blank_row
                 class_year += 's'
             if len(df_split_class.index) > 0:
                 player_data += [[class_year, '', '', '', '']]
