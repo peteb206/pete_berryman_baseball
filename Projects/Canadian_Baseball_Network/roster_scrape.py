@@ -566,28 +566,35 @@ def update_gsheet(df, last_run):
     df.fillna('', inplace=True)
 
     # Add title row
-    row = 1
     player_data = [df.drop(['division'], axis=1).columns.values.tolist()]
 
     division_header_rows = list()
+    class_header_rows = list()
 
     # Loop through divisions
     for division in [
         'NCAA: Division 1', 'NCAA: Division 2', 'NCAA: Division 3', 'NAIA', 'Junior Colleges and Community Colleges: Division 1', 'Junior Colleges and Community Colleges: Division 2', 'Junior Colleges and Community Colleges: Division 3', 'California Community College Athletic Association', 'Northwest Athletic Conference', 'United States Collegiate Athletic Association']:
 
-        # Subset dataframe
-        df_split = df[df['division'] == division].drop(['division'], axis=1)
-
         # Row/Division Header
         division_header = [['', '', '', '', '', ''], [division, '', '', '', '', '']]
-        division_header_rows.append(row + 2)
         player_data += division_header
+        division_header_rows.append(len(player_data))
+
+        # Subset dataframe
+        df_split_div = df[df['division'] == division].drop(['division'], axis=1)
+        for class_year in ['Freshman', 'Sophomore', 'Junior', 'Senior']:
+            df_split_class = pd.DataFrame()
+            if class_year == 'Freshman':
+                df_split_class = df_split_div[(df_split_div['class'] == class_year) | (df_split_div['class'] == '')].drop(['class'], axis=1)
+            else:
+                df_split_class = df_split_div[df_split_div['class'] == class_year].drop(['class'], axis=1)
+            if len(df_split_class.index) > 0:
+                player_data += [[class_year, '', '', '', '', '']]
+                class_header_rows.append(len(player_data))
+                player_data += df_split_class.values.tolist()
 
         # Compile data rows
-        summary_data.append([division, '{} players'.format(str(len(df_split.index)))])
-        player_data += df_split.values.tolist()
-
-        row = len(player_data)
+        summary_data.append([division, '{} players'.format(str(len(df_split_div.index)))])
 
     # Add data to sheets
     summary_sheet.insert_rows(summary_data, row=1)
@@ -602,8 +609,9 @@ def update_gsheet(df, last_run):
     summary_sheet.resize(rows=len(summary_data) + 1)
     players_sheet.resize(rows=len(player_data) + 1)
 
-    # Format division headers
-    format_division_headers(sheet, players_sheet, division_header_rows)
+    # Format division/class headers
+    format_headers(sheet, players_sheet, division_header_rows, True)
+    format_headers(sheet, players_sheet, class_header_rows, False)
 
     logger.info('Google sheet updated with {} players...'.format(str(len(df.index))))
 
@@ -635,7 +643,7 @@ def resize_columns(spreadsheet, sheet_ids):
         dimensions['sheetId'] = sheet_id
         dimensions['dimension'] = 'COLUMNS'
         dimensions['startIndex'] = 0 if sheet_num == 1 else 1
-        dimensions['endIndex'] = 2 if sheet_num == 1 else 6
+        dimensions['endIndex'] = 2 if sheet_num == 1 else 5
         auto_resize_dimensions['dimensions'] = dimensions
         request['autoResizeDimensions'] = auto_resize_dimensions
         if sheet_num == 1:
@@ -661,38 +669,44 @@ def resize_columns(spreadsheet, sheet_ids):
     spreadsheet.batch_update(body)
 
 
-def format_division_headers(spreadsheet, sheet, rows):
+def format_headers(spreadsheet, sheet, rows, division_header):
+    color = 0.8
+    font_size = 20
+    if division_header == False:
+        # make header row bold text
+        sheet.format(
+            'A1:E1',
+            {
+                'horizontalAlignment': 'CENTER',
+                'textFormat': {
+                    'bold': True
+                }
+            }
+        )
+        color = 0.9
+        font_size = 16
+
     for row in rows:
         # merge rows
-        sheet.merge_cells(name='A{0}:F{0}'.format(str(row)))
+        sheet.merge_cells(name='A{0}:E{0}'.format(str(row)))
 
         # change horizontal/vertical alignment, background color and font size
         sheet.format(
-            'A{0}:F{0}'.format(str(row)), 
+            'A{0}:E{0}'.format(str(row)), 
             {
                 'backgroundColor': {
-                  'red': 0.8,
-                  'green': 0.8,
-                  'blue': 0.8
+                  'red': color,
+                  'green': color,
+                  'blue': color
                 },
                 'horizontalAlignment': 'CENTER',
                 'verticalAlignment': 'MIDDLE',
                 'textFormat': {
-                  'fontSize': 20,
+                  'fontSize': font_size,
                   'bold': True
                 }
             }
         )
-    # make header row bold text
-    sheet.format(
-        'A1:F1',
-        {
-            'horizontalAlignment': 'CENTER',
-            'textFormat': {
-                'bold': True
-            }
-        }
-    )
 
 
 def csv_to_dict_list(csv_file):
