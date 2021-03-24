@@ -566,7 +566,7 @@ def update_gsheet(df, last_run):
     df.fillna('', inplace=True)
 
     # Add title row
-    player_data = [df.drop(['division'], axis=1).columns.values.tolist()]
+    player_data = [df.drop(['division', 'class'], axis=1).columns.values.tolist()]
 
     division_header_rows = list()
     class_header_rows = list()
@@ -610,8 +610,18 @@ def update_gsheet(df, last_run):
     players_sheet.resize(rows=len(player_data) + 1)
 
     # Format division/class headers
-    format_headers(sheet, players_sheet, division_header_rows, True)
-    format_headers(sheet, players_sheet, class_header_rows, False)
+    format_headers(sheet, players_sheet_id, division_header_rows, True)
+    format_headers(sheet, players_sheet_id, class_header_rows, False)
+    # make header row bold text
+    players_sheet.format(
+        'A1:E1',
+        {
+            'horizontalAlignment': 'CENTER',
+            'textFormat': {
+                'bold': True
+            }
+        }
+    )
 
     logger.info('Google sheet updated with {} players...'.format(str(len(df.index))))
 
@@ -669,44 +679,54 @@ def resize_columns(spreadsheet, sheet_ids):
     spreadsheet.batch_update(body)
 
 
-def format_headers(spreadsheet, sheet, rows, division_header):
+def format_headers(spreadsheet, sheet_id, rows, division_header):
     color = 0.8
     font_size = 20
     if division_header == False:
-        # make header row bold text
-        sheet.format(
-            'A1:E1',
-            {
-                'horizontalAlignment': 'CENTER',
-                'textFormat': {
-                    'bold': True
-                }
-            }
-        )
-        color = 0.9
-        font_size = 16
+        color = 0.92
+        font_size = 14
+
+    range = {
+        'sheetId': sheet_id,
+        'startColumnIndex': 0,
+        'endColumnIndex': 5
+    }
 
     for row in rows:
-        # merge rows
-        sheet.merge_cells(name='A{0}:E{0}'.format(str(row)))
-
-        # change horizontal/vertical alignment, background color and font size
-        sheet.format(
-            'A{0}:E{0}'.format(str(row)), 
-            {
-                'backgroundColor': {
-                  'red': color,
-                  'green': color,
-                  'blue': color
-                },
-                'horizontalAlignment': 'CENTER',
-                'verticalAlignment': 'MIDDLE',
-                'textFormat': {
-                  'fontSize': font_size,
-                  'bold': True
+        # merge cells and format header
+        range['startRowIndex'] = row - 1
+        range['endRowIndex'] = row
+        body = {
+            'requests': [
+                {
+                    'mergeCells': {
+                        'mergeType': 'MERGE_ALL',
+                        'range': range
+                    }
+                }, {
+                    'repeatCell': {
+                        'range': range,
+                        'cell': {
+                            'userEnteredFormat': {
+                                'backgroundColor': {
+                                    'red': color,
+                                    'green': color,
+                                    'blue': color
+                                },
+                                'horizontalAlignment': 'CENTER',
+                                'verticalAlignment': 'MIDDLE',
+                                'textFormat': {
+                                    'fontSize': font_size,
+                                    'bold': True
+                                }
+                            }
+                        },
+                        'fields': 'userEnteredFormat(backgroundColor,horizontalAlignment,verticalAlignment,textFormat)',
+                    }
                 }
-            }
-        )
+            ]
+        }
+        spreadsheet.batch_update(body)
 
 
 def csv_to_dict_list(csv_file):
