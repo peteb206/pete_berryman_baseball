@@ -94,6 +94,8 @@ def read_roster_norm(html, school):
         for temp_df in html:
             if len(temp_df.index) > len(df.index): # Assume largest table on page is actual roster
                 df = temp_df
+    if school['title'] in ['Mineral Area', 'Cowley']: # Columns in HTML table are messed up... keep an eye on these schools to see if fixed
+        df.columns = ['Ignore', 'No.', 'Name', 'Pos.', 'B/T', 'Year', 'Ht.', 'Wt.', 'Hometown']
     df['__school'] = school['title']
     df['__division'] = school['division']
     df['__state'] = school['state']
