@@ -70,7 +70,8 @@ def main():
         # print_cols(roster_df_list) # Periodically check all of the table columns found in the html to see if we are overlooking anything
 
         canadians_df = format_df(canadians_dict_list, schools_df) # Format dictionaries to dataframe
-        canadians_df = pd.concat([canadians_df, pd.read_csv('canadians_manual.csv')], ignore_index=True) # Add players who could not be scraped
+        canadians_df = pd.concat([pd.read_csv('canadians_manual.csv'), canadians_df], ignore_index=True) # Add players who could not be scraped
+        canadians_df.drop_duplicates(subset=['name', 'hometown'], keep='first', ignore_index=True, inplace=True) # Drop duplicate names (keep manually added rows if there is an "identical" scraped row)
 
         canadians_df['class'] = pd.Categorical(canadians_df['class'], ['Freshman','Sophomore', 'Junior', 'Senior', '']) # Create custom sort by class
         canadians_df['last_name'] = canadians_df['name'].str.split(' ').str[1]
@@ -90,12 +91,16 @@ def main():
 
 def read_roster_norm(html, school):
     df = html[0]
-    if school['title'] != 'Arizona Christian University': # Has a real roster and a prospect roster... ensure real roster is chosen
+    if school['title'] not in ['Arizona Christian University', 'University of Northwestern Ohio']: # Has a real roster and a prospect/JV roster... ensure real roster is chosen
         for temp_df in html:
             if len(temp_df.index) > len(df.index): # Assume largest table on page is actual roster
                 df = temp_df
     if school['title'] in ['Mineral Area', 'Cowley']: # Columns in HTML table are messed up... keep an eye on these schools to see if fixed
         df.columns = ['Ignore', 'No.', 'Name', 'Pos.', 'B/T', 'Year', 'Ht.', 'Wt.', 'Hometown']
+    elif school['title'] == 'Cochise':
+        new_header = df.iloc[0] # grab the first row for the header
+        df = df[1:] # take the data less the header row
+        df.columns = new_header # set the header row as the df header
     df['__school'] = school['title']
     df['__division'] = school['division']
     df['__state'] = school['state']
@@ -414,7 +419,7 @@ def format_df(dict_list, schools_df):
                     new_dict['_first_name'] = value_str
                 elif (key_str == 'last') | (('last' in key_str) & ('nam' in key_str)):
                     new_dict['_last_name'] = value_str
-                elif ('name' in key_str) | (key_str == 'player'):
+                elif ('name' in key_str) | (key_str == 'player') | (key_str == 'student athlete'):
                     new_dict['__name'] = format_player_name(value_str) # Format as "First Last"
 
                 # Set __position column
