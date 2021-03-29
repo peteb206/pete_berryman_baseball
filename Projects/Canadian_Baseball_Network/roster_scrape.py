@@ -159,7 +159,7 @@ def set_canadian_search_criteria():
     }
     province_strings = {
         'Alberta': ['alberta', ', alta.', ', ab', 'a.b.'],
-        'British Columbia': ['british columbia', ', b.c.', ', bc'],
+        'British Columbia': ['british columbia', ', b.c', ', bc'],
         'Manitoba': ['manitoba', ', mb', ', man.'],
         'New Brunswick': ['new brunswick', ', nb', 'n.b.'],
         'Newfoundland': ['newfoundland', 'nfld'],
@@ -231,7 +231,7 @@ def iterate_over_schools(schools_df):
     # Print helpful info
     index_col_length, title_col_length, players_col_length, canadians_col_length, roster_link_col_length = 6, 52, 9, 11, 80
     logger.info('')
-    logger.info('Reading the rosters of {} schools... This will take approximately {} minutes...'.format(str(len(schools_df.index)), str(int(round(len(schools_df.index) / 50, 0)))))
+    logger.info('Reading the rosters of {} schools...'.format(str(len(schools_df.index))))
     logger.info('')
     border_row = '|{}|{}|{}|{}|{}|'.format('-'*index_col_length, '-'*title_col_length, '-'*players_col_length, '-'*canadians_col_length, '-'*roster_link_col_length)
     header_row = '|{}|{}|{}|{}|{}|'.format('#'.center(index_col_length), 'school'.center(title_col_length), 'players'.center(players_col_length), 'canadians'.center(canadians_col_length), 'roster_link'.center(roster_link_col_length))
@@ -567,7 +567,7 @@ def update_gsheet(df, last_run):
     # initialize summary sheet
     last_run_split = last_run.split(': ')
     last_run_split[0] = last_run_split[0] + ':'
-    summary_data = [last_run_split, ['', ''], ['Total:', '{} players'.format(str(len(df.index)))], ['', '']]
+    summary_data = [last_run_split, ['', ''], ['Total', '{} players'.format(str(len(df.index)))], ['', '']]
 
     # Fill NaN values in dataframe with blank string
     df.fillna('', inplace=True)
