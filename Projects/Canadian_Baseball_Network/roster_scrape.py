@@ -102,9 +102,9 @@ def read_roster_norm(html, school):
         df.columns = new_header # set the header row as the df header
     elif school['title'] in ['Mineral Area', 'Cowley']: # Columns in HTML table are messed up... keep an eye on these schools to see if fixed
         df.columns = ['Ignore', 'No.', 'Name', 'Pos.', 'B/T', 'Year', 'Ht.', 'Wt.', 'Hometown']
-    df['__school'] = school['title'].copy()
-    df['__division'] = school['division'].copy()
-    df['__state'] = school['state'].copy()
+    df['__school'] = school['title']
+    df['__division'] = school['division']
+    df['__state'] = school['state']
     return df
 
 
