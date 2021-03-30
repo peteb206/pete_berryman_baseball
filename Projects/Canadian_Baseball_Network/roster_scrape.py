@@ -73,7 +73,7 @@ def main():
         canadians_df = pd.concat([pd.read_csv('canadians_manual.csv'), canadians_df], ignore_index=True) # Add players who could not be scraped
         canadians_df.drop_duplicates(subset=['name', 'hometown'], keep='first', ignore_index=True, inplace=True) # Drop duplicate names (keep manually added rows if there is an "identical" scraped row)
 
-        df['class'].fillna('Freshman', inplace=True)
+        canadians_df['class'].fillna('Freshman', inplace=True)
         canadians_df['class'] = pd.Categorical(canadians_df['class'], ['Freshman','Sophomore', 'Junior', 'Senior', '']) # Create custom sort by class
         canadians_df['last_name'] = canadians_df['name'].str.split(' ').str[1]
         canadians_df = canadians_df.sort_values(by=['class', 'last_name', 'school'], ignore_index=True).drop('last_name', axis=1)
@@ -102,9 +102,9 @@ def read_roster_norm(html, school):
         df.columns = new_header # set the header row as the df header
     elif school['title'] in ['Mineral Area', 'Cowley']: # Columns in HTML table are messed up... keep an eye on these schools to see if fixed
         df.columns = ['Ignore', 'No.', 'Name', 'Pos.', 'B/T', 'Year', 'Ht.', 'Wt.', 'Hometown']
-    df['__school'] = school['title']
-    df['__division'] = school['division']
-    df['__state'] = school['state']
+    df['__school'] = school['title'].copy()
+    df['__division'] = school['division'].copy()
+    df['__state'] = school['state'].copy()
     return df
 
 
