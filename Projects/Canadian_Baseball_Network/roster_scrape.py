@@ -618,6 +618,7 @@ def update_gsheet(df, last_run):
     format_headers(sheet, players_sheet_id, players_sheet.findall(re.compile(r'^(' + '|'.join(division_list) + r')$')), True)
     time.sleep(60) # break up the requests to avoid error
     format_headers(sheet, players_sheet_id, players_sheet.findall(re.compile(r'^(' + '|'.join(['Freshmen', 'Sophomores', 'Juniors', 'Seniors']) + r')$')), False)
+    time.sleep(60) # break up the requests to avoid error
     players_sheet.format('A3:A15', {'textFormat': {'bold': True}}) # bold Summary text
     players_sheet.format('B1:B1', {'backgroundColor': {'red': 1, 'green': 0.95, 'blue': 0.8}}) # light yellow background color
     players_sheet.format('A3:B3', {'backgroundColor': {'red': 0.92, 'green': 0.92, 'blue': 0.92}}) # light grey background color
