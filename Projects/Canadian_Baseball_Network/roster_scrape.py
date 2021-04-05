@@ -574,7 +574,7 @@ def update_gsheet(df, last_run):
     df.fillna('', inplace=True)
 
     # Add title row
-    col_headers = [df.drop(['division', 'class'], axis=1).columns.values.tolist()]
+    col_headers = [col[0].upper() + col[1:] for col in df.drop(['division', 'class'], axis=1).columns.values.tolist()]
     player_data = list()
 
     division_list = ['NCAA: Division 1', 'NCAA: Division 2', 'NCAA: Division 3', 'NAIA', 'Junior Colleges and Community Colleges: Division 1', 'Junior Colleges and Community Colleges: Division 2', 'Junior Colleges and Community Colleges: Division 3', 'California Community College Athletic Association', 'Northwest Athletic Conference', 'United States Collegiate Athletic Association']
