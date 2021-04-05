@@ -556,6 +556,7 @@ def update_gsheet(df, last_run):
     client = gspread.authorize(creds)
 
     # get the instance of the Spreadsheet
+    sheet = client.open(os.environ.get('SHEET_NAME'))
 
     # get the sheets of the Spreadsheet
     players_sheet = sheet.worksheet('2021')
