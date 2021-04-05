@@ -72,6 +72,7 @@ def main():
         canadians_df = format_df(canadians_dict_list, schools_df) # Format dictionaries to dataframe
         canadians_df = pd.concat([pd.read_csv('canadians_manual.csv'), canadians_df], ignore_index=True) # Add players who could not be scraped
         canadians_df.drop_duplicates(subset=['name', 'hometown'], keep='first', ignore_index=True, inplace=True) # Drop duplicate names (keep manually added rows if there is an "identical" scraped row)
+        canadians_df.drop_duplicates(subset=['name', 'school'], keep='first', ignore_index=True, inplace=True) # Drop duplicate names part 2
 
         canadians_df['class'].fillna('Freshman', inplace=True)
         canadians_df['class'] = pd.Categorical(canadians_df['class'], ['Freshman','Sophomore', 'Junior', 'Senior', '']) # Create custom sort by class
