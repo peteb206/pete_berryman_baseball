@@ -577,9 +577,6 @@ def update_gsheet(df, last_run):
     col_headers = [df.drop(['division', 'class'], axis=1).columns.values.tolist()]
     player_data = list()
 
-    division_header_rows = list()
-    class_header_rows = list()
-
     division_list = ['NCAA: Division 1', 'NCAA: Division 2', 'NCAA: Division 3', 'NAIA', 'Junior Colleges and Community Colleges: Division 1', 'Junior Colleges and Community Colleges: Division 2', 'Junior Colleges and Community Colleges: Division 3', 'California Community College Athletic Association', 'Northwest Athletic Conference', 'United States Collegiate Athletic Association']
     class_list = ['Freshman', 'Sophomore', 'Junior', 'Senior']
 
@@ -621,8 +618,8 @@ def update_gsheet(df, last_run):
     time.sleep(60) # break up the requests to avoid error
     format_headers(sheet, players_sheet_id, players_sheet.findall(re.compile(r'^(' + '|'.join(['Freshmen', 'Sophomores', 'Juniors', 'Seniors']) + r')$')), False)
     players_sheet.format('A3:A15', {'textFormat': {'bold': True}}) # bold Summary text
-    players_sheet.format('B2:B2', {'backgroundColor': {'red': 1, 'green': 0.91, 'blue': 0.47}}) # background color
-    players_sheet.format('A3:E3', {'backgroundColor': {'red': 0.92, 'green': 0.92, 'blue': 0.92}}) # background color
+    players_sheet.format('B1:B1', {'backgroundColor': {'red': 1, 'green': 0.95, 'blue': 0.8}}) # light yellow background color
+    players_sheet.format('A3:B3', {'backgroundColor': {'red': 0.92, 'green': 0.92, 'blue': 0.92}}) # light grey background color
     players_sheet.format('A16:E{}'.format(len(data)), {'horizontalAlignment': 'CENTER', 'verticalAlignment': 'MIDDLE'}) # center all cells
 
     logger.info('Google sheet updated with {} players...'.format(str(len(df.index))))
