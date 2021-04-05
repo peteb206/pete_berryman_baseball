@@ -543,6 +543,8 @@ def generate_html(df, file_name, last_run):
 
 
 def update_gsheet(df, last_run):
+    blank_row = [['', '', '', '', '']]
+
     # define the scope
     scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
 
@@ -554,43 +556,41 @@ def update_gsheet(df, last_run):
     client = gspread.authorize(creds)
 
     # get the instance of the Spreadsheet
-    sheet = client.open(os.environ.get('SHEET_NAME'))
 
     # get the sheets of the Spreadsheet
-    summary_sheet = sheet.worksheet('Summary')
-    summary_sheet_id = summary_sheet._properties['sheetId']
-    players_sheet = sheet.worksheet('Players')
+    players_sheet = sheet.worksheet('2021')
     players_sheet_id = players_sheet._properties['sheetId']
 
     # clear values in both sheets
-    clear_sheets(sheet, [summary_sheet_id, players_sheet_id])
+    clear_sheets(sheet, [players_sheet_id])
 
-    # initialize summary sheet
-    last_run_split = last_run.split(': ')
+    # initialize summary data
+    last_run_split = last_run.split(': ') + ['', '', '']
     last_run_split[0] = last_run_split[0] + ':'
-    summary_data = [last_run_split, ['', ''], ['Total', '{} players'.format(str(len(df.index)))], ['', '']]
+    summary_data = [last_run_split] + blank_row + [['Total', '{} players'.format(str(len(df.index))), '', '', '']] + blank_row
 
     # Fill NaN values in dataframe with blank string
     df.fillna('', inplace=True)
 
     # Add title row
-    player_data = [df.drop(['division', 'class'], axis=1).columns.values.tolist()]
+    col_headers = [df.drop(['division', 'class'], axis=1).columns.values.tolist()]
+    player_data = list()
 
     division_header_rows = list()
     class_header_rows = list()
-    blank_row = [['', '', '', '', '']]
+
+    division_list = ['NCAA: Division 1', 'NCAA: Division 2', 'NCAA: Division 3', 'NAIA', 'Junior Colleges and Community Colleges: Division 1', 'Junior Colleges and Community Colleges: Division 2', 'Junior Colleges and Community Colleges: Division 3', 'California Community College Athletic Association', 'Northwest Athletic Conference', 'United States Collegiate Athletic Association']
+    class_list = ['Freshman', 'Sophomore', 'Junior', 'Senior']
 
     # Loop through divisions
-    for division in [
-        'NCAA: Division 1', 'NCAA: Division 2', 'NCAA: Division 3', 'NAIA', 'Junior Colleges and Community Colleges: Division 1', 'Junior Colleges and Community Colleges: Division 2', 'Junior Colleges and Community Colleges: Division 3', 'California Community College Athletic Association', 'Northwest Athletic Conference', 'United States Collegiate Athletic Association']:
+    for division in division_list:
 
         # Row/Division Header
         player_data += [[division, '', '', '', '']]
-        division_header_rows.append(len(player_data))
 
         # Subset dataframe
         df_split_div = df[df['division'] == division].drop(['division'], axis=1)
-        for class_year in ['Freshman', 'Sophomore', 'Junior', 'Senior']:
+        for class_year in class_list:
             df_split_class = pd.DataFrame()
             if class_year == 'Freshman':
                 df_split_class = df_split_div[(df_split_div['class'] == class_year) | (df_split_div['class'] == '')].drop(['class'], axis=1)
@@ -601,40 +601,28 @@ def update_gsheet(df, last_run):
                     player_data += blank_row
                 class_year += 's'
             if len(df_split_class.index) > 0:
-                player_data += [[class_year, '', '', '', '']]
-                class_header_rows.append(len(player_data))
-                player_data += df_split_class.values.tolist()
+                player_data += ([[class_year, '', '', '', '']] + col_headers + df_split_class.values.tolist())
 
         # Compile data rows
         player_data += blank_row
-        summary_data.append([division, '{} players'.format(str(len(df_split_div.index)))])
+        summary_data.append([division + ' ', '{} players'.format(str(len(df_split_div.index))), '', '', ''])
 
     # Add data to sheets
-    summary_sheet.insert_rows(summary_data, row=1)
-    players_sheet.insert_rows(player_data, row=1)
-
-    # Freeze header row
-    players_sheet.freeze(rows=1)
+    data = summary_data + blank_row + player_data
+    players_sheet.insert_rows(data, row=1)
 
     # Resize columns and re-size sheets
-    resize_columns(sheet, [summary_sheet_id, players_sheet_id])
-    
-    summary_sheet.resize(rows=len(summary_data) + 1)
-    players_sheet.resize(rows=len(player_data))
+    resize_columns(sheet, [players_sheet_id])
+    players_sheet.resize(rows=len(data))
 
     # Format division/class headers
-    format_headers(sheet, players_sheet_id, division_header_rows, True)
-    format_headers(sheet, players_sheet_id, class_header_rows, False)
-    # make header row bold text
-    players_sheet.format(
-        'A1:E1',
-        {
-            'horizontalAlignment': 'CENTER',
-            'textFormat': {
-                'bold': True
-            }
-        }
-    )
+    format_headers(sheet, players_sheet_id, players_sheet.findall(re.compile(r'^(' + '|'.join(division_list) + r')$')), True)
+    time.sleep(60) # break up the requests to avoid error
+    format_headers(sheet, players_sheet_id, players_sheet.findall(re.compile(r'^(' + '|'.join(['Freshmen', 'Sophomores', 'Juniors', 'Seniors']) + r')$')), False)
+    players_sheet.format('A3:A15', {'textFormat': {'bold': True}}) # bold Summary text
+    players_sheet.format('B2:B2', {'backgroundColor': {'red': 1, 'green': 0.91, 'blue': 0.47}}) # background color
+    players_sheet.format('A3:E3', {'backgroundColor': {'red': 0.92, 'green': 0.92, 'blue': 0.92}}) # background color
+    players_sheet.format('A16:E{}'.format(len(data)), {'horizontalAlignment': 'CENTER', 'verticalAlignment': 'MIDDLE'}) # center all cells
 
     logger.info('Google sheet updated with {} players...'.format(str(len(df.index))))
 
@@ -681,7 +669,7 @@ def resize_columns(spreadsheet, sheet_ids):
             range_dict['startIndex'] = 0
             range_dict['endIndex'] = 1
             properties_dict = dict()
-            properties_dict['pixelSize'] = 200
+            properties_dict['pixelSize'] = 350
             update_dimension_properties['range'] = range_dict
             update_dimension_properties['properties'] = properties_dict
             update_dimension_properties['fields'] = 'pixelSize'
@@ -692,7 +680,7 @@ def resize_columns(spreadsheet, sheet_ids):
     spreadsheet.batch_update(body)
 
 
-def format_headers(spreadsheet, sheet_id, rows, division_header):
+def format_headers(spreadsheet, sheet_id, occurrences, division_header):
     color = 0.8
     font_size = 20
     if division_header == False:
@@ -705,41 +693,61 @@ def format_headers(spreadsheet, sheet_id, rows, division_header):
         'endColumnIndex': 5
     }
 
-    for row in rows:
+    body = dict()
+    requests = list()
+    for occurrence in occurrences:
+        row = occurrence.row
         # merge cells and format header
         range['startRowIndex'] = row - 1
         range['endRowIndex'] = row
-        body = {
-            'requests': [
+        requests += [
+            {
+                'mergeCells': {
+                    'mergeType': 'MERGE_ALL',
+                    'range': range
+                }
+            }, {
+                'repeatCell': {
+                    'range': range,
+                    'cell': {
+                        'userEnteredFormat': {
+                            'backgroundColor': {
+                                'red': color,
+                                'green': color,
+                                'blue': color
+                            },
+                            'textFormat': {
+                                'fontSize': font_size,
+                                'bold': True
+                            }
+                        }
+                    },
+                    'fields': 'userEnteredFormat(backgroundColor,textFormat)',
+                }
+            }
+        ]
+        body['requests'] = requests
+        spreadsheet.batch_update(body)
+        if division_header == False:
+            # format column headers
+            range['startRowIndex'] = row
+            range['endRowIndex'] = row + 1
+            body['requests'] = [
                 {
-                    'mergeCells': {
-                        'mergeType': 'MERGE_ALL',
-                        'range': range
-                    }
-                }, {
                     'repeatCell': {
                         'range': range,
                         'cell': {
                             'userEnteredFormat': {
-                                'backgroundColor': {
-                                    'red': color,
-                                    'green': color,
-                                    'blue': color
-                                },
-                                'horizontalAlignment': 'CENTER',
-                                'verticalAlignment': 'MIDDLE',
                                 'textFormat': {
-                                    'fontSize': font_size,
                                     'bold': True
                                 }
                             }
                         },
-                        'fields': 'userEnteredFormat(backgroundColor,horizontalAlignment,verticalAlignment,textFormat)',
+                        'fields': 'userEnteredFormat(textFormat)',
                     }
                 }
             ]
-        }
-        spreadsheet.batch_update(body)
+            spreadsheet.batch_update(body)
 
 
 def csv_to_dict_list(csv_file):
