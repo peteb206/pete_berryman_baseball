@@ -565,7 +565,9 @@ def update_gsheet(df, last_run):
     clear_sheets(sheet, [players_sheet_id])
 
     # initialize summary data
-    summary_data = [[last_run, '', '', '', '']] + blank_row + [['Total', '{} players'.format(str(len(df.index))), '', '', '']] + blank_row + [['By Pete Berryman', '', '', '', '']] + [['Canadian Baseball Network', '', '', '', '']] + blank_row
+    summary_data = [[last_run, '', '', '', '']] + blank_row
+    summary_data += ([['By Pete Berryman', '', '', '', '']] + [['Canadian Baseball Network', '', '', '', '']] + blank_row)
+    summary_data += ([['Total', '{} players'.format(str(len(df.index))), '', '', '']] + blank_row)
 
     # Fill NaN values in dataframe with blank string
     df.fillna('', inplace=True)
