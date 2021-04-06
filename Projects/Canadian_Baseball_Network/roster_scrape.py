@@ -509,10 +509,10 @@ def generate_html(df, file_name, last_run):
     iter = 0
     for division in [
         'NCAA: Division 1', 'NCAA: Division 2', 'NCAA: Division 3', 'NAIA',
-        'Junior Colleges and Community Colleges: Division 1',
-        'Junior Colleges and Community Colleges: Division 2',
-        'Junior Colleges and Community Colleges: Division 3',
-        'California Community College Athletic Association',
+        'JUCO: Division 1',
+        'JUCO: Division 2',
+        'JUCO: Division 3',
+        'California CC',
         'Northwest Athletic Conference',
         'United States Collegiate Athletic Association'
     ]:
@@ -567,9 +567,7 @@ def update_gsheet(df, last_run):
     clear_sheets(sheet, [players_sheet_id])
 
     # initialize summary data
-    last_run_split = last_run.split(': ') + ['', '', '']
-    last_run_split[0] = last_run_split[0] + ':'
-    summary_data = [last_run_split] + blank_row + [['Total', '{} players'.format(str(len(df.index))), '', '', '']] + blank_row
+    summary_data = [[last_run, '', '', '', '']] + blank_row + [['Total', '{} players'.format(str(len(df.index))), '', '', '']] + blank_row + [['By Pete Berryman', '', '', '', '']] + [['Canadian Baseball Network', '', '', '', '']] + blank_row
 
     # Fill NaN values in dataframe with blank string
     df.fillna('', inplace=True)
@@ -578,7 +576,7 @@ def update_gsheet(df, last_run):
     col_headers = [[col[0].upper() + col[1:] for col in df.drop(['division', 'class'], axis=1).columns.values.tolist()]]
     player_data = list()
 
-    division_list = ['NCAA: Division 1', 'NCAA: Division 2', 'NCAA: Division 3', 'NAIA', 'Junior Colleges and Community Colleges: Division 1', 'Junior Colleges and Community Colleges: Division 2', 'Junior Colleges and Community Colleges: Division 3', 'California Community College Athletic Association', 'Northwest Athletic Conference', 'United States Collegiate Athletic Association']
+    division_list = ['NCAA: Division 1', 'NCAA: Division 2', 'NCAA: Division 3', 'NAIA', 'JUCO: Division 1', 'JUCO: Division 2', 'JUCO: Division 3', 'California CC', 'Northwest Athletic Conference', 'United States Collegiate Athletic Association']
     class_list = ['Freshman', 'Sophomore', 'Junior', 'Senior']
 
     # Loop through divisions
@@ -611,7 +609,7 @@ def update_gsheet(df, last_run):
     players_sheet.insert_rows(data, row=1)
 
     # Resize columns and re-size sheets
-    resize_columns(sheet, [players_sheet_id])
+    resize_columns(sheet, players_sheet_id)
     players_sheet.resize(rows=len(data))
 
     # Format division/class headers
@@ -619,10 +617,12 @@ def update_gsheet(df, last_run):
     time.sleep(60) # break up the requests to avoid error
     format_headers(sheet, players_sheet_id, players_sheet.findall(re.compile(r'^(' + '|'.join(['Freshmen', 'Sophomores', 'Juniors', 'Seniors']) + r')$')), False)
     time.sleep(60) # break up the requests to avoid error
-    players_sheet.format('A3:A15', {'textFormat': {'bold': True}}) # bold Summary text
+    players_sheet.format('A3:A{}'.format(len(summary_data)), {'textFormat': {'bold': True}}) # bold Summary text
     players_sheet.format('B1:B1', {'backgroundColor': {'red': 1, 'green': 0.95, 'blue': 0.8}}) # light yellow background color
-    players_sheet.format('A3:B3', {'backgroundColor': {'red': 0.92, 'green': 0.92, 'blue': 0.92}}) # light grey background color
-    players_sheet.format('A16:E{}'.format(len(data)), {'horizontalAlignment': 'CENTER', 'verticalAlignment': 'MIDDLE'}) # center all cells
+    players_sheet.format('A6:B6', {'backgroundColor': {'red': 0.92, 'green': 0.92, 'blue': 0.92}}) # light grey background color
+    players_sheet.format('A{}:E{}'.format(len(summary_data) + 1, len(data)), {'horizontalAlignment': 'CENTER', 'verticalAlignment': 'MIDDLE'}) # center all cells
+    players_sheet.format('A3:A4', {'horizontalAlignment': 'CENTER', 'verticalAlignment': 'MIDDLE'}) # center some other cells
+    players_sheet.merge_cells('A1:B1', {'horizontalAlignment': 'CENTER', 'verticalAlignment': 'MIDDLE'}) # center some other cells
 
     logger.info('Google sheet updated with {} players...'.format(str(len(df.index))))
 
@@ -643,39 +643,34 @@ def clear_sheets(spreadsheet, sheet_ids):
     spreadsheet.batch_update(body)
 
 
-def resize_columns(spreadsheet, sheet_ids):
+def resize_columns(spreadsheet, sheet_id):
     body = dict()
     requests = list()
-    sheet_num = 1
-    for sheet_id in sheet_ids:
-        request = dict()
-        auto_resize_dimensions = dict()
-        dimensions = dict()
-        dimensions['sheetId'] = sheet_id
-        dimensions['dimension'] = 'COLUMNS'
-        dimensions['startIndex'] = 0 if sheet_num == 1 else 1
-        dimensions['endIndex'] = 2 if sheet_num == 1 else 5
-        auto_resize_dimensions['dimensions'] = dimensions
-        request['autoResizeDimensions'] = auto_resize_dimensions
-        if sheet_num == 1:
-            requests.append(request)
-        else:
-            requests.append(request)
-            request2 = dict()
-            update_dimension_properties = dict()
-            range_dict = dict()
-            range_dict['sheetId'] = sheet_id
-            range_dict['dimension'] = 'COLUMNS'
-            range_dict['startIndex'] = 0
-            range_dict['endIndex'] = 1
-            properties_dict = dict()
-            properties_dict['pixelSize'] = 350
-            update_dimension_properties['range'] = range_dict
-            update_dimension_properties['properties'] = properties_dict
-            update_dimension_properties['fields'] = 'pixelSize'
-            request2['updateDimensionProperties'] = update_dimension_properties
-            requests.append(request2)
-        sheet_num += 1
+    request = dict()
+    auto_resize_dimensions = dict()
+    dimensions = dict()
+    dimensions['sheetId'] = sheet_id
+    dimensions['dimension'] = 'COLUMNS'
+    dimensions['startIndex'] = 1
+    dimensions['endIndex'] = 5
+    auto_resize_dimensions['dimensions'] = dimensions
+    request['autoResizeDimensions'] = auto_resize_dimensions
+    requests.append(request)
+    requests.append(request)
+    request2 = dict()
+    update_dimension_properties = dict()
+    range_dict = dict()
+    range_dict['sheetId'] = sheet_id
+    range_dict['dimension'] = 'COLUMNS'
+    range_dict['startIndex'] = 0
+    range_dict['endIndex'] = 1
+    properties_dict = dict()
+    properties_dict['pixelSize'] = 200
+    update_dimension_properties['range'] = range_dict
+    update_dimension_properties['properties'] = properties_dict
+    update_dimension_properties['fields'] = 'pixelSize'
+    request2['updateDimensionProperties'] = update_dimension_properties
+    requests.append(request2)
     body['requests'] = requests
     spreadsheet.batch_update(body)
 
