@@ -1,7 +1,7 @@
 name: cbn-scrape-full
 on:
    schedule:
-      - cron: '0 5 * * 1' # runs at 5:00 UTC on Mondays
+      - cron: '0 9 * * 1' # runs at 9:00 UTC on Mondays
 jobs:
    build:
       runs-on: ubuntu-latest

@@ -565,8 +565,7 @@ def update_gsheet(df, last_run):
     clear_sheets(sheet, [players_sheet_id])
 
     # initialize summary data
-    summary_data = [[last_run, '', '', '', '']] + blank_row
-    summary_data += ([['By Pete Berryman', '', '', '', '']] + [['Canadian Baseball Network', '', '', '', '']] + blank_row)
+    summary_data = [['By Pete Berryman', '', '', '', last_run], ['Canadian Baseball Network', '', '', '', '']] + blank_row
     summary_data += ([['Total', '{} players'.format(str(len(df.index))), '', '', '']] + blank_row)
 
     # Fill NaN values in dataframe with blank string
@@ -621,8 +620,7 @@ def update_gsheet(df, last_run):
     players_sheet.format('A1:A1', {'backgroundColor': {'red': 1, 'green': 0.95, 'blue': 0.8}}) # light yellow background color
     players_sheet.format('A6:B6', {'backgroundColor': {'red': 0.92, 'green': 0.92, 'blue': 0.92}}) # light grey background color
     players_sheet.format('A{}:E{}'.format(len(summary_data) + 1, len(data)), {'horizontalAlignment': 'CENTER', 'verticalAlignment': 'MIDDLE'}) # center all cells
-    players_sheet.format('A3:A4', {'horizontalAlignment': 'CENTER', 'verticalAlignment': 'MIDDLE'}) # center some other cells
-    players_sheet.merge_cells('A1:B1') # merge two cells for "Last updated: ..."
+    players_sheet.format('A1:E2', {'horizontalAlignment': 'CENTER'}) # center some other cells
 
     logger.info('Google sheet updated with {} players...'.format(str(len(df.index))))
 
