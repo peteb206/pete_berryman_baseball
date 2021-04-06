@@ -350,16 +350,14 @@ def format_player_position(string):
 
 def format_player_division(string):
     level = 'Division ' + string[-1]
-    if string.upper() == 'NAIA':
+    if string.upper() in ['NAIA', 'USCAA']:
         return string.upper()
     elif 'JUCO' in string.upper():
-        return 'Junior Colleges and Community Colleges: ' + level
+        return 'JUCO: ' + level
     elif string.upper() == 'CCCAA':
-        return 'California Community College Athletic Association'
+        return 'California CC'
     elif string.upper() == 'NWAC':
         return 'Northwest Athletic Conference'
-    elif string.upper() == 'USCAA':
-        return 'United States Collegiate Athletic Association'
     else:
         return 'NCAA: ' + level
 
@@ -514,7 +512,7 @@ def generate_html(df, file_name, last_run):
         'JUCO: Division 3',
         'California CC',
         'Northwest Athletic Conference',
-        'United States Collegiate Athletic Association'
+        'USCAA'
     ]:
         temp_df = df[df['division'] == division].drop(['division'], axis=1)
         html_string += '''
@@ -576,7 +574,7 @@ def update_gsheet(df, last_run):
     col_headers = [[col[0].upper() + col[1:] for col in df.drop(['division', 'class'], axis=1).columns.values.tolist()]]
     player_data = list()
 
-    division_list = ['NCAA: Division 1', 'NCAA: Division 2', 'NCAA: Division 3', 'NAIA', 'JUCO: Division 1', 'JUCO: Division 2', 'JUCO: Division 3', 'California CC', 'Northwest Athletic Conference', 'United States Collegiate Athletic Association']
+    division_list = ['NCAA: Division 1', 'NCAA: Division 2', 'NCAA: Division 3', 'NAIA', 'JUCO: Division 1', 'JUCO: Division 2', 'JUCO: Division 3', 'California CC', 'Northwest Athletic Conference', 'USCAA']
     class_list = ['Freshman', 'Sophomore', 'Junior', 'Senior']
 
     # Loop through divisions
@@ -618,11 +616,11 @@ def update_gsheet(df, last_run):
     format_headers(sheet, players_sheet_id, players_sheet.findall(re.compile(r'^(' + '|'.join(['Freshmen', 'Sophomores', 'Juniors', 'Seniors']) + r')$')), False)
     time.sleep(60) # break up the requests to avoid error
     players_sheet.format('A3:A{}'.format(len(summary_data)), {'textFormat': {'bold': True}}) # bold Summary text
-    players_sheet.format('B1:B1', {'backgroundColor': {'red': 1, 'green': 0.95, 'blue': 0.8}}) # light yellow background color
+    players_sheet.format('A1:A1', {'backgroundColor': {'red': 1, 'green': 0.95, 'blue': 0.8}}) # light yellow background color
     players_sheet.format('A6:B6', {'backgroundColor': {'red': 0.92, 'green': 0.92, 'blue': 0.92}}) # light grey background color
     players_sheet.format('A{}:E{}'.format(len(summary_data) + 1, len(data)), {'horizontalAlignment': 'CENTER', 'verticalAlignment': 'MIDDLE'}) # center all cells
     players_sheet.format('A3:A4', {'horizontalAlignment': 'CENTER', 'verticalAlignment': 'MIDDLE'}) # center some other cells
-    players_sheet.merge_cells('A1:B1', {'horizontalAlignment': 'CENTER', 'verticalAlignment': 'MIDDLE'}) # center some other cells
+    players_sheet.merge_cells('A1:B1') # merge two cells for "Last updated: ..."
 
     logger.info('Google sheet updated with {} players...'.format(str(len(df.index))))
 
