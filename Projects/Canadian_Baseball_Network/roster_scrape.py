@@ -54,7 +54,7 @@ def main():
         full_run = False
 
     # Last run:
-    last_run = 'Last updated: {} UTC'.format(datetime.datetime.now(pytz.utc).strftime("%B %d, %Y at %I:%M %p"))
+    last_run = 'Last updated: {} UTC'.format(datetime.datetime.now(pytz.utc).strftime("%B %-d, %Y at %-I:%M %p"))
     logger.info('')
     logger.info(last_run)
 
@@ -601,7 +601,8 @@ def update_gsheet(df, last_run):
 
         # Compile data rows
         player_data += blank_row
-        summary_data.append([division + ' ', '{} players'.format(str(len(df_split_div.index))), '', '', ''])
+        if len(df_split_div.index) > 0:
+            summary_data.append([division + ' ', '{} players'.format(str(len(df_split_div.index))), '', '', ''])
 
     # Add data to sheets
     data = summary_data + blank_row + player_data
