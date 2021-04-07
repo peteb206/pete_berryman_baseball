@@ -608,20 +608,20 @@ def update_gsheet(df, last_run):
     data = summary_data + blank_row + player_data
     players_sheet.insert_rows(data, row=1)
 
-    # Resize columns and re-size sheets
-    resize_columns(sheet, players_sheet_id)
-    players_sheet.resize(rows=len(data))
-
     # Format division/class headers
     format_headers(sheet, players_sheet_id, players_sheet.findall(re.compile(r'^(' + '|'.join(division_list) + r')$')), True)
     time.sleep(60) # break up the requests to avoid error
     format_headers(sheet, players_sheet_id, players_sheet.findall(re.compile(r'^(' + '|'.join(['Freshmen', 'Sophomores', 'Juniors', 'Seniors']) + r')$')), False)
     time.sleep(60) # break up the requests to avoid error
     players_sheet.format('A3:A{}'.format(len(summary_data)), {'textFormat': {'bold': True}}) # bold Summary text
-    players_sheet.format('A1:A1', {'backgroundColor': {'red': 1, 'green': 0.95, 'blue': 0.8}}) # light yellow background color
-    players_sheet.format('A6:B6', {'backgroundColor': {'red': 0.92, 'green': 0.92, 'blue': 0.92}}) # light grey background color
+    players_sheet.format('E1:E11', {'backgroundColor': {'red': 1, 'green': 0.95, 'blue': 0.8}}) # light yellow background color
+    players_sheet.format('A4:B4', {'backgroundColor': {'red': 0.92, 'green': 0.92, 'blue': 0.92}}) # light grey background color
     players_sheet.format('A{}:E{}'.format(len(summary_data) + 1, len(data)), {'horizontalAlignment': 'CENTER', 'verticalAlignment': 'MIDDLE'}) # center all cells
     players_sheet.format('A1:E2', {'horizontalAlignment': 'CENTER'}) # center some other cells
+
+    # Resize columns and re-size sheets
+    players_sheet.resize(rows=len(data))
+    resize_columns(sheet, players_sheet_id)
 
     logger.info('Google sheet updated with {} players...'.format(str(len(df.index))))
 
@@ -664,7 +664,7 @@ def resize_columns(spreadsheet, sheet_id):
     range_dict['startIndex'] = 0
     range_dict['endIndex'] = 1
     properties_dict = dict()
-    properties_dict['pixelSize'] = 180
+    properties_dict['pixelSize'] = 170
     update_dimension_properties['range'] = range_dict
     update_dimension_properties['properties'] = properties_dict
     update_dimension_properties['fields'] = 'pixelSize'
