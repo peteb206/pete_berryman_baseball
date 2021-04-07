@@ -617,7 +617,7 @@ def update_gsheet(df, last_run):
     players_sheet.format('E1:E1', {'backgroundColor': {'red': 1, 'green': 0.95, 'blue': 0.8}}) # light yellow background color
     players_sheet.format('A4:B4', {'backgroundColor': {'red': 0.92, 'green': 0.92, 'blue': 0.92}}) # light grey background color
     players_sheet.format('A{}:E{}'.format(len(summary_data) + 1, len(data)), {'horizontalAlignment': 'CENTER', 'verticalAlignment': 'MIDDLE'}) # center all cells
-    players_sheet.format('A1:E2', {'horizontalAlignment': 'CENTER'}) # center some other cells
+    players_sheet.format('A1:E1', {'horizontalAlignment': 'CENTER'}) # center some other cells
 
     # Resize columns and re-size sheets
     players_sheet.resize(rows=len(data))
@@ -643,35 +643,35 @@ def clear_sheets(spreadsheet, sheet_ids):
 
 
 def resize_columns(spreadsheet, sheet_id):
-    body = dict()
-    requests = list()
-    request = dict()
-    auto_resize_dimensions = dict()
-    dimensions = dict()
-    dimensions['sheetId'] = sheet_id
-    dimensions['dimension'] = 'COLUMNS'
-    dimensions['startIndex'] = 1
-    dimensions['endIndex'] = 6
-    auto_resize_dimensions['dimensions'] = dimensions
-    request['autoResizeDimensions'] = auto_resize_dimensions
-    requests.append(request)
-    requests.append(request)
-    request2 = dict()
-    update_dimension_properties = dict()
-    range_dict = dict()
-    range_dict['sheetId'] = sheet_id
-    range_dict['dimension'] = 'COLUMNS'
-    range_dict['startIndex'] = 0
-    range_dict['endIndex'] = 1
-    properties_dict = dict()
-    properties_dict['pixelSize'] = 178
-    update_dimension_properties['range'] = range_dict
-    update_dimension_properties['properties'] = properties_dict
-    update_dimension_properties['fields'] = 'pixelSize'
-    request2['updateDimensionProperties'] = update_dimension_properties
-    requests.append(request2)
-    body['requests'] = requests
-    spreadsheet.batch_update(body)
+    col_widths = {
+        'Name': 160,
+        'Position': 75,
+        'School': 295,
+        'State': 40,
+        'Hometown': 340
+    }
+    col = 0
+    for width in col_widths.values():
+        body = {
+            'requests': [
+                {
+                    'update_dimension_properties' : {
+                        'range': {
+                            'sheetId': sheet_id,
+                            'dimension': 'COLUMNS',
+                            'startIndex': col,
+                            'endIndex': col + 1
+                        },
+                        'properties': {
+                            'pixelSize': width
+                        },
+                        'fields': 'pixelSize'
+                    }
+                }
+            ]
+        }
+        spreadsheet.batch_update(body)
+        col += 1
 
 
 def format_headers(spreadsheet, sheet_id, occurrences, division_header):
