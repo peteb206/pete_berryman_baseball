@@ -357,7 +357,7 @@ def format_player_division(string):
     elif string.upper() == 'CCCAA':
         return 'California CC'
     elif string.upper() == 'NWAC':
-        return 'Northwest Athletic Conference'
+        return 'NW Athletic Conference'
     else:
         return 'NCAA: ' + level
 
@@ -511,7 +511,7 @@ def generate_html(df, file_name, last_run):
         'JUCO: Division 2',
         'JUCO: Division 3',
         'California CC',
-        'Northwest Athletic Conference',
+        'NW Athletic Conference',
         'USCAA'
     ]:
         temp_df = df[df['division'] == division].drop(['division'], axis=1)
@@ -575,7 +575,7 @@ def update_gsheet(df, last_run):
     col_headers = [[col[0].upper() + col[1:] for col in df.drop(['division', 'class'], axis=1).columns.values.tolist()]]
     player_data = list()
 
-    division_list = ['NCAA: Division 1', 'NCAA: Division 2', 'NCAA: Division 3', 'NAIA', 'JUCO: Division 1', 'JUCO: Division 2', 'JUCO: Division 3', 'California CC', 'Northwest Athletic Conference', 'USCAA']
+    division_list = ['NCAA: Division 1', 'NCAA: Division 2', 'NCAA: Division 3', 'NAIA', 'JUCO: Division 1', 'JUCO: Division 2', 'JUCO: Division 3', 'California CC', 'NW Athletic Conference', 'USCAA']
     class_list = ['Freshman', 'Sophomore', 'Junior', 'Senior']
 
     # Loop through divisions
