@@ -613,8 +613,8 @@ def update_gsheet(df, last_run):
     time.sleep(60) # break up the requests to avoid error
     format_headers(sheet, players_sheet_id, players_sheet.findall(re.compile(r'^(' + '|'.join(['Freshmen', 'Sophomores', 'Juniors', 'Seniors']) + r')$')), False)
     time.sleep(60) # break up the requests to avoid error
-    players_sheet.format('A3:A{}'.format(len(summary_data)), {'textFormat': {'bold': True}}) # bold Summary text
-    players_sheet.format('E1:E11', {'backgroundColor': {'red': 1, 'green': 0.95, 'blue': 0.8}}) # light yellow background color
+    players_sheet.format('A1:A{}'.format(len(summary_data)), {'textFormat': {'bold': True}}) # bold Summary text
+    players_sheet.format('E1:E1', {'backgroundColor': {'red': 1, 'green': 0.95, 'blue': 0.8}}) # light yellow background color
     players_sheet.format('A4:B4', {'backgroundColor': {'red': 0.92, 'green': 0.92, 'blue': 0.92}}) # light grey background color
     players_sheet.format('A{}:E{}'.format(len(summary_data) + 1, len(data)), {'horizontalAlignment': 'CENTER', 'verticalAlignment': 'MIDDLE'}) # center all cells
     players_sheet.format('A1:E2', {'horizontalAlignment': 'CENTER'}) # center some other cells
@@ -651,7 +651,7 @@ def resize_columns(spreadsheet, sheet_id):
     dimensions['sheetId'] = sheet_id
     dimensions['dimension'] = 'COLUMNS'
     dimensions['startIndex'] = 1
-    dimensions['endIndex'] = 5
+    dimensions['endIndex'] = 6
     auto_resize_dimensions['dimensions'] = dimensions
     request['autoResizeDimensions'] = auto_resize_dimensions
     requests.append(request)
@@ -664,7 +664,7 @@ def resize_columns(spreadsheet, sheet_id):
     range_dict['startIndex'] = 0
     range_dict['endIndex'] = 1
     properties_dict = dict()
-    properties_dict['pixelSize'] = 170
+    properties_dict['pixelSize'] = 178
     update_dimension_properties['range'] = range_dict
     update_dimension_properties['properties'] = properties_dict
     update_dimension_properties['fields'] = 'pixelSize'
