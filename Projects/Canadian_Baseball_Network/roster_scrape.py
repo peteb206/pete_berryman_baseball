@@ -664,7 +664,7 @@ def resize_columns(spreadsheet, sheet_id):
     range_dict['startIndex'] = 0
     range_dict['endIndex'] = 1
     properties_dict = dict()
-    properties_dict['pixelSize'] = 200
+    properties_dict['pixelSize'] = 180
     update_dimension_properties['range'] = range_dict
     update_dimension_properties['properties'] = properties_dict
     update_dimension_properties['fields'] = 'pixelSize'
