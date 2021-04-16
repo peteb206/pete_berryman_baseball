@@ -75,8 +75,9 @@ def main():
         canadians_df.drop_duplicates(subset=['name', 'school'], keep='first', ignore_index=True, inplace=True) # Drop duplicate names part 2
 
         canadians_df['class'].fillna('Freshman', inplace=True)
-        canadians_df['class'] = pd.Categorical(canadians_df['class'], ['Freshman','Sophomore', 'Junior', 'Senior', '']) # Create custom sort by class
-        canadians_df['last_name'] = canadians_df['name'].str.split(' ').str[1]
+        canadians_df['class'] = canadians_df['class'].str.replace(r'^\s*$', 'Freshman', regex=True)
+        canadians_df['class'] = pd.Categorical(canadians_df['class'], ['Freshman','Sophomore', 'Junior', 'Senior']) # Create custom sort by class
+        canadians_df['last_name'] = canadians_df['name'].str.replace('Š', 'S').str.split(' ').str[1]
         canadians_df = canadians_df.sort_values(by=['class', 'last_name', 'school'], ignore_index=True).drop('last_name', axis=1)
 
         canadians_df.to_csv('canadians.csv', index=False) # Export to canadians.csv as a reference
@@ -331,7 +332,7 @@ def format_player_class(string):
         return 'Junior'
     elif ('so' in string.lower()) | (string.lower() == 's') | ('2' in string):
         return 'Sophomore'
-    elif ('f' in string.lower()) | ('1' in string) | ('hs' in string.lower()) | (string.lower() == 'rs.'):
+    elif ('f' in string.lower()) | ('1' in string) | ('hs' in string.lower()) | (string.lower() == 'rs.') | (string.lower() == 'rs'):
         return 'Freshman'
     elif ('sr' in string.lower()) | ('gr' in string.lower()) | ('4' in string) | ('5' in string):
         return 'Senior'
