@@ -76,7 +76,7 @@ def main():
 
         canadians_df['class'].fillna('Freshman', inplace=True)
         canadians_df['class'] = canadians_df['class'].str.replace(r'^\s*$', 'Freshman', regex=True)
-        canadians_df['class'] = pd.Categorical(canadians_df['class'], ['Freshman','Sophomore', 'Junior', 'Senior']) # Create custom sort by class
+        canadians_df['class'] = pd.Categorical(canadians_df['class'], ['Freshman','Sophomore', 'Junior', 'Senior', '']) # Create custom sort by class
         canadians_df['last_name'] = canadians_df['name'].str.replace('Š', 'S').str.split(' ').str[1]
         canadians_df = canadians_df.sort_values(by=['class', 'last_name', 'school'], ignore_index=True).drop('last_name', axis=1)
 
