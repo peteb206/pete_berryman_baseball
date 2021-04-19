@@ -69,6 +69,7 @@ def main():
 
         # print_cols(roster_df_list) # Periodically check all of the table columns found in the html to see if we are overlooking anything
 
+        canadians_df_orig = canadians_df.copy()
         canadians_df = format_df(canadians_dict_list, schools_df) # Format dictionaries to dataframe
         canadians_df = pd.concat([pd.read_csv('canadians_manual.csv'), canadians_df], ignore_index=True) # Add players who could not be scraped
         canadians_df.drop_duplicates(subset=['name', 'hometown'], keep='first', ignore_index=True, inplace=True) # Drop duplicate names (keep manually added rows if there is an "identical" scraped row)
@@ -397,7 +398,7 @@ def format_df(dict_list, schools_df):
     for dictionary in dict_list:
         new_dict = dict()
 
-        cols = ['name', 'position', 'b', 't', 'class', 'school', 'division', 'state', 'hometown', 'obj']
+        cols = ['name', 'position', 'b', 't', 'class', 'school', 'division', 'state', 'hometown']
         for col in cols:
             if col != 'state':
                 new_dict['__' + col] = ''
@@ -447,9 +448,6 @@ def format_df(dict_list, schools_df):
                     else:
                         new_dict[key_str] = value_str
 
-                # Set __obj column if no useful keys
-                elif (key_str == '0') | (key_str == 'unnamed: 0'):
-                    new_dict['__obj'] = ' --- '.join(dictionary.values())
         # Specify RHP/LHP for pitcher
         if ('P' in new_dict['__position']) & ('HP' not in new_dict['__position']) & (new_dict['__t'] != ''):
             new_dict['__position'] = new_dict['__position'].replace('P', new_dict['__t'] + 'HP')
@@ -611,9 +609,9 @@ def update_gsheet(df, last_run):
 
     # Format division/class headers
     format_headers(sheet, players_sheet_id, players_sheet.findall(re.compile(r'^(' + '|'.join(division_list) + r')$')), True)
-    time.sleep(60) # break up the requests to avoid error
+    time.sleep(120) # break up the requests to avoid error
     format_headers(sheet, players_sheet_id, players_sheet.findall(re.compile(r'^(' + '|'.join(['Freshmen', 'Sophomores', 'Juniors', 'Seniors']) + r')$')), False)
-    time.sleep(60) # break up the requests to avoid error
+    time.sleep(120) # break up the requests to avoid error
     players_sheet.format('A1:A{}'.format(len(summary_data)), {'textFormat': {'bold': True}}) # bold Summary text
     players_sheet.format('E1:E1', {'backgroundColor': {'red': 1, 'green': 0.95, 'blue': 0.8}}) # light yellow background color
     players_sheet.format('A4:B4', {'backgroundColor': {'red': 0.92, 'green': 0.92, 'blue': 0.92}}) # light grey background color
@@ -743,6 +741,7 @@ def format_headers(spreadsheet, sheet_id, occurrences, division_header):
                 }
             ]
             spreadsheet.batch_update(body)
+            time.sleep(5)
 
 
 def csv_to_dict_list(csv_file):
