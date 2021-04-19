@@ -9,4 +9,4 @@ Pete Berryman's portfolio for sabermetric research
 Article: [Competing in the big leagues with or without big money](https://blogs.sas.com/content/sascom/2020/12/10/competing-in-the-big-leagues-with-or-without-big-money/)
 
 ### Web Scraping
-[Canadians in College Baseball](https://docs.google.com/spreadsheets/d/1gkPWOdC9cG6aDoJqKQNjX3Nhggc1XwpLlE6sgXa2guM/edit?usp=sharing)
+[Canadians in College Baseball](https://www.canadianbaseballnetwork.com/canadian-baseball-network-canadians-in-college)
