@@ -1,27 +1,48 @@
 import requests
 import pandas as pd
 
+
+def main():
+    players_df = pd.read_csv('canadians.csv')
+
+    header = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36",
+        "X-Requested-With": "XMLHttpRequest"
+    }
+
+    for index, player in players_df.iterrows():
+        if (player['stats_link'] != '') & (type(player['stats_link']) == type('')):
+            for url in player['stats_link'].split(','):
+                df = scrape_stats(url, player['division'], header)
+                if len(df.index) > 0:
+                    print(df.columns.tolist())
+
+
 def scrape_stats(url, division, header):
-    table_index = 0
-    url_start = ''
+    table_index = 2
+    reset_header = False
     if division.startswith('NCAA'):
-        url_start = 'http://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&stats_player_seq='
         table_index = 4
-    elif division.startswith('JUCO'):
-        url_start = 'https://www.njcaa.org/sports/bsb/2020-21/div1/players/'
-        table_index = 2
-    elif division == 'NAIA':
-        url_start = 'http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&'
-        table_index = 2
-    elif division == 'California CC':
-        url_start = 'https://www.cccaasports.org/sports/bsb/2020-21/players/'
-        table_index = 2
-    elif division == 'NW Athletic Conference':
-        url_start = 'https://nwacstats.org/sports/bsb/2019-20/players/'
-        table_index = 2
-    df = pd.read_html(requests.get(url_start + url, headers=header, timeout=10).text)[table_index]
-    if division.startswith('NCAA'):
-        new_header = df.iloc[1] # grab the first row for the header
-        df = df[2:] # take the data less the header row
-        df.columns = new_header # set the header row as the df header
+        reset_header = True
+
+    response = requests.get(url, headers=header, timeout=15).text
+
+    df = pd.DataFrame()
+    try:
+        dfs = pd.read_html(response)
+        df = dfs[0]
+        for temp_df in dfs:
+            if len(temp_df.index) > len(df.index): # Assume largest table on page is gamelog
+                df = temp_df
+        if reset_header == True:
+            new_header = df.iloc[1] # grab the first row for the header
+            df = df[2:] # take the data less the header row
+            df.columns = new_header # set the header row as the df header
+    except Exception as e:
+        print(str(e))
     return df
+
+
+# Run main function
+if __name__ == "__main__":
+    main()

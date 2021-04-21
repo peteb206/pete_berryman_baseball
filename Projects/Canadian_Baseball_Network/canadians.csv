@@ -1,6 +1,6 @@
 name,position,b,t,class,school,division,state,hometown,stats_link
 Levi Abbott,RHP,R,R,Freshman,Canisius College,NCAA: Division 1,NY,"Lethbridge, Alberta",http://stats.ncaa.org/player/index?id=15580&org_id=116&stats_player_seq=2466751&year_stat_category_id=14841
-Cohen Achen,RHP,R,R,Freshman,Lindsey Wilson College,NAIA,KY,"Calgary, Alberta",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1711&plr=196731
+Cohen Achen,RHP,R,R,Freshman,Lindsey Wilson College,NAIA,KY,"Calgary, Alberta",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1711&plr=196731&reportName=BA_PP_P_GBG_DAN_PITCHING
 Maxime Adam,OF,L,R,Freshman,Indian Hills,JUCO: Division 1,IA,"Montreal, Quebec",https://www.njcaa.org/sports/bsb/2020-21/div1/players/maximeadambrhm?view=gamelog&pos=h
 Justin Adamoski,RHP,R,R,Freshman,University of British Columbia,NAIA,BC,"Burnaby, British Columbia",
 Ben Adams,LHP,R,L,Freshman,St. John's University,NCAA: Division 1,NY,"Ottawa, Ontario",http://stats.ncaa.org/player/index?id=15580&org_id=603&stats_player_seq=2508302&year_stat_category_id=14841
@@ -9,7 +9,7 @@ Abraham Alvarez,C,R,R,Freshman,San Jacinto-North,JUCO: Division 1,TX,"Alvarez, A
 Kyle Anderson,OF,L,R,Freshman,University of British Columbia,NAIA,BC,"Burnaby, British Columbia",
 Shuta Araki,INF,,,Freshman,Colorado Northwestern,JUCO: Division 1,CO,"Victoria, BC",https://www.njcaa.org/sports/bsb/2020-21/div1/players/shutaarakiilk4?view=gamelog&pos=h
 Carter Arbuthnot,IF,L,R,Freshman,Erie,JUCO: Division 3,NY,"Oshawa, Ontario",https://www.njcaa.org/sports/bsb/2020-21/div3/players/carterarbuthnot745o?view=gamelog&pos=h
-Aidan Armitage,RHP,R,R,Freshman,University of Saint Francis,NAIA,IN,"Waterloo, Ontario",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1805&plr=189288
+Aidan Armitage,RHP,R,R,Freshman,University of Saint Francis,NAIA,IN,"Waterloo, Ontario",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1805&plr=189288&reportName=BA_PP_P_GBG_DAN_PITCHING
 Darius Armorer,OF/RHP,R,R,Freshman,Bossier Parish,JUCO: Division 1,LA,"Whitby, Ontario",https://www.njcaa.org/sports/bsb/2020-21/div1/players/dariusarmorerst2c?view=gamelog&pos=h
 Jamal Armstrong,OF,R,R,Freshman,St. Clair County,JUCO: Division 2,MI,"Etobicoke, Ontario",https://www.njcaa.org/sports/bsb/2020-21/div2/players/jamalarmstrongkfv9?view=gamelog&pos=h
 Bryce Arnold,INF,,,Freshman,Campbell University,NCAA: Division 1,NC,"Grimsby, Ontario",http://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=115&stats_player_seq=2492972
@@ -25,14 +25,14 @@ Liam Bates,RHP,,,Freshman,Cloud County,JUCO: Division 1,KS,"Vancouver, British C
 Kyle Baumgardt,RHP,,,Freshman,Columbia Basin,NW Athletic Conference,WA,Alberta,https://nwacsports.com/sports/bsb/2020-21/players/kylebaumgardtf70h?view=gamelog&pos=p
 Kayden Beauregard,C,,,Freshman,Cloud County,JUCO: Division 1,KS,"Abottsford, British Columbia",https://stats.njcaa.org/sports/bsb/2020-21/div1/players/kaydenbeauregardci4a?view=gamelog&pos=h
 Jason Begin,OF,R,R,Freshman,Southwestern Oklahoma State University,NCAA: Division 2,OK,"Sherbrooke, Quebec",http://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=8744&stats_player_seq=2474713
-Ryan Beitel,RHP/IF,R,R,Freshman,University of British Columbia,NAIA,BC,"Surrey, British Columbia",
+Ryan Beitel,RHP/IF,R,R,Freshman,University of British Columbia,NAIA,BC,"Surrey, British Columbia","http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1799&plr=190044,http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1799&plr=190044&reportName=BA_PP_B_GBG_BAT"
 Andrew Bench,RHP,,,Freshman,Niagara County,JUCO: Division 3,NY,"Fonthill, Ontario",https://stats.njcaa.org/sports/bsb/2020-21/div3/players/andrewbenchpnbj?view=gamelog&pos=p
 Ardan Berg,RHP,R,R,Freshman,University of British Columbia,NAIA,BC,"Victoria, British Columbia",
 Rushil Bhat,RHP,R,R,Freshman,Central Michigan University,NCAA: Division 1,MI,"London, Ontario",http://web1.ncaa.org/stats/StatsSrv/careerplayer?doWhat=display&playerId=2336988&coachId=&academicYear=2021&sportCode=MBA&division=1&orgId=129
-Bryn Biemiller,RHP,R,R,Freshman,Lourdes University,NAIA,OH,"Newmarket, Ontario",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=18711&plr=186793
+Bryn Biemiller,RHP,R,R,Freshman,Lourdes University,NAIA,OH,"Newmarket, Ontario",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=18711&plr=186793&reportName=BA_PP_P_GBG_DAN_PITCHING
 Benjamin Bierd,IF,R,R,Freshman,Bay College,JUCO: Division 2,MI,"Montreal, Quebec",https://www.njcaa.org/sports/bsb/2020-21/div2/players/benjaminbierdycip?view=gamelog&pos=h
 Brody Black,OF,R,R,Freshman,Dawson,JUCO: Division 2,MT,Ontario,https://stats.njcaa.org/sports/bsb/2020-21/div2/players/brodyblack0jz0?view=gamelog&pos=h
-Logan Blumhagen,LHP,L,L,Freshman,William Woods University,NAIA,MO,Alberta,http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1824&plr=182352
+Logan Blumhagen,LHP,L,L,Freshman,William Woods University,NAIA,MO,Alberta,http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1824&plr=182352&reportName=BA_PP_P_GBG_DAN_PITCHING
 Emile Boies,SS,L,R,Freshman,Northeastern Oklahoma A&M,JUCO: Division 1,OK,"Quebec, Quebec",https://www.njcaa.org/sports/bsb/2020-21/div1/players/emileboies4zi1?view=gamelog&pos=h
 Mathew Bomersback,RHP,R,R,Freshman,Dawson,JUCO: Division 2,MT,Quebec,https://stats.njcaa.org/sports/bsb/2020-21/div2/players/mathewbomersbackesi8?view=gamelog&pos=p
 Pier-Olivier Boucher,OF,L,R,Freshman,Indian Hills,JUCO: Division 1,IA,Quebec,https://www.njcaa.org/sports/bsb/2020-21/div1/players/pierolivierboucherlkkq?view=gamelog&pos=h
@@ -62,7 +62,7 @@ Tanner Clyne,,R,R,Freshman,Dakota,JUCO: Division 2,ND,"Boissevain, Manitoba",htt
 Bailey Coish,OF,,,Freshman,Frank Phillips,JUCO: Division 1,TX,"Fort McMurray, Alberta",https://www.njcaa.org/sports/bsb/2020-21/div1/players/baileycoish2x53?view=gamelog&pos=h
 David Coleman,OF,L,L,Freshman,High Point University,NCAA: Division 1,NC,"Mississauga, Ontario",https://stats.ncaa.org/player/index?id=15580&org_id=19651&stats_player_seq=2472991&year_stat_category_id=14840
 Khalid Collymore,OF,L,R,Freshman,University of Montevallo,NCAA: Division 2,AL,"Mississauga, Ontario",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=1238&stats_player_seq=2325240
-Connor Cory,P,,,Freshman,Mayville State University,NAIA,ND,"Wawanesa, Manitoba",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1720&plr=196125
+Connor Cory,P,,,Freshman,Mayville State University,NAIA,ND,"Wawanesa, Manitoba",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1720&plr=196125&reportName=BA_PP_P_GBG_DAN_PITCHING
 Cole Cote,C,R,R,Freshman,Erie,JUCO: Division 3,NY,"Welland, Ontario",https://www.njcaa.org/sports/bsb/2020-21/div3/players/colecotec9ow?view=gamelog&pos=h
 Jayden Cull,UTL,,,Freshman,Lyon College,NAIA,AR,"Victoria, British Columbia",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1713&plr=193800
 Holden Cumiskey,C/OF,,,Freshman,Cuesta College,California CC,CA,"Langley, British Columbia",
@@ -73,7 +73,7 @@ Alan Dai,UT,R,R,Freshman,Amherst College,NCAA: Division 3,MA,"Coquitlam, British
 Dustin Davidson,LHP,R,L,Freshman,Douglas,NW Athletic Conference,BC,"Haida Gwaii, British Columbia",https://nwacsports.com/sports/bsb/2020-21/players/dustindavidsonmp9f?view=gamelog&pos=p
 Blake Davidson,RHP,,,Freshman,McCook,JUCO: Division 1,NE,"Calgary, Alberta",https://www.njcaa.org/sports/bsb/2020-21/div1/players/blakedavidson3lmw?view=gamelog&pos=p
 Cedric De Grandpre,RHP,R,R,Freshman,Chipola,JUCO: Division 1,FL,St. Simon,https://www.njcaa.org/sports/bsb/2020-21/div1/players/cedricdegrandpre44wx?view=gamelog&pos=p
-Mitchell Dennis,RHP,R,R,Freshman,University of Jamestown,NAIA,ND,"Okotoks, Alberta",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1699&plr=181415
+Mitchell Dennis,RHP,R,R,Freshman,University of Jamestown,NAIA,ND,"Okotoks, Alberta",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1699&plr=181415&reportName=BA_PP_P_GBG_DAN_PITCHING
 Russell Derbyshire,RHP,R,R,Freshman,Mineral Area,JUCO: Division 1,MO,"Leamington, Ontario",https://www.njcaa.org/sports/bsb/2020-21/div1/players/russellderbyshire9wer?view=gamelog&pos=p
 Nick DiGennaro,INF,R,R,Freshman,Lourdes University,NAIA,OH,"Oakville, Ontario",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=18711&plr=193862
 Carlin Dick,OF,L,L,Freshman,Canisius College,NCAA: Division 1,NY,"Abbotsford, British Columbia",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=116&stats_player_seq=2466750
@@ -89,7 +89,7 @@ Connor Dykstra,C,,,Freshman,Galveston,JUCO: Division 1,TX,"Toronto, Ontario",htt
 Lucas Earle,LHP,L,L,Freshman,Allan Hancock College,California CC,CA,Orillia,https://www.cccaasports.org/sports/bsb/2020-21/players/lucasearlecxvi?view=gamelog&pos=p
 Dylan Edmands,IF,,,Freshman,Arizona Western,JUCO: Division 1,AZ,"Regina, Saskatchewan",https://www.njcaa.org/sports/bsb/2020-21/div1/players/dylanedmandsuuvu?view=gamelog&pos=h
 Campbell Ellis,LHP,L,L,Freshman,Virginia Commonwealth University,NCAA: Division 1,VA,"Georgetown, Ontario",https://stats.ncaa.org/player/index?id=15580&org_id=740&stats_player_seq=2471302&year_stat_category_id=14841
-Gregor Farquharson,RHP,,,Freshman,Mayville State University,NAIA,ND,"Saltcoats, Saskatchewan",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1720&plr=199977
+Gregor Farquharson,RHP,,,Freshman,Mayville State University,NAIA,ND,"Saltcoats, Saskatchewan",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1720&plr=199977&reportName=BA_PP_P_GBG_DAN_PITCHING
 Blake Faulds,RHP,R,R,Freshman,Erie,JUCO: Division 3,NY,"Barrie, Ontario",https://stats.njcaa.org/sports/bsb/2020-21/div3/players/blakefaulds08hu?view=gamelog&pos=p
 Nicholas Fazzari,C,,,Freshman,Parkland,JUCO: Division 2,IL,"Thunder Bay, Ontario",https://www.njcaa.org/sports/bsb/2020-21/div2/players/nickfazzarid6vv?view=gamelog&pos=h
 Anderson Fenton,LHP,R,L,Freshman,Marshalltown,JUCO: Division 1,IA,"Ridgetown, Ontario",https://www.njcaa.org/sports/bsb/2020-21/div1/players/andersonfentonnbgv?view=gamelog&pos=p
@@ -143,7 +143,7 @@ Blake Jacklin,OF,L,R,Freshman,Davenport University,NCAA: Division 2,MI,"St. Jaco
 Will Jackman,RHP,,,Freshman,Niagara County,JUCO: Division 3,NY,"Niagara Falls, Ontario",https://stats.njcaa.org/sports/bsb/2020-21/div3/players/willjackmankw4w?view=gamelog&pos=p
 Jacob Jackson,INF,R,R,Freshman,Siena Heights University,NAIA,MI,"Ajax, Ontario",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1773&plr=190134
 Spencer Jamieson,1B,L,R,Freshman,Cleary University,NAIA,MI,"Burlington, Ontario",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=21009&plr=198112
-Andrew Jawdek,RHP,R,R,Freshman,Cleary University,NAIA,MI,"Halton Hills, Ontario",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=21009&plr=198109
+Andrew Jawdek,RHP,R,R,Freshman,Cleary University,NAIA,MI,"Halton Hills, Ontario",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=21009&plr=198109&reportName=BA_PP_P_GBG_DAN_PITCHING
 Brendan Johnston,INF,,,Freshman,Minot State University,NCAA: Division 2,ND,"St. Thomas, Ontario",
 AJ Karosas,IF,L,R,Freshman,Erie,JUCO: Division 3,NY,"Mississauga, Ontario",https://www.njcaa.org/sports/bsb/2020-21/div3/players/ajkarosas3d0h?view=gamelog&pos=h
 Logan Keating,OF,R,L,Freshman,Three Rivers,JUCO: Division 1,MO,"Kelowna, British Columbia",https://www.njcaa.org/sports/bsb/2020-21/div1/players/logankeatingc3g6?view=gamelog&pos=h
@@ -185,9 +185,9 @@ Blake MacMillan,P,,,Freshman,Onondaga,JUCO: Division 3,NY,Mississauga. Ontario,
 Owen MacNeil,P,,,Freshman,University of Charleston,NCAA: Division 2,WV,"Georgetown, Ontario",https://stats.ncaa.org/player/index?id=15580&org_id=1013&stats_player_seq=2343406&year_stat_category_id=14841
 Logan MacNiel,RHP,R,R,Freshman,Douglas,NW Athletic Conference,BC,"Vancouver, British Columbia",https://nwacsports.com/sports/bsb/2020-21/players/loganmacniellnkz?view=gamelog&pos=p
 Madjik Mackenzie,1B/RHP,L,R,Freshman,Douglas,NW Athletic Conference,BC,"Vancouver, British Columbia","https://nwacsports.com/sports/bsb/2020-21/players/madjikmackenziehhjx?view=gamelog&pos=h,https://nwacsports.com/sports/bsb/2020-21/players/madjikmackenziehhjx?view=gamelog&pos=p"
-Adam Maier,RHP/OF,R,R,Freshman,University of British Columbia,NAIA,BC,"North Vancouver, British Columbia",
+Adam Maier,RHP/OF,R,R,Freshman,University of British Columbia,NAIA,BC,"North Vancouver, British Columbia","http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1799&plr=190045,http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1799&plr=190045&reportName=BA_PP_B_GBG_BAT"
 Ayden Makarus,C,,,Freshman,LSU Eunice,JUCO: Division 2,LA,"Okotoks, Alberta",https://www.njcaa.org/sports/bsb/2020-21/div2/players/aydenmakarussrkq?view=gamelog&pos=h
-Ryan Marples,RHP,R,R,Freshman,Lindsey Wilson College,NAIA,KY,"St. Albert, Alberta",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1711&plr=189750
+Ryan Marples,RHP,R,R,Freshman,Lindsey Wilson College,NAIA,KY,"St. Albert, Alberta",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1711&plr=189750&reportName=BA_PP_P_GBG_DAN_PITCHING
 Zach Marriott,IF,L,R,Freshman,Hendrix College,NCAA: Division 3,AR,"Oakville, Ontario",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=1124&stats_player_seq=2488336
 Aaron Marsh,INF,L,R,Freshman,Cochise,JUCO: Division 1,AZ,"Nanaimo, British Columbia",https://stats.njcaa.org/sports/bsb/2020-21/div1/players/aaronmarsheyxt?view=gamelog&pos=h
 Eric Martin,OF/RHP,,,Freshman,Olney Central,JUCO: Division 1,IL,"Elmira, Ontario","https://www.njcaa.org/sports/bsb/2020-21/div1/players/ericmartinpv9j?view=gamelog&pos=h,https://www.njcaa.org/sports/bsb/2020-21/div1/players/ericmartinpv9j?view=gamelog&pos=p"
@@ -244,7 +244,7 @@ Hugo Pepin,RHP/1B,L,R,Freshman,Pratt,JUCO: Division 1,KS,"Boucherville, Quebec",
 Arlen Peters,RHP/IF,R,R,Freshman,Johnson County,JUCO: Division 1,KS,Schanzenfeld,"https://www.njcaa.org/sports/bsb/2020-21/div1/players/arlenpetersugxp?view=gamelog&pos=h,https://www.njcaa.org/sports/bsb/2020-21/div1/players/arlenpetersugxp?view=gamelog&pos=p"
 Trent Peters,IF/RHP,R,R,Freshman,University of Jamestown,NAIA,ND,"Niverville, Manitoba",
 Sean Pettener,IF,L,R,Freshman,Rend Lake,JUCO: Division 1,IL,"Hamilton, Ontario",https://www.njcaa.org/sports/bsb/2020-21/div1/players/seanpettenercanj?view=gamelog&pos=h
-Eric Pettipiece,LHP,L,L,Freshman,Goshen College,NAIA,IN,"Dorchester, Ontario",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1678&plr=194541
+Eric Pettipiece,LHP,L,L,Freshman,Goshen College,NAIA,IN,"Dorchester, Ontario",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1678&plr=194541&reportName=BA_PP_P_GBG_DAN_PITCHING
 Kyle Pfeifer,RHP/OF,R,R,Freshman,Douglas,NW Athletic Conference,BC,"Cloverdale, British Columbia","https://nwacsports.com/sports/bsb/2020-21/players/kylepfeifer69sk?view=gamelog&pos=h,https://nwacsports.com/sports/bsb/2020-21/players/kylepfeifer69sk?view=gamelog&pos=p"
 Justin Philp,RHP,,,Freshman,Madonna University,NAIA,MI,"Guelph, Ontario",
 Chad Picton,IF,R,R,Freshman,Colby,JUCO: Division 1,KS,"Winnipeg, Manitoba",https://www.njcaa.org/sports/bsb/2020-21/div1/players/chadpictonqigq?view=gamelog&pos=h
@@ -260,18 +260,18 @@ Nick Rein,INF,,,Freshman,Taft College,California CC,CA,"Regina, Saskatchewan",
 Brady Renneberg,RHP/INF,R,R,Freshman,Mineral Area,JUCO: Division 1,MO,"Kelowna, British Columbia","https://www.njcaa.org/sports/bsb/2020-21/div1/players/bradyrennebergi62a?view=gamelog&pos=h,https://www.njcaa.org/sports/bsb/2020-21/div1/players/bradyrennebergi62a?view=gamelog&pos=p"
 Adam Renneberg,RHP/C,R,R,Freshman,Mineral Area,JUCO: Division 1,MO,"Kelowna, British Columbia","https://www.njcaa.org/sports/bsb/2020-21/div1/players/adamrennebergds4z?view=gamelog&pos=h,https://www.njcaa.org/sports/bsb/2020-21/div1/players/adamrennebergds4z?view=gamelog&pos=p"
 Kai Reum,RHP/INF,R,R,Freshman,Iowa Central,JUCO: Division 2,IA,Alberta,"https://www.njcaa.org/sports/bsb/2020-21/div2/players/kaireumgvht?view=gamelog&pos=h,https://www.njcaa.org/sports/bsb/2020-21/div2/players/kaireumgvht?view=gamelog&pos=p"
-Hayden Rhody,RHP,R,R,Freshman,MidAmerica Nazarene University,NAIA,KS,"Thorsby, Alberta",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1723&plr=195617
-Jake Richmond-Benner,LHP,L,L,Freshman,University of British Columbia,NAIA,BC,"Gibsons, British Columbia",
+Hayden Rhody,RHP,R,R,Freshman,MidAmerica Nazarene University,NAIA,KS,"Thorsby, Alberta",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1723&plr=195617&reportName=BA_PP_P_GBG_DAN_PITCHING
+Jake Richmond-Benner,LHP,L,L,Freshman,University of British Columbia,NAIA,BC,"Gibsons, British Columbia",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1799&plr=190036&reportName=BA_PP_B_GBG_BAT
 Flynn Ridley,RHP,R,R,Freshman,Panola,JUCO: Division 1,TX,Burnaby,https://www.njcaa.org/sports/bsb/2020-21/div1/players/flynnridleyd6do?view=gamelog&pos=p
 Aidan Rose,IF,R,R,Freshman,University of British Columbia,NAIA,BC,"Calgary, Alberta",
 Greg Ross,RHP,,,Freshman,Howard (TX),JUCO: Division 1,TX,"Sarnia, Ontario",https://stats.njcaa.org/sports/bsb/2020-21/div1/players/gregrosscmfy?view=gamelog&pos=p
 Nico Saldias,RHP,R,R,Freshman,Connors State,JUCO: Division 1,OK,"Ajax, Ontario",https://www.njcaa.org/sports/bsb/2020-21/div1/players/nicosaldiasosli?view=gamelog&pos=p
 Ricardo Sanchez,INF/RHP,,,Freshman,Crowder,JUCO: Division 1,MO,"Okotoks, Alberta","https://www.njcaa.org/sports/bsb/2020-21/div1/players/ricardosanchez3g7l?view=gamelog&pos=h,https://www.njcaa.org/sports/bsb/2020-21/div1/players/ricardosanchez3g7l?view=gamelog&pos=p"
-Cameron Sanderson,IF,R,R,Freshman,University of British Columbia,NAIA,BC,"London, Ontario",
+Cameron Sanderson,IF,R,R,Freshman,University of British Columbia,NAIA,BC,"London, Ontario",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1799&plr=190037
 Ethan Sansaie-Edwards,OF/RHP,R,R,Freshman,St. Clair County,JUCO: Division 2,MI,"Mississauga, Ontario","https://www.njcaa.org/sports/bsb/2020-21/div2/players/ethansansaieedwards12nb?view=gamelog&pos=h,https://www.njcaa.org/sports/bsb/2020-21/div2/players/ethansansaieedwards12nb?view=gamelog&pos=h"
 Nicolas Santarelli,C/3B/OF,R,R,Freshman,Douglas,NW Athletic Conference,BC,"Burnaby, British Columbia",https://nwacsports.com/sports/bsb/2020-21/players/nicolassantarellix8jz?view=gamelog&pos=h
 Sean Sasaki,LHP/OF,L,L,Freshman,Douglas,NW Athletic Conference,BC,"Delta, British Columbia","https://nwacsports.com/sports/bsb/2020-21/players/seansasaki4pai?view=gamelog&pos=h,https://nwacsports.com/sports/bsb/2020-21/players/seansasaki4pai?view=gamelog&pos=p"
-Zach Saufl,RHP,R,R,Freshman,Vanguard University,NAIA,CA,"Oakville, Ontario",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1810&plr=197590
+Zach Saufl,RHP,R,R,Freshman,Vanguard University,NAIA,CA,"Oakville, Ontario",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1810&plr=197590&reportName=BA_PP_P_GBG_DAN_PITCHING
 Eli Saul,RHP,L,R,Freshman,Sacramento State University,NCAA: Division 1,CA,"Vancouver, British Columbia",https://stats.ncaa.org/player/index?id=15580&org_id=102&stats_player_seq=2304747&year_stat_category_id=14841
 Anthony Scali,INF,L,R,Freshman,Siena Heights University,NAIA,MI,"Pickering, Ontario",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1773&plr=190119
 Colton Schaper-Kotter,UTL,L,R,Freshman,East Central University,NCAA: Division 2,OK,"Vernon, British Columbia",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=8965&stats_player_seq=2319809
@@ -279,7 +279,7 @@ Carter Scott,RHP,R,R,Freshman,Dakota,JUCO: Division 2,ND,"Airdrie, Alberta",http
 Ryan Scott,RHP,R,R,Freshman,Sacramento State University,NCAA: Division 1,CA,"Quispamsis, New Brunswick",
 Kale Seitz,1B,L,R,Freshman,Bellevue,NW Athletic Conference,WA,"Okotoks, Alberta",https://nwacsports.com/sports/bsb/2020-21/players/kaleseitz9irw?view=gamelog&pos=h
 Bauer Sewell,IF,R,R,Freshman,University of Jamestown,NAIA,ND,"Calgary, Alberta",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1699&plr=193587
-Conall Sexton,LHP,L,L,Freshman,San Diego Christian College,NAIA,CA,"Abbotsford, British Columbia",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1854&plr=197672
+Conall Sexton,LHP,L,L,Freshman,San Diego Christian College,NAIA,CA,"Abbotsford, British Columbia",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1854&plr=197672&reportName=BA_PP_P_GBG_DAN_PITCHING
 Declan Shaw,RHP/1B,,,Freshman,West Virginia University Institute of Technology,NAIA,WV,"Whitby, Ontario",
 Logan Sheasgreen,1B,,,Freshman,Hartnell College,California CC,CA,"Miramichi, New Brunswick",
 John Shields,IF/LHP,L,L,Freshman,University of Jamestown,NAIA,ND,"Calgary, Alberta",
@@ -334,12 +334,12 @@ Rayce Wilkinson,SS/2B,R,R,Freshman,Douglas,NW Athletic Conference,BC,"Calgary, A
 John Wilson,2B/SS,R,R,Freshman,Douglas,NW Athletic Conference,BC,"Delta, British Columbia",https://nwacsports.com/sports/bsb/2020-21/players/johnwilsonu3ji?view=gamelog&pos=h
 Tyler Wilson,IF,R,R,Freshman,Erie,JUCO: Division 3,NY,"Mount Hope, Ontario",https://www.njcaa.org/sports/bsb/2020-21/div3/players/tylerwilson2tyu?view=gamelog&pos=h
 Colin Windle,RHP,R,R,Freshman,Hilbert College,NCAA: Division 3,NY,"Aurora, Ontario",https://stats.ncaa.org/player/index?id=15580&org_id=8398&stats_player_seq=2337857&year_stat_category_id=14841
-Branden Woods,LHP,L,L,Freshman,University of British Columbia,NAIA,BC,"Red Deer, Alberta",
+Branden Woods,LHP,L,L,Freshman,University of British Columbia,NAIA,BC,"Red Deer, Alberta",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1799&plr=190056&reportName=BA_PP_B_GBG_BAT
 Mason Wright,C,L,R,Freshman,Erie,JUCO: Division 3,NY,"Courtice, Ontario",https://www.njcaa.org/sports/bsb/2020-21/div3/players/masonwrightzmla?view=gamelog&pos=h
 AJ Yamaguchi,RHP/1B,R,R,Freshman,Colby,JUCO: Division 1,KS,"Vancouver, British Columbia","https://stats.njcaa.org/sports/bsb/2020-21/div1/players/ajyamaguchi1ui3?view=gamelog&pos=h,https://stats.njcaa.org/sports/bsb/2020-21/div1/players/ajyamaguchi1ui3?view=gamelog&pos=p"
 Hilo Yamamoto,IF,R,R,Freshman,University of British Columbia,NAIA,BC,"Whistler, British Columbia",
 Russell Young,C,R,R,Freshman,Gonzaga University,NCAA: Division 1,WA,"Surrey, British Columbia",
-Noah Zimmer,RHP,L,R,Freshman,Southwestern Assemblies of God Univ,NAIA,TX,"Chilliwack, British Columbia",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1778&plr=183225
+Noah Zimmer,RHP,L,R,Freshman,Southwestern Assemblies of God Univ,NAIA,TX,"Chilliwack, British Columbia",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1778&plr=183225&reportName=BA_PP_P_GBG_DAN_PITCHING
 Ben Abram,RHP,R,R,Sophomore,University of Oklahoma,NCAA: Division 1,OK,"Georgetown, Ontario",https://stats.ncaa.org/player/index?id=15580&org_id=522&stats_player_seq=2124609&year_stat_category_id=14841
 Kayontae Alarcon,IF,L,R,Sophomore,Oakland City University,NAIA,IN,"Toronto, Ontario",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=21380&plr=197545
 Andrew Asselin,RHP,,,Sophomore,Shorter University,NCAA: Division 2,GA,Winnipeg Manitoba,
@@ -356,7 +356,7 @@ Kyle Bloor,RHP,R,R,Sophomore,Colby,JUCO: Division 1,KS,"Lethbridge, Alberta",htt
 Kyle Blunt,RHP,L,R,Sophomore,Erie,JUCO: Division 3,NY,"Watford, Ontario",https://www.njcaa.org/sports/bsb/2020-21/div3/players/kylebluntl74e?view=gamelog&pos=p
 Cody Bond,RHP,R,R,Sophomore,Three Rivers,JUCO: Division 1,MO,"Newmarket, Ontario",https://www.njcaa.org/sports/bsb/2019-20/div1/players/codybondvr86?view=gamelog&pos=p
 Jacob Bonzon,IF,R,R,Sophomore,Roanoke College,NCAA: Division 3,VA,Toronto,https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=578&stats_player_seq=2337485
-Chris Bowles,RHP,R,R,Sophomore,Lourdes University,NAIA,OH,"Oakville, Ontario",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=18711&plr=193853
+Chris Bowles,RHP,R,R,Sophomore,Lourdes University,NAIA,OH,"Oakville, Ontario",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=18711&plr=193853&reportName=BA_PP_P_GBG_DAN_PITCHING
 Tanner Boyle,UTL,R,R,Sophomore,Williston State,JUCO: Division 2,ND,"Winnipeg, Manitoba",https://www.njcaa.org/sports/bsb/2020-21/div2/players/tannerboylesdn2?view=gamelog&pos=h
 Jacob Brault,RHP,R,R,Sophomore,Pratt,JUCO: Division 1,KS,"Blainville, Quebec",https://www.njcaa.org/sports/bsb/2020-21/div1/players/jacobbraultkq37?view=gamelog&pos=p
 Mike Brisson,INF,R,R,Sophomore,Niagara University,NCAA: Division 1,NY,"St. Albert, Alberta",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=482&stats_player_seq=2303516
@@ -375,7 +375,7 @@ Michael Clapperton,INF,,,Sophomore,"University of Texas, Permian Basin",NCAA: Di
 Brandon Clarke,RHP,R,R,Sophomore,Indiana University Kokomo,NAIA,IN,"Newmarket, Ontario",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=21006&plr=198601
 Joel Connors,C/RHP,L,R,Sophomore,Lakeland,JUCO: Division 2,OH,"Brampton, Ontario","https://www.njcaa.org/sports/bsb/2020-21/div2/players/joelconnors9njm?view=gamelog&pos=h,https://www.njcaa.org/sports/bsb/2020-21/div2/players/joelconnors9njm?view=gamelog&pos=p"
 Christian Coombes,LHP,L,L,Sophomore,Saint Peter's University,NCAA: Division 1,NJ,Ontario,https://stats.ncaa.org/player/index?id=15580&org_id=617&stats_player_seq=2344891&year_stat_category_id=14841
-Brett Corbeth,C,R,R,Sophomore,University of British Columbia,NAIA,BC,"London, Ontario",
+Brett Corbeth,C,R,R,Sophomore,University of British Columbia,NAIA,BC,"London, Ontario",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1799&plr=178981
 Kyle D'Angela,LHP,L,L,Sophomore,Bethany College,NAIA,KS,"Thorold, Ontario",
 Brandon Deans,RHP,L,R,Sophomore,Oakland University,NCAA: Division 1,MI,"Mississauga, Ontario",https://stats.ncaa.org/player/index?id=15580&org_id=514&stats_player_seq=2318983&year_stat_category_id=14841
 Tate Dearing,RHP/1B,L,R,Sophomore,Douglas,NW Athletic Conference,BC,"Surrey, British Columbia","https://nwacsports.com/sports/bsb/2020-21/players/tatedearinghzg2?view=gamelog&pos=h,https://nwacsports.com/sports/bsb/2020-21/players/tatedearinghzg2?view=gamelog&pos=p"
@@ -394,7 +394,7 @@ Jacob Ervin,OF,R,R,Sophomore,Northeastern Oklahoma A&M,JUCO: Division 1,OK,"Miss
 Dirk Eymundson,C,R,R,Sophomore,University of Jamestown,NAIA,ND,"Parkland County, Alberta",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1699&plr=169322
 Matt Fabian,IF,R,R,Sophomore,Ithaca College,NCAA: Division 3,NY,"Toronto, Ontario",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=313&stats_player_seq=2306102
 Kaito Farquharson,P,,,Sophomore,Mayville State University,NAIA,ND,"Saltcoats, Saskatchewan",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1720&plr=199977
-Mike Fitzsimmons,IF,R,R,Sophomore,University of British Columbia,NAIA,BC,"Chilliwack, British Columbia",
+Mike Fitzsimmons,IF,R,R,Sophomore,University of British Columbia,NAIA,BC,"Chilliwack, British Columbia",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1799&plr=175114
 Samuel Fortier,OF,R,R,Sophomore,Indian Hills,JUCO: Division 1,IA,Quebec,https://www.njcaa.org/sports/bsb/2020-21/div1/players/samuelfortierui8u?view=gamelog&pos=h
 Ethan Francis,RHP,L,R,Sophomore,Northwestern State University,NCAA: Division 1,LA,"Miscouche, Prince Edward Island",https://stats.ncaa.org/player/index?id=15580&org_id=508&stats_player_seq=2480107&year_stat_category_id=14841
 Zach Gagnon,RHP,,,Sophomore,Tarleton State University,NCAA: Division 1,TX,"Sainte-Julie, Québec",https://stats.ncaa.org/player/index?id=15580&org_id=1395&stats_player_seq=2473664&year_stat_category_id=14841
@@ -414,7 +414,7 @@ Tevin Hall,LHP,L,L,Sophomore,Utah Valley University,NCAA: Division 1,UT,"Magrath
 Ethan Hammond,OF,,,Sophomore,Trinidad State,JUCO: Division 1,CO,"Oakville, Ontario",https://www.njcaa.org/sports/bsb/2020-21/div1/players/ethanhammondcdgb
 Evan Harrison,RHP,R,R,Sophomore,Gannon University,NCAA: Division 2,PA,"Mississauga, Ontario",https://stats.ncaa.org/player/index?id=15580&org_id=246&stats_player_seq=2522919&year_stat_category_id=14841
 Griffin Hassall,RHP,R,R,Sophomore,Kansas State University,NCAA: Division 1,KS,"Newmarket, Ontario",https://stats.ncaa.org/player/index?id=15580&org_id=327&stats_player_seq=2115628&year_stat_category_id=14841
-Garrett Hawkins,RHP,R,R,Sophomore,University of British Columbia,NAIA,BC,"Biggar, Saskatchewan",
+Garrett Hawkins,RHP,R,R,Sophomore,University of British Columbia,NAIA,BC,"Biggar, Saskatchewan",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1799&plr=179299&reportName=BA_PP_B_GBG_BAT
 Mitchell Haywood,C,L,R,Sophomore,CCBC Essex,JUCO: Division 2,MD,"Pickering, Ontario",
 Reece Helland,RHP,,,Sophomore,Monterey Peninsula College,California CC,CA,"Moose Jaw, Saskatchewan",https://www.cccaasports.org/sports/bsb/2020-21/players/reecehelland8yd7?view=gamelog&pos=p
 Carson Heroux,LHP,L,L,Sophomore,Lake Region State,JUCO: Division 2,ND,"Thunder Bay, Ontario",https://www.njcaa.org/sports/bsb/2020-21/div2/players/carsonherouxmsiq?view=gamelog&pos=p
@@ -424,7 +424,7 @@ Jackson Hogg,OF,R,R,Sophomore,Marian University,NAIA,IN,"Surrey, British Columbi
 Nathan Holmes,RHP,R,R,Sophomore,University of Texas at Tyler,NCAA: Division 2,TX,"Mississauga, Ontario",https://stats.ncaa.org/player/index?id=15580&org_id=30028&stats_player_seq=2475927&year_stat_category_id=14841
 Tim Holyk,IF,R,R,Sophomore,Miles,JUCO: Division 2,MT,"Nanaimo, British Columbia",https://stats.njcaa.org/sports/bsb/2020-21/div2/players/timholykzn7s?view=gamelog&pos=h
 Steven Hospital,RHP,R,R,Sophomore,Niagara University,NCAA: Division 1,NY,"Oakville, Ontario",https://stats.ncaa.org/player/index?id=15580&org_id=482&stats_player_seq=2303537&year_stat_category_id=14841
-Brandon Hupe,OF,R,R,Sophomore,University of British Columbia,NAIA,BC,"Vancouver, British Columbia",
+Brandon Hupe,OF,R,R,Sophomore,University of British Columbia,NAIA,BC,"Vancouver, British Columbia",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1799&plr=175120
 Adam Inouye,SS,R,R,Sophomore,Academy of Art University,NCAA: Division 2,CA,"Vancouver, British Colombia",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=30123&stats_player_seq=2504503
 Cole Jackson,C,R,R,Sophomore,Southwest Baptist University,NCAA: Division 2,MO,"Thorsby, Alberta",
 Hunter James,IF,L,R,Sophomore,University of Northwestern Ohio,NAIA,OH,"Stratford, Ontario",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=17744&plr=198806
@@ -437,17 +437,17 @@ Ben Jones,IF,R,R,Sophomore,Mineral Area,JUCO: Division 1,MO,"Toronto, Ontario",h
 Joseph Karall,RHP,R,R,Sophomore,Southeast Missouri State University,NCAA: Division 1,MO,"St. Albert, Alberta",https://stats.ncaa.org/player/index?id=15580&org_id=654&stats_player_seq=2488379&year_stat_category_id=14841
 Jason Kauffeldt,OF,,,Sophomore,Houghton College,NCAA: Division 3,NY,"Oshawa, Ontario",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=30160&stats_player_seq=2342358
 Trent King,LHP,L,L,Sophomore,Allegany Maryland,JUCO: Division 2,MD,"Surrey Province, British Columbia",https://www.njcaa.org/sports/bsb/2020-21/div2/players/trentkingf0ac?view=gamelog&pos=p
-Kareem Kobrosli,LHP,,,Sophomore,Georgia Gwinnett College,NAIA,GA,"Windsor, Ontario",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=18986&plr=194727
+Kareem Kobrosli,LHP,,,Sophomore,Georgia Gwinnett College,NAIA,GA,"Windsor, Ontario",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=18986&plr=194727&reportName=BA_PP_P_GBG_DAN_PITCHING
 Deric LaMontagne,INF,,,Sophomore,Lamar University,NCAA: Division 1,TX,"Beloeil, Quebec",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=346&stats_player_seq=2475379
-Shane Laforest,RHP,R,R,Sophomore,University of British Columbia,NAIA,BC,"Belle River, Ontario",
+Shane Laforest,RHP,R,R,Sophomore,University of British Columbia,NAIA,BC,"Belle River, Ontario",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1799&plr=178977&reportName=BA_PP_B_GBG_BAT
 Stephane Lagasse,OF,R,R,Sophomore,Bemidji State University,NCAA: Division 2,MN,"Winnipeg, Manitoba",
 Nathan Landry,LHP,L,L,Sophomore,Mineral Area,JUCO: Division 1,MO,Quebec,https://www.njcaa.org/sports/bsb/2020-21/div1/players/nathanlandryddkc?view=gamelog&pos=p
 Josh Laukkanen,RHP,R,R,Sophomore,New Mexico State University,NCAA: Division 1,NM,"Nanaimo, British Columbia",https://stats.ncaa.org/player/index?id=15580&org_id=472&stats_player_seq=2476090&year_stat_category_id=14841
 Marshall Leishman,LHP,L,L,Sophomore,Lake Michigan,JUCO: Division 2,MI,Toronto,https://www.njcaa.org/sports/bsb/2020-21/div2/players/marshallleishmano05z?view=gamelog&pos=p
 Kyle Lev,RHP,R,R,Sophomore,Siena College,NCAA: Division 1,NY,"Mississauga, Ontario",https://stats.ncaa.org/player/index?id=15580&org_id=639&stats_player_seq=2304843&year_stat_category_id=14841
 Gavin Logan,C,L,R,Sophomore,Oregon State University,NCAA: Division 1,OR,"Oyen, Alberta",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=528&stats_player_seq=2468770
-Brendan Logan,RHP,R,R,Sophomore,University of British Columbia,NAIA,BC,"Oyen, Alberta",
-Max Lojko,RHP,R,R,Sophomore,Lourdes University,NAIA,OH,"Barrie, Ontario",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=18711&plr=169877
+Brendan Logan,RHP,R,R,Sophomore,University of British Columbia,NAIA,BC,"Oyen, Alberta",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1799&plr=179301&reportName=BA_PP_B_GBG_BAT
+Max Lojko,RHP,R,R,Sophomore,Lourdes University,NAIA,OH,"Barrie, Ontario",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=18711&plr=169877&reportName=BA_PP_P_GBG_DAN_PITCHING
 Noah London,OF,R,R,Sophomore,University of Northwestern Ohio,NAIA,OH,"Toronto, Ontario",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=17744&plr=169616
 Clayton Loranger,OF,R,L,Sophomore,Stephen F. Austin State University,NCAA: Division 1,TX,"Sherwood Park, Alberta",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=676&stats_player_seq=2477979
 Chris Louie,OF,R,R,Sophomore,Dawson,JUCO: Division 2,MT,Calgary,https://stats.njcaa.org/sports/bsb/2020-21/div2/players/chrislouierlnf?view=gamelog&pos=h
@@ -466,7 +466,7 @@ Weston Markle,RHP,,,Sophomore,Indiana Tech,NAIA,IN,Hamilton,
 Leo Markotic,INF/OF,R,R,Sophomore,"Texas A&M University, Corpus Christi",NCAA: Division 1,TX,Toronto,https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=26172&stats_player_seq=2492952
 Jack Marlin,OF/C,R,R,Sophomore,Midway University,NAIA,KY,Alberta,http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=20739&plr=198485
 Daniel Martin,OF,,,Sophomore,Yavapai,JUCO: Division 1,AZ,"Langley, British Columbia",https://www.njcaa.org/sports/bsb/2020-21/div1/players/danielmartinuela?view=gamelog&pos=h
-Josh Martinez,RHP/OF,R,R,Sophomore,La Sierra University,NAIA,CA,"Winnipeg, Manitoba","http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=15602&plr=199520,http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=15602&plr=199520"
+Josh Martinez,RHP/OF,R,R,Sophomore,La Sierra University,NAIA,CA,"Winnipeg, Manitoba","http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=15602&plr=199520,http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=15602&plr=199520&reportName=BA_PP_P_GBG_DAN_PITCHING"
 Noah Matsubara,OF,R,R,Sophomore,University of Jamestown,NAIA,ND,"Okotoks, Alberta",
 Brogan McDougall,RHP,R,R,Sophomore,Douglas,NW Athletic Conference,BC,"White Rock, British Columbia",https://nwacsports.com/sports/bsb/2020-21/players/broganmcdougallr7kr?view=gamelog&pos=p
 Riley McErlean,C/RHP,R,R,Sophomore,The College of Wooster,NCAA: Division 3,OH,Toronto,"https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=807&stats_player_seq=2320126,https://stats.ncaa.org/player/index?id=15580&org_id=807&stats_player_seq=2320126&year_stat_category_id=14841"
@@ -477,7 +477,7 @@ Tyler McWillie,RHP/1B,R,R,Sophomore,Colby,JUCO: Division 1,KS,"Waltrous, Saskatc
 Daniel Mercandelli,RHP,R,R,Sophomore,Lake Region State,JUCO: Division 2,ND,"Cranbrook, British Columbia",https://www.njcaa.org/sports/bsb/2020-21/div2/players/danielmercandelliil4r?view=gamelog&pos=p
 Alexander Mio,LHP,L,L,Sophomore,Southeastern,JUCO: Division 2,IA,"Windsor, Ontario",https://stats.njcaa.org/sports/bsb/2020-21/div2/players/alexandermio3v5r?view=gamelog&pos=p
 James Mitchell,C/UTIL,L,R,Sophomore,Douglas,NW Athletic Conference,BC,"Surrey, British Columbia",https://nwacsports.com/sports/bsb/2020-21/players/jamesmitchelllcmg?view=gamelog&pos=h
-Ben Mitchell,OF,R,R,Sophomore,University of British Columbia,NAIA,BC,"Pickering, Ontario",
+Ben Mitchell,OF,R,R,Sophomore,University of British Columbia,NAIA,BC,"Pickering, Ontario",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1799&plr=178927
 Dom Morea,1B,L,R,Sophomore,Tabor College,NAIA,KS,"Barrie, Ontario",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1783&plr=195275
 Noah Murphy-Sealy,1B,R,R,Sophomore,Iowa Lakes,JUCO: Division 2,IA,"Aurora, Ontario",https://www.njcaa.org/sports/bsb/2020-21/div2/players/noahmurphysealyt7n6?view=gamelog&pos=h
 Owen Napieralski,C,R,R,Sophomore,"Louisiana State University, Shreveport",NAIA,LA,"Delta, British Columbia",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1710&plr=171311
@@ -493,18 +493,18 @@ Tyler Offman,1B,L,L,Sophomore,New York University,NCAA: Division 3,NY,"Thornhill
 Ryan Olchoway,RHP,R,R,Sophomore,Northwestern State University,NCAA: Division 1,LA,"Saskatoon, Saskatchewan",
 Justin Olic,LHP,L,L,Sophomore,Douglas,NW Athletic Conference,BC,"Surrey, British Columbia",
 Zach Olson,OF,R,R,Sophomore,Colby,JUCO: Division 1,KS,"Red Deer, Alberta",https://stats.njcaa.org/sports/bsb/2020-21/div1/players/zacholsonaxcd?view=gamelog&pos=h
-Noah Or,C,R,R,Sophomore,University of British Columbia,NAIA,BC,"Richmond, British Columbia",
-Bryce Oriold,RHP,R,R,Sophomore,Clarke University,NAIA,IA,"Lethbridge, Alberta",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=8289&plr=196696
+Noah Or,C,R,R,Sophomore,University of British Columbia,NAIA,BC,"Richmond, British Columbia",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1799&plr=175121
+Bryce Oriold,RHP,R,R,Sophomore,Clarke University,NAIA,IA,"Lethbridge, Alberta",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=8289&plr=196696&reportName=BA_PP_P_GBG_DAN_PITCHING
 Alex Pallottini,C,R,R,Sophomore,Lourdes University,NAIA,OH,"Burlington, Ontario",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=18711&plr=169878
 Damiano Palmegiani,INF,R,R,Sophomore,Southern Nevada,JUCO: Division 1,NV,"Surrey, British Columbia",https://stats.njcaa.org/sports/bsb/2020-21/div1/players/damianopalmegianixw11?view=gamelog&pos=h
 Remi Patry,UTL,R,R,Sophomore,Oklahoma Wesleyan University,NAIA,OK,"Ange- Gardian, Quebec",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1749&plr=196043
 Jordan Peck,LHP/OF,L,L,Sophomore,Northwest Missouri State University,NCAA: Division 2,MO,"Winnipeg, Manitoba",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=507&stats_player_seq=2126963
-Ty Penner,IF,L,R,Sophomore,University of British Columbia,NAIA,BC,"Lethbridge, Alberta",
+Ty Penner,IF,L,R,Sophomore,University of British Columbia,NAIA,BC,"Lethbridge, Alberta",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1799&plr=175119
 Noah Penney,C,R,R,Sophomore,Tiffin University,NCAA: Division 2,OH,"Sherwood Park, Alberta",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=1403&stats_player_seq=2131202
 Dayton Peters,OF,R,R,Sophomore,Mineral Area,JUCO: Division 1,MO,"Abbotsford, British Columbia",https://www.njcaa.org/sports/bsb/2020-21/div1/players/daytonpeters3r8n?view=gamelog&pos=h
 Tristan Peters,OF,,,Sophomore,Southern Illinois University at Carbondale,NCAA: Division 1,IL,"Winkler, Manitoba",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=659&stats_player_seq=2467320
 Victor Plaz,INF,,,Sophomore,Clarendon,JUCO: Division 1,TX,"Montreal, Quebec",https://www.njcaa.org/sports/bsb/2020-21/div1/players/victorplazblz5?view=gamelog&pos=h
-Zane Pollon,LHP,L,L,Sophomore,Mount Marty College,NAIA,SD,Saskatchewan,http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1733&plr=195908
+Zane Pollon,LHP,L,L,Sophomore,Mount Marty College,NAIA,SD,Saskatchewan,http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1733&plr=195908&reportName=BA_PP_P_GBG_DAN_PITCHING
 Max Poole,RHP,R,R,Sophomore,Mars Hill University,NCAA: Division 2,NC,Fort McMurray,https://stats.ncaa.org/player/index?id=15580&org_id=1199&stats_player_seq=2117366&year_stat_category_id=14841
 Anthony Quirion,INF,R,R,Sophomore,Lamar University,NCAA: Division 1,TX,"Dixville, Quebec",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=346&stats_player_seq=2122760
 Dawson Rempel,RHP,R,R,Sophomore,Dakota,JUCO: Division 2,ND,"Altona, Manitoba",https://www.njcaa.org/sports/bsb/2020-21/div2/players/dawsonrempelotim?view=gamelog&pos=p
@@ -512,19 +512,19 @@ David Rhodes,RHP/DH,L,R,Sophomore,University of Washington,NCAA: Division 1,WA,"
 Steven Sanders,P,,,Sophomore,University of Charleston,NCAA: Division 2,WV,"Kitchener, Ontario",https://stats.ncaa.org/player/index?id=15580&org_id=1013&stats_player_seq=2137026&year_stat_category_id=14841
 Parker Savard,INF,R,R,Sophomore,St. Cloud State University,NCAA: Division 2,MN,"Hanmer, Ontario",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=598&stats_player_seq=2508525
 Edouard Savoie,C/MIF,R,R,Sophomore,Northeastern Oklahoma A&M,JUCO: Division 1,OK,"Saint Eustache, Quebec",https://stats.njcaa.org/sports/bsb/2020-21/div1/players/edouardsavoiei07v?view=gamelog&pos=h
-Wyatt Schnorr,C/OF,R,R,Sophomore,University of British Columbia,NAIA,BC,"Vancouver, British Columbia",
+Wyatt Schnorr,C/OF,R,R,Sophomore,University of British Columbia,NAIA,BC,"Vancouver, British Columbia",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1799&plr=178926
 Nathan Scragg,MIF,R,R,Sophomore,Dawson,JUCO: Division 2,MT,Ontario,https://www.njcaa.org/sports/bsb/2020-21/div2/players/nathanscraggsj5b?view=gamelog&pos=h
 Kye Seitz,1B,L,R,Sophomore,Bellevue,NW Athletic Conference,WA,"Okotoks, Alberta",https://nwacsports.com/sports/bsb/2020-21/players/kyeseitzzsey?view=gamelog&pos=h
-Daniel Sereda,LHP,L,L,Sophomore,University of British Columbia,NAIA,BC,"Vancouver, British Columbia",
+Daniel Sereda,LHP,L,L,Sophomore,University of British Columbia,NAIA,BC,"Vancouver, British Columbia",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1799&plr=178979&reportName=BA_PP_B_GBG_BAT
 Neftaly Severino-Cronier,RHP,R,R,Sophomore,University of Evansville,NCAA: Division 1,IN,"Boisbriand, Quebec",https://stats.ncaa.org/player/index?id=15580&org_id=219&stats_player_seq=2347409&year_stat_category_id=14841
 MacGregor Sharpe,C/OF,R,R,Sophomore,Bemidji State University,NCAA: Division 2,MN,"North Vancouver, British Columbia",
-Nathan Shute,C,L,R,Sophomore,University of British Columbia,NAIA,BC,"Oakville, Ontario",
+Nathan Shute,C,L,R,Sophomore,University of British Columbia,NAIA,BC,"Oakville, Ontario",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1799&plr=180635
 Jesse Simpson,RHP,,,Sophomore,Shorter University,NCAA: Division 2,GA,Victoria BC,https://stats.ncaa.org/player/index?id=15580&org_id=30151&stats_player_seq=2460840&year_stat_category_id=14841
 Tyler Small,SS,L,R,Sophomore,Northeastern Oklahoma A&M,JUCO: Division 1,OK,"Mississaugo, Ontario",https://www.njcaa.org/sports/bsb/2020-21/div1/players/tylersmallvjjj?view=gamelog&pos=h
-Tahj Smith,RHP,R,R,Sophomore,Lourdes University,NAIA,OH,"Brampton, Ontario",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=18711&plr=180711
+Tahj Smith,RHP,R,R,Sophomore,Lourdes University,NAIA,OH,"Brampton, Ontario",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=18711&plr=180711&reportName=BA_PP_P_GBG_DAN_PITCHING
 Connor Sparks,RHP,R,R,Sophomore,University of British Columbia,NAIA,BC,"Saskatoon, Saskatchewan",
 Marcus Strother,C,R,R,Sophomore,University of Toledo,NCAA: Division 1,OH,"Kelowna, British Columbia",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=709&stats_player_seq=2491582
-Zachary Swanson,RHP,R,R,Sophomore,Park University Gilbert,NAIA,AZ,"Victoria, British Columbia",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=21378&plr=194529
+Zachary Swanson,RHP,R,R,Sophomore,Park University Gilbert,NAIA,AZ,"Victoria, British Columbia",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=21378&plr=194529&reportName=BA_PP_P_GBG_DAN_PITCHING
 Matthew Taubensee,LHP,,,Sophomore,Lake-Sumter State,JUCO: Division 1,FL,"Winter Garden, Florida / Toronto, Ontario",https://stats.njcaa.org/sports/bsb/2020-21/div1/players/matthewtaubenseeh2yq?view=gamelog&pos=p
 Colton Taylor,RHP,,,Sophomore,Frank Phillips,JUCO: Division 1,TX,Amherstburg,https://www.njcaa.org/sports/bsb/2020-21/div1/players/coltontaylorr9fh?view=gamelog&pos=p
 Quinn Tocheniuk,RHP,R,R,Sophomore,Pratt,JUCO: Division 1,KS,"Okotoks, Alberta",https://www.njcaa.org/sports/bsb/2020-21/div1/players/quinntocheniukzx4c?view=gamelog&pos=p
@@ -534,8 +534,8 @@ Cole Van Every,RHP,R,R,Sophomore,Southwest Baptist University,NCAA: Division 2,M
 Torrin Vaselenak,IF,R,R,Sophomore,"University of Arkansas, Monticello",NCAA: Division 2,AR,"Coaldale, Alberta",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=8411&stats_player_seq=2302171
 Tony Vavaroutsos,OF,L,L,Sophomore,Shippensburg University,NCAA: Division 2,PA,"Toronto, Ontario",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=638&stats_player_seq=2141566
 Martin Vincelli-Simard,INF,R,R,Sophomore,Sacramento State University,NCAA: Division 1,CA,"Boisbriand, Quebec",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=102&stats_player_seq=2121749
-Liam Vulcano,IF,R,R,Sophomore,University of British Columbia,NAIA,BC,"Surrey, British Columbia",
-Stephen Wade,LHP,L,L,Sophomore,Eastern Oregon University,NAIA,OR,"Victoria, British Columbia",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1664&plr=197143
+Liam Vulcano,IF,R,R,Sophomore,University of British Columbia,NAIA,BC,"Surrey, British Columbia",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1799&plr=175115
+Stephen Wade,LHP,L,L,Sophomore,Eastern Oregon University,NAIA,OR,"Victoria, British Columbia",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1664&plr=197143&reportName=BA_PP_P_GBG_DAN_PITCHING
 David Walling,OF,R,R,Sophomore,Siena Heights University,NAIA,MI,"Mississauga, Ontario",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1773&plr=199052
 Matthew Watson,RHP,R,R,Sophomore,Biola University,NCAA: Division 2,CA,"Vancouver, British Columbia",https://stats.ncaa.org/player/index?id=15580&org_id=30220&stats_player_seq=2519385&year_stat_category_id=14841
 Jonah Weisner,INF,L,R,Sophomore,Allen County,JUCO: Division 1,KS,"Mission, British Columbia",https://www.njcaa.org/sports/bsb/2020-21/div1/players/jonahweisnerxqf3?view=gamelog&pos=h
@@ -550,9 +550,9 @@ Kaiden Zacharias,OF,,,Sophomore,Asbury University,NAIA,KY,Lloydminster,http://ww
 Brian Zapp,INF,,,Sophomore,"Miami University, Ohio",NCAA: Division 1,OH,"Waterloo, Ontario",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=414&stats_player_seq=2334919
 Tucker Zdunich,OF,L,R,Sophomore,Colby,JUCO: Division 1,KS,"High River, Alberta",https://www.njcaa.org/sports/bsb/2020-21/div1/players/tuckerzdunichngs0?view=gamelog&pos=h
 Angus Adams,UTL,R,R,Junior,Elmira College,NCAA: Division 3,NY,"Ottawa, Ontario",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=213&stats_player_seq=2143630
-Ricky Alvarez,OF/RHP,R,R,Junior,Mid-America Christian University,NAIA,OK,"Mississauga, Ontario","http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1856&plr=186970,http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1856&plr=186970"
+Ricky Alvarez,OF/RHP,R,R,Junior,Mid-America Christian University,NAIA,OK,"Mississauga, Ontario","http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1856&plr=186970,http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1856&plr=186970&reportName=BA_PP_P_GBG_DAN_PITCHING"
 Conor Angel,RHP,R,R,Junior,University of Louisiana at Lafayette,NCAA: Division 1,LA,"Lachine, Quebec",https://stats.ncaa.org/player/index?id=15580&org_id=671&stats_player_seq=2343867&year_stat_category_id=14841
-Jordan Bahnuk,RHP,R,R,Junior,Southwestern Christian University,NAIA,OK,"Woodstock, Ontario",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=19070&plr=184658
+Jordan Bahnuk,RHP,R,R,Junior,Southwestern Christian University,NAIA,OK,"Woodstock, Ontario",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=19070&plr=184658&reportName=BA_PP_P_GBG_DAN_PITCHING
 Zack Banks,RHP,R,R,Junior,Lourdes University,NAIA,OH,"Saint Thomas, Ontario",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=18711&plr=186794&reportName=BA_PP_P_GBG_DAN_PITCHING
 Malkolm Barrett,RHP,L,R,Junior,Wheeling Jesuit University,NCAA: Division 2,WV,"Brampton, Ontario",https://stats.ncaa.org/player/index?id=15580&org_id=12799&stats_player_seq=2466731&year_stat_category_id=14841
 Zachary Bayfield,LHP,L,L,Junior,Oberlin College,NCAA: Division 3,OH,"Toronto, Ontario",https://stats.ncaa.org/player/index?id=15580&org_id=515&stats_player_seq=2118215&year_stat_category_id=14841
@@ -579,9 +579,9 @@ Liam Devine,LHP,,,Junior,St. Bonaventure University,NCAA: Division 1,NY,"Guelph,
 Lucas DiLuca,INF,L,R,Junior,Eastern Illinois University,NCAA: Division 1,IL,"Lasalle, Ontario",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=201&stats_player_seq=2477644
 Danny Donnelly,OF,R,R,Junior,Tiffin University,NCAA: Division 2,OH,"Okatoks, Alberta",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=1403&stats_player_seq=2328685
 Jacob Douglas,RHP,R,R,Junior,Fort Hays State University,NCAA: Division 2,KS,"Georgetown, Ontario",https://stats.ncaa.org/player/index?id=15580&org_id=9011&stats_player_seq=2305845&year_stat_category_id=14841
-Jordan Dray,OF,R,R,Junior,University of British Columbia,NAIA,BC,"White Rock, British Columbia",
+Jordan Dray,OF,R,R,Junior,University of British Columbia,NAIA,BC,"White Rock, British Columbia",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1799&plr=158316
 Rilley Dube,C,,,Junior,West Virginia University Institute of Technology,NAIA,WV,"Sudbury, Ontario",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1858&plr=176904
-Finnigan Duffield,LHP,L,L,Junior,University of British Columbia,NAIA,BC,"Edmonton, Alberta",
+Finnigan Duffield,LHP,L,L,Junior,University of British Columbia,NAIA,BC,"Edmonton, Alberta",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1799&plr=164116&reportName=BA_PP_B_GBG_BAT
 Kyle Espineli,INF,R,R,Junior,Notre Dame College,NCAA: Division 2,OH,"Toronto, Ontario",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=30126&stats_player_seq=2329011
 Devon Farrell,IF,R,R,Junior,Rockhurst University,NCAA: Division 2,MO,"Saskatoon, Saskatchewan",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=1328&stats_player_seq=2473929
 Cristian Forgione,C/IN,L,R,Junior,St. Lawrence University,NCAA: Division 3,NY,"Toronto, Ontario",https://stats.ncaa.org/player/index?game_sport_year_ctl_id=15580&org_id=607&stats_player_seq=2143005
@@ -649,152 +649,152 @@ Jacob Potter,RHP,R,R,Junior,Southeastern Oklahoma State University,NCAA: Divisio
 Spencer Rankin,C,R,R,Junior,Missouri Valley College,NAIA,MO,"Richmond, British Columbia",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1729&plr=188879
 Reece Reading,UT,L,R,Junior,"University of Arkansas, Monticello",NCAA: Division 2,AR,"Listowel, Ontario",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=8411&stats_player_seq=2302172
 Matt Reyes,INF/C,R,R,Junior,Graceland University,NAIA,IA,"Vancouver, British Columbia",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1680&plr=183140
-Tommy Reyes-Cruz,INF,L,L,Junior,Faulkner University,NAIA,AL,"Montreal, Quebec",
-Noah Richardson,P/1B/OF,,,Junior,Northern Kentucky University,NCAA: Division 1,KY,"Windsor, Ontario",
-Spenser Ross,IF,R,R,Junior,Lawrence University,NCAA: Division 3,WI,"Mississauga, Ontario",
-Ashton Roy,INF,L,R,Junior,New Mexico Highlands University,NCAA: Division 2,NM,Ontario,
-Luigi Russo,1B,L,R,Junior,Ohio Wesleyan University,NCAA: Division 3,OH,"Kelowna, British Columbia",
-Liam Sabiston,RHP,R,R,Junior,Eastern New Mexico University,NCAA: Division 2,NM,"Calgary, Alberta",
-Aidan Safar,RHP,R,R,Junior,Rensselaer Polytechnic Institute,NCAA: Division 3,NY,"Toronto, Ontario",
-Adam Senden,P/1B,,,Junior,Mayville State University,NAIA,ND,"Winnipeg, Manitoba",
-Will Sierra,RHP,R,R,Junior,Washington State University,NCAA: Division 1,WA,Montreal,
-Jared Spearing,LHP,L,L,Junior,University of British Columbia,NAIA,BC,"Winnipeg, Manitoba",
-Jordan Stamp,LHP,R,L,Junior,Rogers State University,NCAA: Division 2,OK,"Brantford, Ontario",
-Nathan Stark,RHP,R,R,Junior,Doane University,NAIA,NE,"Medicine Hat, Alberta",
-Kyle Stubbins,RHP,R,R,Junior,University of British Columbia,NAIA,BC,"Surrey, British Columbia",
-Garrett Takamatsu,C/IF,R,R,Junior,University of Central Oklahoma,NCAA: Division 2,OK,"Burlington, Ontario",
-Cal Theal,RHP,R,R,Junior,Niagara University,NCAA: Division 1,NY,"Niagara Falls, Ontario",
-Ben Tighe,RHP,R,R,Junior,The College of Idaho,NAIA,ID,"Okotoks, Alberta",
-Cole Tucker,INF,R,R,Junior,Niagara University,NCAA: Division 1,NY,"Mount Pearl, Newfoundland & Labrador",
-Adam Tulloch,LHP,L,L,Junior,West Virginia University,NCAA: Division 1,WV,"Toronto, Ontario / Weston, Florida",
-Matt Turino,OF,L,R,Junior,Saint Louis University,NCAA: Division 1,MO,Ontario,
-Jaxon Valcke,IF/OF,L,R,Junior,University of British Columbia,NAIA,BC,"Stratford, Ontario",
-Max Von Gemmingen,C,L,R,Junior,Spring Arbor University,NAIA,MI,"Brampton, Ontario",
-Jayden Wakeham,C,,,Junior,Northern Kentucky University,NCAA: Division 1,KY,"Victoria, British Columbia",
-Parker Walker,C,L,R,Junior,Midway University,NAIA,KY,"Minesing, Ontario",
-Chris Watson,IN,R,R,Junior,St. Lawrence University,NCAA: Division 3,NY,"Claremont, Ontario",
-Nolan Weger,IF,R,R,Junior,University of British Columbia,NAIA,BC,"Surrey, British Columbia",
-Lucas Wepf,RHP,,,Junior,University of Louisiana at Monroe,NCAA: Division 1,LA,Ontario,
-Robbie Wilkes,INF,L,R,Junior,University of Evansville,NCAA: Division 1,IN,"Regina, Saskatchewan",
-Malik Williams,INF,,,Junior,Lipscomb University,NCAA: Division 1,TN,Toronto,
-Jason Willow,OF/INF,R,R,Junior,"University of California, Santa Barbara",NCAA: Division 1,CA,"Victoria, British Columbia",
-Brantt Wood,IF,,,Junior,Mayville State University,NAIA,ND,"Saskatoon, Saskatchewan",
-Kevin Zhang,RHP,R,R,Junior,Cedarville University,NCAA: Division 2,OH,"Toronto, Ontario",
-Aris Zimakas,LHP,L,L,Junior,Oakland University,NCAA: Division 1,MI,"Montreal, Quebec",
-Zach Zinck,RHP,L,R,Junior,Ave Maria University,NAIA,FL,"Bridgewater, Nova Scotia",
-Garner Špoljaric,RHP,,,Junior,Stetson University,NCAA: Division 1,FL,"Lisle, Ontario",
-Jack Anderson,LHP,L,L,Senior,Hofstra University,NCAA: Division 1,NY,Ontario,
-Kyle Angielski,OF/C,R,R,Senior,Presentation College,NAIA,SD,"Regina, Saskatchewan",
-Sam Avila,IF,R,R,Senior,Southwest Baptist University,NCAA: Division 2,MO,"Kamloops, British Columbia",
-Tyrus Barclay,C,R,R,Senior,University of Mary,NCAA: Division 2,ND,"Wyoming, Ontario",
-Alex Bedard,OF,R,R,Senior,Southwestern Oklahoma State University,NCAA: Division 2,OK,"Levis, Quebec",
-Dylan Bells,LHP,L,L,Senior,St. Mary's University,NCAA: Division 2,TX,"Regina, Saskatchewan",
-Danny Berg,OF,L,R,Senior,Lynn University,NCAA: Division 2,FL,Saskatoon,
-Josh Blackwell,RHP,R,R,Senior,State University of New York Polytechnic Institute,NCAA: Division 3,NY,"Owen Sound, Ontario",
-Matt Bondarchuk,OF,L,R,Senior,"University of Nebraska, Omaha",NCAA: Division 1,NE,"Edmonton, Alberta",
-Dylan Borman,IF,R,R,Senior,"University of Arkansas, Monticello",NCAA: Division 2,AR,"Camrose, Alberta",
-Landen Bourassa,RHP,R,R,Senior,University of San Francisco,NCAA: Division 1,CA,"Lethbridge, Alberta",
-James Bradwell,RHP,R,R,Senior,University of British Columbia,NAIA,BC,"Gibsons, British Columbia",
-Archer Brookman,C/1B,R,R,Senior,The Ohio State University,NCAA: Division 1,OH,"Pointe-Claire, Quebec",
-Lawson Burnett,IF,R,R,Senior,Northwood University,NCAA: Division 2,MI,"London, Ontario",
-Dominic Campeau,C/IB,,,Senior,Hope International University,NAIA,CA,"Orange, California",
-Brady Cappe,RHP,R,R,Senior,Lindsey Wilson College,NAIA,KY,"Waterford, Ontario",
-Nik Cardinal,P,,,Senior,"California State University, Fresno",NCAA: Division 1,CA,"Bonnyville, Alberta",
-Jacob Charron,C,R,R,Senior,Keiser University,NAIA,FL,"Ottawa, Ontario",
-Matthew Clay,OF,L,L,Senior,The College of Idaho,NAIA,ID,"Port Moody, British Columbia",
-Alex Cull,IF,R,R,Senior,Albion College,NCAA: Division 3,MI,"Windsor, Ontario",
-Spencer Davis,RHP,R,R,Senior,Arizona Christian University,NAIA,AZ,"Regina, Saskatchewan",
-Cooper Davis,OF,L,R,Senior,Vanderbilt University,NCAA: Division 1,TN,"Mississauga, Ontario",
-DJ DePiero,LHP,L,L,Senior,Bradley University,NCAA: Division 1,IL,"Thunder Bay, Ontario",
-Zach Demchenko,RHP,R,R,Senior,Friends University,NAIA,KS,"Okotoks, Alberta",
-Zach Diewert,OF,R,R,Senior,Southeastern University,NAIA,FL,"Chemainus, British Columbia",
-Tyler Dobie,IF,R,R,Senior,Point Park University,NAIA,PA,Toronto,
-Tyler Duncan,OF,L,R,Senior,Arkansas State University,NCAA: Division 1,AR,"Sooke, British Columbia",
+Tommy Reyes-Cruz,INF,L,L,Junior,Faulkner University,NAIA,AL,"Montreal, Quebec",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1669&plr=188726
+Noah Richardson,P/1B/OF,,,Junior,Northern Kentucky University,NCAA: Division 1,KY,"Windsor, Ontario","https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=505&stats_player_seq=2137678,https://stats.ncaa.org/player/index?id=15580&org_id=505&stats_player_seq=2137678&year_stat_category_id=14841"
+Spenser Ross,IF,R,R,Junior,Lawrence University,NCAA: Division 3,WI,"Mississauga, Ontario",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=348&stats_player_seq=2142904
+Ashton Roy,INF,L,R,Junior,New Mexico Highlands University,NCAA: Division 2,NM,Ontario,https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=8577&stats_player_seq=2348563
+Luigi Russo,1B,L,R,Junior,Ohio Wesleyan University,NCAA: Division 3,OH,"Kelowna, British Columbia",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=520&stats_player_seq=2147417
+Liam Sabiston,RHP,R,R,Junior,Eastern New Mexico University,NCAA: Division 2,NM,"Calgary, Alberta",https://stats.ncaa.org/player/index?id=15580&org_id=206&stats_player_seq=2127027&year_stat_category_id=14841
+Aidan Safar,RHP,R,R,Junior,Rensselaer Polytechnic Institute,NCAA: Division 3,NY,"Toronto, Ontario","https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=570&stats_player_seq=2125405,https://stats.ncaa.org/player/index?id=15580&org_id=570&stats_player_seq=2125405&year_stat_category_id=14841"
+Adam Senden,P/1B,,,Junior,Mayville State University,NAIA,ND,"Winnipeg, Manitoba","http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1720&plr=169257,http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1720&plr=169257&reportName=BA_PP_P_GBG_DAN_PITCHING"
+Will Sierra,RHP,R,R,Junior,Washington State University,NCAA: Division 1,WA,Montreal,https://stats.ncaa.org/player/index?id=15580&org_id=754&stats_player_seq=2472088&year_stat_category_id=14841
+Jared Spearing,LHP,L,L,Junior,University of British Columbia,NAIA,BC,"Winnipeg, Manitoba",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1799&plr=158307&reportName=BA_PP_B_GBG_BAT
+Jordan Stamp,LHP,R,L,Junior,Rogers State University,NCAA: Division 2,OK,"Brantford, Ontario",https://stats.ncaa.org/player/index?id=15580&org_id=30180&stats_player_seq=2330223&year_stat_category_id=14841
+Nathan Stark,RHP,R,R,Junior,Doane University,NAIA,NE,"Medicine Hat, Alberta",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1662&plr=197718&reportName=BA_PP_P_GBG_DAN_PITCHING
+Kyle Stubbins,RHP,R,R,Junior,University of British Columbia,NAIA,BC,"Surrey, British Columbia",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1799&plr=179300&reportName=BA_PP_B_GBG_BAT
+Garrett Takamatsu,C/IF,R,R,Junior,University of Central Oklahoma,NCAA: Division 2,OK,"Burlington, Ontario",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=1009&stats_player_seq=2328709
+Cal Theal,RHP,R,R,Junior,Niagara University,NCAA: Division 1,NY,"Niagara Falls, Ontario",https://stats.ncaa.org/player/index?id=15204&org_id=482&stats_player_seq=2119286&year_stat_category_id=14761
+Ben Tighe,RHP,R,R,Junior,The College of Idaho,NAIA,ID,"Okotoks, Alberta",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1612&plr=184101&reportName=BA_PP_P_GBG_DAN_PITCHING
+Cole Tucker,INF,R,R,Junior,Niagara University,NCAA: Division 1,NY,"Mount Pearl, Newfoundland & Labrador",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=482&stats_player_seq=2303511
+Adam Tulloch,LHP,L,L,Junior,West Virginia University,NCAA: Division 1,WV,"Toronto, Ontario / Weston, Florida",https://stats.ncaa.org/player/index?id=15580&org_id=768&stats_player_seq=2134098&year_stat_category_id=14841
+Matt Turino,OF,L,R,Junior,Saint Louis University,NCAA: Division 1,MO,Ontario,https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=609&stats_player_seq=2348126
+Jaxon Valcke,IF/OF,L,R,Junior,University of British Columbia,NAIA,BC,"Stratford, Ontario",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1799&plr=155229
+Max Von Gemmingen,C,L,R,Junior,Spring Arbor University,NAIA,MI,"Brampton, Ontario",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1780&plr=181937
+Jayden Wakeham,C,,,Junior,Northern Kentucky University,NCAA: Division 1,KY,"Victoria, British Columbia",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=505&stats_player_seq=2137670
+Parker Walker,C,L,R,Junior,Midway University,NAIA,KY,"Minesing, Ontario",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=20739&plr=189498
+Chris Watson,IN,R,R,Junior,St. Lawrence University,NCAA: Division 3,NY,"Claremont, Ontario",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=607&stats_player_seq=2346623
+Nolan Weger,IF,R,R,Junior,University of British Columbia,NAIA,BC,"Surrey, British Columbia",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1799&plr=158302
+Lucas Wepf,RHP,,,Junior,University of Louisiana at Monroe,NCAA: Division 1,LA,Ontario,https://stats.ncaa.org/player/index?id=15580&org_id=498&stats_player_seq=2348208&year_stat_category_id=14841
+Robbie Wilkes,INF,L,R,Junior,University of Evansville,NCAA: Division 1,IN,"Regina, Saskatchewan",https://stats.ncaa.org/player/index?id=15580&org_id=219&stats_player_seq=2347397&year_stat_category_id=14841
+Malik Williams,INF,,,Junior,Lipscomb University,NCAA: Division 1,TN,Toronto,https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=28600&stats_player_seq=2309752
+Jason Willow,OF/INF,R,R,Junior,"University of California, Santa Barbara",NCAA: Division 1,CA,"Victoria, British Columbia",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=104&stats_player_seq=1996114
+Brantt Wood,IF,,,Junior,Mayville State University,NAIA,ND,"Saskatoon, Saskatchewan",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1720&plr=169270
+Kevin Zhang,RHP,R,R,Junior,Cedarville University,NCAA: Division 2,OH,"Toronto, Ontario",https://stats.ncaa.org/player/index?id=15580&org_id=30124&stats_player_seq=2132510&year_stat_category_id=14841
+Aris Zimakas,LHP,L,L,Junior,Oakland University,NCAA: Division 1,MI,"Montreal, Quebec",https://stats.ncaa.org/player/index?id=15580&org_id=514&stats_player_seq=2488688&year_stat_category_id=14841
+Zach Zinck,RHP,L,R,Junior,Ave Maria University,NAIA,FL,"Bridgewater, Nova Scotia",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=15387&plr=196091&reportName=BA_PP_P_GBG_DAN_PITCHING
+Garner Spoljaric,RHP,,,Junior,Stetson University,NCAA: Division 1,FL,"Lisle, Ontario",https://stats.ncaa.org/player/index?id=15580&org_id=678&stats_player_seq=2308419&year_stat_category_id=14841
+Jack Anderson,LHP,L,L,Senior,Hofstra University,NCAA: Division 1,NY,Ontario,https://stats.ncaa.org/player/index?id=15580&org_id=283&stats_player_seq=1981044&year_stat_category_id=14841
+Kyle Angielski,OF/C,R,R,Senior,Presentation College,NAIA,SD,"Regina, Saskatchewan",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=19072&plr=177427
+Sam Avila,IF,R,R,Senior,Southwest Baptist University,NCAA: Division 2,MO,"Kamloops, British Columbia",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=2755&stats_player_seq=2128207
+Tyrus Barclay,C,R,R,Senior,University of Mary,NCAA: Division 2,ND,"Wyoming, Ontario",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=30075&stats_player_seq=2131066
+Alex Bedard,OF,R,R,Senior,Southwestern Oklahoma State University,NCAA: Division 2,OK,"Levis, Quebec",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=8744&stats_player_seq=2127324
+Dylan Bells,LHP,L,L,Senior,St. Mary's University,NCAA: Division 2,TX,"Regina, Saskatchewan",https://stats.ncaa.org/player/index?id=15580&org_id=1346&stats_player_seq=2328033&year_stat_category_id=14841
+Danny Berg,OF,L,R,Senior,Lynn University,NCAA: Division 2,FL,Saskatoon,https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=20794&stats_player_seq=2305454
+Josh Blackwell,RHP,R,R,Senior,State University of New York Polytechnic Institute,NCAA: Division 3,NY,"Owen Sound, Ontario",https://stats.ncaa.org/player/index?id=15580&org_id=9500&stats_player_seq=2525816&year_stat_category_id=14841
+Matt Bondarchuk,OF,L,R,Senior,"University of Nebraska, Omaha",NCAA: Division 1,NE,"Edmonton, Alberta",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=464&stats_player_seq=2137408
+Dylan Borman,IF,R,R,Senior,"University of Arkansas, Monticello",NCAA: Division 2,AR,"Camrose, Alberta",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=8411&stats_player_seq=1976593
+Landen Bourassa,RHP,R,R,Senior,University of San Francisco,NCAA: Division 1,CA,"Lethbridge, Alberta",https://stats.ncaa.org/player/index?id=15580&org_id=629&stats_player_seq=1996737&year_stat_category_id=14841
+James Bradwell,RHP,R,R,Senior,University of British Columbia,NAIA,BC,"Gibsons, British Columbia",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1799&plr=155220&reportName=BA_PP_B_GBG_BAT
+Archer Brookman,C/1B,R,R,Senior,The Ohio State University,NCAA: Division 1,OH,"Pointe-Claire, Quebec",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=518&stats_player_seq=2347893
+Lawson Burnett,IF,R,R,Senior,Northwood University,NCAA: Division 2,MI,"London, Ontario",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=510&stats_player_seq=2328411
+Dominic Campeau,C/IB,,,Senior,Hope International University,NAIA,CA,"Orange, California",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=20599&plr=184327
+Brady Cappe,RHP,R,R,Senior,Lindsey Wilson College,NAIA,KY,"Waterford, Ontario",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1711&plr=196727&reportName=BA_PP_P_GBG_DAN_PITCHING
+Nik Cardinal,P,,,Senior,"California State University, Fresno",NCAA: Division 1,CA,"Bonnyville, Alberta",https://stats.ncaa.org/player/index?id=15580&org_id=96&stats_player_seq=2117714&year_stat_category_id=14841
+Jacob Charron,C,R,R,Senior,Keiser University,NAIA,FL,"Ottawa, Ontario",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1740&plr=183375
+Matthew Clay,OF,L,L,Senior,The College of Idaho,NAIA,ID,"Port Moody, British Columbia",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1612&plr=172203
+Alex Cull,IF,R,R,Senior,Albion College,NCAA: Division 3,MI,"Windsor, Ontario",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=15&stats_player_seq=2299398
+Spencer Davis,RHP,R,R,Senior,Arizona Christian University,NAIA,AZ,"Regina, Saskatchewan",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=17740&plr=186618&reportName=BA_PP_P_GBG_DAN_PITCHING
+Cooper Davis,OF,L,R,Senior,Vanderbilt University,NCAA: Division 1,TN,"Mississauga, Ontario",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=736&stats_player_seq=1978815
+DJ DePiero,LHP,L,L,Senior,Bradley University,NCAA: Division 1,IL,"Thunder Bay, Ontario",https://stats.ncaa.org/player/index?id=15580&org_id=72&stats_player_seq=2124681&year_stat_category_id=14841
+Zach Demchenko,RHP,R,R,Senior,Friends University,NAIA,KS,"Okotoks, Alberta",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1674&plr=186324&reportName=BA_PP_P_GBG_DAN_PITCHING
+Zach Diewert,OF,R,R,Senior,Southeastern University,NAIA,FL,"Chemainus, British Columbia",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=9105&plr=194332
+Tyler Dobie,IF,R,R,Senior,Point Park University,NAIA,PA,Toronto,http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1758&plr=180115
+Tyler Duncan,OF,L,R,Senior,Arkansas State University,NCAA: Division 1,AR,"Sooke, British Columbia",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=30&stats_player_seq=2119909
 Cyprien Dussenne,RHP,R,R,Senior,Cameron University,NCAA: Division 2,OK,"Montreal, Quebec / Ottignies-Louvain-la-Neuve, Belgium",
-Cameron Dyck,RHP,R,R,Senior,Niagara University,NCAA: Division 1,NY,"Oakville, Ontario",
-Martin Eckard,RHP,R,R,Senior,Indiana Tech,NAIA,IN,"Victoria, British Columbia",
-Canice Ejoh,OF,R,R,Senior,Seton Hill University,NCAA: Division 2,PA,"Brampton, Ontario",
-Jesse Elliott,INF,,,Senior,University of Charleston,NCAA: Division 2,WV,"Ajax, Ontario",
-Ben Erwin,RHP,R,R,Senior,Niagara University,NCAA: Division 1,NY,"Spruce Grove, Alberta",
-Thomas Espig,LHP,R,L,Senior,Yale University,NCAA: Division 1,CT,"Vancouver, British Columbia",
-Chris Ewanik,INF/OF,L,R,Senior,Husson University,NCAA: Division 3,ME,"Spruce Grove, Alberta",
-George Farid,3B,R,R,Senior,Mississippi College,NCAA: Division 2,MS,"Mississauga, Ontario",
-Zac Fascia,C,L,R,Senior,Purdue University,NCAA: Division 1,IN,"Brampton, Ontario",
-Jesse Fishbaum,OF,R,R,Senior,Cleary University,NAIA,MI,"Toronto, Ontario",
-Mathieu Gauthier,RHP,R,R,Senior,West Texas A&M University,NCAA: Division 2,TX,"Montreal, Quebec",
-Brendan Gerbert,INF,R,R,Senior,Point University,NAIA,GA,"Surrey, British Columbia",
-Julien Giroux-Harvey,OF/RHP,L,R,Senior,Saint Michael's College,NCAA: Division 2,VT,"Montreal, Québec",
-Daniel Gore,RHP,R,R,Senior,Madonna University,NAIA,MI,"Tecumseh, Ontario",
-Shawn Grandmont,IF,R,R,Senior,Northwest Nazarene University,NCAA: Division 2,ID,"Lethbridge, Alberta",
-Andrew Grieder,LHP,L,L,Senior,Oklahoma Wesleyan University,NAIA,OK,Spruce Grove,
-Colton Harold,OF,,,Senior,Northwestern College,NAIA,IA,"Abbotsford, British Columbia",
-Jameson Hart,OF/RHP,L,R,Senior,William Penn University,NAIA,IA,"Sarnia, Ontario",
-Max Hewitt,C/INF,L,R,Senior,Oklahoma State University,NCAA: Division 1,OK,"Midhurst, Ontario",
-Matt Hilderbrandt,DH,L,R,Senior,Limestone University,NCAA: Division 2,SC,"Bowmanville, Ontario",
-Jason Hill,INF,L,R,Senior,Central Washington University,NCAA: Division 2,WA,"Surrey, British Columbia",
-William Hlady,RHP,R,R,Senior,Valley City State University,NAIA,ND,"Dauphin, Manitoba",
-Tyler Hoefer,RHP/INF,R,R,Senior,Central Washington University,NCAA: Division 2,WA,"Delta, British Columbia",
-Ryan Humeniuk,OF,,,Senior,University of Louisiana at Monroe,NCAA: Division 1,LA,"Stonewall, Manitoba",
-Corey Jackson,RHP,R,R,Senior,Bellevue University,NAIA,NE,"Calgary, Alberta",
-Owen Jansen,2B/3B,L,R,Senior,Saint Leo University,NCAA: Division 2,FL,"Oakville, Ontario",
-Riley Jepson,OF,L,R,Senior,University of Texas at Tyler,NCAA: Division 2,TX,"Kamloops, British Columbia",
-Ethan Jodouin,1B,L,R,Senior,Cleary University,NAIA,MI,"Sudbury, Ontario",
-Alex Jones,LHP,L,L,Senior,Niagara University,NCAA: Division 1,NY,"Bowmanville, Ontario",
-Griffin Keller,UTL,,,Senior,Georgia Gwinnett College,NAIA,GA,"Pilot Butte, Saskatchewan",
-Justin King,OF,,,Senior,University of Louisiana at Monroe,NCAA: Division 1,LA,"Okotoks, Alberta",
-Ben Komonosky,C,R,R,Senior,University of Evansville,NCAA: Division 1,IN,"Regina, Saskatchewan",
-Gibson Krzeminski,OF/3B,S,R,Senior,Canisius College,NCAA: Division 1,NY,"Tecumseh, Ontario",
-Keegan Kwong,OF/RHP,R,R,Senior,Goshen College,NAIA,IN,"Edmonton, Alberta",
-David LeBlanc,OF,R,R,Senior,Husson University,NCAA: Division 3,ME,"Beaumont, Alberta",
-Marc Lebreux,OF,L,R,Senior,University of Virginia,NCAA: Division 1,VA,"Montreal, Quebec",
-Daniel Lichty,IF,S,R,Senior,Huntington University,NAIA,IN,"Denfield, Ontario",
-Eric Lindsay,RHP,R,R,Senior,Friends University,NAIA,KS,"Cambridge, Ontario",
-Shaun Logan,,,,Senior,University of Dubuque,NCAA: Division 3,IA,Calgary,
-Alex MacKinnon,RHP,R,R,Senior,Niagara University,NCAA: Division 1,NY,"Aurora, Ontario",
+Cameron Dyck,RHP,R,R,Senior,Niagara University,NCAA: Division 1,NY,"Oakville, Ontario",https://stats.ncaa.org/player/index?id=14781&org_id=482&stats_player_seq=1991374&year_stat_category_id=14644
+Martin Eckard,RHP,R,R,Senior,Indiana Tech,NAIA,IN,"Victoria, British Columbia",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1692&plr=178255&reportName=BA_PP_P_GBG_DAN_PITCHING
+Canice Ejoh,OF,R,R,Senior,Seton Hill University,NCAA: Division 2,PA,"Brampton, Ontario",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=30063&stats_player_seq=1978236
+Jesse Elliott,INF,,,Senior,University of Charleston,NCAA: Division 2,WV,"Ajax, Ontario",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=1013&stats_player_seq=1886574
+Ben Erwin,RHP,R,R,Senior,Niagara University,NCAA: Division 1,NY,"Spruce Grove, Alberta",https://stats.ncaa.org/player/index?id=15580&org_id=482&stats_player_seq=1991372&year_stat_category_id=14841
+Thomas Espig,LHP,R,L,Senior,Yale University,NCAA: Division 1,CT,"Vancouver, British Columbia",https://stats.ncaa.org/player/index?id=15204&org_id=813&stats_player_seq=1888439&year_stat_category_id=14761
+Chris Ewanik,INF/OF,L,R,Senior,Husson University,NCAA: Division 3,ME,"Spruce Grove, Alberta",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=1133&stats_player_seq=2359269
+George Farid,3B,R,R,Senior,Mississippi College,NCAA: Division 2,MS,"Mississauga, Ontario",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=429&stats_player_seq=2319015
+Zac Fascia,C,L,R,Senior,Purdue University,NCAA: Division 1,IN,"Brampton, Ontario",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=559&stats_player_seq=2119767
+Jesse Fishbaum,OF,R,R,Senior,Cleary University,NAIA,MI,"Toronto, Ontario",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=21009&plr=177781
+Mathieu Gauthier,RHP,R,R,Senior,West Texas A&M University,NCAA: Division 2,TX,"Montreal, Quebec",https://stats.ncaa.org/player/index?id=15580&org_id=767&stats_player_seq=1887218&year_stat_category_id=14841
+Brendan Gerbert,INF,R,R,Senior,Point University,NAIA,GA,"Surrey, British Columbia",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=18705&plr=188272
+Julien Giroux-Harvey,OF/RHP,L,R,Senior,Saint Michael's College,NCAA: Division 2,VT,"Montreal, Québec","https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=613&stats_player_seq=1985012,https://stats.ncaa.org/player/index?id=15580&org_id=613&stats_player_seq=1985012&year_stat_category_id=14841"
+Daniel Gore,RHP,R,R,Senior,Madonna University,NAIA,MI,"Tecumseh, Ontario",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1715&plr=169455&reportName=BA_PP_P_GBG_DAN_PITCHING
+Shawn Grandmont,IF,R,R,Senior,Northwest Nazarene University,NCAA: Division 2,ID,"Lethbridge, Alberta",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=1274&stats_player_seq=2129137
+Andrew Grieder,LHP,L,L,Senior,Oklahoma Wesleyan University,NAIA,OK,Spruce Grove,http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1749&plr=196037&reportName=BA_PP_P_GBG_DAN_PITCHING
+Colton Harold,OF,,,Senior,Northwestern College,NAIA,IA,"Abbotsford, British Columbia",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1742&plr=154508
+Jameson Hart,OF/RHP,L,R,Senior,William Penn University,NAIA,IA,"Sarnia, Ontario","http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1823&plr=189657,http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1823&plr=189657&reportName=BA_PP_P_GBG_DAN_PITCHING"
+Max Hewitt,C/INF,L,R,Senior,Oklahoma State University,NCAA: Division 1,OK,"Midhurst, Ontario",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=521&stats_player_seq=1978016
+Matt Hilderbrandt,DH,L,R,Senior,Limestone University,NCAA: Division 2,SC,"Bowmanville, Ontario",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=1174&stats_player_seq=2128938
+Jason Hill,INF,L,R,Senior,Central Washington University,NCAA: Division 2,WA,"Surrey, British Columbia",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=1010&stats_player_seq=2137210
+William Hlady,RHP,R,R,Senior,Valley City State University,NAIA,ND,"Dauphin, Manitoba",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1809&plr=181448&reportName=BA_PP_P_GBG_DAN_PITCHING
+Tyler Hoefer,RHP/INF,R,R,Senior,Central Washington University,NCAA: Division 2,WA,"Delta, British Columbia","https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=1010&stats_player_seq=1884526,https://stats.ncaa.org/player/index?id=15580&org_id=1010&stats_player_seq=1884526&year_stat_category_id=14841"
+Ryan Humeniuk,OF,,,Senior,University of Louisiana at Monroe,NCAA: Division 1,LA,"Stonewall, Manitoba",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=498&stats_player_seq=2140005
+Corey Jackson,RHP,R,R,Senior,Bellevue University,NAIA,NE,"Calgary, Alberta",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1623&plr=183108&reportName=BA_PP_P_GBG_DAN_PITCHING
+Owen Jansen,2B/3B,L,R,Senior,Saint Leo University,NCAA: Division 2,FL,"Oakville, Ontario",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=608&stats_player_seq=1988218
+Riley Jepson,OF,L,R,Senior,University of Texas at Tyler,NCAA: Division 2,TX,"Kamloops, British Columbia",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=30028&stats_player_seq=2322167
+Ethan Jodouin,1B,L,R,Senior,Cleary University,NAIA,MI,"Sudbury, Ontario",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=21009&plr=165812
+Alex Jones,LHP,L,L,Senior,Niagara University,NCAA: Division 1,NY,"Bowmanville, Ontario",https://stats.ncaa.org/player/index?id=15580&org_id=482&stats_player_seq=1991367&year_stat_category_id=14841
+Griffin Keller,UTL,,,Senior,Georgia Gwinnett College,NAIA,GA,"Pilot Butte, Saskatchewan",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=18986&plr=194728
+Justin King,OF,,,Senior,University of Louisiana at Monroe,NCAA: Division 1,LA,"Okotoks, Alberta",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=498&stats_player_seq=2468587
+Ben Komonosky,C,R,R,Senior,University of Evansville,NCAA: Division 1,IN,"Regina, Saskatchewan",https://stats.ncaa.org/player/index?game_sport_year_ctl_id=15580&org_id=219&stats_player_seq=2141228
+Gibson Krzeminski,OF/3B,S,R,Senior,Canisius College,NCAA: Division 1,NY,"Tecumseh, Ontario",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=116&stats_player_seq=2308965
+Keegan Kwong,OF/RHP,R,R,Senior,Goshen College,NAIA,IN,"Edmonton, Alberta","http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1678&plr=170145,http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1678&plr=170145&reportName=BA_PP_P_GBG_DAN_PITCHING"
+David LeBlanc,OF,R,R,Senior,Husson University,NCAA: Division 3,ME,"Beaumont, Alberta",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=1133&stats_player_seq=2152386
+Marc Lebreux,OF,L,R,Senior,University of Virginia,NCAA: Division 1,VA,"Montreal, Quebec",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=746&stats_player_seq=2306460
+Daniel Lichty,IF,S,R,Senior,Huntington University,NAIA,IN,"Denfield, Ontario",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1688&plr=155484
+Eric Lindsay,RHP,R,R,Senior,Friends University,NAIA,KS,"Cambridge, Ontario",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1674&plr=186327&reportName=BA_PP_P_GBG_DAN_PITCHING
+Shaun Logan,,,,Senior,University of Dubuque,NCAA: Division 3,IA,Calgary,https://stats.ncaa.org/player/index?id=15580&org_id=192&stats_player_seq=1986953&year_stat_category_id=14841
+Alex MacKinnon,RHP,R,R,Senior,Niagara University,NCAA: Division 1,NY,"Aurora, Ontario",https://stats.ncaa.org/player/index?id=15580&org_id=482&stats_player_seq=1874114&year_stat_category_id=14841
 Matthew Malgi,IF,L,R,Senior,Saginaw Valley State University,NCAA: Division 2,MI,"Woodbridge, Ontario",
-Benjamin Marsh,LHP,L,L,Senior,State University of New York at Oneonta,NCAA: Division 3,NY,"Halifax, Nova Scotia",
-Jacob Martins,IF,R,R,Senior,Canisius College,NCAA: Division 1,NY,"Richmond Hill, Ontario",
-Parker McRae,RHP,R,R,Senior,University of Mary,NCAA: Division 2,ND,"Nipawin, Saskatchewan",
-Tate Morrell,OF,L,R,Senior,Missouri University of Science and Technology,NCAA: Division 2,MO,"Lloydminster, Alberta",
-Kobe Morris,INF,,,Senior,Southern Arkansas University,NCAA: Division 2,AR,"Victoria, British Colombia",
-Rhys Morris,RHP,R,R,Senior,"University of Minnesota, Morris",NCAA: Division 3,MN,"Winnipeg, Manitoba",
-Noah Myers,OF,L,R,Senior,University of South Carolina,NCAA: Division 1,SC,"Wyoming, Ontario",
-Jakob Newton,OF,,,Senior,Florida Institute of Technology,NCAA: Division 2,FL,Oakville,
-Jonah Offman,RHP,-,R,Senior,Johns Hopkins University,NCAA: Division 3,MD,"Thornhill, Ontario",
-Grant Okawa,IF,R,R,Senior,University of Jamestown,NAIA,ND,"Mississauga, Ontario",
-Yi-Fan Pan,INF,R,R,Senior,Central Washington University,NCAA: Division 2,WA,"Langley, British Columbia",
-Konner Piotto,C,,,Senior,Wright State University,NCAA: Division 1,OH,Abbotsford BC,
-Aaron Pugh,RHP,R,R,Senior,University of Jamestown,NAIA,ND,"Boissevain, Manitoba",
-Tanner Rempel,C,R,R,Senior,Colorado Mesa University,NCAA: Division 2,CO,"Abbotsford, British Columbia",
-Devon Robb,RHP,R,R,Senior,Ohio Dominican University,NCAA: Division 2,OH,Kingston,
-Daniel Rockwell,INF,L,R,Senior,Mount Marty College,NAIA,SD,"Victoria, British Columbia",
-Tyler Schindel,OF,L,R,Senior,San Diego Christian College,NAIA,CA,"Victoria, British Columbia",
-Tyler Scott,IF,R,R,Senior,Bryan College,NAIA,TN,"Calgary, Alberta",
-Ari Sechopoulos,1B,,,Senior,College of Charleston,NCAA: Division 1,SC,"Windsor, Ontario",
-Nick Seginowich,C,R,R,Senior,Angelo State University,NCAA: Division 2,TX,"Victoria, British Columbia",
-Austin Skelhorn,RHP,R,R,Senior,Ottawa University,NAIA,KS,"Aurora, Ontario",
-Ethan Skuija,RHP,R,R,Senior,"California State University, Bakersfield",NCAA: Division 1,CA,"Victoria, British Columbia",
-Kyle Smyth,RHP,L,R,Senior,Niagara University,NCAA: Division 1,NY,"Whitby, Ontario",
-Chase Stewart,RHP,R,R,Senior,Mercyhurst University,NCAA: Division 2,PA,"Abbostsford, British Columbia",
-Mat Szabo,RHP,L,R,Senior,Angelo State University,NCAA: Division 2,TX,"Sarnia, Ontario",
-Austin Tambellini,LHP,L,L,Senior,"Louisiana State University, Shreveport",NAIA,LA,"Nelson, British Columbia",
-Ben Teplin,INF,R,R,Senior,Indiana University of Pennsylvania,NCAA: Division 2,PA,"Richmond Hill, Ontario",
-Joe Tevlin,C,R,R,Senior,Niagara University,NCAA: Division 1,NY,"Toronto, Ontario",
-Jonathan Thibodeau,C,R,R,Senior,University of West Alabama,NCAA: Division 2,AL,"Burlington, Ontario",
-Eric Thrower,OF,R,R,Senior,Georgetown College,NAIA,KY,Toronto,
-David Tongue,RHP,R,R,Senior,Southwest Baptist University,NCAA: Division 2,MO,"Kelowna, British Columbia",
-Sam Turcotte,RHP,L,R,Senior,Stony Brook University,NCAA: Division 1,NY,"Toronto, Ontario",
-Daniel Warkentin,IF,R,R,Senior,Eastern Michigan University,NCAA: Division 1,MI,"Leamington, Ontario",
-Jayson Wilbur,LHP,R,L,Senior,Indiana University of Pennsylvania,NCAA: Division 2,PA,"Courtice, Ontario",
-Jake Wilson,OF,,,Senior,Liberty University,NCAA: Division 1,VA,"New Lowell, Ontario",
-Tyler Wood,SS,L,R,Senior,McPherson College,NAIA,KS,"Winnipeg, Manitoba",
-Max Wright,C/OF,L,R,Senior,Indiana State University,NCAA: Division 1,IN,"Toronto, Ontario",
-Tysen Appel,RHP,R,R,,Williston State,JUCO: Division 2,ND,"Saskatoon, Saskatchewan",
-Andrew Baum,RHP,R,R,,Williston State,JUCO: Division 2,ND,"Saskatoon, Saskatchewan",
-Bryce Franklin,1B,R,R,,Williston State,JUCO: Division 2,ND,"Victoria, British Columbia",
-Kobe Fredland,RHP,R,R,,Williston State,JUCO: Division 2,ND,"Okotoks, Alberta",
-Ben Hul,OF,R,R,,Williston State,JUCO: Division 2,ND,"Calgary, Alberta",
-Derek Palmiere,RHP,R,R,,Williston State,JUCO: Division 2,ND,"Okotoks, Alberta",
-Justen Teshe,RHP,R,R,,Williston State,JUCO: Division 2,ND,"Saskatoon, Saskatchewan",
-Logan Warkentin,OF/RHP,R,R,,Williston State,JUCO: Division 2,ND,"Winnipeg, Manitoba",
+Benjamin Marsh,LHP,L,L,Senior,State University of New York at Oneonta,NCAA: Division 3,NY,"Halifax, Nova Scotia",https://stats.ncaa.org/player/index?id=15580&org_id=526&stats_player_seq=2320340&year_stat_category_id=14841
+Jacob Martins,IF,R,R,Senior,Canisius College,NCAA: Division 1,NY,"Richmond Hill, Ontario",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=116&stats_player_seq=1978237
+Parker McRae,RHP,R,R,Senior,University of Mary,NCAA: Division 2,ND,"Nipawin, Saskatchewan",https://stats.ncaa.org/player/index?id=15580&org_id=30075&stats_player_seq=2148832&year_stat_category_id=14841
+Tate Morrell,OF,L,R,Senior,Missouri University of Science and Technology,NCAA: Division 2,MO,"Lloydminster, Alberta",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=435&stats_player_seq=2324948
+Kobe Morris,INF,,,Senior,Southern Arkansas University,NCAA: Division 2,AR,"Victoria, British Colombia",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=1376&stats_player_seq=2121006
+Rhys Morris,RHP,R,R,Senior,"University of Minnesota, Morris",NCAA: Division 3,MN,"Winnipeg, Manitoba",https://stats.ncaa.org/player/index?id=15580&org_id=1226&stats_player_seq=2155657&year_stat_category_id=14841
+Noah Myers,OF,L,R,Senior,University of South Carolina,NCAA: Division 1,SC,"Wyoming, Ontario",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=648&stats_player_seq=2304796
+Jakob Newton,OF,,,Senior,Florida Institute of Technology,NCAA: Division 2,FL,Oakville,https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=230&stats_player_seq=1980562
+Jonah Offman,RHP,-,R,Senior,Johns Hopkins University,NCAA: Division 3,MD,"Thornhill, Ontario",https://stats.ncaa.org/player/index?id=15580&org_id=322&stats_player_seq=2000129&year_stat_category_id=14841
+Grant Okawa,IF,R,R,Senior,University of Jamestown,NAIA,ND,"Mississauga, Ontario",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1699&plr=169341
+Yi-Fan Pan,INF,R,R,Senior,Central Washington University,NCAA: Division 2,WA,"Langley, British Columbia",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=1010&stats_player_seq=1884520
+Konner Piotto,C,,,Senior,Wright State University,NCAA: Division 1,OH,Abbotsford BC,https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=810&stats_player_seq=2137791
+Aaron Pugh,RHP,R,R,Senior,University of Jamestown,NAIA,ND,"Boissevain, Manitoba",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1699&plr=169349&reportName=BA_PP_P_GBG_DAN_PITCHING
+Tanner Rempel,C,R,R,Senior,Colorado Mesa University,NCAA: Division 2,CO,"Abbotsford, British Columbia",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=11416&stats_player_seq=1778224
+Devon Robb,RHP,R,R,Senior,Ohio Dominican University,NCAA: Division 2,OH,Kingston,https://stats.ncaa.org/player/index?id=15580&org_id=30119&stats_player_seq=2346529&year_stat_category_id=14841
+Daniel Rockwell,INF,L,R,Senior,Mount Marty College,NAIA,SD,"Victoria, British Columbia",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1733&plr=190148
+Tyler Schindel,OF,L,R,Senior,San Diego Christian College,NAIA,CA,"Victoria, British Columbia",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1854&plr=152960
+Tyler Scott,IF,R,R,Senior,Bryan College,NAIA,TN,"Calgary, Alberta",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1636&plr=148216
+Ari Sechopoulos,1B,,,Senior,College of Charleston,NCAA: Division 1,SC,"Windsor, Ontario",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=1014&stats_player_seq=1879321
+Nick Seginowich,C,R,R,Senior,Angelo State University,NCAA: Division 2,TX,"Victoria, British Columbia",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=25&stats_player_seq=2131142
+Austin Skelhorn,RHP,R,R,Senior,Ottawa University,NAIA,KS,"Aurora, Ontario",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1752&plr=187302&reportName=BA_PP_P_GBG_DAN_PITCHING
+Ethan Skuija,RHP,R,R,Senior,"California State University, Bakersfield",NCAA: Division 1,CA,"Victoria, British Columbia",https://stats.ncaa.org/player/index?id=15580&org_id=94&stats_player_seq=2127058&year_stat_category_id=14841
+Kyle Smyth,RHP,L,R,Senior,Niagara University,NCAA: Division 1,NY,"Whitby, Ontario",https://stats.ncaa.org/player/index?id=15580&org_id=482&stats_player_seq=1991309&year_stat_category_id=14841
+Chase Stewart,RHP,R,R,Senior,Mercyhurst University,NCAA: Division 2,PA,"Abbostsford, British Columbia",https://stats.ncaa.org/player/index?id=15580&org_id=408&stats_player_seq=2507497&year_stat_category_id=14841
+Mat Szabo,RHP,L,R,Senior,Angelo State University,NCAA: Division 2,TX,"Sarnia, Ontario",https://stats.ncaa.org/player/index?id=15580&org_id=25&stats_player_seq=2481322&year_stat_category_id=14841
+Austin Tambellini,LHP,L,L,Senior,"Louisiana State University, Shreveport",NAIA,LA,"Nelson, British Columbia",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1710&plr=171313&reportName=BA_PP_P_GBG_DAN_PITCHING
+Ben Teplin,INF,R,R,Senior,Indiana University of Pennsylvania,NCAA: Division 2,PA,"Richmond Hill, Ontario",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=307&stats_player_seq=1996189
+Joe Tevlin,C,R,R,Senior,Niagara University,NCAA: Division 1,NY,"Toronto, Ontario",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=482&stats_player_seq=1874110
+Jonathan Thibodeau,C,R,R,Senior,University of West Alabama,NCAA: Division 2,AL,"Burlington, Ontario",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=358&stats_player_seq=1871202
+Eric Thrower,OF,R,R,Senior,Georgetown College,NAIA,KY,Toronto,http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=1676&plr=172300
+David Tongue,RHP,R,R,Senior,Southwest Baptist University,NCAA: Division 2,MO,"Kelowna, British Columbia",https://stats.ncaa.org/player/index?id=15580&org_id=2755&stats_player_seq=2128294&year_stat_category_id=14841
+Sam Turcotte,RHP,L,R,Senior,Stony Brook University,NCAA: Division 1,NY,"Toronto, Ontario",https://stats.ncaa.org/player/index?id=15580&org_id=683&stats_player_seq=1866153&year_stat_category_id=14841
+Daniel Warkentin,IF,R,R,Senior,Eastern Michigan University,NCAA: Division 1,MI,"Leamington, Ontario",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=204&stats_player_seq=2349393
+Jayson Wilbur,LHP,R,L,Senior,Indiana University of Pennsylvania,NCAA: Division 2,PA,"Courtice, Ontario",https://stats.ncaa.org/player/index?id=15580&org_id=307&stats_player_seq=2328832&year_stat_category_id=14841
+Jake Wilson,OF,,,Senior,Liberty University,NCAA: Division 1,VA,"New Lowell, Ontario",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=355&stats_player_seq=1887417
+Tyler Wood,SS,L,R,Senior,McPherson College,NAIA,KS,"Winnipeg, Manitoba",http://www.dakstats.com/WebSync/Pages/Team/IndividualStats.aspx?association=10&sg=MBA&sea=NAIMBA_2021&team=17742&plr=196633
+Max Wright,C/OF,L,R,Senior,Indiana State University,NCAA: Division 1,IN,"Toronto, Ontario",https://stats.ncaa.org/player/game_by_game?game_sport_year_ctl_id=15580&org_id=305&stats_player_seq=1885508
+Tysen Appel,RHP,R,R,,Williston State,JUCO: Division 2,ND,"Saskatoon, Saskatchewan",https://www.njcaa.org/sports/bsb/2020-21/div2/players/tysenappel1mga?view=gamelog&pos=p
+Andrew Baum,RHP,R,R,,Williston State,JUCO: Division 2,ND,"Saskatoon, Saskatchewan",https://www.njcaa.org/sports/bsb/2020-21/div2/players/andrewbaumnato?view=gamelog&pos=p
+Bryce Franklin,1B,R,R,,Williston State,JUCO: Division 2,ND,"Victoria, British Columbia",https://www.njcaa.org/sports/bsb/2020-21/div2/players/brycefranklindov4?view=gamelog&pos=h
+Kobe Fredland,RHP,R,R,,Williston State,JUCO: Division 2,ND,"Okotoks, Alberta",https://www.njcaa.org/sports/bsb/2020-21/div2/players/kobefredlandk4m5?view=gamelog&pos=p
+Ben Hul,OF,R,R,,Williston State,JUCO: Division 2,ND,"Calgary, Alberta",https://www.njcaa.org/sports/bsb/2020-21/div2/players/benhulbben?view=gamelog&pos=h
+Derek Palmiere,RHP,R,R,,Williston State,JUCO: Division 2,ND,"Okotoks, Alberta",https://www.njcaa.org/sports/bsb/2020-21/div2/players/derekpalmiere3cic?view=gamelog&pos=p
+Justen Teshe,RHP,R,R,,Williston State,JUCO: Division 2,ND,"Saskatoon, Saskatchewan",https://www.njcaa.org/sports/bsb/2020-21/div2/players/justentesheeuxm?view=gamelog&pos=p
+Logan Warkentin,OF/RHP,R,R,,Williston State,JUCO: Division 2,ND,"Winnipeg, Manitoba","https://www.njcaa.org/sports/bsb/2020-21/div2/players/loganwarkentin5bru?view=gamelog&pos=h,https://www.njcaa.org/sports/bsb/2020-21/div2/players/loganwarkentin5bru?view=gamelog&pos=p"
 Stephen Phillips,RHP,,,,Ventura College,California CC,CA,"Vaughan, Ontario",
