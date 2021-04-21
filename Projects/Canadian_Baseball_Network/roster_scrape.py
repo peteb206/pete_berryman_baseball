@@ -85,7 +85,8 @@ def main():
 
     canadians_df = canadians_df[['name','position','class','school','division','state','hometown']] # Keep only relevant columns
 
-    update_gsheet(canadians_df, last_run) # Update Google Sheet
+    if full_run == False:
+        update_gsheet(canadians_df, last_run) # Update Google Sheet
 
     generate_html(canadians_df, 'canadians.html', last_run) # Generate HTML with DataTables
 
