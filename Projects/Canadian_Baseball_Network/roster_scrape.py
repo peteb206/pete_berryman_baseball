@@ -81,6 +81,8 @@ def main():
         canadians_df['last_name'] = canadians_df['name'].str.replace('Š', 'S').str.split(' ').str[1]
         canadians_df = canadians_df.sort_values(by=['class', 'last_name', 'school'], ignore_index=True).drop('last_name', axis=1)
 
+        canadians_df_orig = canadians_df_orig[['name', 'school', 'stats_link']]
+        canadians_df = pd.merge(canadians_df, canadians_df_orig, how='left', on=['name', 'school'])
         canadians_df.to_csv('canadians.csv', index=False) # Export to canadians.csv as a reference
 
     canadians_df = canadians_df[['name','position','class','school','division','state','hometown']] # Keep only relevant columns
@@ -112,7 +114,7 @@ def read_roster_norm(html, school):
     return df
 
 
-def read_roster(school, header):
+def read_roster(session, school, header):
     response = ''
     try_num = 1
     while try_num <= 3: # 3 tries
@@ -121,7 +123,7 @@ def read_roster(school, header):
         except Exception:
             try_num = try_num # Do nothing
         try:
-            response = requests.get(school['roster_link'], headers=header, timeout=10)
+            response = session.get(school['roster_link'], headers=header, timeout=10)
             return read_roster_norm(pd.read_html(response.text), school)
         except Exception as e2:
             if try_num == 1:
@@ -251,6 +253,7 @@ def iterate_over_schools(schools_df):
     schools_to_check_manually = list()
 
     # Set header for requests
+    session = requests.Session()
     header = {
       "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36",
       "X-Requested-With": "XMLHttpRequest"
@@ -265,7 +268,7 @@ def iterate_over_schools(schools_df):
         print_row = '| {} | {} | {} | {} | {} |'.format(str(index).ljust(index_col_length-2), school['title'].ljust(title_col_length-2), '-'*(players_col_length-2), '-'*(canadians_col_length-2), str(school['roster_link']).ljust(roster_link_col_length-2))
         error_message = ''
         try:
-            df = read_roster(school, header)
+            df = read_roster(session, school, header)
             canadian_count = '0'
             if type(df) == type(pd.DataFrame()): # Table(s) exist in HTML
                 # Add team's roster to list 
