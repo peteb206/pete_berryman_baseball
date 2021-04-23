@@ -32,18 +32,6 @@ def check_cpu_and_memory():
 
 def main():
 
-    # Get Team Websites
-    # Only applies for NCAA Divsion 1, NCAA Divsion 2, NCAA Division 3 and NAIA
-    # Re-run this if needed, but most roster links should now be in the CSV files
-    # schools_df = get_team_websites()
-    # schools_df
-
-    # Get Roster Pages
-    # Only applies for NCAA Divsion 1, NCAA Divsion 2, NCAA Division 3 and NAIA
-    # Re-run this if needed, but most roster links should now be in the CSV files
-    # schools_df = get_roster_pages(schools_df)
-    # schools_df
-
     # Get roster sites
     schools_df = pd.read_csv('roster_pages.csv')
     # Ask for input
@@ -82,6 +70,8 @@ def main():
         canadians_df = canadians_df.sort_values(by=['class', 'last_name', 'school'], ignore_index=True).drop('last_name', axis=1)
 
         canadians_df_orig = canadians_df_orig[['name', 'school', 'stats_link']]
+        if 'stats_link' in canadians_df.columns:
+            canadians_df.drop('stats_link', axis=1, inplace=True)
         canadians_df = pd.merge(canadians_df, canadians_df_orig, how='left', on=['name', 'school'])
         canadians_df.to_csv('canadians.csv', index=False) # Export to canadians.csv as a reference
 
@@ -391,7 +381,7 @@ def format_player_hometown(string):
             if city.strip().lower() in hometown_conversion_dict.keys():
                 city = hometown_conversion_dict[city.strip().lower()] # In case province accidentally labeled as city
             return city # No province provided... just return city
-        string = city + ', ' + province
+        string = city if ((city == 'Quebec') & (province == 'Ontario')) else city + ', ' + province # Account for Cowley College's mistake
     else:
         string = no_school
     return string

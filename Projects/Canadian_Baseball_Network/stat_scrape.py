@@ -201,6 +201,31 @@ def convert_dict_list_to_df(dict_list):
     return df
 
 
+def update_gsheet(df):
+    division_list = ['NCAA: Division 1', 'NCAA: Division 2', 'NCAA: Division 3', 'NAIA', 'JUCO: Division 1', 'JUCO: Division 2', 'JUCO: Division 3', 'California CC', 'NW Athletic Conference', 'USCAA']
+    stat_list = ['Games Played (GP)', 'Runs Scored (R)', 'Hits (H)', 'Doubles (2B)', 'Triples (3B)', 'Home Runs (HR)', 'Runs Batted In (RBI)', 'Batting Average (AVG)', 'Stolen Bases (SB)', 'On-Base Percentage (OBP)', 'Slugging Percentage (SLG)', 'On-Base plus Slugging (OPS)', 'Appearances (G)', 'Innings Pitched (IP)', 'Wins (W)', 'Earned Run Average (ERA)', 'Saves (SV)', 'Strikeouts (K)']
+    for division in division_list:
+        print(division)
+        df_by_division = df[df['Division'] == division].copy()
+        for stat in stat_list:
+            df_filtered = df_by_division.copy()
+            ascending_flg = False
+            if stat in ['Batting Average (AVG)', 'On-Base Percentage (OBP)', 'Slugging Percentage (SLG)', 'On-Base plus Slugging (OPS)']:
+                df_filtered = df_filtered[(df_filtered['Hits (H)'] / df_filtered['Batting Average (AVG)'] >= 30) & (df_filtered[stat] > 0)] # At least 30 At Bats
+            elif stat == 'Earned Run Average (ERA)':
+                df_filtered = df_filtered[df_filtered['Innings Pitched (IP)'] >= 20] # At least 20 Innings Pitched
+                ascending_flg = True
+            else:
+                df_filtered = df_filtered[df_filtered[stat] > 0] # Eliminate 0's
+            df_filtered = df_filtered[['Name', 'Position', 'School', stat]]
+            df_filtered.sort_values(by=stat, ascending=ascending_flg, ignore_index=True, inplace=True)
+            display_count = 10 if len(df_filtered.index >= 10) else len(df_filtered.index)
+            if display_count > 0:
+                display(df_filtered.head(display_count))
+                # To Do: include extra players if tie takes beyond 10 players
+                # TBD: thresholds like AVG > 0.250 or ERA < 5.00 (Don't want to flaunt bad stats)
+
+
 # Run main function
 if __name__ == "__main__":
     main()
