@@ -2,10 +2,22 @@ import requests
 import pandas as pd
 import numpy as np
 from bs4 import BeautifulSoup
+import json
 import time
+import datetime
+import pytz
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+import sys
+import os
+import re
+from roster_scrape import clear_sheets, format_headers, resize_columns
 
 
 def main():
+    # Last run:
+    last_run = 'Last updated: {} UTC'.format(datetime.datetime.now(pytz.utc).strftime("%B %d, %Y at %I:%M %p"))
+
     # Start timer
     start_time = time.time()
 
@@ -18,20 +30,29 @@ def main():
     }
 
     summary_dicts = list()
+    full_run = False
+    if len(sys.argv) == 2:
+        if sys.argv[1] == 'y': # Determine if running full web scraper or just updating google sheet
+            full_run = True
 
-    for index, player in players_df.iterrows():
-        if (player['stats_link'] != '') & (type(player['stats_link']) == type('')):
-            for url in player['stats_link'].split(','):
-                print('-------------------------')
-                print(index, player['division'], player['position'], ' --- ', '{} minutes elapsed'.format(str(round((time.time() - start_time) / 60, 1))))
-                stats_df = scrape_sites(session, url, player['division'], header)
-                if len(stats_df.index) > 0:
-                    summary_dicts.append(collect_stats(player, stats_df))
-                else:
-                    print('No stats found for {}'.format(player['name']))
+    if full_run == True:
+        for index, player in players_df.iterrows():
+            if (player['stats_link'] != '') & (type(player['stats_link']) == type('')):
+                for url in player['stats_link'].split(','):
+                    print('-------------------------')
+                    print(index, player['division'], player['position'], ' --- ', '{} minutes elapsed'.format(str(round((time.time() - start_time) / 60, 1))))
+                    stats_df = scrape_sites(session, url, player['division'], header)
+                    if len(stats_df.index) > 0:
+                        summary_dicts.append(collect_stats(player, stats_df))
+                    else:
+                        print('No stats found for {}'.format(player['name']))
 
-    stats_df = convert_dict_list_to_df(summary_dicts)
-    stats_df.to_csv('stats.csv', index=False)
+        stats_df = convert_dict_list_to_df(summary_dicts)
+        stats_df.to_csv('stats.csv', index=False)
+    else:
+        update_gsheet(pd.read_csv('stats.csv'), last_run)
+
+    print('--- Total time: {} minutes ---'.format(str(round((time.time() - start_time) / 60, 1))))
 
 
 def scrape_sites(session, url, division, header):
@@ -92,7 +113,8 @@ def read_table(df):
     out_dict = dict()
     df_to_dict = dict(zip(df['Statistics category'], df['Overall']))
     stats_map = {
-        'Games Played (GP)': 'Games',
+        'Games Played (G)': 'Games',
+        'At Bats (AB)': 'At Bats',
         'Runs Scored (R)': 'Runs',
         'Hits (H)': 'Hits',
         'Doubles (2B)': 'Doubles',
@@ -122,7 +144,8 @@ def read_ncaa_table(df):
     out_dict = dict()
     df_to_dict = df[df['Year'] == '2020-21'].to_dict('records')
     stats_map = {
-        'Games Played (GP)': 'GP',
+        'Games Played (G)': 'GP',
+        'At Bats (AB)': 'AB',
         'Runs Scored (R)': 'R',
         'Hits (H)': 'H',
         'Doubles (2B)': '2B',
@@ -154,7 +177,8 @@ def read_naia_table(df):
     out_dict = dict()
     df_to_dict = df[df['Opponent'] == 'TOTALS'].to_dict('records')
     stats_map = {
-        'Games Played (GP)': 'G',
+        'Games Played (G)': 'G',
+        'At Bats (AB)': 'At Bats',
         'Runs Scored (R)': 'R',
         'Hits (H)': 'H',
         'Doubles (2B)': '2B',
@@ -172,7 +196,10 @@ def read_naia_table(df):
         'Strikeouts (K)': 'K'
     }
 
-    # TO DO: ensure logs are 2021
+    # Ensure logs are 2021
+    if len(df[df['Date'].str.endswith('2021', na=False)].index) == 0:
+        print('Not showing 2021 stats...')
+        return dict()
 
     if len(df_to_dict) > 0:
         df_to_dict = df_to_dict[0]
@@ -181,6 +208,7 @@ def read_naia_table(df):
                 out_dict[stat_out] = df_to_dict[stat_in]
 
     if 'Slg%' in df_to_dict.keys(): # manually calculate OBP
+        df_to_dict['Appearances (G)'] = 0 # make sure position players are not credited with Appearances
         hits, walks, hbp, ab, sf = int(df_to_dict['H']), int(df_to_dict['BB']), int(df_to_dict['HBP']), int(df_to_dict['AB']), int(df_to_dict['SF'])
         numerator, denominator = hits + walks + hbp, ab + walks + hbp + sf
         if denominator > 0:
@@ -192,8 +220,7 @@ def read_naia_table(df):
 def convert_dict_list_to_df(dict_list):
     df = pd.DataFrame(dict_list)
     df.replace(r'^-$', 0, regex=True, inplace=True)
-    df.fillna(0, inplace=True)
-    for col in ['Games Played (GP)', 'Runs Scored (R)', 'Hits (H)', 'Doubles (2B)', 'Triples (3B)', 'Home Runs (HR)', 'Runs Batted In (RBI)', 'Stolen Bases (SB)', 'Appearances (G)', 'Wins (W)', 'Saves (SV)', 'Strikeouts (K)']:
+    for col in ['Games Played (G)', 'Runs Scored (R)', 'Hits (H)', 'Doubles (2B)', 'Triples (3B)', 'Home Runs (HR)', 'Runs Batted In (RBI)', 'Stolen Bases (SB)', 'Appearances (G)', 'Wins (W)', 'Saves (SV)', 'Strikeouts (K)']:
         df[col] = df[col].astype(int)
     for col in ['Innings Pitched (IP)', 'Earned Run Average (ERA)', 'Batting Average (AVG)', 'On-Base Percentage (OBP)', 'Slugging Percentage (SLG)']:
         df[col] = df[col].astype(float)
@@ -201,29 +228,93 @@ def convert_dict_list_to_df(dict_list):
     return df
 
 
-def update_gsheet(df):
+def update_gsheet(df, last_run):
+    blank_row = [['', '', '', '', '']]
+
+    # define the scope
+    scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
+
+    # add credentials to the account
+    keyfile_dict = json.loads(os.environ.get('KEYFILE'))
+    creds = ServiceAccountCredentials.from_json_keyfile_dict(keyfile_dict, scope)
+
+    # authorize the clientsheet 
+    client = gspread.authorize(creds)
+
+    # get the instance of the Spreadsheet
+    sheet = client.open(os.environ.get('SHEET_NAME'))
+
+    # get the sheets of the Spreadsheet
+    stats_sheet = sheet.worksheet('Stats')
+    stats_sheet_id = stats_sheet._properties['sheetId']
+
+    # clear values in sheet
+    clear_sheets(sheet, [stats_sheet_id])
+
+    # initialize summary data
+    summary_data = [['By Pete Berryman', '', '', '', last_run], ['Canadian Baseball Network', '', '', '', '']]
+
+    # Add title row
+    stats_data = list()
+
     division_list = ['NCAA: Division 1', 'NCAA: Division 2', 'NCAA: Division 3', 'NAIA', 'JUCO: Division 1', 'JUCO: Division 2', 'JUCO: Division 3', 'California CC', 'NW Athletic Conference', 'USCAA']
-    stat_list = ['Games Played (GP)', 'Runs Scored (R)', 'Hits (H)', 'Doubles (2B)', 'Triples (3B)', 'Home Runs (HR)', 'Runs Batted In (RBI)', 'Batting Average (AVG)', 'Stolen Bases (SB)', 'On-Base Percentage (OBP)', 'Slugging Percentage (SLG)', 'On-Base plus Slugging (OPS)', 'Appearances (G)', 'Innings Pitched (IP)', 'Wins (W)', 'Earned Run Average (ERA)', 'Saves (SV)', 'Strikeouts (K)']
+    stat_list = ['Games Played (G)', 'Runs Scored (R)', 'Hits (H)', 'Doubles (2B)', 'Triples (3B)', 'Home Runs (HR)', 'Runs Batted In (RBI)', 'Batting Average (AVG)', 'Stolen Bases (SB)', 'On-Base Percentage (OBP)', 'Slugging Percentage (SLG)', 'On-Base plus Slugging (OPS)', 'Appearances (G)', 'Innings Pitched (IP)', 'Wins (W)', 'Earned Run Average (ERA)', 'Saves (SV)', 'Strikeouts (K)']
+
     for division in division_list:
-        print(division)
+        added_division_header = False
         df_by_division = df[df['Division'] == division].copy()
         for stat in stat_list:
+            avg_flg = (stat in ['Batting Average (AVG)', 'On-Base Percentage (OBP)', 'Slugging Percentage (SLG)', 'On-Base plus Slugging (OPS)'])
+            era_flg = (stat == 'Earned Run Average (ERA)')
             df_filtered = df_by_division.copy()
             ascending_flg = False
-            if stat in ['Batting Average (AVG)', 'On-Base Percentage (OBP)', 'Slugging Percentage (SLG)', 'On-Base plus Slugging (OPS)']:
+            if avg_flg == True:
                 df_filtered = df_filtered[(df_filtered['Hits (H)'] / df_filtered['Batting Average (AVG)'] >= 30) & (df_filtered[stat] > 0)] # At least 30 At Bats
-            elif stat == 'Earned Run Average (ERA)':
+            elif era_flg == True:
                 df_filtered = df_filtered[df_filtered['Innings Pitched (IP)'] >= 20] # At least 20 Innings Pitched
                 ascending_flg = True
             else:
                 df_filtered = df_filtered[df_filtered[stat] > 0] # Eliminate 0's
-            df_filtered = df_filtered[['Name', 'Position', 'School', stat]]
-            df_filtered.sort_values(by=stat, ascending=ascending_flg, ignore_index=True, inplace=True)
-            display_count = 10 if len(df_filtered.index >= 10) else len(df_filtered.index)
-            if display_count > 0:
-                display(df_filtered.head(display_count))
-                # To Do: include extra players if tie takes beyond 10 players
-                # TBD: thresholds like AVG > 0.250 or ERA < 5.00 (Don't want to flaunt bad stats)
+
+            if len(df_filtered.index) > 0:
+                df_filtered.sort_values(by=stat, ascending=ascending_flg, ignore_index=True, inplace=True)
+
+                cutoff = df_filtered[stat].iloc[9] if len(df_filtered.index) >= 10 else df_filtered[stat].iloc[-1] # TBD: thresholds like AVG > 0.250 or ERA < 5.00 (Don't want to flaunt bad stats)
+                df_filtered = df_filtered[df_filtered[stat] <= cutoff] if stat == 'Earned Run Average (ERA)' else df_filtered[df_filtered[stat] >= cutoff]
+                df_filtered['Rank'] = df_filtered[stat].rank(method='min', ascending=ascending_flg).astype(int)
+                df_filtered = df_filtered[['Rank', 'Name', 'Position', 'School', stat]]
+
+                if len(df_filtered.index) > 0:
+                    if added_division_header == False:
+                        stats_data += [[division, '', '', '', '']]
+                        added_division_header = True
+                    if (avg_flg == True) | (era_flg == True):
+                        float_format = '{0:.3f}' if avg_flg == True else '{0:.2f}'
+                        df_filtered = df_filtered[stat].applymap(lambda x: float_format.format(x)) # Format decimal as string with 2 or 3 decimals
+                    stats_data += ([[stat, '', '', '', '']] + [df_filtered.columns.values.tolist()] + df_filtered.fillna('').values.tolist() + blank_row)
+
+    # Add data to sheets
+    data = summary_data + blank_row + stats_data
+    stats_sheet.insert_rows(data, row=1)
+
+    # Format division/class headers
+    print('Formatting division headers...')
+    format_headers(sheet, stats_sheet_id, stats_sheet.findall(re.compile(r'^(' + '|'.join(division_list) + r')$')), True, len(blank_row[0]))
+    time.sleep(120) # break up the requests to avoid error
+    print('Formatting stat headers...')
+    format_headers(sheet, stats_sheet_id, stats_sheet.findall(re.compile(r'^(' + '|'.join([stat.replace('(', '\(').replace(')', '\)') for stat in stat_list]) + r')$'), in_column=1), False, len(blank_row[0]))
+    time.sleep(120) # break up the requests to avoid error
+    print('Miscellaneous formatting...')
+    stats_sheet.format('A1:A{}'.format(len(summary_data)), {'textFormat': {'bold': True}}) # bold Summary text
+    stats_sheet.format('D1:D1', {'backgroundColor': {'red': 1, 'green': 0.95, 'blue': 0.8}}) # light yellow background color
+    stats_sheet.format('A{}:E{}'.format(len(summary_data) + 1, len(data)), {'horizontalAlignment': 'CENTER', 'verticalAlignment': 'MIDDLE'}) # center all cells
+    stats_sheet.format('E1:E1', {'horizontalAlignment': 'CENTER'}) # center some other cells
+
+    # Resize columns and re-size sheets
+    stats_sheet.resize(rows=len(data))
+    resize_columns(sheet, stats_sheet_id, {'Rank': 20, 'Name': 160, 'Position': 75, 'School': 295, 'Stat': 280})
+
+    print('Done!\n')
 
 
 # Run main function

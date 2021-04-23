@@ -42,7 +42,7 @@ def main():
         full_run = False
 
     # Last run:
-    last_run = 'Last updated: {} UTC'.format(datetime.datetime.now(pytz.utc).strftime("%B %-d, %Y at %-I:%M %p"))
+    last_run = 'Last updated: {} UTC'.format(datetime.datetime.now(pytz.utc).strftime("%B %d, %Y at %I:%M %p"))
     logger.info('')
     logger.info(last_run)
 
@@ -80,7 +80,7 @@ def main():
     if full_run == False:
         update_gsheet(canadians_df, last_run) # Update Google Sheet
 
-    generate_html(canadians_df, 'canadians.html', last_run) # Generate HTML with DataTables
+    # generate_html(canadians_df, 'canadians.html', last_run) # Generate HTML with DataTables
 
     logger.info('')
     logger.info('{} Canadian players found...'.format(str(len(canadians_df.index))))
@@ -602,19 +602,19 @@ def update_gsheet(df, last_run):
     players_sheet.insert_rows(data, row=1)
 
     # Format division/class headers
-    format_headers(sheet, players_sheet_id, players_sheet.findall(re.compile(r'^(' + '|'.join(division_list) + r')$')), True)
+    format_headers(sheet, players_sheet_id, players_sheet.findall(re.compile(r'^(' + '|'.join(division_list) + r')$')), True, len(blank_row[0]))
     time.sleep(120) # break up the requests to avoid error
-    format_headers(sheet, players_sheet_id, players_sheet.findall(re.compile(r'^(' + '|'.join(['Freshmen', 'Sophomores', 'Juniors', 'Seniors']) + r')$')), False)
+    format_headers(sheet, players_sheet_id, players_sheet.findall(re.compile(r'^(' + '|'.join(['Freshmen', 'Sophomores', 'Juniors', 'Seniors']) + r')$')), False, len(blank_row[0]))
     time.sleep(120) # break up the requests to avoid error
     players_sheet.format('A1:A{}'.format(len(summary_data)), {'textFormat': {'bold': True}}) # bold Summary text
     players_sheet.format('E1:E1', {'backgroundColor': {'red': 1, 'green': 0.95, 'blue': 0.8}}) # light yellow background color
     players_sheet.format('A4:B4', {'backgroundColor': {'red': 0.92, 'green': 0.92, 'blue': 0.92}}) # light grey background color
     players_sheet.format('A{}:E{}'.format(len(summary_data) + 1, len(data)), {'horizontalAlignment': 'CENTER', 'verticalAlignment': 'MIDDLE'}) # center all cells
-    players_sheet.format('A1:E1', {'horizontalAlignment': 'CENTER'}) # center some other cells
+    players_sheet.format('E1:E1', {'horizontalAlignment': 'CENTER'}) # center some other cells
 
     # Resize columns and re-size sheets
     players_sheet.resize(rows=len(data))
-    resize_columns(sheet, players_sheet_id)
+    resize_columns(sheet, players_sheet_id, {'Name': 160, 'Position': 75, 'School': 295, 'State': 40, 'Hometown': 340})
 
     logger.info('Google sheet updated with {} players...'.format(str(len(df.index))))
 
@@ -635,16 +635,9 @@ def clear_sheets(spreadsheet, sheet_ids):
     spreadsheet.batch_update(body)
 
 
-def resize_columns(spreadsheet, sheet_id):
-    col_widths = {
-        'Name': 160,
-        'Position': 75,
-        'School': 295,
-        'State': 40,
-        'Hometown': 340
-    }
+def resize_columns(spreadsheet, sheet_id, col_widths_dict):
     col = 0
-    for width in col_widths.values():
+    for width in col_widths_dict.values():
         body = {
             'requests': [
                 {
@@ -667,7 +660,7 @@ def resize_columns(spreadsheet, sheet_id):
         col += 1
 
 
-def format_headers(spreadsheet, sheet_id, occurrences, division_header):
+def format_headers(spreadsheet, sheet_id, occurrences, division_header, number_of_cols):
     color = 0.8
     font_size = 20
     if division_header == False:
@@ -677,7 +670,7 @@ def format_headers(spreadsheet, sheet_id, occurrences, division_header):
     range = {
         'sheetId': sheet_id,
         'startColumnIndex': 0,
-        'endColumnIndex': 5
+        'endColumnIndex': number_of_cols
     }
 
     body = dict()
@@ -735,7 +728,7 @@ def format_headers(spreadsheet, sheet_id, occurrences, division_header):
                 }
             ]
             spreadsheet.batch_update(body)
-            time.sleep(5)
+            time.sleep(2.5)
 
 
 def csv_to_dict_list(csv_file):
