@@ -315,13 +315,13 @@ def update_gsheet(df, last_run):
     time.sleep(120) # break up the requests to avoid error
     print('Miscellaneous formatting...')
     stats_sheet.format('A1:A{}'.format(len(summary_data)), {'textFormat': {'bold': True}}) # bold Summary text
-    stats_sheet.format('D1:D1', {'backgroundColor': {'red': 1, 'green': 0.95, 'blue': 0.8}}) # light yellow background color
+    stats_sheet.format('E1:E1', {'backgroundColor': {'red': 1, 'green': 0.95, 'blue': 0.8}}) # light yellow background color
     stats_sheet.format('A{}:E{}'.format(len(summary_data) + 1, len(data)), {'horizontalAlignment': 'CENTER', 'verticalAlignment': 'MIDDLE'}) # center all cells
     stats_sheet.format('E1:E1', {'horizontalAlignment': 'CENTER'}) # center some other cells
 
     # Resize columns and re-size sheets
     stats_sheet.resize(rows=len(data))
-    resize_columns(sheet, stats_sheet_id, {'Rank': 20, 'Name': 160, 'Position': 75, 'School': 295, 'Stat': 280})
+    resize_columns(sheet, stats_sheet_id, {'Rank': 50, 'Name': 160, 'Position': 75, 'School': 295, 'Stat': 280})
 
     print('Done!\n')
 
