@@ -290,7 +290,7 @@ def update_gsheet(df, last_run):
                 cutoff = df_filtered[stat].iloc[9] if len(df_filtered.index) >= 10 else df_filtered[stat].iloc[-1] # TBD: thresholds like AVG > 0.250 or ERA < 5.00 (Don't want to flaunt bad stats)
                 df_filtered = df_filtered[df_filtered[stat] <= cutoff] if stat == 'Earned Run Average (ERA)' else df_filtered[df_filtered[stat] >= cutoff]
                 df_filtered['Rank'] = df_filtered[stat].rank(method='min', ascending=ascending_flg).astype(int)
-                df_filtered['Rank'] = np.nan if df_filtered['Rank'].eq(df_filtered['Rank'].shift()) else df_filtered['Rank']
+                df_filtered['Rank'] = np.where(df_filtered['Rank'].eq(df_filtered['Rank'].shift()), np.nan, df_filtered['Rank'])
                 df_filtered = df_filtered[['Rank', 'Name', 'Position', 'School', stat]]
 
                 if len(df_filtered.index) > 0:
