@@ -1,4 +1,4 @@
-name: cbn-scrape-full-test
+name: cbn-scrape-roster-test
 on: workflow_dispatch
 jobs:
    build:
