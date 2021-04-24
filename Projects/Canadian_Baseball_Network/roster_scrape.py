@@ -604,7 +604,7 @@ def update_gsheet(df, last_run):
 
         coaches_split_div = coaches[coaches['division'] == division].drop(['division'], axis=1)
         if len(coaches_split_div.index) > 0:
-            coach_data += ([[division, '', '', '', '']] + coaches_split_div.columns.values.tolist() + coaches_split_div.values.tolist() + blank_row)
+            coach_data += ([[division, '', '', '', '']] + [coaches_split_div.columns.values.tolist()] + coaches_split_div.values.tolist() + blank_row)
 
     # Add data to sheets
     data = summary_data + blank_row + player_data + coach_data
