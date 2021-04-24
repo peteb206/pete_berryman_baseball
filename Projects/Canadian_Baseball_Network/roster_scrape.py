@@ -567,18 +567,23 @@ def update_gsheet(df, last_run):
     # Add title row
     col_headers = [[col[0].upper() + col[1:] for col in df.drop(['division', 'class'], axis=1).columns.values.tolist()]]
     player_data = list()
+    coach_data = [['Coaches', '', '', '', '']] + blank_row
+    coaches = pd.read_csv('coaches.csv')
 
     division_list = ['NCAA: Division 1', 'NCAA: Division 2', 'NCAA: Division 3', 'NAIA', 'JUCO: Division 1', 'JUCO: Division 2', 'JUCO: Division 3', 'California CC', 'NW Athletic Conference', 'USCAA']
     class_list = ['Freshman', 'Sophomore', 'Junior', 'Senior']
 
     # Loop through divisions
     for division in division_list:
-
-        # Row/Division Header
-        player_data += [[division, '', '', '', '']]
+        added_division_header = False
 
         # Subset dataframe
         df_split_div = df[df['division'] == division].drop(['division'], axis=1)
+        if len(df_split_div.index) > 0:
+            # Row/Division Header
+            player_data += [[division, '', '', '', '']]
+            added_division_header = True
+
         for class_year in class_list:
             df_split_class = pd.DataFrame()
             if class_year == 'Freshman':
@@ -597,11 +602,16 @@ def update_gsheet(df, last_run):
         if len(df_split_div.index) > 0:
             summary_data.append([division + ' ', '{} players'.format(str(len(df_split_div.index))), '', '', ''])
 
+        coaches_split_div = coaches[coaches['division'] == division]
+        if len(coaches_split_div.index) > 0:
+            coach_data += ([[division, '', '', '', '']] + coaches_split_div.values.tolist() + blank_row)
+
     # Add data to sheets
-    data = summary_data + blank_row + player_data
+    data = summary_data + blank_row + player_data + coach_data
     players_sheet.insert_rows(data, row=1)
 
     # Format division/class headers
+    division_list.append('Coaches')
     format_headers(sheet, players_sheet_id, players_sheet.findall(re.compile(r'^(' + '|'.join(division_list) + r')$')), True, len(blank_row[0]))
     time.sleep(120) # break up the requests to avoid error
     format_headers(sheet, players_sheet_id, players_sheet.findall(re.compile(r'^(' + '|'.join(['Freshmen', 'Sophomores', 'Juniors', 'Seniors']) + r')$')), False, len(blank_row[0]))

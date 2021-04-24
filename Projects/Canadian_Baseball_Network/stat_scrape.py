@@ -297,9 +297,11 @@ def update_gsheet(df, last_run):
                     if added_division_header == False:
                         stats_data += [[division, '', '', '', '']]
                         added_division_header = True
-                    if (avg_flg == True) | (era_flg == True):
-                        float_format = '{0:.3f}' if avg_flg == True else '{0:.2f}'
-                        df_filtered[stat] = df_filtered[stat].apply(lambda x: float_format.format(x)) # Format decimal as string with 2 or 3 decimals
+                    if avg_flg == True:
+                        df_filtered[stat] = df_filtered[stat].apply(lambda x: '{0:.3f}'.format(x))
+                        df_filtered[stat] = np.where(df_filtered[stat].str[0] == '0', df_filtered[stat].str[1:], df_filtered[stat])
+                    elif era_flg == True:
+                        df_filtered[stat] = df_filtered[stat].apply(lambda x: '{0:.2f}'.format(x))
                     stats_data += ([[stat, '', '', '', '']] + [df_filtered.columns.values.tolist()] + df_filtered.fillna('').values.tolist() + blank_row)
 
     # Add data to sheets
