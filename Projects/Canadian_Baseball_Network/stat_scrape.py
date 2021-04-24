@@ -171,7 +171,7 @@ def read_ncaa_table(df):
                 out_dict[stat_out] = df_to_dict[stat_in]
 
     if 'IP' in df.columns:
-        for key in ['Games Played (G)', 'At Bats (AB)': 'AB', 'Runs Scored (R)': 'R', 'Hits (H)': 'H', 'Doubles (2B)': '2B', 'Triples (3B)': '3B', 'Home Runs (HR)': 'HR']:
+        for key in ['Games Played (G)', 'At Bats (AB)', 'Runs Scored (R)', 'Hits (H)', 'Doubles (2B)', 'Triples (3B)', 'Home Runs (HR)']:
             out_dict[key] = 0
 
     return out_dict
@@ -219,7 +219,7 @@ def read_naia_table(df):
             out_dict['On-Base Percentage (OBP)'] = str(round(numerator / denominator, 3))
 
     if 'IP' in df.columns:
-        for key in ['Games Played (G)', 'At Bats (AB)': 'AB', 'Runs Scored (R)': 'R', 'Hits (H)': 'H', 'Doubles (2B)': '2B', 'Triples (3B)': '3B', 'Home Runs (HR)': 'HR']:
+        for key in ['Games Played (G)', 'At Bats (AB)', 'Runs Scored (R)', 'Hits (H)', 'Doubles (2B)', 'Triples (3B)', 'Home Runs (HR)']:
             out_dict[key] = 0
 
     return out_dict
