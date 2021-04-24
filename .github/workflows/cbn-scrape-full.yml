@@ -49,4 +49,4 @@ jobs:
                SHEET_NAME: Canadians in College
             run: |
                cd Projects/Canadian_Baseball_Network
-               python stats_scrape.py n
+               python stat_scrape.py n
