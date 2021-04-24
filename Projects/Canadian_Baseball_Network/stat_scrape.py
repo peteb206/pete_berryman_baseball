@@ -208,7 +208,7 @@ def read_naia_table(df):
                 out_dict[stat_out] = df_to_dict[stat_in]
 
     if 'Slg%' in df_to_dict.keys(): # manually calculate OBP
-        df_to_dict['Appearances (G)'] = 0 # make sure position players are not credited with Appearances
+        out_dict['Appearances (G)'] = 0 # make sure position players are not credited with Appearances
         hits, walks, hbp, ab, sf = int(df_to_dict['H']), int(df_to_dict['BB']), int(df_to_dict['HBP']), int(df_to_dict['AB']), int(df_to_dict['SF'])
         numerator, denominator = hits + walks + hbp, ab + walks + hbp + sf
         if denominator > 0:
@@ -282,6 +282,7 @@ def update_gsheet(df, last_run):
                 cutoff = df_filtered[stat].iloc[9] if len(df_filtered.index) >= 10 else df_filtered[stat].iloc[-1] # TBD: thresholds like AVG > 0.250 or ERA < 5.00 (Don't want to flaunt bad stats)
                 df_filtered = df_filtered[df_filtered[stat] <= cutoff] if stat == 'Earned Run Average (ERA)' else df_filtered[df_filtered[stat] >= cutoff]
                 df_filtered['Rank'] = df_filtered[stat].rank(method='min', ascending=ascending_flg).astype(int)
+                df_filtered['Rank'] = np.nan if df_filtered['Rank'].eq(df_filtered['Rank'].shift()) else df_filtered['Rank']
                 df_filtered = df_filtered[['Rank', 'Name', 'Position', 'School', stat]]
 
                 if len(df_filtered.index) > 0:
@@ -290,7 +291,7 @@ def update_gsheet(df, last_run):
                         added_division_header = True
                     if (avg_flg == True) | (era_flg == True):
                         float_format = '{0:.3f}' if avg_flg == True else '{0:.2f}'
-                        df_filtered = df_filtered[stat].applymap(lambda x: float_format.format(x)) # Format decimal as string with 2 or 3 decimals
+                        df_filtered[stat] = df_filtered[stat].apply(lambda x: float_format.format(x)) # Format decimal as string with 2 or 3 decimals
                     stats_data += ([[stat, '', '', '', '']] + [df_filtered.columns.values.tolist()] + df_filtered.fillna('').values.tolist() + blank_row)
 
     # Add data to sheets
