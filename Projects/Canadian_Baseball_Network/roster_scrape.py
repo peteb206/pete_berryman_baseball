@@ -604,9 +604,7 @@ def update_gsheet(df, last_run):
 
         coaches_split_div = coaches[coaches['division'] == division].drop(['division'], axis=1)
         if len(coaches_split_div.index) > 0:
-            coaches_split_div['position'] = coaches_split_div['position'] + ' --- ' + coaches_split_div['school']
-            coaches_split_div['school'] = ''
-            coach_data += ([[division, '', '', '', '']] + coaches_split_div.values.tolist() + blank_row)
+            coach_data += ([[division, '', '', '', '']] + coaches_split_div.columns.values.tolist() + coaches_split_div.values.tolist() + blank_row)
 
     # Add data to sheets
     data = summary_data + blank_row + player_data + coach_data
@@ -626,7 +624,7 @@ def update_gsheet(df, last_run):
 
     # Resize columns and re-size sheets
     players_sheet.resize(rows=len(data))
-    resize_columns(sheet, players_sheet_id, {'Name': 160, 'Position': 75, 'School': 295, 'State': 40, 'Hometown': 340})
+    resize_columns(sheet, players_sheet_id, {'Name': 160, 'Position': 81, 'School': 295, 'State': 40, 'Hometown': 340})
 
     logger.info('Google sheet updated with {} players...'.format(str(len(df.index))))
 
