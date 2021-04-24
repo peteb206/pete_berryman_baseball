@@ -83,7 +83,7 @@ def find_table(division, html, table_index):
         elif (division.startswith('JUCO')) | (division == 'California CC') | (division == 'NW Athletic Conference'):
             df = pd.read_html(html)[table_index]
         elif division == ('NAIA'):
-            soup = BeautifulSoup(html, 'html')
+            soup = BeautifulSoup(html, 'lxml')
             table = soup.find('table', {'id': 'ctl00_websyncContentPlaceHolder_overallStatsGridView'})
             df = pd.read_html(str(table))[table_index]
     except:
@@ -221,9 +221,9 @@ def convert_dict_list_to_df(dict_list):
     df = pd.DataFrame(dict_list)
     df.replace(r'^-$', 0, regex=True, inplace=True)
     for col in ['Games Played (G)', 'Runs Scored (R)', 'Hits (H)', 'Doubles (2B)', 'Triples (3B)', 'Home Runs (HR)', 'Runs Batted In (RBI)', 'Stolen Bases (SB)', 'Appearances (G)', 'Wins (W)', 'Saves (SV)', 'Strikeouts (K)']:
-        df[col] = df[col].astype(int)
+        df[col] = df[col].fillna(0).astype(int, errors='ignore')
     for col in ['Innings Pitched (IP)', 'Earned Run Average (ERA)', 'Batting Average (AVG)', 'On-Base Percentage (OBP)', 'Slugging Percentage (SLG)']:
-        df[col] = df[col].astype(float)
+        df[col] = df[col].astype(float, errors='ignore')
     df['On-Base plus Slugging (OPS)'] = (df['On-Base Percentage (OBP)'] + df['Slugging Percentage (SLG)']).round(3)
     return df
 
@@ -269,7 +269,7 @@ def update_gsheet(df, last_run):
             df_filtered = df_by_division.copy()
             ascending_flg = False
             if avg_flg == True:
-                df_filtered = df_filtered[(df_filtered['Hits (H)'] / df_filtered['Batting Average (AVG)'] >= 30) & (df_filtered[stat] > 0)] # At least 30 At Bats
+                df_filtered = df_filtered[(df_filtered['At Bats (AB)'] >= 30) & (df_filtered[stat] > 0)] # At least 30 At Bats
             elif era_flg == True:
                 df_filtered = df_filtered[df_filtered['Innings Pitched (IP)'] >= 20] # At least 20 Innings Pitched
                 ascending_flg = True
