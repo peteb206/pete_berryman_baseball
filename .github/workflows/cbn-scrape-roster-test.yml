@@ -18,16 +18,12 @@ jobs:
             run: |
                cd Projects/Canadian_Baseball_Network
                python roster_scrape.py y
-         -  name: stat scrape python script
-            run: |
-               cd Projects/Canadian_Baseball_Network
-               python stat_scrape.py y
          -  name: commit files
             run: |
                git config --local user.email "action@github.com"
                git config --local user.name "GitHub Action"
                git add -A
-               git commit -m "auto-run roster_scrape.py and stat_scrape.py" -a
+               git commit -m "auto-run roster_scrape.py" -a
          -  name: push changes
             uses: ad-m/github-push-action@v0.6.0
             with:
@@ -40,10 +36,3 @@ jobs:
             run: |
                cd Projects/Canadian_Baseball_Network
                python roster_scrape.py n
-         -  name: update Stats google sheet # use pushed results to update Google Sheet
-            env:
-               KEYFILE: ${{ secrets.KEYFILE }}
-               SHEET_NAME: Test - Canadians in College
-            run: |
-               cd Projects/Canadian_Baseball_Network
-               python stat_scrape.py n
