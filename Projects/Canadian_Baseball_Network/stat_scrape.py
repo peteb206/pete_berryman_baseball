@@ -48,7 +48,7 @@ def main():
                         print('No stats found for {}'.format(player['name']))
 
         stats_df = convert_dict_list_to_df(summary_dicts)
-        stats_df.to_csv('stats.csv', index=False)
+        stats_df['Name', 'Position', 'School', 'Division', 'Games Played (G)', 'At Bats (AB)', 'Runs Scored (R)', 'Hits (H)', 'Doubles (2B)', 'Triples (3B)', 'Home Runs (HR)', 'Runs Batted In (RBI)', 'Batting Average (AVG)', 'Stolen Bases (SB)', 'Slugging Percentage (SLG)', 'Appearances (G)', 'Innings Pitched (IP)', 'Wins (W)', 'Earned Run Average (ERA)', 'Saves (SV)', 'Strikeouts (K)'].to_csv('stats.csv', index=False)
     else:
         update_gsheet(pd.read_csv('stats.csv'), last_run)
 
