@@ -575,14 +575,11 @@ def update_gsheet(df, last_run):
 
     # Loop through divisions
     for division in division_list:
-        added_division_header = False
-
         # Subset dataframe
         df_split_div = df[df['division'] == division].drop(['division'], axis=1)
         if len(df_split_div.index) > 0:
             # Row/Division Header
             player_data += [[division, '', '', '', '']]
-            added_division_header = True
 
         for class_year in class_list:
             df_split_class = pd.DataFrame()
@@ -604,7 +601,7 @@ def update_gsheet(df, last_run):
 
         coaches_split_div = coaches[coaches['division'] == division].drop(['division'], axis=1)
         if len(coaches_split_div.index) > 0:
-            coach_data += ([[division, '', '', '', '']] + [col[0].upper() + col[1:] for col in coaches_split_div.columns.values.tolist()] + coaches_split_div.values.tolist() + blank_row)
+            coach_data += ([[division, '', '', '', '']] + [[col[0].upper() + col[1:] for col in coaches_split_div.columns.values.tolist()]] + coaches_split_div.values.tolist() + blank_row)
 
     # Add data to sheets
     data = summary_data + blank_row + player_data + coach_data
