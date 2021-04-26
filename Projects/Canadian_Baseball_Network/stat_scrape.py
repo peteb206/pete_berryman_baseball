@@ -48,7 +48,7 @@ def main():
                         print('No stats found for {}'.format(player['name']))
 
         stats_df = convert_dict_list_to_df(summary_dicts)
-        stats_df['Name', 'Position', 'School', 'Division', 'Games Played (G)', 'At Bats (AB)', 'Runs Scored (R)', 'Hits (H)', 'Doubles (2B)', 'Triples (3B)', 'Home Runs (HR)', 'Runs Batted In (RBI)', 'Batting Average (AVG)', 'Stolen Bases (SB)', 'Slugging Percentage (SLG)', 'Appearances (G)', 'Innings Pitched (IP)', 'Wins (W)', 'Earned Run Average (ERA)', 'Saves (SV)', 'Strikeouts (K)'].to_csv('stats.csv', index=False)
+        stats_df[['Name', 'Position', 'School', 'Division', 'Games Played (G)', 'At Bats (AB)', 'Runs Scored (R)', 'Hits (H)', 'Doubles (2B)', 'Triples (3B)', 'Home Runs (HR)', 'Runs Batted In (RBI)', 'Stolen Bases (SB)', 'Batting Average (AVG)', 'On-Base Percentage (OBP)','Slugging Percentage (SLG)', 'On-Base plus Slugging (OPS)', 'Appearances (G)', 'Innings Pitched (IP)', 'Wins (W)', 'Earned Run Average (ERA)', 'Saves (SV)', 'Strikeouts (K)']].to_csv('stats.csv', index=False)
     else:
         update_gsheet(pd.read_csv('stats.csv'), last_run)
 
@@ -82,6 +82,8 @@ def find_table(division, html, table_index):
             df.columns = new_header # set the header row as the df header
         elif (division.startswith('JUCO')) | (division == 'California CC') | (division == 'NW Athletic Conference'):
             df = pd.read_html(html)[table_index]
+            df['count'] = df.groupby('Statistics category').cumcount()
+            df['Statistics category'] = np.where(df['count'] == 1, df['Statistics category'] + '.1', df['Statistics category'])
         elif division == ('NAIA'):
             soup = BeautifulSoup(html, 'lxml')
             table = soup.find('table', {'id': 'ctl00_websyncContentPlaceHolder_overallStatsGridView'})
@@ -130,7 +132,7 @@ def read_table(df):
         'Wins (W)': 'Wins',
         'Earned Run Average (ERA)': 'Earned Run Average',
         'Saves (SV)': 'Saves',
-        'Strikeouts (K)': 'Strikeouts'
+        'Strikeouts (K)': 'Strikeouts.1'
     }
 
     for stat_out, stat_in in stats_map.items():
@@ -228,7 +230,7 @@ def read_naia_table(df):
 def convert_dict_list_to_df(dict_list):
     df = pd.DataFrame(dict_list)
     df.replace(r'^-$', 0, regex=True, inplace=True)
-    for col in ['Games Played (G)', 'Runs Scored (R)', 'Hits (H)', 'Doubles (2B)', 'Triples (3B)', 'Home Runs (HR)', 'Runs Batted In (RBI)', 'Stolen Bases (SB)', 'Appearances (G)', 'Wins (W)', 'Saves (SV)', 'Strikeouts (K)']:
+    for col in ['Games Played (G)', 'At Bats (AB)', 'Runs Scored (R)', 'Hits (H)', 'Doubles (2B)', 'Triples (3B)', 'Home Runs (HR)', 'Runs Batted In (RBI)', 'Stolen Bases (SB)', 'Appearances (G)', 'Wins (W)', 'Saves (SV)', 'Strikeouts (K)']:
         df[col] = df[col].fillna(0).astype(int, errors='ignore')
     for col in ['Innings Pitched (IP)', 'Earned Run Average (ERA)', 'Batting Average (AVG)', 'On-Base Percentage (OBP)', 'Slugging Percentage (SLG)']:
         df[col] = df[col].astype(float, errors='ignore')
@@ -266,7 +268,7 @@ def update_gsheet(df, last_run):
     stats_data = list()
 
     division_list = ['NCAA: Division 1', 'NCAA: Division 2', 'NCAA: Division 3', 'NAIA', 'JUCO: Division 1', 'JUCO: Division 2', 'JUCO: Division 3', 'California CC', 'NW Athletic Conference', 'USCAA']
-    stat_list = ['Games Played (G)', 'Runs Scored (R)', 'Hits (H)', 'Doubles (2B)', 'Triples (3B)', 'Home Runs (HR)', 'Runs Batted In (RBI)', 'Batting Average (AVG)', 'Stolen Bases (SB)', 'On-Base Percentage (OBP)', 'Slugging Percentage (SLG)', 'On-Base plus Slugging (OPS)', 'Appearances (G)', 'Innings Pitched (IP)', 'Wins (W)', 'Earned Run Average (ERA)', 'Saves (SV)', 'Strikeouts (K)']
+    stat_list = ['Games Played (G)', 'Hits (H)', 'Doubles (2B)', 'Triples (3B)', 'Home Runs (HR)', 'Runs Scored (R)', 'Runs Batted In (RBI)', 'Stolen Bases (SB)', 'Batting Average (AVG)', 'On-Base Percentage (OBP)', 'Slugging Percentage (SLG)', 'On-Base plus Slugging (OPS)', 'Appearances (G)', 'Innings Pitched (IP)', 'Wins (W)', 'Earned Run Average (ERA)', 'Saves (SV)', 'Strikeouts (K)']
 
     for division in division_list:
         added_division_header = False
