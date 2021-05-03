@@ -45,6 +45,9 @@ def main():
     last_run = 'Last updated: {} UTC'.format(datetime.datetime.now(pytz.utc).strftime("%B %d, %Y at %I:%M %p"))
     logger.info('')
     logger.info(last_run)
+    f = open('last_updated.txt', 'w')
+    f.write(last_run)
+    f.close()
 
     canadians_df = pd.read_csv('canadians.csv') # Initialize canadians_df
     if full_run == True: # Run full web scraper
@@ -55,11 +58,10 @@ def main():
         df_lists = iterate_over_schools(schools_df) # Iterate over schools
         canadians_dict_list = df_lists[1]
 
-        # print_cols(roster_df_list) # Periodically check all of the table columns found in the html to see if we are overlooking anything
-
         canadians_df_orig = canadians_df.copy()
         canadians_df = format_df(canadians_dict_list, schools_df) # Format dictionaries to dataframe
         canadians_df['stats_link'] = ''
+        find_diffs(canadians_df_orig, canadians_df)
         canadians_df = pd.concat([canadians_df_orig, pd.read_csv('canadians_manual.csv'), canadians_df], ignore_index=True) # Add players who could not be scraped
         canadians_df.drop_duplicates(subset=['name', 'hometown'], keep='first', ignore_index=True, inplace=True) # Drop duplicate names (keep manually added rows if there is an "identical" scraped row)
         canadians_df.drop_duplicates(subset=['name', 'school'], keep='first', ignore_index=True, inplace=True) # Drop duplicate names part 2
@@ -101,6 +103,7 @@ def read_roster_norm(html, school):
 
 
 def read_roster(session, school, header):
+    foo = ''
     response = ''
     try_num = 1
     while try_num <= 3: # 3 tries
@@ -112,15 +115,15 @@ def read_roster(session, school, header):
             response = session.get(school['roster_link'], headers=header, timeout=10)
             return read_roster_norm(pd.read_html(response.text), school)
         except Exception as e2:
-            if try_num == 1:
-                logger.info('')
-            logger.info('--- e2: {} ---'.format(str(e2)))
+            foo = str(e2)
+            # logger.info('--- e2: {} ---'.format(str(e2)))
         if try_num == 3:
             try:
                 return str(response.text)
             except Exception as e3:
-                logger.info('--- e3: {} ---'.format(str(e3)))
-        logger.info('--- Failed attempt {} at {} ---'.format(str(try_num), school['roster_link']))
+                foo = str(e3)
+                # logger.info('--- e3: {} ---'.format(str(e3)))
+        # logger.info('--- Failed attempt {} at {} ---'.format(str(try_num), school['roster_link']))
         try_num += 1
         time.sleep(0.5)
     return ''
@@ -262,16 +265,16 @@ def iterate_over_schools(schools_df):
                 canadians_dicts = filter_canadians(df, canada_strings) # Get a list of table rows that seem to have a Canadian player
                 canadian_count = str(len(canadians_dicts))
             elif type(df) == type(''): # No table(s) exist in HTML... search all text for certain strings
-                if any(canada_string.lower() in df.lower() for canada_string in canada_strings):
-                    canadian_count = '*****' # String of interest found in HTML text
-                    schools_to_check_manually.append('{}: {}'.format(school['title'], school['roster_link']))
+                # if any(canada_string.lower() in df.lower() for canada_string in canada_strings):
+                    # canadian_count = '*****' # String of interest found in HTML text
+                    # schools_to_check_manually.append('{}: {}'.format(school['title'], school['roster_link']))
                 df = pd.DataFrame()
             if (canadian_count != '0') & (canadian_count != '*****'):
                 canadians_dict_list.extend(canadians_dicts)
             print_row = print_row.replace('-'*(canadians_col_length-2), canadian_count.center(canadians_col_length-2))
             print_row = print_row.replace('-'*(players_col_length-2), str(len(df.index)).center(players_col_length-2))
             if len(df.index) > 0:
-                logger.debug(print_row)
+                logger.info(print_row)
                 success_count += 1
             else:
                 # Roster exists but with no players
@@ -299,6 +302,17 @@ def iterate_over_schools(schools_df):
     logger.info('')
     logger.info('--- Total time: {} minutes ---'.format(str(round((time.time() - start_time) / 60, 1))))
     return roster_df_list, canadians_dict_list
+
+
+def find_diffs(prev_df, new_df):
+    compare_df = prev_df.merge(new_df, on=['name', 'class', 'school'], how='outer', indicator=True)
+    compare_df = compare_df[compare_df['_merge'] != 'both']
+    compare_df['diff'] = compare_df['_merge'].apply(lambda x: 'dropped' if x == 'left_only' else 'added')
+    logger.info('')
+    logger.info('Changes from last scraper run:')
+    logger.info('')
+    logger.info(compare_df[['name', 'class', 'school', 'diff']])
+    logger.info('')
 
 
 def print_cols(roster_df_list):

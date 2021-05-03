@@ -17,6 +17,9 @@ from roster_scrape import clear_sheets, format_headers, resize_columns
 def main():
     # Last run:
     last_run = 'Last updated: {} UTC'.format(datetime.datetime.now(pytz.utc).strftime("%B %d, %Y at %I:%M %p"))
+    f = open('last_updated.txt', 'w')
+    f.write(last_run)
+    f.close()
 
     # Start timer
     start_time = time.time()
