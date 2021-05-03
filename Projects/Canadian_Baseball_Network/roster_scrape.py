@@ -33,7 +33,7 @@ def check_cpu_and_memory():
 def main():
 
     # Get roster sites
-    schools_df = pd.read_csv('roster_pages.csv')
+    schools_df = pd.read_csv('roster_pages.csv').tail(5).head(1)
     # Ask for input
     full_run = True
     if len(sys.argv) == 1:
@@ -55,19 +55,23 @@ def main():
         global city_strings, province_strings, country_strings, canada_strings, hometown_conversion_dict, ignore_strings
         city_strings, province_strings, country_strings, canada_strings, hometown_conversion_dict, ignore_strings = set_canadian_search_criteria()
 
+        canadians_df_orig = canadians_df.copy()
+
+        # Scrape players from school websites
         df_lists = iterate_over_schools(schools_df) # Iterate over schools
         canadians_dict_list = df_lists[1]
+        canadians_df_new = format_df(canadians_dict_list, schools_df) # Format dictionaries to dataframe
+        canadians_df_new['stats_link'] = ''
+        canadians_df_new['class'].fillna('Freshman', inplace=True)
+        canadians_df_new['class'] = canadians_df_new['class'].str.replace(r'^\s*$', 'Freshman', regex=True)
+        find_diffs(canadians_df_orig, canadians_df_new)
 
-        canadians_df_orig = canadians_df.copy()
-        canadians_df = format_df(canadians_dict_list, schools_df) # Format dictionaries to dataframe
-        canadians_df['stats_link'] = ''
-        find_diffs(canadians_df_orig, canadians_df)
-        canadians_df = pd.concat([canadians_df_orig, pd.read_csv('canadians_manual.csv'), canadians_df], ignore_index=True) # Add players who could not be scraped
+        # Combine new results with old results
+        canadians_df = pd.concat([canadians_df_orig, pd.read_csv('canadians_manual.csv'), canadians_df_new], ignore_index=True) # Add players who could not be scraped
         canadians_df.drop_duplicates(subset=['name', 'hometown'], keep='first', ignore_index=True, inplace=True) # Drop duplicate names (keep manually added rows if there is an "identical" scraped row)
         canadians_df.drop_duplicates(subset=['name', 'school'], keep='first', ignore_index=True, inplace=True) # Drop duplicate names part 2
 
-        canadians_df['class'].fillna('Freshman', inplace=True)
-        canadians_df['class'] = canadians_df['class'].str.replace(r'^\s*$', 'Freshman', regex=True)
+        # Organizing by class and sorting
         canadians_df['class'] = pd.Categorical(canadians_df['class'], ['Freshman','Sophomore', 'Junior', 'Senior', '']) # Create custom sort by class
         canadians_df['last_name'] = canadians_df['name'].str.replace('Š', 'S').str.split(' ').str[1]
         canadians_df = canadians_df.sort_values(by=['class', 'last_name', 'school'], ignore_index=True).drop('last_name', axis=1)
@@ -96,9 +100,6 @@ def read_roster_norm(html, school):
         df.columns = new_header # set the header row as the df header
     elif school['title'] in ['Mineral Area', 'Cowley']: # Columns in HTML table are messed up... keep an eye on these schools to see if fixed
         df.columns = ['Ignore', 'No.', 'Name', 'Pos.', 'B/T', 'Year', 'Ht.', 'Wt.', 'Hometown']
-    df['__school'] = school['title']
-    df['__division'] = school['division']
-    df['__state'] = school['state']
     return df
 
 
@@ -257,10 +258,11 @@ def iterate_over_schools(schools_df):
         print_row = '| {} | {} | {} | {} | {} |'.format(str(index).ljust(index_col_length-2), school['title'].ljust(title_col_length-2), '-'*(players_col_length-2), '-'*(canadians_col_length-2), str(school['roster_link']).ljust(roster_link_col_length-2))
         error_message = ''
         try:
-            df = read_roster(session, school, header)
+            df = read_roster(session, school.copy().to_dict(), header)
             canadian_count = '0'
             if type(df) == type(pd.DataFrame()): # Table(s) exist in HTML
-                # Add team's roster to list 
+                # Add team's roster to list
+                df['__school'], df['__division'], df['__state']  = school['title'], school['division'], school['state']
                 roster_df_list.append(df)
                 canadians_dicts = filter_canadians(df, canada_strings) # Get a list of table rows that seem to have a Canadian player
                 canadian_count = str(len(canadians_dicts))
@@ -305,14 +307,13 @@ def iterate_over_schools(schools_df):
 
 
 def find_diffs(prev_df, new_df):
-    compare_df = prev_df.merge(new_df, on=['name', 'class', 'school'], how='outer', indicator=True)
-    compare_df = compare_df[compare_df['_merge'] != 'both']
-    compare_df['diff'] = compare_df['_merge'].apply(lambda x: 'dropped' if x == 'left_only' else 'added')
-    logger.info('')
-    logger.info('Changes from last scraper run:')
-    logger.info('')
-    logger.info(compare_df[['name', 'class', 'school', 'diff']])
-    logger.info('')
+    cols = ['name', 'position', 'class', 'school', 'hometown']
+    compare_df = prev_df.merge(new_df, on=cols, how='outer', indicator='diff')[cols + ['diff']]
+    compare_df = compare_df[compare_df['diff'] != 'both']
+    compare_df['diff'] = compare_df['diff'].apply(lambda x: 'dropped' if x == 'left_only' else 'added')
+    pd.set_option('display.max_rows', None)
+    pd.set_option('expand_frame_repr', False)
+    logger.info('\nChanges from last scraper run:\n{}\n'.format(compare_df))
 
 
 def print_cols(roster_df_list):
