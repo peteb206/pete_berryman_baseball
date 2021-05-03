@@ -59,7 +59,8 @@ def main():
 
         canadians_df_orig = canadians_df.copy()
         canadians_df = format_df(canadians_dict_list, schools_df) # Format dictionaries to dataframe
-        canadians_df = pd.concat([pd.read_csv('canadians_manual.csv'), canadians_df], ignore_index=True) # Add players who could not be scraped
+        canadians_df['stats_link'] = ''
+        canadians_df = pd.concat([canadians_df_orig, pd.read_csv('canadians_manual.csv'), canadians_df], ignore_index=True) # Add players who could not be scraped
         canadians_df.drop_duplicates(subset=['name', 'hometown'], keep='first', ignore_index=True, inplace=True) # Drop duplicate names (keep manually added rows if there is an "identical" scraped row)
         canadians_df.drop_duplicates(subset=['name', 'school'], keep='first', ignore_index=True, inplace=True) # Drop duplicate names part 2
 
@@ -69,15 +70,10 @@ def main():
         canadians_df['last_name'] = canadians_df['name'].str.replace('Š', 'S').str.split(' ').str[1]
         canadians_df = canadians_df.sort_values(by=['class', 'last_name', 'school'], ignore_index=True).drop('last_name', axis=1)
 
-        canadians_df_orig = canadians_df_orig[['name', 'school', 'stats_link']]
-        if 'stats_link' in canadians_df.columns:
-            canadians_df.drop('stats_link', axis=1, inplace=True)
-        canadians_df = pd.merge(canadians_df, canadians_df_orig, how='left', on=['name', 'school'])
         canadians_df.to_csv('canadians.csv', index=False) # Export to canadians.csv as a reference
 
-    canadians_df = canadians_df[['name','position','class','school','division','state','hometown']] # Keep only relevant columns
-
     if full_run == False:
+        canadians_df = canadians_df[['name','position','class','school','division','state','hometown']] # Keep only relevant columns
         update_gsheet(canadians_df, last_run) # Update Google Sheet
 
     # generate_html(canadians_df, 'canadians.html', last_run) # Generate HTML with DataTables
