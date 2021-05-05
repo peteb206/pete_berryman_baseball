@@ -14,20 +14,6 @@ Pete Berryman's portfolio for sabermetric research and other baseball work.
    - Created powerful visualizations to create greater understanding of the data and the project's findings.
    - [Code link](/Projects/Payroll_Analysis)
 
-### Canadian Baseball Network (March 2021 - present)
+### Related Projects
 
-- [Canadians in College Baseball](https://www.canadianbaseballnetwork.com/canadian-baseball-network-canadians-in-college)
-   - [![cbn-scrape-roster-full](https://github.com/peteb206/pete_berryman_baseball/actions/workflows/cbn-scrape-roster-full.yml/badge.svg)](https://github.com/peteb206/pete_berryman_baseball/actions/workflows/cbn-scrape-roster-full.yml)
-   - Python web scraper using pandas, requests, BeautifulSoup, json, re, numpy and other packages.
-   - Scan NCAA, NJCAA, NAIA, etc. schools' baseball rosters for players whose hometown references Canada or a Canadian city or province.
-   - Clean and format data due to differences in each school's website formats.
-   - Export results to Google Sheets and display nicely using gspread package.
-   - [Code link](/Projects/Canadian_Baseball_Network)
-
-- [Canadians in College Baseball Stats](https://www.canadianbaseballnetwork.com/canadians-in-college-stats)
-   - [![cbn-scrape-stat-full](https://github.com/peteb206/pete_berryman_baseball/actions/workflows/cbn-scrape-stat-full.yml/badge.svg)](https://github.com/peteb206/pete_berryman_baseball/actions/workflows/cbn-scrape-stat-full.yml)
-   - Python web scraper using pandas, requests, BeautifulSoup, json, re, numpy and other packages.
-   - Locate the season statistics of the players found by the Canadians in College Baseball scraper.
-   - Clean and format the data found from the NCAA, NJCAA, DakStats, etc. websites.
-   - Export results to Google Sheets and display nicely using gspread package.
-   - [Code link](/Projects/Canadian_Baseball_Network)
+#### Canadian Baseball Network (March 2021 - present) - [view repository](https://github.com/peteb206/canadians_in_college_baseball)
